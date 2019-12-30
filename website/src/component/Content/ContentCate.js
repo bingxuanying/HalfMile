@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CardHolder from "../Card/CardHolder";
+
 class ContentCate extends Component {
   render() {
     return (
@@ -16,7 +17,6 @@ class ContentCate extends Component {
             <CardHolder />
             <CardHolder />
             <CardHolder />
-
           </div>
         </div>
       </div>
