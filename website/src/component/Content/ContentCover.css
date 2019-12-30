@@ -1,0 +1,42 @@
+.content-cover {
+  min-height: 100px;
+  background-color: pink;
+}
+
+.content-category {
+  min-height: 460px;
+  background-color: aquamarine;
+}
+
+.content-category-inner {
+  min-height: 380px;
+  margin: 40px 71.5px;
+  padding: 0 80px;
+  background-color: powderblue;
+}
+
+.content-category-header {
+  margin-bottom: 24px;
+  background-color: white;
+}
+
+.content-category-header h3 {
+  font-weight: 800;
+  margin-bottom: 0px;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: normal;
+  font-family: sans-serif;
+  color: rgb(72, 72, 72);
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.content-category-header span {
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: normal;
+  font-family: sans-serif;
+  color: rgb(72, 72, 72);
+  font-weight: normal;
+}

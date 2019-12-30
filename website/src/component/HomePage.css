@@ -7,3 +7,10 @@
   text-align: center;
   background-color: black;
 }
+
+.content-category-containter {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
