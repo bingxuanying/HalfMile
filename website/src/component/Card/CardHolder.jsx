@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Card.sass";
+import "./CardHolder.sass";
 import image from "./tokyo.jpg";
 import { Card, Button } from 'react-bootstrap';
 
