@@ -22,7 +22,6 @@ class CardHolder extends Component {
                     <Card.Title>{this.state.cardTitle}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.state.cardSubTitle}</Card.Subtitle>
                     <Card.Text>{this.state.cardText}</Card.Text>
-                    <Button href="#">{this.state.buttonTitle}</Button>
                 </Card.Body>
             </Card>
         );
