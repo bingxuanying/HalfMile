@@ -4,7 +4,14 @@
   "description": "Travel App backend",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "server": "nodemon server.js",
+    "client": "cd ../website && npm start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bingxuanying/TravelApp.git"
   },
   "keywords": [
     "NodeJS",
