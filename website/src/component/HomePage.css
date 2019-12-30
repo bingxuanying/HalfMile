@@ -1,3 +1,9 @@
 .homepage {
   overflow: auto;
 }
+
+.homepage-footer {
+  max-width: 100%;
+  text-align: center;
+  background-color: black;
+}
