@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./GuidCard.sass";
 import image from "./tokyo.jpg";
 import { Card, Button } from "react-bootstrap";
+import { MdStar, MdStarHalf } from 'react-icons/md';
 
 class GuidCard extends Component {
   constructor(props) {
@@ -10,12 +11,18 @@ class GuidCard extends Component {
       cardTitle: "Tokyo 3 Days",
       cardSubTitle: "Weili",
       cardText: "Nice Trip to Tokyo",
-      stars: 5
+      stars: 4.5
     };
   }
   buildStars = () => {
-    return <span>{this.state.stars}</span>;
-  };
+    let stars = [];
+    for (let i = 0; i < Math.floor(this.state.stars); i++) {
+      stars.push(<span><MdStar /></span>)
+    }
+    if (!Number.isInteger(this.state.stars))
+      stars.push(<span><MdStarHalf /></span>);
+    return stars;
+  }
   render() {
     var starGroup = this.buildStars();
     return (
@@ -24,13 +31,12 @@ class GuidCard extends Component {
         <Card.Body className="pl-0 pt-2">
           <Card.Title>
             {this.state.cardTitle}
-            <span> Star here</span>
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
-            {this.state.cardSubTitle}
+            By {this.state.cardSubTitle}
           </Card.Subtitle>
-          <Card.Text>{this.state.cardText}</Card.Text>
-          {starGroup}
+          <Card.Text className="mb-0">{this.state.cardText}</Card.Text>
+          <Card.Text className="mt-0">{starGroup}</Card.Text>
         </Card.Body>
       </Card>
     );
