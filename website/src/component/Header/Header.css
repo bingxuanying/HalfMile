@@ -1,8 +1,29 @@
 .NavLogo {
-    font-size: 200%;
-    font-family: 'Dancing Script', cursive;
+  font-size: 200%;
+  font-family: "Dancing Script", cursive;
 }
 
 .Nav-Bar {
-    height: 100px;
+  height: 100px;
+}
+
+.header-container {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  font-weight: 600;
+  color: #484848;
+  border-bottom: 1px solid lightgray;
+}
+
+/* <--- Header - Logo ---> */
+.header-logo {
+}
+
+/* <--- Header - Info ---> */
+.header-info {
+}
+
+/* <--- Header - Nav ---> */
+.header-nav {
 }
