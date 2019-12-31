@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import CardHolder from "../Card/CardHolder";
-
+import GuidCard from "../Card/GuidCard";
+import { CardDeck, CardGroup, CardColumns } from "react-bootstrap";
+import "./ContentCategory.css";
 class ContentCate extends Component {
   render() {
     return (
@@ -12,12 +13,12 @@ class ContentCate extends Component {
               A selection of places to stay verified for quality and design
             </span>
           </div>
-          <div>
-            <CardHolder />
-            <CardHolder />
-            <CardHolder />
-            <CardHolder />
-          </div>
+          <CardDeck className="cardDeck card-deck">
+            <GuidCard />
+            <GuidCard />
+            <GuidCard />
+            <GuidCard />
+          </CardDeck>
         </div>
       </div>
     );
