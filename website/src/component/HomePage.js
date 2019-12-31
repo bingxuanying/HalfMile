@@ -3,7 +3,6 @@ import HeaderContainer from "./Header/HeaderContainer";
 import ContentCover from "./Content/ContentCover";
 import ContentCate from "./Content/ContentCate";
 import FooterContainer from "./Footer/FooterContainer";
-import CardHolder from "./Card/CardHolder";
 import "./HomePage.css";
 
 // For TEST Purpose
@@ -21,6 +20,9 @@ class HomePage extends Component {
             <ContentCate />
           </div>
         </body>
+        <header className="homepage-header">
+          <HeaderContainer />
+        </header>
         <footer className="homepage-footer">
           <FooterContainer />
         </footer>

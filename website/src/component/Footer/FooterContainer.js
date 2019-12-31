@@ -34,7 +34,7 @@ class FooterContainer extends Component {
       "Terms of use"
     ];
 
-    const Support = ["Contact is", "Help"];
+    const Support = ["Contact Us", "Help"];
 
     return (
       <div className="footer-container">

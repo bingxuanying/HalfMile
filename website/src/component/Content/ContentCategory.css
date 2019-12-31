@@ -3,6 +3,7 @@
   background-color: pink;
 }
 
+/* <--- Content Category ---> */
 .content-category {
   min-height: 460px;
   background-color: aquamarine;
@@ -15,6 +16,7 @@
   background-color: powderblue;
 }
 
+/* Content Category - Header */
 .content-category-header {
   margin-bottom: 24px;
   background-color: white;
@@ -39,4 +41,12 @@
   font-family: sans-serif;
   color: rgb(72, 72, 72);
   font-weight: normal;
+}
+
+/* Content Category - Card */
+.cardDeck {
+  flex-direction: row;
+  align-content: space-between;
+  margin: 0;
+  margin-right: -7px;
 }
