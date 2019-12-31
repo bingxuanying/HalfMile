@@ -6,8 +6,8 @@ import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-boots
 class HeaderNav extends Component {
   render() {
     return(
-      <Navbar fixed="top" bg="light" expand="lg">
-        <Navbar.Brand className="NavLogo"><HeaderLogo />Travel App</Navbar.Brand>
+      <Navbar fixed="top" bg="white" expand="lg" className="Nav-Bar">
+        <Navbar.Brand className="NavLogo"><HeaderLogo />AnyWhere</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="BarInfo">
           <Nav className="mr-auto">
