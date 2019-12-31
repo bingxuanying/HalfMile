@@ -11,7 +11,12 @@ class HeaderNav extends Component {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="BarInfo">
           <Nav className="mr-auto">
-            <Nav.Link href="#Plan" id="Plan">Your Plan</Nav.Link>
+            <NavDropdown title="Travel Everywhere">
+              <NavDropdown.Item href="#action/3.1" id="Plan">Your Plan</NavDropdown.Item>
+              <NavDropdown.Item href="#Hotel" id="Hotel">Your Hotel</NavDropdown.Item>
+              <NavDropdown.Item href="#Flight" id="Flight">Your Flight</NavDropdown.Item>
+            </NavDropdown>
+            
           </Nav>
           <Nav>
             <Nav.Link href="#Home">Home</Nav.Link>           
