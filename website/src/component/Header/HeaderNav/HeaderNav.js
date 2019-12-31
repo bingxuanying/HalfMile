@@ -8,7 +8,7 @@ import { icon } from "@fortawesome/fontawesome-svg-core";
 class HeaderNav extends Component {
   render() {
     return(
-      <Navbar fixed="top" bg="white" expand="lg" className="Nav-Bar">
+      <Navbar fixed="top" bg="white" expand="small">
         <Navbar.Brand className="NavLogo"><HeaderLogo />AnyWhere</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="BarInfo">
