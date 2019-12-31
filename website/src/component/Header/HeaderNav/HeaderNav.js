@@ -15,6 +15,7 @@ class HeaderNav extends Component {
           <Nav className="mr-auto" />           
           <Nav>
             <Nav.Link href="#Home"><Button id="home-buttom" size="lg" variant="outline-dark">Home</Button></Nav.Link>           
+            <Nav.Link href="#Help"><Button id="Help-buttom" size="lg" variant="outline-dark">Help</Button></Nav.Link>           
             <Nav.Link href="#Register"><Button size="lg" variant="outline-dark">Register</Button></Nav.Link>
             <Nav.Link href="#Login"><Button size="lg" variant="outline-dark">Login</Button></Nav.Link>
           </Nav>
