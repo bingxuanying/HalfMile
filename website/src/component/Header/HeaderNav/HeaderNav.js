@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+// import AddProductModal from "../UserLogin/AddProductModal";
 
 class HeaderNav extends Component {
   render() {
@@ -12,7 +13,7 @@ class HeaderNav extends Component {
         <Navbar.Collapse id="BarInfo">
           <Nav className="mr-auto">
             <NavDropdown title="Travel Everywhere">
-              <NavDropdown.Item href="#action/3.1" id="Plan">Your Plan</NavDropdown.Item>
+              <NavDropdown.Item href="#Plan" id="Plan">Your Plan</NavDropdown.Item>
               <NavDropdown.Item href="#Hotel" id="Hotel">Your Hotel</NavDropdown.Item>
               <NavDropdown.Item href="#Flight" id="Flight">Your Flight</NavDropdown.Item>
             </NavDropdown>
