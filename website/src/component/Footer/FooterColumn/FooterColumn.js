@@ -7,8 +7,6 @@ class FooterColumn extends Component {
   render() {
     const boxHeader = this.props.header;
     const boxContent = this.props.content;
-    console.log(boxContent);
-    console.log(Array.isArray(boxContent));
     return (
       <div className="footer-box">
         <h4>{boxHeader}</h4>
