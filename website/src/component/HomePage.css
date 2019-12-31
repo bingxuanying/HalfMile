@@ -7,3 +7,9 @@
   text-align: center;
   background-color: black;
 }
+
+.homepage-header {
+  width: 100%;
+  background-color: white;
+  height: 250px;
+}
