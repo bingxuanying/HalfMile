@@ -1,14 +1,13 @@
 /* <--- Content Category ---> */
 .content-category {
   min-height: 460px;
-  background-color: aquamarine;
 }
 
 .content-category-inner {
   min-height: 380px;
-  margin: 40px 71.5px;
+  margin: 0 71.5px 80px 71.5px;
   padding: 0 80px;
-  background-color: powderblue;
+  /* background-color: powderblue; */
 }
 
 /* Content Category - Header */
