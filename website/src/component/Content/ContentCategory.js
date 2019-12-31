@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import GuidCard from "../Card/GuidCard";
 import { CardDeck, CardGroup, CardColumns } from "react-bootstrap";
 import "./ContentCategory.css";
-class ContentCate extends Component {
+class ContentCategory extends Component {
   render() {
     return (
       <div className="content-category">
@@ -25,4 +25,4 @@ class ContentCate extends Component {
   }
 }
 
-export default ContentCate;
+export default ContentCategory;

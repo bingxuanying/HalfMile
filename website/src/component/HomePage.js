@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HeaderContainer from "./Header/HeaderContainer";
 import ContentCover from "./Content/ContentCover";
-import ContentCate from "./Content/ContentCate";
+import ContentCategory from "./Content/ContentCategory";
 import FooterContainer from "./Footer/FooterContainer";
 import "./HomePage.css";
 
@@ -10,19 +10,19 @@ class HomePage extends Component {
   render() {
     return (
       <div className="homepage">
-        <head>
+        <div className="header">
           <HeaderContainer />
-        </head>
-        <body>
+        </div>
+        <div className="body">
           <ContentCover />
           <div className="content-category-containter">
-            <ContentCate />
-            <ContentCate />
+            <ContentCategory />
+            <ContentCategory />
           </div>
-        </body>
-        <header className="homepage-header">
+        </div>
+        <div className="homepage-header">
           <HeaderContainer />
-        </header>
+        </div>
         <footer className="homepage-footer">
           <FooterContainer />
         </footer>
