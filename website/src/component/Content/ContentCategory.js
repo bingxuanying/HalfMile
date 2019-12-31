@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import GuidCard from "../Card/GuidCard";
+import GuideCard from "../Card/GuideCard";
+import AdvantureCard from "../Card/AdvantureCard";
 import { CardDeck, CardGroup, CardColumns } from "react-bootstrap";
 import "./ContentCategory.css";
 class ContentCategory extends Component {
