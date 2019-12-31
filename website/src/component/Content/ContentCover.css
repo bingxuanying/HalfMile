@@ -1,0 +1,24 @@
+.content-cover {
+  position: relative;
+  height: 100vh;
+}
+
+.cover-image {
+  position: relative;
+  height: 100%;
+  width: 100vw;
+  object-fit: cover;
+}
+
+.start-box {
+  width: 23vw;
+  height: 51vh;
+  position: absolute;
+  top: 170px;
+  margin-left: 8vw;
+  padding: 32px;
+  padding-bottom: 24px;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
