@@ -12,20 +12,24 @@ import "./HomePage.css";
 class HomePage extends Component {
   render() {
     const travelPlans_Guide = [
-      <GuideCard />,
-      <GuideCard />,
-      <GuideCard />,
-      <GuideCard />
+      <GuideCard key="G1" />,
+      <GuideCard key="G2" />,
+      <GuideCard key="G3" />,
+      <GuideCard key="G4" />
     ];
     const travelPlans_Adventure = [
-      <AdventureCard />,
-      <AdventureCard />,
-      <AdventureCard />,
-      <AdventureCard />,
-      <AdventureCard />,
-      <AdventureCard />
+      <AdventureCard key="A1" />,
+      <AdventureCard key="A2" />,
+      <AdventureCard key="A3" />,
+      <AdventureCard key="A4" />,
+      <AdventureCard key="A5" />,
+      <AdventureCard key="A6" />
     ];
-    const travelPlans_City = [<CityCard />, <CityCard />, <CityCard />];
+    const travelPlans_City = [
+      <CityCard key="C1" />,
+      <CityCard key="C2" />,
+      <CityCard key="C3" />
+    ];
 
     return (
       <div className="homepage">
