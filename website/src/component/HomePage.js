@@ -10,18 +10,15 @@ class HomePage extends Component {
   render() {
     return (
       <div className="homepage">
-        <div className="header">
+        <div className="homepage-header">
           <HeaderContainer />
         </div>
-        <div className="body">
+        <div className="homepage-body">
           <ContentCover />
           <div className="content-category-containter">
             <ContentCategory />
             <ContentCategory />
           </div>
-        </div>
-        <div className="homepage-header">
-          <HeaderContainer />
         </div>
         <footer className="homepage-footer">
           <FooterContainer />
