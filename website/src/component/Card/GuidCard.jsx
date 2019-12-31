@@ -13,9 +13,13 @@ class GuidCard extends Component {
       stars: 5
     };
   }
+  buildStars = () => {
+    return <span>{this.state.stars}</span>;
+  };
   render() {
+    var starGroup = this.buildStars();
     return (
-      <Card className="card border-0 text-left ml-0 mr-2">
+      <Card className="card border-0 text-left ml-0 mr-3">
         <Card.Img variant="top" src={image} />
         <Card.Body className="pl-0 pt-2">
           <Card.Title>
@@ -26,6 +30,7 @@ class GuidCard extends Component {
             {this.state.cardSubTitle}
           </Card.Subtitle>
           <Card.Text>{this.state.cardText}</Card.Text>
+          {starGroup}
         </Card.Body>
       </Card>
     );
