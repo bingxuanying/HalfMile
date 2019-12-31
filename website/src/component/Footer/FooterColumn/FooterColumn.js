@@ -12,7 +12,7 @@ class FooterColumn extends Component {
         <h4>{boxHeader}</h4>
         <ul>
           {boxContent.map(data => (
-            <li>{data}</li>
+            <li key={data}>{data}</li>
           ))}
         </ul>
       </div>
