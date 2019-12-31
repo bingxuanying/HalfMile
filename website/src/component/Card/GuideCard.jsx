@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import "./GuidCard.sass";
-import image from "./tokyo.jpg";
-import { Card, Button } from "react-bootstrap";
+import image from "./assets/tokyo.jpg";
+import { Card } from "react-bootstrap";
 import { MdStar, MdStarHalf } from 'react-icons/md';
+import "./index.sass";
 
-class GuidCard extends Component {
+class GuideCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,8 +26,8 @@ class GuidCard extends Component {
   render() {
     var starGroup = this.buildStars();
     return (
-      <Card className="card border-0 text-left ml-0 mr-3">
-        <Card.Img variant="top" src={image} />
+      <Card className="guide-card card border-0 text-left ml-0 mr-3">
+        <Card.Img className="guide-card-img" variant="top" src={image} />
         <Card.Body className="pl-0 pt-2">
           <Card.Title>
             {this.state.cardTitle}
@@ -43,4 +43,4 @@ class GuidCard extends Component {
   }
 }
 
-export default GuidCard;
+export default GuideCard;
