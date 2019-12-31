@@ -7,19 +7,21 @@ class GuidCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      width: "18rem",
-      buttonTitle: "See Detail",
       cardTitle: "Tokyo 3 Days",
       cardSubTitle: "Weili",
-      cardText: "Nice Trip to Tokyo"
+      cardText: "Nice Trip to Tokyo",
+      stars: 5
     };
   }
   render() {
     return (
-      <Card className="guidecard" style={{ width: this.state.width }}>
+      <Card className="card border-0 text-left ml-1">
         <Card.Img variant="top" src={image} />
-        <Card.Body>
-          <Card.Title>{this.state.cardTitle}</Card.Title>
+        <Card.Body className="pl-0 pt-2">
+          <Card.Title>
+            {this.state.cardTitle}
+            <span>bcd</span>
+          </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {this.state.cardSubTitle}
           </Card.Subtitle>
