@@ -1,5 +1,4 @@
 export const increment = (num = 1) => {
-  console.log("called");
   return {
     type: "INCREAMENT",
     payload: num
