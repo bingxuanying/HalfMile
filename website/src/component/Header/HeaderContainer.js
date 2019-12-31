@@ -5,8 +5,12 @@ import "./Header.css";
 
 class HeaderContainer extends Component {
   render() {
-    return(
-      <HeaderNavbar />
+    return (
+      <div className="header-container">
+        <div className="header-logo"></div>
+        <div className="header-info"></div>
+        <div className="header-nav"></div>
+      </div>
     );
   }
 }
