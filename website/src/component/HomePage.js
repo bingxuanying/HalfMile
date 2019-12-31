@@ -8,6 +8,9 @@ class HomePage extends Component {
   render() {
     return (
       <div className="homepage">
+        <header className="homepage-header">
+          <HeaderContainer />
+        </header>
         <footer className="homepage-footer">
           <FooterContainer />
         </footer>
