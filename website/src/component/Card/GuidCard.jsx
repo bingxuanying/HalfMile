@@ -15,12 +15,12 @@ class GuidCard extends Component {
   }
   render() {
     return (
-      <Card className="card border-0 text-left ml-1">
+      <Card className="card border-0 text-left ml-0 mr-2">
         <Card.Img variant="top" src={image} />
         <Card.Body className="pl-0 pt-2">
           <Card.Title>
             {this.state.cardTitle}
-            <span>bcd</span>
+            <span> Star here</span>
           </Card.Title>
           <Card.Subtitle className="mb-2 text-muted">
             {this.state.cardSubTitle}
