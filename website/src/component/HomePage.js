@@ -22,6 +22,9 @@ class HomePage extends Component {
             <ContentCate />
           </div>
         </body>
+        <header className="homepage-header">
+          <HeaderContainer />
+        </header>
         <footer className="homepage-footer">
           <FooterContainer />
         </footer>

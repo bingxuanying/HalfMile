@@ -14,3 +14,9 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.homepage-header {
+  width: 100%;
+  background-color: white;
+  height: 250px;
+}
