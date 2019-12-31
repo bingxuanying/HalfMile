@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Navbar, Nav, DropdownButton, NavItem, MenuItem} from 'react-bootstrap';
-import { icon } from "@fortawesome/fontawesome-svg-core";
+import Login from "../User/Login"
 // import AddProductModal from "../UserLogin/AddProductModal";
 
 class HeaderNav extends Component {
   render() {
     return(
-      <Navbar fixed="top" bg="white" expand="small">
+      <Navbar fixed="top" bg="white" expand="lg">
         <Navbar.Brand className="NavLogo"><HeaderLogo />AnyWhere</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="BarInfo">
