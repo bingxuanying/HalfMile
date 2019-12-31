@@ -4,8 +4,9 @@
 }
 
 .Nav-Bar {
-  height: 100px;
+  height: 80px;
 }
+
 
 .header-container {
   width: 100%;
@@ -14,16 +15,4 @@
   font-weight: 600;
   color: #484848;
   border-bottom: 1px solid lightgray;
-}
-
-/* <--- Header - Logo ---> */
-.header-logo {
-}
-
-/* <--- Header - Info ---> */
-.header-info {
-}
-
-/* <--- Header - Nav ---> */
-.header-nav {
 }
