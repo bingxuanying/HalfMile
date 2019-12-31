@@ -3,16 +3,16 @@ import HeaderContainer from "./Header/HeaderContainer";
 import ContentCover from "./Content/ContentCover";
 import ContentCategory from "./Content/ContentCategory";
 import FooterContainer from "./Footer/FooterContainer";
-import CityCard from "./Card/CityCard";
+import TripCard from "./Card/TripCard";
 import "./HomePage.css";
 
 // For TEST Purpose
 class HomePage extends Component {
   render() {
     const travelPlans_row1 = [
-      <CityCard />,
-      <CityCard />,
-      <CityCard />];
+      <TripCard />,
+      <TripCard />,
+      <TripCard />];
     return (
       <div className="homepage">
         <div className="homepage-header">
