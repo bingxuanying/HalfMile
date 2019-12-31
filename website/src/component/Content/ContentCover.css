@@ -1,5 +1,5 @@
 .content-cover {
-  min-height: 100px;
+  height: 100%;
   background-color: pink;
   margin-top: 80px;
 }
