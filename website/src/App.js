@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import HomePage from "./component/HomePage";
+import TestPage from "./component/TestPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -22,7 +23,8 @@ class App extends Component {
           <button onClick={() => this.props.increment()}> + </button>
           <button onClick={() => this.props.decrement()}> - </button>
         </p> */}
-        <HomePage />
+        {/* <HomePage /> */}
+        <TestPage />
       </div>
     );
   }
