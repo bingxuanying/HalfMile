@@ -1,0 +1,22 @@
+.test-header {
+  position: relative;
+  width: 100vw;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.test-content {
+  position: relative;
+  width: 100vw;
+  height: 500px;
+  background-color: lightpink;
+}
+
+.test-dnd {
+  height: 400px;
+  width: 300px;
+  background-color: white;
+  position: absolute;
+  top: 50px;
+  left: 500px;
+}
