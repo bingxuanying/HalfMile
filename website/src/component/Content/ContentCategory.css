@@ -1,10 +1,5 @@
 /* <--- Content Category ---> */
 .content-category {
-  min-height: 460px;
-}
-
-.content-category-inner {
-  min-height: 380px;
   margin: 0 71.5px 80px 71.5px;
   padding: 0 80px;
   /* background-color: powderblue; */

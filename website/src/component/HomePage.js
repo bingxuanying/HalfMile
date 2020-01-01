@@ -8,27 +8,61 @@ import AdventureCard from "./Card/AdvantureCard";
 import CityCard from "./Card/CityCard";
 import "./HomePage.css";
 
+import adImg from "./Card/assets/AdvantureEx.jpg";
+import cityImg from "./Card/assets/Shanghai.png";
+import guideImg from "./Card/assets/tokyo.jpg";
+
 // For TEST Purpose
 class HomePage extends Component {
   render() {
+    const cityInfo =
+      "In 2077, they voted my city the worst place to live in America. Main issues? Sky high rate of violence and more people living below the poverty line than anywhere else";
     const travelPlans_Guide = [
-      <GuideCard key="G1" />,
-      <GuideCard key="G2" />,
-      <GuideCard key="G3" />,
-      <GuideCard key="G4" />
+      <GuideCard
+        key="G1"
+        city="3 days Tokyo - Osaka"
+        author="Weili Yin"
+        info="Nice trip to Tokro with idot guides"
+        stars={5}
+        img={guideImg}
+      />,
+      <GuideCard
+        key="G2"
+        city="Tokyo"
+        author="weili"
+        info="Nice trip"
+        stars={4.5}
+        img={guideImg}
+      />,
+      <GuideCard
+        key="G3"
+        city="Tokyo"
+        author="weili"
+        info="Nice trip"
+        stars={4}
+        img={guideImg}
+      />,
+      <GuideCard
+        key="G4"
+        city="Tokyo"
+        author="weili"
+        info="Nice trip"
+        stars={4}
+        img={guideImg}
+      />
     ];
     const travelPlans_Adventure = [
-      <AdventureCard key="A1" />,
-      <AdventureCard key="A2" />,
-      <AdventureCard key="A3" />,
-      <AdventureCard key="A4" />,
-      <AdventureCard key="A5" />,
-      <AdventureCard key="A6" />
+      <AdventureCard key="A1" name="London" price="168" img={adImg} />,
+      <AdventureCard key="A2" name="Mexico Cave" price="300" img={adImg} />,
+      <AdventureCard key="A3" name="London" price="168" img={adImg} />,
+      <AdventureCard key="A4" name="London" price="168" img={adImg} />,
+      <AdventureCard key="A5" name="London" price="168" img={adImg} />,
+      <AdventureCard key="A6" name="London" price="168" img={adImg} />
     ];
     const travelPlans_City = [
-      <CityCard key="C1" />,
-      <CityCard key="C2" />,
-      <CityCard key="C3" />
+      <CityCard key="C1" city="TAIZHOU" img={cityImg} cityInfo={cityInfo} />,
+      <CityCard key="C2" city="WENGLING" img={cityImg} cityInfo={cityInfo} />,
+      <CityCard key="C3" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />
     ];
 
     return (
