@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import image from "./assets/AdvantureEx.jpg";
 import { Card } from "react-bootstrap";
-import { MdStar, MdStarHalf } from 'react-icons/md';
 import "./index.sass"
 
 class AdvantureCard extends Component {
