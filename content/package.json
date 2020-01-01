@@ -1,0 +1,33 @@
+{
+  "name": "koa-example",
+  "version": "0.0.0",
+  "description": "koa example",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha 'test/**/*.test.js'",
+    "lint": "eslint .",
+    "dev": "node index.js",
+    "demo": "node demo.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.596.0",
+    "bcrypt": "^3.0.7",
+    "dotenv": "^8.2.0",
+    "joi": "^14.3.1",
+    "koa": "^2.11.0",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "module-alias": "^2.2.2",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-egg": "^8.0.0",
+    "mocha": "^6.2.2"
+  },
+  "_moduleAliases": {
+    "@app": "app"
+  }
+}
