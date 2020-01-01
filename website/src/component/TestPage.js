@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./TestPage.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
@@ -19,7 +21,8 @@ class TestPage extends Component {
     this.state = {
       itemsFromBackend: [
         { id: uuid(), content: "First task" },
-        { id: uuid(), content: "Second task" }
+        { id: uuid(), content: "Second task" },
+        { id: uuid(), content: "Third task" }
       ]
     };
 
@@ -32,7 +35,7 @@ class TestPage extends Component {
       return;
     }
 
-    console.log(this.state.itemsFromBackend);
+    console.log("before: ", this.state.itemsFromBackend);
     const items = reorder(
       this.state.itemsFromBackend,
       result.source.index,
@@ -43,7 +46,7 @@ class TestPage extends Component {
       itemsFromBackend: items
     });
 
-    console.log(this.state.itemsFromBackend);
+    console.log("after: ", this.state.itemsFromBackend);
   }
 
   render() {
@@ -64,7 +67,7 @@ class TestPage extends Component {
                       style={{
                         background: snapshot.isDraggingOver
                           ? "lightblue"
-                          : "lightgray",
+                          : "white",
                         padding: "4px",
                         width: "100%",
                         minHeight: "100%"
@@ -78,20 +81,26 @@ class TestPage extends Component {
                         >
                           {(provided, snapshot) => (
                             <div
+                              className={
+                                snapshot.isDragging
+                                  ? "dnd-bar-avtive"
+                                  : "dnd-bar"
+                              }
                               ref={provided.innerRef}
                               {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                              style={{
-                                userSelect: "none",
-                                padding: 16,
-                                margin: "0 0 8px 0",
-                                backgroundColor: snapshot.isDragging
-                                  ? "#263B4A"
-                                  : "#456C86",
-                                ...provided.draggableProps.style
-                              }}
                             >
-                              {item.content}
+                              <div
+                                className="dnd-bar-handle"
+                                {...provided.dragHandleProps}
+                              >
+                                <FontAwesomeIcon
+                                  icon={faBars}
+                                  size="1x"
+                                ></FontAwesomeIcon>
+                              </div>
+                              <div className="dnd-bar-desination">
+                                {item.content}
+                              </div>
                             </div>
                           )}
                         </Draggable>
