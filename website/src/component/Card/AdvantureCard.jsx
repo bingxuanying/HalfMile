@@ -12,10 +12,8 @@ class AdvantureCard extends Component {
       <Card className="advanture-card card border-0 text-left ml-0 mr-3">
         <Card.Img className="advanture-card-img" variant="top" src={image} />
         <Card.Body className="advanture-card-body pl-0 pt-2">
-          <Card.Title className="font-weight-bold mb-1">{name}</Card.Title>
-          <Card.Text className="font-weight-bold mb-0">
-            Est. ${price}/per night
-          </Card.Text>
+          <Card.Title className="mb-0">{name}</Card.Title>
+          <Card.Text className="mb-0">Est. ${price}/per night</Card.Text>
         </Card.Body>
       </Card>
     );
