@@ -24,9 +24,9 @@
     display: block;
     font-size: 1em;
     height: 40px;
-    letter-spacing: 1px;
+    letter-spacing: 0.4px;
     margin: 0 20px -15px;
-    padding: 0 10px;
+    padding: 0 1px;
     position: relative;
     text-decoration: none;
     text-transform: uppercase;
