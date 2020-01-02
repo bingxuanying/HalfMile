@@ -31,6 +31,9 @@ class HeaderNav extends Component {
   }
 
   render() {
+    // isTop: if true => {color, border-bottom}: white
+    //        else false => black
+    // transistion: all ease 0.5s
     const { isTop } = this.state;
 
     return (
