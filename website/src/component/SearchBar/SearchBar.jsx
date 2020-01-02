@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Form, FormGroup } from "react-bootstrap";
+import { FaSearch } from "react-icons/fa";
 import "./index.sass";
 
 class SearchBar extends Component {
@@ -11,10 +13,12 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search-bar">
-        <div className="search-bar-icon">Icon here</div>
-        <div className="search-bar-contenent">Content Here</div>
-      </div>
+      <Form className="search-bar">
+        <Form.Group controlId="keyword">
+          <FaSearch className="search-bar-icon" />
+          <Form.Control className="search-bar-contenent" type="text" placeholder="Enter Destenation" />
+        </Form.Group>
+      </Form>
     );
   }
 }
