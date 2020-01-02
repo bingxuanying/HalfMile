@@ -5,6 +5,7 @@ import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
 
 import { GuideCard, AdventureCard, CityCard } from "../Card/index";
+import { SearchBar } from "../SearchBar/index";
 import "./HomePage.css";
 
 import adImg from "../Card/assets/AdvantureEx1.jpg";
@@ -82,6 +83,7 @@ class HomePage extends Component {
         </div>
         <div className="homepage-body">
           <ContentCover />
+          <SearchBar />
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}
