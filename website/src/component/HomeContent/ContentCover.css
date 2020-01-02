@@ -13,8 +13,10 @@
 }
 
 .start-box {
-  width: 437px;
-  height: 470px;
+  width: 22.6vw;
+  height: 51vh;
+  max-width: 437px;
+  max-height: 470px;
   position: absolute;
   top: 18vh;
   margin-left: 8vw;
