@@ -77,7 +77,7 @@ class HomePage extends Component {
     ];
 
     return (
-      <div className="homepage">
+      <div className="homepage-containter">
         <div className="homepage-header">
           <HeaderContainer />
         </div>

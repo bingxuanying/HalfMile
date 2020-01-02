@@ -2,6 +2,7 @@
 
 require('module-alias/register');
 require('dotenv').config({ path: './.env' });
+
 const AWS = require('aws-sdk');
 
 AWS.config.update({
