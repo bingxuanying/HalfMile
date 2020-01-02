@@ -21,6 +21,7 @@ class SearchBar extends Component {
             placeholder="Enter Destenation" onChange={this.handleChange}
             onKeyPress={this.handleKeyPress} />
         </Form.Group>
+        <div>hoverbar here</div>
       </Form>
     );
   }
@@ -33,6 +34,7 @@ class SearchBar extends Component {
     var code = event.keyCode || event.which;
     if (code === 13) { //13 is the enter keycode
       console.log("We enter ENTER");
+      console.log("Inpuy: " + this.state.input);
     }
   }
 }
