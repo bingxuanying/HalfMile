@@ -12,7 +12,10 @@ class ServicePage extends Component {
         <div
           style={{ height: "80px", width: "100%", backgroundColor: "white" }}
         ></div>
-        <div className="servicepage-sidebar"></div>
+        <div className="servicepage-sidebar">
+          <div className="servicepage-sidebar-searchbar"></div>
+          <div className="servicepage-sidebar-menu"></div>
+        </div>
         <div className="servicepage-floatWindow"></div>
         <button className="servicepage-pre-btn page-btn-bg" type="button">
           <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
