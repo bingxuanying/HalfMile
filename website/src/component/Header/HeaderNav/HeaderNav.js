@@ -51,7 +51,7 @@ class HeaderNav extends Component {
             </Nav.Link>
             <Nav.Link href="#Register">
               <a id="Help-buttom" size="lg" variant="outline-dark">
-                Register
+                SignUp
               </a>
             </Nav.Link>
             <Nav.Link href="#Login">
