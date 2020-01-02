@@ -1,10 +1,8 @@
 'use strict';
 
 require('module-alias/register');
-const { encrypt } = require('@app/utils/encrypt');
 const { ServerError, BadRequest } = require('@app/utils/errors');
 const assert = require('assert');
-
 
 describe('utils.errors', () => {
   it('ServerError should throw', () => {
@@ -20,9 +18,3 @@ describe('utils.errors', () => {
   });
 });
 
-describe('utils.encrypt', () => {
-  const password = 'this_is_password';
-  it('should encrypt without error', done => {
-    encrypt(password).then(() => done()).catch(done);
-  });
-});
