@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import HeaderContainer from "./Header/HeaderContainer";
-import ContentCover from "./Content/ContentCover";
-import ContentCategory from "./Content/ContentCategory";
-import FooterContainer from "./Footer/FooterContainer";
-import GuideCard from "./Card/GuideCard";
-import AdventureCard from "./Card/AdvantureCard";
-import CityCard from "./Card/CityCard";
+import HeaderContainer from "../Header/HeaderContainer";
+import ContentCover from "../HomeContent/ContentCover";
+import ContentCategory from "../HomeContent/ContentCategory";
+import FooterContainer from "../Footer/FooterContainer";
+import GuideCard from "../Card/GuideCard";
+import AdventureCard from "../Card/AdvantureCard";
+import CityCard from "../Card/CityCard";
 import "./HomePage.css";
 
-import adImg from "./Card/assets/AdvantureEx.jpg";
-import cityImg from "./Card/assets/Shanghai.png";
-import guideImg from "./Card/assets/tokyo.jpg";
+import adImg from "../Card/assets/AdvantureEx.jpg";
+import cityImg from "../Card/assets/Shanghai.png";
+import guideImg from "../Card/assets/tokyo.jpg";
 
 // For TEST Purpose
 class HomePage extends Component {
