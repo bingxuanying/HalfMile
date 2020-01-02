@@ -1,31 +1,32 @@
 'use strict';
 
 require('module-alias/register');
-const { createUser, getUser, rmUser } = require('@app/controllers/users');
-const { BadRequest } = require('@app/utils/errors');
+const { createUser, getUser, rmUser } = require('@app/services/users');
+// const { BadRequest } = require('@app/utils/errors');
 const assert = require('assert');
 
 describe('controllers.users', () => {
   const { email, password } = {
-    email: 'debug@gmail.com',
+    email: 'test@gmail.com',
     password: 'password',
   };
 
-  it('rmUser() should rm user', done => {
-    rmUser(email).then(done()).catch(done);
+  describe('createUser().getUser().rmUser().getUser()', () => {
+    it('should return undefined', done => {
+      createUser(email, password)
+        .then(() => getUser(email))
+        .then(user => {
+          assert.equal(user.email, email);
+          return rmUser(email);
+        })
+        .then(() => getUser(email))
+        .then(user => {
+          assert.equal(user, undefined);
+          done();
+        })
+        .catch(done);
+    });
   });
 
-  it('createUser() should create user', done => {
-    createUser(email, password).then(done()).catch(done);
-  });
-
-  it('createUser() should throws BadRequest when user already exists', () => {
-    assert.throws(() => {
-      createUser(email, password);
-    }, BadRequest, 'user already exists');
-  });
-
-  it('getUser() should gets user', done => {
-    getUser(email, password).then(done()).catch(done);
-  });
+  // TODO test createUser().createUser() throw BadRequest
 });
