@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./HeaderNav.css";
-import { Navbar, Nav} from "react-bootstrap";
+import { Navbar, Nav, Modal} from "react-bootstrap";
 import Login from "../User/Login";
+import SignUp from "../User/SignUp";
 
 class HeaderNav extends Component {
   constructor() {
@@ -36,7 +37,7 @@ class HeaderNav extends Component {
           AnyWhere
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="navbar">
+        <Navbar.Collapse className="navbar">
           <Nav className="mr-auto" />
           <Nav>
             <Nav.Link href="#Home">
@@ -49,16 +50,8 @@ class HeaderNav extends Component {
                 Help
               </a>
             </Nav.Link>
-            <Nav.Link href="#Register">
-              <a id="Help-buttom" size="lg" variant="outline-dark">
-                SignUp
-              </a>
-            </Nav.Link>
-            <Nav.Link href="#Login">
-              <a id="Help-buttom" size="lg" variant="outline-dark">
-                Login
-              </a>
-            </Nav.Link>
+            <SignUp />
+            <Login />
           </Nav>
         </Navbar.Collapse>
       </Navbar>

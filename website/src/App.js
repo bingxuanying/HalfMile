@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import HomePage from "./component/Pages/HomePage";
 import ServicePage2 from "./component/Pages/ServicePage2";
 import TestPage from "./component/TestPage";
+import LoginPage from "./component/Header/User/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -24,9 +25,10 @@ class App extends Component {
           <button onClick={() => this.props.increment()}> + </button>
           <button onClick={() => this.props.decrement()}> - </button>
         </p> */}
-        {/* <HomePage /> */}
-        <ServicePage2 />
+        <HomePage />
+        {/* <ServicePage2 /> */}
         {/* <TestPage /> */}
+        {/* {<LoginPage />} */}
       </div>
     );
   }
