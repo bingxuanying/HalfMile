@@ -5,6 +5,7 @@
 
 #Bar {
     height: 80px;
+    max-width: 100%;
 }
 
 .navbar a {
