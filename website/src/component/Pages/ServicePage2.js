@@ -10,19 +10,23 @@ class ServicePage extends Component {
       <div className="servicepage-containter">
         <HeaderContainer />
         <div className="servicepage-cover"></div>
-        <div className="servicepage-main"></div>
-        {/* <div className="servicepage-sidebar">
-          <div className="servicepage-sidebar-searchbar"></div>
-          <div className="servicepage-sidebar-menu"></div>
-        </div>{" "} */}
+        <div className="servicepage-main">
+          <div className="servicepage-sidebar">
+            <div className="servicepage-sidebar-searchbar"></div>
+            <div className="servicepage-sidebar-menu"></div>
+          </div>
 
-        {/* <div className="servicepage-floatWindow"></div>
-        <button className="servicepage-pre-btn page-btn-bg" type="button">
-          <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
-        </button>
-        <button className="servicepage-next-btn page-btn-bg">
-          <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
-        </button> */}
+          <div className="servicepage-map"></div>
+
+          {/* Overflow Btn - position: absolute */}
+          <div className="servicepage-floatWindow"></div>
+          <button className="servicepage-pre-btn page-btn-bg">
+            <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
+          </button>
+          <button className="servicepage-next-btn page-btn-bg">
+            <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
+          </button>
+        </div>
       </div>
     );
   }
