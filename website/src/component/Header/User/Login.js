@@ -2,6 +2,7 @@ import React, {useState}from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../HeaderNav/HeaderNav.css";
+import "../User/Login.sass";
 import {Navbar, Nav, Modal, Button} from 'react-bootstrap';
 
 function Login() {
@@ -20,7 +21,19 @@ function Login() {
                 <Modal.Header closeButton>
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This is the login Page</Modal.Body>
+                <Modal.Body id="modal-body">
+                    <div className = "login-modal">
+                        <div className="input-container">
+                            <input type="text" placeholder="Username"></input>
+                            <i class="zmdi zmdi-account zmdi-hc-lg"></i>
+                        </div>
+                        <div className="input-container">
+                            <input type="password" placeholder="password"></input>
+                            <i class="zmdi zmdi-account zmdi-hc-lg"></i>
+                        </div>
+                        <button type="submit">Login</button>
+                    </div>          
+                </Modal.Body>
             </Modal>
         </>
     );
