@@ -1,8 +1,13 @@
 .servicepage-containter {
-  overflow: auto;
-  height: 100vh;
+  height: 170vh;
   width: 100vw;
   background-color: lightgray;
+}
+
+.servicepage-cover {
+  height: calc(70vh + 80px);
+  width: 100vw;
+  background-color: yellow;
 }
 
 .servicepage-sidebar {
@@ -24,7 +29,7 @@
 
 .servicepage-sidebar-menu {
   width: 100%;
-  height: calc(100% - 60px);
+  height: 100%;
   background-color: pink;
   margin: 0;
   padding: 0;
@@ -42,7 +47,6 @@
   font-size: 50px;
   vertical-align: middle;
   position: absolute;
-  text-align: center;
 }
 
 .page-btn-bg:active {
