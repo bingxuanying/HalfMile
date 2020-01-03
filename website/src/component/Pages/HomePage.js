@@ -83,7 +83,6 @@ class HomePage extends Component {
         </div>
         <div className="homepage-body">
           <ContentCover />
-          <SearchBar />
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}
