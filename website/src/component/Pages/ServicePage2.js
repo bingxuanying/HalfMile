@@ -9,20 +9,20 @@ class ServicePage extends Component {
     return (
       <div className="servicepage-containter">
         <HeaderContainer />
-        <div
-          style={{ height: "80px", width: "100%", backgroundColor: "white" }}
-        ></div>
-        <div className="servicepage-sidebar">
+        <div className="servicepage-cover"></div>
+        <div className="servicepage-main"></div>
+        {/* <div className="servicepage-sidebar">
           <div className="servicepage-sidebar-searchbar"></div>
           <div className="servicepage-sidebar-menu"></div>
-        </div>
-        <div className="servicepage-floatWindow"></div>
+        </div>{" "} */}
+
+        {/* <div className="servicepage-floatWindow"></div>
         <button className="servicepage-pre-btn page-btn-bg" type="button">
           <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
         </button>
         <button className="servicepage-next-btn page-btn-bg">
           <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
-        </button>
+        </button> */}
       </div>
     );
   }

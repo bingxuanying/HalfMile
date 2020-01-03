@@ -4,11 +4,18 @@ require('module-alias/register');
 
 const Router = require('koa-router');
 const {
-  getByEmail,
-  postByEmailPassword,
-  deleteByEmail,
+  register,
+  unregister,
   login,
-} = require('@app/controllers/users');
+  logout,
+} = require('@app/controllers/auth');
+const {
+  getPlan,
+  getPlans,
+  createPlan,
+  updatePlan,
+  deletePlan,
+} = require('@app/controllers/plans');
 
 const publicRouter = new Router(),
   protectedRouter = new Router();
@@ -20,16 +27,21 @@ publicRouter
     await next();
   })
   .post('/login', login)
-  .post('/users', postByEmailPassword);
+  .post('/register', register);
 
 protectedRouter
+  .get('/logout', logout)
+  .get('/unregister', unregister)
   .get('/echo-login', async (ctx, next) => {
     ctx.body = { message: 'echo back from login' };
     ctx.status = 200;
     await next();
   })
-  .get('/users/:email', getByEmail)
-  .delete('/users/:email', deleteByEmail);
+  .post('/plans', createPlan)
+  .get('/plans', getPlans)
+  .get('/plans/:planId', getPlan)
+  .put('/plans/:planId', updatePlan)
+  .delete('/plans/:planId', deletePlan);
 
 module.exports = {
   publicRoutes: () => publicRouter.routes(),

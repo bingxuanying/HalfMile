@@ -18,8 +18,13 @@ const koa = new Koa();
 
 koa.use(async (ctx, next) => {
   return next().catch(err => {
-    ctx.status = err instanceof UserError ? err.status : 500;
-    ctx.body = { message: isDev ? err.message : err.status };
+    if (err instanceof UserError) {
+      ctx.status = err.status;
+      ctx.body = { message: err.message };
+    } else {
+      ctx.status = 500;
+      ctx.body = { message: isDev ? err.message : 'Internal Server Error' };
+    }
   });
 });
 

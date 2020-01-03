@@ -3,10 +3,12 @@
     font-family: "Dancing Script", cursive;
 }
 
+#Bar {
+    height: 80px;
+}
 
-#navbar a {
+.navbar a {
     display: inline-block;
-    float: right;
     list-style: none;
     margin-top: -2px;
     text-align: right;
@@ -14,12 +16,11 @@
     -webkit-transition: transform 0.5s ease-out;
 }
 
-
-#navbar li {
+.navbar li {
     display: inline-block;
 }
 
-#navbar a {
+.navbar a {
     color: #484848;
     display: block;
     font-size: 1em;
@@ -35,41 +36,41 @@
     -webkit-transition: all 0.5s ease;
 }
 
-#navbar a:hover {
+.navbar a:hover {
     color: #484848;
     transition: all 1s ease;
     -webkit-transition: all 1s ease;
 }
 
 /* Animated Bottom Line */
-#navbar a:before,
-#navbar a:after {
-    content: '';
+.navbar a:before,
+.navbar a:after {
+    content: "";
     position: absolute;
     width: 0%;
     height: 2px;
-    bottom: -1px;
+    bottom: -12px;
     background: #484848;
 }
 
-#navbar a:before {
+.navbar a:before {
     left: 0;
     transition: 0.5s;
 }
 
-#navbar a:after {
+.navbar a:after {
     background: #484848;
     right: 0;
     /* transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); */
 }
 
-#navbar a:hover:before {
+.navbar a:hover:before {
     background: #484848;
     width: 100%;
     transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
 }
 
-#navbar a:hover:after {
+.navbar a:hover:after {
     background: transparent;
     width: 100%;
     /* transition: 0s; */
