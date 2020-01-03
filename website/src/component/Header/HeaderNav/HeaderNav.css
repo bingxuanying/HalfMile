@@ -5,6 +5,7 @@
 
 #Bar {
     height: 80px;
+    max-width: 100%;
 }
 
 .navbar a {
@@ -26,7 +27,7 @@
     font-size: 1em;
     font-weight: bold;
     height: 40px;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.3px;
     margin: 0 12px -15px;
     padding: 0 0.2px;
     position: relative;
