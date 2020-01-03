@@ -31,7 +31,7 @@ function Login() {
                             <input type="password" placeholder="password"></input>
                             <i class="zmdi zmdi-account zmdi-hc-lg"></i>
                         </div>
-                        <button type="submit">Login</button>
+                        <button className="submit-button" type="submit">Login</button>
                     </div>          
                 </Modal.Body>
             </Modal>

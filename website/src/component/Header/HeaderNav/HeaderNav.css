@@ -3,6 +3,9 @@
     font-family: "Dancing Script", cursive;
 }
 
+#Bar {
+    height: 80px;
+}
 
 .navbar a {
     display: inline-block;

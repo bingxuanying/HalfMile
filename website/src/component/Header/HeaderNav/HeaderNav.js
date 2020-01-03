@@ -34,7 +34,7 @@ class HeaderNav extends Component {
       <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
         <Navbar.Brand className="NavLogo">
           <HeaderLogo />
-          AnyWhere
+          Half Mile
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="navbar">
