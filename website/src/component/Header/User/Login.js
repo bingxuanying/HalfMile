@@ -17,21 +17,24 @@ function Login() {
                     Login
                 </a>
             </Nav.Link>
-            <Modal show={show} onHide={handleClose} size="lg" centered>
+            <Modal show={show} onHide={handleClose} size="small" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Login</Modal.Title>
+                    <div className="title">Login</div>
                 </Modal.Header>
                 <Modal.Body className="modal-body">
                     <div className = "login-modal">
                         <div className="input-container">
                             <input type="text" placeholder="Username"></input>
-                            <i class="zmdi zmdi-account zmdi-hc-lg"></i>
+                            
                         </div>
                         <div className="input-container">
                             <input type="password" placeholder="password"></input>
                             <i class="zmdi zmdi-account zmdi-hc-lg"></i>
                         </div>
-                        <button className="submit-button" type="submit">Login</button>
+                        <div className="button-container">
+                            <button className="submit-button" type="submit">Login</button>
+                        </div>
+                        
                     </div>          
                 </Modal.Body>
             </Modal>
