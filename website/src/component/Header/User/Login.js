@@ -21,7 +21,7 @@ function Login() {
                 <Modal.Header closeButton>
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
-                <Modal.Body id="modal-body">
+                <Modal.Body className="modal-body">
                     <div className = "login-modal">
                         <div className="input-container">
                             <input type="text" placeholder="Username"></input>
