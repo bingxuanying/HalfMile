@@ -28,14 +28,13 @@ class DND extends Component {
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  onDragEnd(result) {
+  async onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
 
-    console.log("before: ", this.state.itemsFromBackend);
-    const items = reorder(
+    const items = await reorder(
       this.state.itemsFromBackend,
       result.source.index,
       result.destination.index

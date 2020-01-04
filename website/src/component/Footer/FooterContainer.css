@@ -7,7 +7,9 @@
 
 /* Content */
 .footer-container-content {
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .footer-box {
@@ -35,6 +37,9 @@
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid rgba(74, 74, 74, 0.5);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .footer-container-bottom-left {

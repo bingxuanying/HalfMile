@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchBar from "../SearchBar/SearchBarDemo";
+import SearchBar from "../SearchBar/SearchBarLoca";
 import DND from "../DND/DND";
 import "./LocationBox.css";
 

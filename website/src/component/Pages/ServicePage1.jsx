@@ -4,8 +4,6 @@ import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
 import LocationBox from "../LocationBox/LocationBox";
 import "./ServicePage.css";
-
-import SearchBarDemo from "../SearchBar/SearchBarDemo";
 import Map from "../Map/Map";
 
 class ServicePage1 extends Component {
