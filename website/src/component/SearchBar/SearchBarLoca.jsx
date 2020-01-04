@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Geosuggest from "react-geosuggest";
-import "./SearchBarDemo.css";
+import "./SearchBarLoca.css";
 
-class SearchBarDemo extends Component {
+class SearchBarLoca extends Component {
   constructor() {
     super();
 
@@ -29,4 +29,4 @@ class SearchBarDemo extends Component {
   }
 }
 
-export default SearchBarDemo;
+export default SearchBarLoca;

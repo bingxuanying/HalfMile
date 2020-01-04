@@ -5,7 +5,7 @@ import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview/";
 import "./ServicePage.css";
 
-import SearchBarDemo from "../SearchBar/SearchBarDemo";
+import SearchBarLoca from "../SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
 
 class ServicePage2 extends Component {
@@ -20,7 +20,7 @@ class ServicePage2 extends Component {
           {/* sdie bar section */}
           <div className="servicepage-sidebar">
             <div className="servicepage-sidebar-searchbar">
-              <SearchBarDemo />
+              <SearchBarLoca />
             </div>
             <div className="servicepage-sidebar-menu"></div>
           </div>
