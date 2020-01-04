@@ -5,6 +5,7 @@ import HeaderContainer from "../Header/HeaderContainer";
 import "./ServicePage.css";
 
 import SearchBarDemo from "../SearchBar/SearchBarDemo";
+import Map from "../Map/Map";
 
 class ServicePage extends Component {
   render() {
@@ -21,7 +22,9 @@ class ServicePage extends Component {
             <div className="servicepage-sidebar-menu"></div>
           </div>
           {/* map section */}
-          <div className="servicepage-map"></div>
+          <div className="servicepage-map">
+            <Map />
+          </div>
 
           {/* Overflow Btn - position: absolute */}
           <div className="servicepage-floatWindow"></div>
