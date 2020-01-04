@@ -13,12 +13,12 @@ class TripOverview extends Component {
   render() {
     // add props into TripOverviewDay
     let list = [
-      <TripOverviewDay day={1} isChecked={false} isEnd={false} isStart={true} location="Davis" />,
-      <TripOverviewDay day={2} isChecked={false} isEnd={false} isStart={false} location="SF" />,
-      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} location="SF" />,
-      <TripOverviewDay day={4} isChecked={false} isEnd={false} isStart={false} location="SF" />,
-      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} location="SF" />,
-      <TripOverviewDay day={5} isChecked={false} isEnd={true} isStart={false} location="Davis" />
+      <TripOverviewDay day={1} isChecked={false} isEnd={false} isStart={true} startCity="Davis" endCity="SF" />,
+      <TripOverviewDay day={2} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
+      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
+      <TripOverviewDay day={4} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
+      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
+      <TripOverviewDay day={5} isChecked={false} isEnd={true} isStart={false} startCity="SF" endCity="Davis" />
     ];
     return (
       <div className="trip-overview">

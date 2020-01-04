@@ -8,9 +8,11 @@
     .trip-overview-day-daydisplay
         font-size: 24px
         font-family: "Dancing Script", cursive
-        transition: background 200ms
+        transition: background 200ms,font-size 200ms,margin-top 200ms
         margin-bottom: 5px
         &:hover
+            font-size: 30px
+            margin-top: -9px
             background: #878787
     .trip-overview-day-dashline
         text-align: center
@@ -21,7 +23,6 @@
             left: 50%
     .trip-overview-day-city
         margin-top: 55px
-        background: #878787
         width: 100%
         display: flex
         flex-direction: column
@@ -62,7 +63,7 @@
             .right-line-empty
                 width: 100%
             .trip-overview-day-city-graph-circle
-
         .trip-overview-day-city-text
     .trip-overview-day-routine
+        max-width: 180px
         padding: 5px
