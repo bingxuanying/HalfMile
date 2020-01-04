@@ -1,0 +1,13 @@
+# env vars
+.env
+
+# dev tools
+.eslintignore
+.eslint
+.gitignore
+Dockerfile
+demo.js
+plan.json
+
+# dependencies
+node_module
