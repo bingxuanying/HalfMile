@@ -13,7 +13,7 @@ const {
 } = require('@app/routes');
 
 const requiredEnvs = `AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,AWS_REGION,\
-TABLE_USERS,SECRET_KEY,DEV`.split(',');
+TABLE_USERS,SECRET_KEY,PORT,DEV`.split(',');
 for (const env of requiredEnvs) {
   if (!(env in process.env)) {
     console.log(`missing env: ${env}`);
@@ -46,4 +46,4 @@ koa
   .use(loginRequired)
   .use(protectedRoutes())
   .use(protectedAllowedMethods())
-  .listen(8080);
+  .listen(process.env.PORT);
