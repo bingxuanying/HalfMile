@@ -13,11 +13,12 @@ class TripOverview extends Component {
   render() {
     // add props into TripOverviewDay
     let list = [
-      <TripOverviewDay />,
-      <TripOverviewDay />,
-      <TripOverviewDay />,
-      <TripOverviewDay />,
-      <TripOverviewDay />
+      <TripOverviewDay day={1} isChecked={false} isEnd={false} isStart={true} location="Davis" />,
+      <TripOverviewDay day={2} isChecked={false} isEnd={false} isStart={false} location="SF" />,
+      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} location="SF" />,
+      <TripOverviewDay day={4} isChecked={false} isEnd={false} isStart={false} location="SF" />,
+      <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} location="SF" />,
+      <TripOverviewDay day={5} isChecked={false} isEnd={true} isStart={false} location="Davis" />
     ];
     return (
       <div className="trip-overview">
