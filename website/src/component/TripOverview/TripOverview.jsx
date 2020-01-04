@@ -13,8 +13,8 @@ class TripOverview extends Component {
   render() {
     // add props into TripOverviewDay
     let list = [
-      <TripOverviewDay day={1} isChecked={false} isEnd={false} isStart={true} startCity="Davis" endCity="SF" />,
-      <TripOverviewDay day={2} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
+      <TripOverviewDay day={1} isChecked={true} isEnd={false} isStart={true} startCity="Davis" endCity="SF" />,
+      <TripOverviewDay day={2} isChecked={true} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
       <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
       <TripOverviewDay day={4} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,
       <TripOverviewDay day={3} isChecked={false} isEnd={false} isStart={false} startCity="SF" endCity="SF" />,

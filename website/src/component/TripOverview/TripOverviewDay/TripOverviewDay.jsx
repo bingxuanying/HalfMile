@@ -21,6 +21,11 @@ class TripOverviewDay extends Component {
     var circleSize;
     (this.state.startCity == this.state.endCity) ?
       circleSize = 24 : circleSize = 40;
+    const dayInfo = <div className="trip-overview-day-routine d-inline-block text-truncate">
+      <p className="mb-1">Hotel: Aoligei</p>
+      <p className="mb-1">Transport: Drive</p>
+      <p className="mb-1">Activity: Funxxxxxxxxxx123</p>
+    </div>
     return (
       <div className="trip-overview-day">
         <div className="trip-overview-day-daydisplay">Day{this.state.day}</div>
@@ -31,9 +36,9 @@ class TripOverviewDay extends Component {
           <div className="trip-overview-day-city-graph">
             {(this.state.isStart) ? <div className="left-line-empty"></div>
               : <div className="left-line" />}
-            <div className="trip-overview-day-city- graph-circle">
-              {(this.state.isChecked) ? <
-                CheckCircleOutlineIcon style={{ fontSize: circleSize }} /> :
+            <div className="trip-overview-day-city-graph-circle">
+              {(this.state.isChecked) ?
+                <CheckCircleOutlineIcon style={{ fontSize: circleSize, color: 'green' }} /> :
                 <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />}
             </div>
             {(this.state.isEnd) ? <div className="right-line-empty"></div>
@@ -41,7 +46,7 @@ class TripOverviewDay extends Component {
           </div>
           <div className="trip-overview-day-city-text">{this.state.endCity}</div>
         </div>
-        <div className="trip-overview-day-routine">Hotel: Aoligei Dajiudian</div>
+        {dayInfo}
       </div>
     );
   }
