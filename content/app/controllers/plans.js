@@ -30,7 +30,7 @@ const createPlan = async (ctx, next) => {
 
 const getPlans = async (ctx, next) => {
   const data = await tableUsers.get(ctx.user.email);
-  ctx.body = data.plans;
+  ctx.body = data.plans || [];
   ctx.status = 200;
   await next();
 };
