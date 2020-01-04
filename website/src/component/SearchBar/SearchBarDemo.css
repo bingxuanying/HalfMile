@@ -23,6 +23,7 @@
   -webkit-transition: border 0.2s, box-shadow 0.2s;
   transition: border 0.2s, box-shadow 0.2s;
   align-items: center;
+  font-size: 16px;
 }
 .geosuggest__input:focus {
   border-color: #267dc0;

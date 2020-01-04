@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Geosuggest from "react-geosuggest";
 import "./SearchBarDemo.css";
 
@@ -20,10 +19,9 @@ class SearchBarDemo extends Component {
     return (
       <div>
         <Geosuggest
-          placeholder="Start typing!"
-          //   initialValue="Hamburg"
+          placeholder="Let's go somewhere!"
           onSuggestSelect={this.onSuggestSelect}
-          location={new window.google.maps.LatLng(53.558572, 9.9278215)}
+          location={new window.google.maps.LatLng(34.0522342, -118.2436849)}
           radius={20}
         />
       </div>

@@ -11,6 +11,7 @@
 
 /* <--- MAIN Section ---> */
 .servicepage-main {
+  position: relative;
   height: calc(100vh - 80px);
   width: 100%;
 }
@@ -37,11 +38,15 @@
 }
 
 /* Map=Section - width: 100% - 300px */
-.servicepage-map {
+.servicepage1-map {
+  height: 100%;
+  width: 100%;
+}
+
+.servicepage2-map {
   height: calc(100vh - 80px);
   width: calc(100% - 300px);
   float: left;
-  background-color: lightblue;
 }
 
 /* Pagination Btn */
@@ -57,7 +62,7 @@
   font-size: 50px;
   vertical-align: middle;
   position: absolute;
-  top: calc(170vh - 80px);
+  bottom: 40px;
 }
 
 .page-btn-bg:active {
@@ -65,11 +70,11 @@
 }
 
 .servicepage-pre-btn {
-  right: 155px;
+  right: 165px;
 }
 
 .servicepage-next-btn {
-  right: 70px;
+  right: 80px;
 }
 
 .page-btn {
