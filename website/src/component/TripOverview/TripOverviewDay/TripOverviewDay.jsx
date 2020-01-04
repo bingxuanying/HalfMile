@@ -19,9 +19,14 @@ class TripOverviewDay extends Component {
   render() {
     this.getProps();
     var circleSize;
-    (this.state.startCity == this.state.endCity) ?
-      circleSize = 24 : circleSize = 40;
-    const dayInfo = <div className="trip-overview-day-routine d-inline-block text-truncate">
+    var routinePaddingTop;
+    if (this.state.startCity == this.state.endCity) {
+      circleSize = 24;
+    } else {
+      circleSize = 40;
+    }
+    const dayInfo = <div className="trip-overview-day-routine 
+      d-inline-block text-truncate">
       <p className="mb-1">Hotel: Aoligei</p>
       <p className="mb-1">Transport: Drive</p>
       <p className="mb-1">Activity: Funxxxxxxxxxx123</p>
@@ -46,7 +51,7 @@ class TripOverviewDay extends Component {
           </div>
           <div className="trip-overview-day-city-text">{this.state.endCity}</div>
         </div>
-        {dayInfo}
+        {/* {dayInfo} */}
       </div>
     );
   }
