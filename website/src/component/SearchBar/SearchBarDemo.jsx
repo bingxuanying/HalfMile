@@ -20,9 +20,8 @@ class SearchBarDemo extends Component {
       <div>
         <Geosuggest
           placeholder="Let's go somewhere!"
-          //   initialValue="Hamburg"
           onSuggestSelect={this.onSuggestSelect}
-          location={new window.google.maps.LatLng(53.558572, 9.9278215)}
+          location={new window.google.maps.LatLng(34.0522342, -118.2436849)}
           radius={20}
         />
       </div>

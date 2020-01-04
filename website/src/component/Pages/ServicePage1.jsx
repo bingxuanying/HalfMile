@@ -2,32 +2,31 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
+import LocationBox from "../LocationBox/LocationBox";
 import "./ServicePage.css";
 
 import SearchBarDemo from "../SearchBar/SearchBarDemo";
 import Map from "../Map/Map";
 
-class ServicePage2 extends Component {
+class ServicePage1 extends Component {
   render() {
     return (
       <div className="servicepage-containter">
-        <HeaderContainer />
-        <div className="servicepage-cover"></div>
+        <div
+          style={{ height: "80px", width: "100%", backgroundColor: "white" }}
+        >
+          <HeaderContainer />
+        </div>
+
+        {/* Main */}
         <div className="servicepage-main">
-          {/* sdie bar section */}
-          <div className="servicepage-sidebar">
-            <div className="servicepage-sidebar-searchbar">
-              <SearchBarDemo />
-            </div>
-            <div className="servicepage-sidebar-menu"></div>
-          </div>
           {/* map section */}
-          <div className="servicepage2-map">
+          <div className="servicepage1-map">
             <Map />
           </div>
 
-          {/* Overflow Btn - position: absolute */}
-          <div className="servicepage-floatWindow"></div>
+          {/* Overflow - position: absolute */}
+          <LocationBox />
           <button className="servicepage-pre-btn page-btn-bg">
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
@@ -40,4 +39,4 @@ class ServicePage2 extends Component {
   }
 }
 
-export default ServicePage2;
+export default ServicePage1;
