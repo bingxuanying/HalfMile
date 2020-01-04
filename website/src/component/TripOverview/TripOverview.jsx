@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { TripOverviewDay } from "./TripOverviewDay/index";
+import { TripOverviewDay } from "./TripOverviewDay/";
+import "./index.sass";
 
 class TripOverview extends Component {
   constructor(props) {
     super(props);
-    this.setState = {};
+    this.state = {
+      title: "S496691084's Guide"
+    };
   }
 
   render() {
@@ -18,7 +21,7 @@ class TripOverview extends Component {
     ];
     return (
       <div className="trip-overview">
-        <div className="trip-overview-title">Title Here!!!</div>
+        <div className="trip-overview-title">{this.state.title}</div>
         <div className="trip-overview-days">{list}</div>
       </div>
     );

@@ -1,3 +1,2 @@
-import TripOverviewDay from "./TripOverview";
-import "./index.sass";
+import TripOverviewDay from "./TripOverviewDay";
 export { TripOverviewDay };
