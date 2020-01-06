@@ -1,0 +1,7 @@
+.*
+Dockerfile
+*_pb2*
+
+__pycache__/
+venv/
+js/
