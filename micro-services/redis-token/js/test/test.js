@@ -1,6 +1,6 @@
 'use strict';
 
-const { invalidate, isInvalidate } = require('./token-pool');
+const { invalidate, isInvalidate } = require('../token-pool');
 
 describe('post token with exp', function() {
   this.timeout(6000);

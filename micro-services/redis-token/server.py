@@ -19,7 +19,7 @@ if missing_envs:
     print(f'missing envs: {missing_envs}')
 
 r = redis.Redis(
-    host='localhost', 
+    host='127.0.0.1',
     port=int(os.getenv('REDIS_PORT')), 
     db=int(os.getenv('REDIS_DB'))
 )
