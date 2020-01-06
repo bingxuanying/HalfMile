@@ -50,7 +50,9 @@ class HeaderNav extends Component {
                 Help
               </a>
             </Nav.Link>
+            {/* SignUp Button */}
             <SignUp />
+            {/* Login Button */}
             <Login />
           </Nav>
         </Navbar.Collapse>
