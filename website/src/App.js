@@ -3,8 +3,8 @@ import HomePage from "./component/Pages/HomePage";
 import ServicePage2 from "./component/Pages/ServicePage2";
 import ServicePage1 from "./component/Pages/ServicePage1";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Calendar from "./component/Calender/Calender";
 import "./App.css";
-import Calendar from "react-calendar";
 
 // import { connect } from "react-redux";
 // import * as CounterActions from "./actions/counterActions";
