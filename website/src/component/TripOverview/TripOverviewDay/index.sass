@@ -5,7 +5,6 @@
     flex-direction: column
     padding-right: 0px
     align-items: center
-    // max-width: 100px
     .trip-overview-day-daydisplay
         font-size: 24px
         font-family: "Dancing Script", cursive
@@ -36,6 +35,7 @@
             width: 100%
             margin: 0px
             padding: 0px
+            align-self: center
             .left-line
                 width: 100%
                 position: relative
@@ -66,8 +66,24 @@
                 width: 100%
             .trip-overview-day-city-graph-circle
         .trip-overview-day-city-text
-    .trip-overview-day-routine
-        text-align: left
-        max-width: 150px
-        margin-right: 10px
-        margin-left: 10px
+    .trip-overview-day-space-bot
+        min-height: 8px
+        width: 100%
+        clear: both
+    .trip-overview-day-space-top
+        min-height: 8px
+        width: 100%
+        clear: both
+    .trip-overview-day-text-wrap
+        padding-left: 15px
+        .trip-overview-day-text
+            .hotel
+                font-weight: bold
+                .hotel-name
+                    font-weight: normal
+            .transport
+                font-weight: bold
+                .transport-name
+                    font-weight: normal
+
+

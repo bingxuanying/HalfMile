@@ -1,69 +1,115 @@
 import React, { Component } from "react";
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import "./index.sass";
 class TripOverviewDay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSelected: true,
-      day: 1,
-      isChecked: false,
-      isStart: true,
-      isEnd: true,
-      startCity: "davis",
-      endCity: "davis"
+      isEditting: true,
+      day: this.props.day,
+      isChecked: this.props.isChecked,
+      isStart: this.props.isStart,
+      isEnd: this.props.isEnd,
+      startCity: this.props.startCity,
+      endCity: this.props.endCity,
+      hotel: ["Marroit", "IHG"],
+      transport: ["UA8848"]
     };
   }
 
   render() {
     this.getProps();
     var circleSize;
-    var routinePaddingTop;
-    if (this.state.startCity == this.state.endCity) {
+    var largeCircle;
+    if (this.state.startCity === this.state.endCity) {
       circleSize = 24;
+      largeCircle = false;
     } else {
       circleSize = 40;
+      largeCircle = true;
     }
-    const dayInfo = <div className="trip-overview-day-routine 
-      d-inline-block text-truncate">
-      <p className="mb-1">Hotel: Aoligei</p>
-      <p className="mb-1">Transport: Drive</p>
-      <p className="mb-1">Activity: Funxxxxxxxxxx123</p>
-    </div>
+    const dayInfo = this.getInfo();
     return (
       <div className="trip-overview-day">
+        {largeCircle ? (
+          <div />
+        ) : (
+          <div className="trip-overview-day-space-top"></div>
+        )}
         <div className="trip-overview-day-daydisplay">Day{this.state.day}</div>
         <div className="trip-overview-day-dashline">
           <div className="vertical-line"></div>
         </div>
         <div className="trip-overview-day-city">
           <div className="trip-overview-day-city-graph">
-            {(this.state.isStart) ? <div className="left-line-empty"></div>
-              : <div className="left-line" />}
+            {this.state.isStart ? (
+              <div className="left-line-empty"></div>
+            ) : (
+              <div className="left-line" />
+            )}
             <div className="trip-overview-day-city-graph-circle">
-              {(this.state.isChecked) ?
-                <CheckCircleOutlineIcon style={{ fontSize: circleSize, color: 'green' }} /> :
-                <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />}
+              {this.state.isChecked ? (
+                <CheckCircleOutlinedIcon
+                  style={{ fontSize: circleSize, color: "green" }}
+                />
+              ) : (
+                <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />
+              )}
             </div>
-            {(this.state.isEnd) ? <div className="right-line-empty"></div>
-              : <div className="right-line" />}
+            {this.state.isEnd ? (
+              <div className="right-line-empty"></div>
+            ) : (
+              <div className="right-line" />
+            )}
           </div>
-          <div className="trip-overview-day-city-text">{this.state.endCity}</div>
+          <div className="trip-overview-day-city-text">
+            {this.state.endCity}
+          </div>
         </div>
-        {/* {dayInfo} */}
+        {largeCircle ? (
+          <div />
+        ) : (
+          <div className="trip-overview-day-space-bot"></div>
+        )}
+        <div className="trip-overview-day-text-wrap">{dayInfo}</div>
       </div>
     );
   }
   getProps = () => {
-    if (this.props.isSelected) { this.state.isSelected = true };
-    this.state.day = this.props.day;
-    this.state.isChecked = this.props.isChecked;
-    this.state.isEnd = this.props.isEnd;
-    this.state.isStart = this.props.isStart;
-    this.state.startCity = this.props.startCity;
-    this.state.endCity = this.props.endCity;
-  }
+    if (this.props.isEditting) {
+      this.setState({ isEditting: true });
+    }
+  };
+  getInfo = () => {
+    return (
+      <div
+        className="trip-overview-day-text 
+      d-inline-block text-truncate"
+      >
+        <p className="hotel mb-1">
+          Hotel:
+          {this.state.hotel.map(function(hotel, index) {
+            return (
+              <p className="hotel-name mb-0 pl-2" key={index}>
+                {hotel}
+              </p>
+            );
+          })}
+        </p>
+        <p className="transport mb-1">
+          Transport:
+          {this.state.transport.map(function(trans, index) {
+            return (
+              <p className="transport-name mb-0 pl-2" key={index}>
+                {trans}
+              </p>
+            );
+          })}
+        </p>
+      </div>
+    );
+  };
 }
 
 export default TripOverviewDay;
