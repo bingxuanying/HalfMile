@@ -14,6 +14,7 @@ class TripOverview extends Component {
     // add props into TripOverviewDay
     let list = [
       <TripOverviewDay
+        isEditting={false}
         key="1"
         day={1}
         isChecked={true}
@@ -23,6 +24,7 @@ class TripOverview extends Component {
         endCity="SF"
       />,
       <TripOverviewDay
+        isEditting={false}
         key="2"
         day={2}
         isChecked={true}
@@ -32,6 +34,7 @@ class TripOverview extends Component {
         endCity="SF"
       />,
       <TripOverviewDay
+        isEditting={true}
         key="3"
         day={3}
         isChecked={false}
@@ -41,6 +44,7 @@ class TripOverview extends Component {
         endCity="SF"
       />,
       <TripOverviewDay
+        isEditting={false}
         key="4"
         day={4}
         isChecked={false}
@@ -50,6 +54,7 @@ class TripOverview extends Component {
         endCity="SF"
       />,
       <TripOverviewDay
+        isEditting={false}
         key="6"
         day={3}
         isChecked={false}
@@ -59,6 +64,7 @@ class TripOverview extends Component {
         endCity="SF"
       />,
       <TripOverviewDay
+        isEditting={false}
         key="5"
         day={5}
         isChecked={false}

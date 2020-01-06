@@ -7,7 +7,7 @@
     align-items: center
     .trip-overview-day-daydisplay
         font-size: 24px
-        font-family: "Dancing Script", cursive
+        // font-family: "Dancing Script", cursive
         transition: background 200ms,font-size 200ms,margin-top 200ms
         margin-bottom: 5px
         &:hover
@@ -77,13 +77,26 @@
     .trip-overview-day-text-wrap
         padding-left: 15px
         .trip-overview-day-text
+            max-width: 100px
+            overflow: hidden
             .hotel
                 font-weight: bold
+                font-size: 14px
                 .hotel-name
                     font-weight: normal
+                    font-size: 12px
             .transport
                 font-weight: bold
                 .transport-name
                     font-weight: normal
+                    font-size: 12px
+@keyframes rotation 
+    from 
+        transform: rotate(0deg)
+  
+    to 
+        transform: rotate(359deg)
+  
+
 
 

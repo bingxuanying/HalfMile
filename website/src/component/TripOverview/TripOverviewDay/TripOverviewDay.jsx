@@ -1,27 +1,31 @@
 import React, { Component } from "react";
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import RotateRightIcon from "@material-ui/icons/RotateRight";
 import "./index.sass";
 class TripOverviewDay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditting: true,
+      isEditting: this.props.isEditting,
       day: this.props.day,
       isChecked: this.props.isChecked,
       isStart: this.props.isStart,
       isEnd: this.props.isEnd,
       startCity: this.props.startCity,
       endCity: this.props.endCity,
-      hotel: ["Marroit", "IHG"],
+      hotel: ["Marroit-JW-San Fransico"],
       transport: ["UA8848"]
     };
   }
 
   render() {
-    this.getProps();
+    // this.getProps();
+    console.log(this.state.isEditting);
     var circleSize;
     var largeCircle;
+    var backgroudColor;
+    // Change Circle font-size
     if (this.state.startCity === this.state.endCity) {
       circleSize = 24;
       largeCircle = false;
@@ -29,9 +33,15 @@ class TripOverviewDay extends Component {
       circleSize = 40;
       largeCircle = true;
     }
+    // Highlight current editting
+    if (this.state.isEditting) {
+      backgroudColor = "green";
+    }
+    // This grap all hotel and flight
     const dayInfo = this.getInfo();
+    const Circle = this.getCircle(circleSize);
     return (
-      <div className="trip-overview-day">
+      <div className="trip-overview-day" style={{ background: backgroudColor }}>
         {largeCircle ? (
           <div />
         ) : (
@@ -48,15 +58,7 @@ class TripOverviewDay extends Component {
             ) : (
               <div className="left-line" />
             )}
-            <div className="trip-overview-day-city-graph-circle">
-              {this.state.isChecked ? (
-                <CheckCircleOutlinedIcon
-                  style={{ fontSize: circleSize, color: "green" }}
-                />
-              ) : (
-                <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />
-              )}
-            </div>
+            <div className="trip-overview-day-city-graph-circle">{Circle}</div>
             {this.state.isEnd ? (
               <div className="right-line-empty"></div>
             ) : (
@@ -76,39 +78,56 @@ class TripOverviewDay extends Component {
       </div>
     );
   }
-  getProps = () => {
-    if (this.props.isEditting) {
-      this.setState({ isEditting: true });
-    }
-  };
   getInfo = () => {
     return (
       <div
         className="trip-overview-day-text 
       d-inline-block text-truncate"
       >
-        <p className="hotel mb-1">
+        <div className="hotel mb-1">
           Hotel:
           {this.state.hotel.map(function(hotel, index) {
             return (
-              <p className="hotel-name mb-0 pl-2" key={index}>
+              <p className="hotel-name mb-0 pl-0" key={index}>
                 {hotel}
               </p>
             );
           })}
-        </p>
-        <p className="transport mb-1">
+        </div>
+        <div className="transport mb-1">
           Transport:
           {this.state.transport.map(function(trans, index) {
             return (
-              <p className="transport-name mb-0 pl-2" key={index}>
+              <p className="transport-name mb-0 pl-0" key={index}>
                 {trans}
               </p>
             );
           })}
-        </p>
+        </div>
       </div>
     );
+  };
+  getCircle = circleSize => {
+    if (this.state.isEditting) {
+      return (
+        <RotateRightIcon
+          style={{
+            fontSize: circleSize,
+            color: "orange",
+            animation: "rotation 5s infinite linear"
+          }}
+        />
+      );
+    }
+    if (this.state.isChecked) {
+      return (
+        <CheckCircleOutlinedIcon
+          style={{ fontSize: circleSize, color: "green" }}
+        />
+      );
+    } else {
+      return <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />;
+    }
   };
 }
 
