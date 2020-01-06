@@ -4,6 +4,7 @@ import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import RotateRightIcon from "@material-ui/icons/RotateRight";
 import HotelIcon from "@material-ui/icons/Hotel";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 
 import "./index.sass";
 class TripOverviewDay extends Component {
@@ -17,7 +18,7 @@ class TripOverviewDay extends Component {
       isEnd: this.props.isEnd,
       startCity: this.props.startCity,
       endCity: this.props.endCity,
-      hotel: ["Marroit JW SanFranscico"],
+      hotel: ["Marroit JW SanFranscico", "HalfMoon Bay Riz-Carlton"],
       transport: ["UA8848"]
     };
   }
@@ -49,8 +50,8 @@ class TripOverviewDay extends Component {
         {largeCircle ? (
           <div />
         ) : (
-          <div className="trip-overview-day-space-top"></div>
-        )}
+            <div className="trip-overview-day-space-top"></div>
+          )}
         <div className="trip-overview-day-dashline">
           <div className="vertical-line"></div>
         </div>
@@ -59,14 +60,14 @@ class TripOverviewDay extends Component {
             {this.state.isStart ? (
               <div className="left-line-empty"></div>
             ) : (
-              <div className="left-line" />
-            )}
+                <div className="left-line" />
+              )}
             <div className="trip-overview-day-city-graph-circle">{Circle}</div>
             {this.state.isEnd ? (
               <div className="right-line-empty"></div>
             ) : (
-              <div className="right-line" />
-            )}
+                <div className="right-line" />
+              )}
           </div>
           <div className="trip-overview-day-city-text">
             {this.state.endCity}
@@ -75,8 +76,8 @@ class TripOverviewDay extends Component {
         {largeCircle ? (
           <div />
         ) : (
-          <div className="trip-overview-day-space-bot"></div>
-        )}
+            <div className="trip-overview-day-space-bot"></div>
+          )}
         <div className="trip-overview-day-text-wrap">{dayInfo}</div>
       </div>
     );
@@ -86,9 +87,10 @@ class TripOverviewDay extends Component {
       <div className="trip-overview-day-text d-inline-block">
         <div className="hotel mb-1">
           <HotelIcon />
-          {this.state.hotel.map(function(hotel, index) {
+          {this.state.hotel.map(function (hotel, index) {
             return (
               <p className="hotel-name mb-0 pl-0" key={index}>
+                <FiberManualRecordIcon style={{ fontSize: "8" }} />
                 {hotel}
               </p>
             );
@@ -96,9 +98,10 @@ class TripOverviewDay extends Component {
         </div>
         <div className="transport mb-1">
           <FlightTakeoffIcon />
-          {this.state.transport.map(function(trans, index) {
+          {this.state.transport.map(function (trans, index) {
             return (
               <p className="transport-name mb-0 pl-0" key={index}>
+                <FiberManualRecordIcon style={{ fontSize: "8" }} />
                 {trans}
               </p>
             );
