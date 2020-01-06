@@ -75,14 +75,17 @@
         width: 100%
         clear: both
     .trip-overview-day-text-wrap
-        padding-left: 15px
+        position: relative
+        left: 20px
+        padding-left: 20px
+        overflow: hidden
         .trip-overview-day-text
-            max-width: 100px
-            overflow: hidden
+            max-width: 80px
             .hotel
                 font-weight: bold
                 font-size: 14px
                 .hotel-name
+                    overflow-wrap: break-word
                     font-weight: normal
                     font-size: 12px
             .transport
@@ -90,13 +93,8 @@
                 .transport-name
                     font-weight: normal
                     font-size: 12px
-@keyframes rotation 
+@keyframes rotation
     from 
         transform: rotate(0deg)
-  
     to 
         transform: rotate(359deg)
-  
-
-
-

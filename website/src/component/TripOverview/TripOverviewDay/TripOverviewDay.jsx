@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import CheckCircleOutlinedIcon from "@material-ui/icons/CheckCircleOutlined";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
 import RotateRightIcon from "@material-ui/icons/RotateRight";
+import HotelIcon from "@material-ui/icons/Hotel";
+import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+
 import "./index.sass";
 class TripOverviewDay extends Component {
   constructor(props) {
@@ -14,7 +17,7 @@ class TripOverviewDay extends Component {
       isEnd: this.props.isEnd,
       startCity: this.props.startCity,
       endCity: this.props.endCity,
-      hotel: ["Marroit-JW-San Fransico"],
+      hotel: ["Marroit JW SanFranscico"],
       transport: ["UA8848"]
     };
   }
@@ -35,19 +38,19 @@ class TripOverviewDay extends Component {
     }
     // Highlight current editting
     if (this.state.isEditting) {
-      backgroudColor = "green";
+      backgroudColor = "rgba(0,255,0,0.25)";
     }
     // This grap all hotel and flight
     const dayInfo = this.getInfo();
     const Circle = this.getCircle(circleSize);
     return (
       <div className="trip-overview-day" style={{ background: backgroudColor }}>
+        <div className="trip-overview-day-daydisplay">Day{this.state.day}</div>
         {largeCircle ? (
           <div />
         ) : (
           <div className="trip-overview-day-space-top"></div>
         )}
-        <div className="trip-overview-day-daydisplay">Day{this.state.day}</div>
         <div className="trip-overview-day-dashline">
           <div className="vertical-line"></div>
         </div>
@@ -80,12 +83,9 @@ class TripOverviewDay extends Component {
   }
   getInfo = () => {
     return (
-      <div
-        className="trip-overview-day-text 
-      d-inline-block text-truncate"
-      >
+      <div className="trip-overview-day-text d-inline-block">
         <div className="hotel mb-1">
-          Hotel:
+          <HotelIcon />
           {this.state.hotel.map(function(hotel, index) {
             return (
               <p className="hotel-name mb-0 pl-0" key={index}>
@@ -95,7 +95,7 @@ class TripOverviewDay extends Component {
           })}
         </div>
         <div className="transport mb-1">
-          Transport:
+          <FlightTakeoffIcon />
           {this.state.transport.map(function(trans, index) {
             return (
               <p className="transport-name mb-0 pl-0" key={index}>
