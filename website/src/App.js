@@ -25,8 +25,8 @@ class App extends Component {
           <button onClick={() => this.props.increment()}> + </button>
           <button onClick={() => this.props.decrement()}> - </button>
         </p> */}
-        <HomePage />
-        {/* <ServicePage1 /> */}
+        {/* <HomePage /> */}
+        <ServicePage1 />
         {/* <ServicePage2 /> */}
         {/* {<LoginPage />} */}
       </div>
