@@ -5,6 +5,8 @@ import RotateRightIcon from "@material-ui/icons/RotateRight";
 import HotelIcon from "@material-ui/icons/Hotel";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
+import { Tooltip } from "@material-ui/core";
 
 import "./index.sass";
 class TripOverviewDay extends Component {
@@ -19,13 +21,14 @@ class TripOverviewDay extends Component {
       startCity: this.props.startCity,
       endCity: this.props.endCity,
       hotel: ["Marroit JW SanFranscico", "HalfMoon Bay Riz-Carlton"],
-      transport: ["UA8848"]
+      transport: ["UA8848"],
+      activities: [{ "name": "Union Square", "cost": 165, "time": "1h" },
+      { "name": "Golden Gate", "cost": 0, "time": "2h" },
+      { "name": "Fisherman's Wharf", "cost": 100, "time": "1.5h" }]
     };
   }
 
   render() {
-    // this.getProps();
-    console.log(this.state.isEditting);
     var circleSize;
     var largeCircle;
     var backgroudColor;
@@ -87,6 +90,9 @@ class TripOverviewDay extends Component {
       <div className="trip-overview-day-text d-inline-block">
         <div className="hotel mb-1">
           <HotelIcon />
+          <Tooltip title={this.MoreInfo()}>
+            <InfoOutlinedIcon style={{ marginLeft: "42px" }} fontSize="small" />
+          </Tooltip>
           {this.state.hotel.map(function (hotel, index) {
             return (
               <p className="hotel-name mb-0 pl-0" key={index}>
@@ -132,6 +138,35 @@ class TripOverviewDay extends Component {
       return <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />;
     }
   };
+  MoreInfo = () => {
+    // Almost same as getInfo()
+    return (
+      <div className="trip-overview-day-text d-inline-block">
+        <div className="hotel mb-1">
+          <HotelIcon />
+          {this.state.hotel.map(function (hotel, index) {
+            return (
+              <p className="hotel-name mb-0 pl-0" key={index}>
+                <FiberManualRecordIcon style={{ fontSize: "8" }} />
+                {hotel}
+              </p>
+            );
+          })}
+        </div>
+        <div className="transport mb-1">
+          <FlightTakeoffIcon />
+          {this.state.transport.map(function (trans, index) {
+            return (
+              <p className="transport-name mb-0 pl-0" key={index}>
+                <FiberManualRecordIcon style={{ fontSize: "8" }} />
+                {trans}
+              </p>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TripOverviewDay;
