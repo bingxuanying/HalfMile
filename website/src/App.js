@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import HomePage from "./component/Pages/HomePage";
 import ServicePage2 from "./component/Pages/ServicePage2";
 import ServicePage1 from "./component/Pages/ServicePage1";
-import LoginPage from "./component/Header/User/Login";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Calendar from "./component/Calender/Calender";
 import "./App.css";
 
 // import { connect } from "react-redux";
@@ -14,6 +14,7 @@ import "./App.css";
 //     user: store.user
 //   };
 // })
+
 class App extends Component {
   render() {
     // const { counter } = this.props;
@@ -28,7 +29,7 @@ class App extends Component {
         {/* <HomePage /> */}
         <ServicePage1 />
         {/* <ServicePage2 /> */}
-        {/* {<LoginPage />} */}
+        {/* <Calendar /> */}
       </div>
     );
   }
