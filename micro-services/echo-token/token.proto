@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package token;
+
+service TokenPool {
+  rpc PostToken (TokenExpire) returns (Empty) {}
+  rpc CheckToken (Token) returns (IsInPool) {}
+}
+
+message Token {
+  string token = 1;
+}
+
+message TokenExpire {
+  string token = 2;
+  uint64 exp = 3;
+}
+
+message IsInPool {
+  bool isInPool = 4;
+}
+
+message Empty {}

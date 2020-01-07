@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Calender from "../Calender/Calender";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
@@ -15,7 +16,6 @@ class ServicePage1 extends Component {
         >
           <HeaderContainer />
         </div>
-
         {/* Main */}
         <div className="servicepage-main">
           {/* map section */}

@@ -5,6 +5,7 @@ import "./HeaderNav.css";
 import { Navbar, Nav, Modal} from "react-bootstrap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
+import datePicker from "../../Calender/Calender";
 
 class HeaderNav extends Component {
   constructor() {
@@ -50,7 +51,9 @@ class HeaderNav extends Component {
                 Help
               </a>
             </Nav.Link>
+            {/* SignUp Button */}
             <SignUp />
+            {/* Login Button */}
             <Login />
           </Nav>
         </Navbar.Collapse>
