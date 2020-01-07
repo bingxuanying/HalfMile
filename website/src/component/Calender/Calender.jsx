@@ -3,8 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import {DateRangePicker, SingleDatePicker, DayPickerRangeController} from 'react-dates';
-import Calendar from "react-calendar";
-import { render } from "react-dom";
+
 
 class datePicker extends Component{
   constructor(props){

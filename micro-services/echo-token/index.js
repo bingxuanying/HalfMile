@@ -8,7 +8,7 @@ const timeout = require('connect-timeout');
 
 // env check
 require('dotenv').config();
-const requiredEnvs = 'TOKEN_HOST,TOKEN_PORT,SERVER_PORT,DEV'.split(',');
+const requiredEnvs = 'TOKEN_HOST,TOKEN_PORT,DEV,SERVER_PORT'.split(',');
 const missingEnvs = [];
 for (const env of requiredEnvs) {
   if (!(env in process.env)) {
@@ -21,10 +21,10 @@ if (missingEnvs.length) {
 }
 
 // prote check
-const protePath = __dirname + '/token.proto';
-assert(fs.existsSync(protePath));
+const protoPath = __dirname + '/token.proto';
+assert(fs.existsSync(protoPath));
 
-const { invalidate, isInvalidate } = require('./token-pool')(protePath);
+const { invalidate, isInvalidate } = require('./token-pool')(protoPath);
 
 const app = express();
 const port = process.env.SERVER_PORT;
@@ -44,7 +44,7 @@ app.post('/tokens', (req, res, next) => {
     res.send('bad request');
     return next();
   }
-  invalidate(token, exp)
+  invalidate(token, parseInt(exp, 10))
     .then(() => res.json({ message: 'ok' }))
     .catch(err => res.send(err.message));
 });

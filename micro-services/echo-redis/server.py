@@ -8,7 +8,7 @@ from flask import Flask, request
 load_dotenv('.env')
 MISSING_ENVS = list(filter(
   lambda env: not os.getenv(env),
-  'REDIS_HOST,REDIS_PORT,REDIS_DB,DEV'.split(',')
+  'REDIS_HOST,REDIS_PORT,REDIS_DB,DEV,SERVER_PORT'.split(',')
 ))
 if MISSING_ENVS:
   print(f'missing envs: {MISSING_ENVS}')
@@ -45,4 +45,4 @@ def tokens():
   }
 
 if __name__ == '__main__':
-  APP.run(debug=IS_DEV, host='0.0.0.0', port=5000)
+  APP.run(debug=IS_DEV, host='0.0.0.0', port=os.getenv('SERVER_PORT'))
