@@ -55,11 +55,11 @@ class GuideCard extends Component {
     return stars;
   };
   getProps = () => {
-    this.state.cardTitle = this.props.city;
-    this.state.cardSubTitle = this.props.author;
-    this.state.cardText = this.props.info;
-    this.state.stars = this.props.stars;
-    this.state.img = this.props.img;
+    this.setState({ cardTitle: this.props.city });
+    this.setState({ cardSubTitle: this.props.author });
+    this.setState({ cardText: this.props.info });
+    this.setState({ stars: this.props.stars });
+    this.setState({ img: this.props.img });
   };
 }
 
