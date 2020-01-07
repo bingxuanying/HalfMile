@@ -8,6 +8,8 @@ const { UserError } = require('@app/utils/errors');
 const { tableUsers } = require('@app/services/dynamodb');
 const { compare } = require('@app/utils/encrypt');
 const { validate } = require('@app/utils/validate');
+const { invalidate } = require('@app/utils/token-pool')
+  (__dirname + '../../../token.proto');
 
 const secretKey = process.env.SECRET_KEY;
 
@@ -70,7 +72,7 @@ const login = async (ctx, next) => {
 };
 
 const logout = async (ctx, next) => {
-  // TODO impl redis
+  await invalidate(ctx.user.token, ctx.user.exp);
   ctx.body = { };
   ctx.state = 200;
   await next();

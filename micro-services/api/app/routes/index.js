@@ -42,7 +42,7 @@ protectedRouter
   .get('/plans/:planId', getPlan)
   .put('/plans/:planId', updatePlan)
   .delete('/plans/:planId', deletePlan);
-
+  
 module.exports = {
   publicRoutes: () => publicRouter.routes(),
   publicAllowedMethods: () => publicRouter.allowedMethods(),

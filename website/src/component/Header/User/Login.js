@@ -1,5 +1,4 @@
 import React, {useState}from "react";
-import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../HeaderNav/HeaderNav.css";
 import "../User/User.sass";
@@ -18,16 +17,14 @@ function Login() {
                     Login
                 </a>
             </Nav.Link>
+            {/* Modal Method */}
             <Modal show={show} onHide={handleClose} size="small" centered>
-                <Modal.Header closeButton>
-                    <div className="title">Login</div>
-                </Modal.Header>
+                <Modal.Header closeButton />
                 <Modal.Body className="modal-body">
                     <div className = "login-modal">
                         <div className="input-container">
                             <FaUser id="user-icon"/>
-                            <input type="text" placeholder="Username"></input>
-                            
+                            <input type="text" placeholder="Username"></input>                        
                         </div>
                         <div className="input-container">
                             <FaLock id="password-icon"/>

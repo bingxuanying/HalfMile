@@ -18,9 +18,7 @@ function SignUp() {
                 </a>
             </Nav.Link>
             <Modal show={show} onHide={handleClose} size="small" centered>
-                <Modal.Header closeButton>
-                    <div className="title">SignUp</div>
-                </Modal.Header>
+                <Modal.Header closeButton />
                 <Modal.Body className="modal-body">
                     <div className = "signup-modal">
                         <div className="input-container">
