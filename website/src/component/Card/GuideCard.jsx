@@ -7,14 +7,13 @@ class GuideCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardTitle: "Default City",
-      cardSubTitle: "Default Author",
-      cardText: "Default info",
-      stars: 5
+      cardTitle: this.props.city,
+      cardSubTitle: this.props.author,
+      cardText: this.props.info,
+      stars: this.props.stars
     };
   }
   render() {
-    this.getProps();
     var starGroup = this.buildStars();
     return (
       <Card className="guide-card card border-0 text-left ml-0 mr-4">
@@ -53,13 +52,6 @@ class GuideCard extends Component {
         </span>
       );
     return stars;
-  };
-  getProps = () => {
-    this.setState({ cardTitle: this.props.city });
-    this.setState({ cardSubTitle: this.props.author });
-    this.setState({ cardText: this.props.info });
-    this.setState({ stars: this.props.stars });
-    this.setState({ img: this.props.img });
   };
 }
 

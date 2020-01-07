@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import HeaderContainer from "../Header/HeaderContainer";
 import ContentCover from "../HomeContent/ContentCover";
 import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
@@ -78,9 +77,6 @@ class HomePage extends Component {
 
     return (
       <div className="homepage-containter">
-        <div className="homepage-header">
-          <HeaderContainer />
-        </div>
         <div className="homepage-body">
           <ContentCover />
           <div className="content-category-containter">

@@ -1,8 +1,6 @@
 import React, { Component, useState } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./HeaderNav.css";
-import { Navbar, Nav, Modal} from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
 import datePicker from "../../Calender/Calender";
@@ -21,7 +19,7 @@ class HeaderNav extends Component {
       this.setState({
         isTop: window.scrollY < 100
       });
-      console.log(this.state.isTop);
+      // console.log(this.state.isTop);
     });
   }
 
@@ -32,32 +30,22 @@ class HeaderNav extends Component {
     const { isTop } = this.state;
 
     return (
-      <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
-        <Navbar.Brand className="NavLogo">
-          <HeaderLogo />
-          Half Mile
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className="navbar">
-          <Nav className="mr-auto" />
-          <Nav>
-            <Nav.Link href="#Home">
-              <a id="Help-buttom" size="lg" variant="outline-dark">
-                Home
-              </a>
-            </Nav.Link>
-            <Nav.Link href="#Help">
-              <a id="Help-buttom" size="lg" variant="outline-dark">
-                Help
-              </a>
-            </Nav.Link>
-            {/* SignUp Button */}
-            <SignUp />
-            {/* Login Button */}
-            <Login />
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Nav>
+        <Nav.Link exact="true" href="/">
+          <div className="nav-btn" size="lg" variant="outline-dark">
+            Home
+          </div>
+        </Nav.Link>
+        <Nav.Link href="help">
+          <div className="nav-btn" size="lg" variant="outline-dark">
+            Help
+          </div>
+        </Nav.Link>
+        {/* SignUp Button */}
+        <SignUp />
+        {/* Login Button */}
+        <Login />
+      </Nav>
     );
   }
 }

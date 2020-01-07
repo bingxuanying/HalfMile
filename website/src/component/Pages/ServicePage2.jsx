@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
-import { TripOverview } from "../TripOverview/";
+import { TripOverview } from "../TripOverview";
 import "./ServicePage.css";
 
 import SearchBarLoca from "../SearchBar/SearchBarLoca";
@@ -12,7 +12,6 @@ class ServicePage2 extends Component {
   render() {
     return (
       <div className="servicepage-containter">
-        <HeaderContainer />
         <div className="servicepage-cover">
           <TripOverview base="day" />
         </div>

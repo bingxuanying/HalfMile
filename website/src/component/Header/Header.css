@@ -5,3 +5,81 @@
   color: #484848;
   border-bottom: 1px solid lightgray;
 }
+
+#NavLogo {
+  font-size: 200%;
+  font-family: "Dancing Script", cursive;
+}
+
+#Bar {
+  height: 80px;
+  max-width: 100%;
+}
+
+.nav-btn {
+  display: inline-block;
+  list-style: none;
+  margin-top: -2px;
+  text-align: right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
+}
+
+.navbar li {
+  display: inline-block;
+}
+
+.nav-btn {
+  color: #484848;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+  height: 40px;
+  letter-spacing: 0.3px;
+  margin: 0 12px -15px;
+  padding: 0 0.2px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+}
+
+.nav-btn:hover {
+  color: #484848;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+}
+
+/* Animated Bottom Line */
+.nav-btn:before,
+.nav-btn:after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -12px;
+  background: #484848;
+}
+
+/* .nav-btn:before {
+  left: 0;
+  transition: 0.5s;
+}
+
+.nav-btn:after {
+  background: #484848;
+  right: 0;
+} */
+
+.nav-btn:hover:before {
+  background: #484848;
+  width: 100%;
+  transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+.nav-btn:hover:after {
+  background: transparent;
+  width: 100%;
+  transition: 0s;
+}

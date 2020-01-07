@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import HeaderContainer from "./component/Header/HeaderContainer";
 import HomePage from "./component/Pages/HomePage";
-import ServicePage2 from "./component/Pages/ServicePage2";
 import ServicePage1 from "./component/Pages/ServicePage1";
-import "bootstrap/dist/css/bootstrap.min.css";
+import ServicePage2 from "./component/Pages/ServicePage2";
 import Calendar from "./component/Calender/Calender";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 // import { connect } from "react-redux";
@@ -20,17 +22,31 @@ class App extends Component {
     // const { counter } = this.props;
     // console.log(counter);
     return (
-      <div>
-        {/* <h1>Counter {this.props.counter}</h1>
+      <Router>
+        <div>
+          <HeaderContainer />
+
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/help">
+              <ServicePage1 />
+            </Route>
+            <Route path="/plan">
+              <ServicePage2 />
+            </Route>
+          </Switch>
+
+          {/* <Calendar /> */}
+
+          {/* <h1>Counter {this.props.counter}</h1>
         <p>
           <button onClick={() => this.props.increment()}> + </button>
           <button onClick={() => this.props.decrement()}> - </button>
         </p> */}
-        {/* <HomePage /> */}
-        {/* <ServicePage1 /> */}
-        <ServicePage2 />
-        {/* <Calendar /> */}
-      </div>
+        </div>
+      </Router>
     );
   }
 }
