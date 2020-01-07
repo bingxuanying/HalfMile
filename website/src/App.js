@@ -31,10 +31,10 @@ class App extends Component {
               <HomePage />
             </Route>
             <Route path="/help">
-              <ServicePage1 />
+              <ServicePage2 />
             </Route>
             <Route path="/plan">
-              <ServicePage2 />
+              <ServicePage1 />
             </Route>
           </Switch>
 

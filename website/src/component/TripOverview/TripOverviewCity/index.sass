@@ -1,34 +1,31 @@
-.trip-overview-day
-    min-width: 100px
+.trip-overview-city
+    min-width: 200px
     padding-right: 0px
     position: relative
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
-    .trip-overview-day-daydisplay
+    .trip-overview-city-name
         font-size: 24px
         transition: background 200ms,font-size 200ms,margin-top 200ms
-        margin-bottom: 5px
+        margin-bottom: 0px
         &:hover
             cursor: pointer
             font-size: 30px
             margin-top: -9px
-            background: #878787
-    .trip-overview-day-dashline
-        text-align: center
-        .vertical-line
-            border-left: 3px dotted grey
-            height: 50px
-            position: absolute
-            left: 50%
-    .trip-overview-day-city
-        margin-top: 55px
+    .trip-overview-city-startdate
+        color: #787878
+        &:hover
+            cursor: pointer
+
+    .trip-overview-city-city
+        margin-top: 0px
         width: 100%
         display: flex
         flex-direction: column
         align-items: center
-        .trip-overview-day-city-graph
+        .trip-overview-city-city-graph
             display: flex
             flex-direction: row
             justify-content: center
@@ -37,6 +34,7 @@
             padding: 0px
             align-self: center
             .left-line
+                min-width: 40px
                 width: 100%
                 position: relative
                 &::before
@@ -50,7 +48,22 @@
                     transform: translateY(-50%)
             .left-line-empty
                 width: 100%
+            .left-line-green
+                min-width: 40px
+                width: 100%
+                position: relative
+                &::before
+                    content: ''
+                    position: absolute
+                    top: 50%
+                    left: 0
+                    border-top: 1px solid green
+                    background: black
+                    width: 100%
+                    transform: translateY(-50%)
             .right-line
+                min-width: 40px
+                height: 40px
                 position: relative
                 width: 100%
                 &::before
@@ -62,24 +75,43 @@
                     background: black
                     width: 100%
                     transform: translateY(-50%)
+                .right-line-transport
+                    position: relative
+                    top: 50%
+                    left: 45%
+                    display: flex
+                    &:hover
+                        cursor: pointer
             .right-line-empty
                 width: 100%
-            .trip-overview-day-city-graph-circle
-        .trip-overview-day-city-text
-    .trip-overview-day-space-bot
-        min-height: 8px
-        width: 100%
-        clear: both
-    .trip-overview-day-space-top
-        min-height: 8px
-        width: 100%
-        clear: both
-    .trip-overview-day-text-wrap
+            .right-line-green
+                min-width: 40px
+                position: relative
+                height: 40px
+                width: 100%
+                &::before
+                    content: ''
+                    position: absolute
+                    top: 50%
+                    left: 0
+                    border-top: 1px solid green
+                    background: black
+                    width: 100%
+                    transform: translateY(-50%)
+                .right-line-transport
+                    position: relative
+                    top: 50%
+                    left: 45%
+                    display: flex
+                    &:hover
+                        cursor: pointer
+            .trip-overview-city-city-graph-circle
+
+    .trip-overview-city-text-wrap
         position: relative
-        left: 20px
         padding-left: 10px
         overflow: hidden
-        .trip-overview-day-text
+        .trip-overview-city-text
             max-width: 100px
             .hotel
                 font-weight: bold

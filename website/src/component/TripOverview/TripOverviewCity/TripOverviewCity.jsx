@@ -7,7 +7,7 @@ import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RoomIcon from "@material-ui/icons/Room";
-import { Tooltip, Fade } from "@material-ui/core";
+import { Tooltip, Zoom } from "@material-ui/core";
 
 import "./index.sass";
 class TripOverviewCity extends Component {
@@ -15,12 +15,13 @@ class TripOverviewCity extends Component {
     super(props);
     this.state = {
       isEditting: this.props.isEditting,
-      day: this.props.day,
+      startDate: this.props.startDate,
+      city: this.props.city,
       isChecked: this.props.isChecked,
+      isNextChecked: this.props.isNextChecked,
+      // isStart/isEnd decide 2 outer line
       isStart: this.props.isStart,
       isEnd: this.props.isEnd,
-      startCity: this.props.startCity,
-      endCity: this.props.endCity,
       hotel: [
         {
           name: "Marroit JW SanFranscico",
@@ -44,106 +45,62 @@ class TripOverviewCity extends Component {
           arriveTime: "14:00",
           price: 1024
         }
-      ],
-      activities: [
-        { name: "Union Square", price: 165, time: "1h" },
-        { name: "Golden Gate", price: 0, time: "2h" },
-        { name: "Fisherman's Wharf", price: 100, time: "1.5h" }
       ]
     };
   }
 
   render() {
-    var circleSize;
-    var largeCircle;
+    var circleSize = 40;
     var backgroudColor;
-    // Change Circle font-size
-    if (this.state.startCity === this.state.endCity) {
-      circleSize = 24;
-      largeCircle = false;
-    } else {
-      circleSize = 40;
-      largeCircle = true;
-    }
     // Highlight current editting
     if (this.state.isEditting) {
       backgroudColor = "rgba(0,255,0,0.25)";
     }
     // This grap all hotel and flight
-    const dayInfo = this.getInfo();
+    const cityInfo = this.getCityInfo();
     const Circle = this.getCircle(circleSize);
+    const transport = this.getTransport();
     return (
-      <div className="trip-overview-day" style={{ background: backgroudColor }}>
-        <div className="trip-overview-day-daydisplay">Day{this.state.day}</div>
-        {largeCircle ? (
-          <div />
-        ) : (
-          <div className="trip-overview-day-space-top"></div>
-        )}
-        <div className="trip-overview-day-dashline">
-          <div className="vertical-line"></div>
+      <div
+        className="trip-overview-city"
+        style={{ background: backgroudColor }}
+      >
+        <Tooltip
+          title="edit"
+          arrow
+          TransitionComponent={Zoom}
+          TransitionProps={{ timeout: 300 }}
+        >
+          <div className="trip-overview-city-name">{this.state.city}</div>
+        </Tooltip>
+        <div className="trip-overview-city-startdate">
+          {this.state.startDate}
         </div>
-        <div className="trip-overview-day-city">
-          <div className="trip-overview-day-city-graph">
+        <div className="trip-overview-city-city">
+          <div className="trip-overview-city-city-graph">
             {this.state.isStart ? (
-              <div className="left-line-empty"></div>
+              <div className="left-line-empty" />
+            ) : this.state.isChecked ? (
+              <div className="left-line-green" />
             ) : (
               <div className="left-line" />
             )}
-            <div className="trip-overview-day-city-graph-circle">{Circle}</div>
+            <div className="trip-overview-city-city-graph-circle">{Circle}</div>
             {this.state.isEnd ? (
-              <div className="right-line-empty"></div>
+              <div className="right-line-empty" />
+            ) : this.state.isChecked && this.state.isNextChecked ? (
+              <div className="right-line-green">{transport}</div>
             ) : (
-              <div className="right-line" />
+              <div className="right-line">{transport}</div>
             )}
           </div>
-          <div className="trip-overview-day-city-text">
-            {this.state.endCity}
-          </div>
         </div>
-        {largeCircle ? (
-          <div />
-        ) : (
-          <div className="trip-overview-day-space-bot"></div>
-        )}
-        <div className="trip-overview-day-text-wrap">{dayInfo}</div>
+        <div className="trip-overview-city-text-wrap">{cityInfo}</div>
       </div>
     );
   }
-  getInfo = () => {
-    return (
-      <div className="trip-overview-day-text text-truncate">
-        <div className="hotel mb-0">
-          <HotelIcon />
-          <Tooltip
-            TransitionComponent={Fade}
-            TransitionProps={{ timeout: 600 }}
-            title={this.MoreInfo()}
-          >
-            <InfoOutlinedIcon style={{ marginLeft: "42px" }} fontSize="small" />
-          </Tooltip>
-          {this.state.hotel.map(function(hotel, index) {
-            return (
-              <p className="hotel-name mb-0 pl-0 " key={index}>
-                <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                {hotel.name}
-              </p>
-            );
-          })}
-        </div>
-        <div className="transport mb-1">
-          <FlightTakeoffIcon />
-          {this.state.transport.map(function(trans, index) {
-            return (
-              <p className="transport-name mb-0 pl-0" key={index}>
-                <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                {trans.flight}
-              </p>
-            );
-          })}
-        </div>
-      </div>
-    );
+  getCityInfo = () => {
+    return <div className="trip-overview-city-text">City Info Here</div>;
   };
   getCircle = circleSize => {
     if (this.state.isEditting) {
@@ -167,68 +124,15 @@ class TripOverviewCity extends Component {
       return <RadioButtonUncheckedIcon style={{ fontSize: circleSize }} />;
     }
   };
-  MoreInfo = () => {
-    // Almost same as getInfo()
-    return (
-      <div className="more-info-text p-1">
-        <div className="hotel mb-2">
-          <HotelIcon />
-          {this.state.hotel.map(function(hotel, index) {
-            return (
-              <div className="hotel-content mb-1 pl-1" key={index}>
-                <p className="hotel-text mb-1 pl-0">
-                  <span className="hotel-name">
-                    <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                    {hotel.name}
-                  </span>
-                  <span className="hotel-price">${hotel.price}</span>
-                </p>
-                <p className="hotel-date mb-2">
-                  &nbsp;{hotel.startDate}&nbsp;~&nbsp;{hotel.endDate}
-                </p>
-              </div>
-            );
-          })}
+  getTransport = () => {
+    return this.state.transport.map(function(trans, index) {
+      return (
+        <div className="right-line-transport">
+          UA6789
+          <InfoOutlinedIcon style={{ fontSize: 17 }} />
         </div>
-        <div className="transport mb-2">
-          <FlightTakeoffIcon />
-          {this.state.transport.map(function(trans, index) {
-            return (
-              <div className="transport-content mb-1 pl-1">
-                <p className="transport-text mb-1 pl-0" key={index}>
-                  <span className="transport-name">
-                    <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                    {trans.flight}
-                  </span>
-                  <span className="transport-price">${trans.price}</span>
-                </p>
-                <p className="transport-date mb-2">
-                  &nbsp;{trans.departDate}&nbsp;{trans.departTime}&nbsp;~&nbsp;
-                  {trans.arriveTime}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="activity mb-1">
-          <RoomIcon />
-          {this.state.activities.map(function(activity, index) {
-            return (
-              <div className="activity-content">
-                <p className="activity-text mb-1 pl-0" key={index}>
-                  <span className="activity-name">
-                    <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                    {activity.name}
-                  </span>
-                  <span className="activity-price">${activity.price}</span>
-                </p>
-                <p className="activity-info mb-2">&nbsp;Time:{activity.time}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
+      );
+    });
   };
 }
 

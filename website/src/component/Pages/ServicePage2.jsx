@@ -13,7 +13,7 @@ class ServicePage2 extends Component {
     return (
       <div className="servicepage-containter">
         <div className="servicepage-cover">
-          <TripOverview base="day" />
+          <TripOverview base="city" />
         </div>
         <div className="servicepage-main">
           {/* sdie bar section */}

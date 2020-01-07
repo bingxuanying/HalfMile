@@ -134,16 +134,44 @@ class TripOverview extends Component {
         activities={act}
       />
     ];
-    let CityList = [<TripOverviewCity />, <TripOverviewCity />];
+    let CityList = [
+      <TripOverviewCity
+        isEditting={false}
+        city="SF"
+        isChecked={true}
+        isStart={true}
+        isEnd={false}
+        isNextChecked={true}
+        startDate="12/1"
+      />,
+      <TripOverviewCity
+        isEditting={false}
+        city="LA"
+        isChecked={true}
+        isStart={false}
+        isEnd={false}
+        isNextChecked={false}
+        startDate="12/5"
+      />,
+      <TripOverviewCity
+        isEditting={false}
+        city="Davis"
+        isChecked={false}
+        isStart={false}
+        isEnd={true}
+        isNextChecked={false}
+        startDate="12/8"
+      />
+    ];
 
     return (
       <div className="trip-overview">
         <div className="trip-overview-title">{this.state.title}</div>
         <div className="trip-overview-fullwidth">
           {this.state.base === "day" ? (
-            <div className="trip-overview-days">{Daylist}</div>
+            <div className="trip-overview-content">{Daylist}</div>
           ) : (
-            <div className="trip-overview-cities">{CityList}</div>
+            <div className="trip-overview-content">{CityList}</div>
           )}
         </div>
       </div>
