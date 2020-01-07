@@ -31,23 +31,13 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-<<<<<<< HEAD
-        
-        <Nav.Link exact href="/">
-          <a className="nav-btn" size="lg" variant="outline-dark">
-=======
         <Nav.Link exact="true" href="/">
           <div className="nav-btn" size="lg" variant="outline-dark">
->>>>>>> master
             Home
           </div>
         </Nav.Link>
         <Nav.Link href="help">
-<<<<<<< HEAD
-          <a className="nav-btn" size="lg" variant="outline-dark">
-=======
           <div className="nav-btn" size="lg" variant="outline-dark">
->>>>>>> master
             Help
           </div>
         </Nav.Link>

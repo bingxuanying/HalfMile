@@ -6,7 +6,7 @@
   border-bottom: 1px solid lightgray;
 }
 
-.NavLogo {
+#NavLogo {
   font-size: 200%;
   font-family: "Dancing Script", cursive;
 }
@@ -62,7 +62,7 @@
   background: #484848;
 }
 
-.nav-btn:before {
+/* .nav-btn:before {
   left: 0;
   transition: 0.5s;
 }
@@ -70,8 +70,7 @@
 .nav-btn:after {
   background: #484848;
   right: 0;
-  /* transition: width 0.8s cubic-bezier(0.22, 0.61, 0.36, 1); */
-}
+} */
 
 .nav-btn:hover:before {
   background: #484848;
@@ -82,5 +81,5 @@
 .nav-btn:hover:after {
   background: transparent;
   width: 100%;
-  /* transition: 0s; */
+  transition: 0s;
 }
