@@ -1,0 +1,5 @@
+.*
+!.eslintrc
+!.dockerignore
+!.gitignore
+node_modules/
