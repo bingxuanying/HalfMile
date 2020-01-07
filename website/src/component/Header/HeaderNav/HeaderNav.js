@@ -33,12 +33,12 @@ class HeaderNav extends Component {
       <Nav>
         
         <Nav.Link exact href="/">
-          <a id="Help-buttom" size="lg" variant="outline-dark">
+          <a className="nav-btn" size="lg" variant="outline-dark">
             Home
           </a>
         </Nav.Link>
         <Nav.Link href="help">
-          <a id="Help-buttom" size="lg" variant="outline-dark">
+          <a className="nav-btn" size="lg" variant="outline-dark">
             Help
           </a>
         </Nav.Link>
