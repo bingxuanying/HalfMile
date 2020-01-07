@@ -10,8 +10,6 @@ import { FaRegUser } from "react-icons/fa";
 
 
 class LocationBox extends Component {
-
-
   constructor(props){
     super(props)
     this.state = {show : true}
@@ -44,28 +42,5 @@ class LocationBox extends Component {
   }
 }
 
-// function LocationBox(){
-//   const [show, setShow] = useState(false);
-//   const handleClose = () => setShow(false);
-//   const handleShow = () => setShow(true);
-
-//   return(
-//     <div className="locationbox-container">
-//         <div
-//           style={{
-//             padding: "2px"
-//           }}
-//         >
-//           <SearchBar />
-//           <button onClick={handleShow}>Add Your Date</button>
-          
-//         </div>
-//         <div className="locationbox-manager">
-//           <DND />
-          
-//         </div>
-//       </div>
-//   );
-// }
 
 export default LocationBox;
