@@ -13,14 +13,14 @@ function SignUp() {
   return (
     <>
       <Nav.Link href="#Login">
-        <a
-          id="Help-buttom"
+        <div
+          className="nav-btn"
           size="lg"
           variant="outline-dark"
           onClick={handleShow}
         >
           SignUp
-        </a>
+        </div>
       </Nav.Link>
       <Modal show={show} onHide={handleClose} size="small" centered>
         <Modal.Header closeButton />

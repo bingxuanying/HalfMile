@@ -20,7 +20,7 @@ class HeaderNav extends Component {
       this.setState({
         isTop: window.scrollY < 100
       });
-      console.log(this.state.isTop);
+      // console.log(this.state.isTop);
     });
   }
 
@@ -32,15 +32,15 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-        <Nav.Link exact href="/">
-          <a id="Help-buttom" size="lg" variant="outline-dark">
+        <Nav.Link exact="true" href="/">
+          <div className="nav-btn" size="lg" variant="outline-dark">
             Home
-          </a>
+          </div>
         </Nav.Link>
         <Nav.Link href="help">
-          <a id="Help-buttom" size="lg" variant="outline-dark">
+          <div className="nav-btn" size="lg" variant="outline-dark">
             Help
-          </a>
+          </div>
         </Nav.Link>
         {/* SignUp Button */}
         <SignUp />
