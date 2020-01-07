@@ -1,6 +1,5 @@
 import React, { Component, useState } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import "./HeaderNav.css";
 import { Navbar, Nav } from "react-bootstrap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
