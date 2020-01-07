@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { TripOverviewDay } from "./TripOverviewDay/";
+import { TripOverviewCity } from "./TripOverviewCity/";
+
 import "./index.sass";
 
 class TripOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "S496691084's Guide"
+      title: "S496691084's Guide",
+      base: this.props.base
     };
   }
 
   render() {
     // add props into TripOverviewDay
-    let list = [
+    let Daylist = [
       <TripOverviewDay
         isEditting={false}
         key="1"
@@ -74,11 +77,16 @@ class TripOverview extends Component {
         endCity="Davis"
       />
     ];
+    let CityList = [<TripOverviewCity />, <TripOverviewCity />];
     return (
       <div className="trip-overview">
         <div className="trip-overview-title">{this.state.title}</div>
-        <div className="trip-overview-fullwidth-days">
-          <div className="trip-overview-days">{list}</div>
+        <div className="trip-overview-fullwidth">
+          {this.state.base === "day" ? (
+            <div className="trip-overview-days">{Daylist}</div>
+          ) : (
+            <div className="trip-overview-cities">{CityList}</div>
+          )}
         </div>
       </div>
     );

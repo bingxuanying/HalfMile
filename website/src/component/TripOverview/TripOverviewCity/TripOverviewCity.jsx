@@ -10,7 +10,7 @@ import RoomIcon from "@material-ui/icons/Room";
 import { Tooltip, Fade } from "@material-ui/core";
 
 import "./index.sass";
-class TripOverviewDay extends Component {
+class TripOverviewCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -232,4 +232,4 @@ class TripOverviewDay extends Component {
   };
 }
 
-export default TripOverviewDay;
+export default TripOverviewCity;

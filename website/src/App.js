@@ -27,8 +27,8 @@ class App extends Component {
           <button onClick={() => this.props.decrement()}> - </button>
         </p> */}
         {/* <HomePage /> */}
-        <ServicePage1 />
-        {/* <ServicePage2 /> */}
+        {/* <ServicePage1 /> */}
+        <ServicePage2 />
         {/* <Calendar /> */}
       </div>
     );
