@@ -8,7 +8,7 @@ const timeout = require('connect-timeout');
 
 // env check
 require('dotenv').config();
-const requiredEnvs = 'TOKEN_HOST,TOKEN_PORT,SERVER_PORT,DEV'.split(',');
+const requiredEnvs = 'TOKEN_HOST,TOKEN_PORT,DEV,SERVER_PORT'.split(',');
 const missingEnvs = [];
 for (const env of requiredEnvs) {
   if (!(env in process.env)) {
