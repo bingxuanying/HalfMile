@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Calender from "../Calender/Calender";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import HeaderContainer from "../Header/HeaderContainer";
 import LocationBox from "../LocationBox/LocationBox";
 import "./ServicePage.css";
 import Map from "../Map/Map";
@@ -13,9 +12,7 @@ class ServicePage1 extends Component {
       <div className="servicepage-containter">
         <div
           style={{ height: "80px", width: "100%", backgroundColor: "white" }}
-        >
-          <HeaderContainer />
-        </div>
+        ></div>
         {/* Main */}
         <div className="servicepage-main">
           {/* map section */}
