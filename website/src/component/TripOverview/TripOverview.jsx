@@ -15,6 +15,45 @@ class TripOverview extends Component {
 
   render() {
     // add props into TripOverviewDay
+    let hotel1 = [
+      {
+        name: "Marroit JW SanFranscico",
+        price: 182,
+        startDate: "2/1/2020",
+        endDate: "2/3/2020"
+      }
+    ];
+    let hotel2 = [
+      {
+        name: "SanFransciso IHG",
+        price: 555,
+        startDate: "2/3/2020",
+        endDate: "2/5/2020"
+      }
+    ];
+    let transport = [
+      {
+        flight: "UA8848",
+        departDate: "2/1/2020",
+        arriveDate: "2/1/2020",
+        departTime: "12:00",
+        arriveTime: "14:00",
+        price: 1024
+      },
+      {
+        flight: "UA8858",
+        departDate: "2/1/2020",
+        arriveDate: "2/1/2020",
+        departTime: "15:00",
+        arriveTime: "17:00",
+        price: 1024
+      }
+    ];
+    let act = [
+      { name: "Union Square", price: 165, time: "1h" },
+      { name: "Golden Gate", price: 0, time: "2h" },
+      { name: "Fisherman's Wharf", price: 100, time: "1.5h" }
+    ];
     let Daylist = [
       <TripOverviewDay
         isEditting={false}
@@ -25,6 +64,9 @@ class TripOverview extends Component {
         isStart={true}
         startCity="Davis"
         endCity="SF"
+        hotel={hotel1}
+        transport={transport}
+        activities={act}
       />,
       <TripOverviewDay
         isEditting={false}
@@ -35,6 +77,9 @@ class TripOverview extends Component {
         isStart={false}
         startCity="SF"
         endCity="SF"
+        hotel={hotel1}
+        transport={[]}
+        activities={act}
       />,
       <TripOverviewDay
         isEditting={true}
@@ -45,6 +90,9 @@ class TripOverview extends Component {
         isStart={false}
         startCity="SF"
         endCity="SF"
+        hotel={hotel1}
+        transport={[]}
+        activities={act}
       />,
       <TripOverviewDay
         isEditting={false}
@@ -55,6 +103,9 @@ class TripOverview extends Component {
         isStart={false}
         startCity="SF"
         endCity="SF"
+        hotel={hotel2}
+        transport={[]}
+        activities={act}
       />,
       <TripOverviewDay
         isEditting={false}
@@ -65,6 +116,9 @@ class TripOverview extends Component {
         isStart={false}
         startCity="SF"
         endCity="SF"
+        hotel={hotel2}
+        transport={[]}
+        activities={act}
       />,
       <TripOverviewDay
         isEditting={false}
@@ -75,9 +129,13 @@ class TripOverview extends Component {
         isStart={false}
         startCity="SF"
         endCity="Davis"
+        hotel={hotel2}
+        transport={[]}
+        activities={act}
       />
     ];
     let CityList = [<TripOverviewCity />, <TripOverviewCity />];
+
     return (
       <div className="trip-overview">
         <div className="trip-overview-title">{this.state.title}</div>
