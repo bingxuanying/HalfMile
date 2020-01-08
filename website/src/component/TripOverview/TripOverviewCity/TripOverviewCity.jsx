@@ -6,8 +6,10 @@ import HotelIcon from "@material-ui/icons/Hotel";
 import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
-import RoomIcon from "@material-ui/icons/Room";
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { Tooltip, Zoom, Fade } from "@material-ui/core";
+
 
 import "./index.sass";
 class TripOverviewCity extends Component {
@@ -22,32 +24,8 @@ class TripOverviewCity extends Component {
       // isStart/isEnd decide 2 outer line
       isStart: this.props.isStart,
       isEnd: this.props.isEnd,
-      hotel: [
-        {
-          name: "Marroit JW SanFranscico",
-          price: 182,
-          startDate: "2/1/2020",
-          endDate: "2/3/2020"
-        },
-        {
-          name: "SanFransciso IHG",
-          price: 555,
-          startDate: "2/3/2020",
-          endDate: "2/5/2020"
-        }
-      ],
-      transport: [
-        {
-          flight: "UA8848",
-          departDate: "2/1/2020",
-          arriveDate: "2/1/2020",
-          departTime: "12:00",
-          arriveTime: "14:00",
-          price: 1024,
-          departAirport: "SFO",
-          arriveAirport: "LAX"
-        }
-      ]
+      hotel: this.props.hotel,
+      transport: this.props.transport
     };
   }
 
@@ -102,7 +80,28 @@ class TripOverviewCity extends Component {
     );
   }
   getCityInfo = () => {
-    return <div className="trip-overview-city-text">City Info Here</div>;
+    var that = this;
+    return (
+      <div className="trip-overview-city-text">
+        <HotelIcon />
+        {this.state.hotel.map(function (hotel, index) {
+          return (
+            <div className="hotel" key={index}>
+              <div className="hotel-text">
+                <FiberManualRecordIcon style={{ fontSize: 15 }} />
+                {hotel.name}
+              </div>
+              <div className="hotel-info">
+                <Tooltip arrow
+                  TransitionComponent={Fade}
+                  TransitionProps={{ timeout: 300 }}
+                  title={that.getHotelInfo(hotel)}>
+                  <InfoOutlinedIcon style={{ fontSize: 15 }} />
+                </Tooltip>
+              </div>
+            </div>);
+        })}
+      </div>);
   };
   getCircle = circleSize => {
     if (this.state.isEditting) {
@@ -133,7 +132,7 @@ class TripOverviewCity extends Component {
         <div className="right-line-transport" key={index}>
           <Tooltip title="click to edit flight">
             <span>{trans.flight}</span></Tooltip>
-          <Tooltip
+          <Tooltip arrow
             TransitionComponent={Fade}
             TransitionProps={{ timeout: 600 }}
             title={that.getTransportInfo(trans)}>
@@ -160,6 +159,30 @@ class TripOverviewCity extends Component {
       </div>
     );
   };
+  getHotelInfo = (hotel) => {
+    return (
+      <div className="hotel-more-info">
+        <p className="hotel-more-info-name mb-1">
+          <span className="hotel-more-info-name-text">
+            <HotelIcon />&nbsp;
+            {hotel.name}&nbsp;
+          </span>
+          <span className="hotel-more-info-name-price">${hotel.price}</span>
+        </p>
+        <p className="hotel-more-info-date mb-1">
+          <EventAvailableIcon />&nbsp;
+          {hotel.startDate}&nbsp;-&nbsp;{hotel.endDate}
+        </p>
+        <p className="hotel-more-info-location mb-1">
+          <LocationOnIcon />&nbsp;
+          {hotel.location}
+        </p>
+        <div className="hotel-more-info-pic-wrap mb-1">
+          <img className="hotel-more-info-pic" src={hotel.img} alt="hotel-img"></img>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default TripOverviewCity;

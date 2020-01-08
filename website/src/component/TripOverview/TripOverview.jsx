@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { TripOverviewDay } from "./TripOverviewDay/";
 import { TripOverviewCity } from "./TripOverviewCity/";
+import img1 from "./TripOverviewCity/assets/hotel-jwmarroit.png";
+import img2 from "./TripOverviewCity/assets/igh-sf.jfif";
 
 import "./index.sass";
 
@@ -20,7 +22,9 @@ class TripOverview extends Component {
         name: "Marroit JW SanFranscico",
         price: 182,
         startDate: "2/1/2020",
-        endDate: "2/3/2020"
+        endDate: "2/3/2020",
+        location: "Union St. 144",
+        img: img1
       }
     ];
     let hotel2 = [
@@ -28,7 +32,9 @@ class TripOverview extends Component {
         name: "SanFransciso IHG",
         price: 555,
         startDate: "2/3/2020",
-        endDate: "2/5/2020"
+        endDate: "2/5/2020",
+        location: "Fisher Blvd. 111",
+        img: img2
       }
     ];
     let transport = [
@@ -38,17 +44,43 @@ class TripOverview extends Component {
         arriveDate: "2/1/2020",
         departTime: "12:00",
         arriveTime: "14:00",
-        price: 1024
+        price: 1024,
+        departAirport: "SFO",
+        arriveAirport: "LAX"
       },
       {
-        flight: "UA8858",
+        flight: "UA8148",
         departDate: "2/1/2020",
         arriveDate: "2/1/2020",
-        departTime: "15:00",
-        arriveTime: "17:00",
-        price: 1024
+        departTime: "14:00",
+        arriveTime: "16:00",
+        price: 999,
+        departAirport: "LAX",
+        arriveAirport: "SLC"
       }
     ];
+    let transport1 = [
+      {
+        flight: "UA8848",
+        departDate: "2/1/2020",
+        arriveDate: "2/1/2020",
+        departTime: "12:00",
+        arriveTime: "14:00",
+        price: 1024,
+        departAirport: "SFO",
+        arriveAirport: "LAX"
+      }
+    ];
+    let transport2 = [{
+      flight: "UA8148",
+      departDate: "2/1/2020",
+      arriveDate: "2/1/2020",
+      departTime: "14:00",
+      arriveTime: "16:00",
+      price: 999,
+      departAirport: "LAX",
+      arriveAirport: "SLC"
+    }];
     let act = [
       { name: "Union Square", price: 165, time: "1h" },
       { name: "Golden Gate", price: 0, time: "2h" },
@@ -143,6 +175,8 @@ class TripOverview extends Component {
         isEnd={false}
         isNextChecked={true}
         startDate="12/1"
+        hotel={hotel1}
+        transport={transport1}
       />,
       <TripOverviewCity
         isEditting={false}
@@ -152,6 +186,8 @@ class TripOverview extends Component {
         isEnd={false}
         isNextChecked={false}
         startDate="12/5"
+        hotel={hotel2}
+        transport={transport2}
       />,
       <TripOverviewCity
         isEditting={false}
@@ -161,6 +197,8 @@ class TripOverview extends Component {
         isEnd={true}
         isNextChecked={false}
         startDate="12/8"
+        hotel={[]}
+        transport={[]}
       />
     ];
 
@@ -171,8 +209,8 @@ class TripOverview extends Component {
           {this.state.base === "day" ? (
             <div className="trip-overview-content">{Daylist}</div>
           ) : (
-            <div className="trip-overview-content">{CityList}</div>
-          )}
+              <div className="trip-overview-content">{CityList}</div>
+            )}
         </div>
       </div>
     );

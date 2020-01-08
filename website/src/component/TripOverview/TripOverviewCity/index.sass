@@ -67,7 +67,8 @@
                     width: 100%
                     transform: translateY(-50%)
                 .right-line-transport
-                    z-index: 100    
+                    font-weight: bold
+                    z-index: 100
                     position: relative
                     top: 50%
                     left: 45%
@@ -84,33 +85,42 @@
     .trip-overview-city-text-wrap
         position: relative
         padding-left: 10px
-        overflow: hidden
         .trip-overview-city-text
-            max-width: 100px
+            width: 200px
+            position: relative
+            left: 60px
             .hotel
-                font-weight: bold
-                font-size: 14px
-                .hotel-name
-                    overflow-wrap: break-word
-                    font-weight: normal
-                    font-size: 12px
-            .transport
-                font-weight: bold
-                .transport-name
-                    font-weight: normal
-                    font-size: 12px
-.more-info-text
-    padding: 10px
-    width: 400px
-    .hotel
-        .hotel-content
-            .hotel-text
                 position: relative
-                .hotel-name
-                .hotel-price
+                max-width: 160px
+                .hotel-text
+                    overflow: hidden
+                    font-size: 12px
+                    font-weight: normal
+                    position: relative
+                .hotel-info
+                    z-index: 100
                     position: absolute
-                    left: 60%
-            .hotel-date
+                    top: -3px
+                    left: 100%
+.hotel-more-info
+    width: 500px
+    position: relative
+    .hotel-more-info-name
+        max-width: 100%
+        position: relative
+        .hotel-more-info-name-text
+        .hotel-more-info-name-price
+            position: absolute
+            top: 2px
+            left: 50%
+    .hotel-more-info-pic-wrap
+        .hotel-more-info-pic
+            width: 280px
+            height: auto
+            object-fit: fill
+    
+            
+
                 
 @keyframes rotation
     from
