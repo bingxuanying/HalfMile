@@ -19,7 +19,7 @@ class HeaderContainer extends Component {
       this.setState({
         isTop: window.scrollY < 100
       });
-      console.log(this.state.isTop);
+      // console.log(this.state.isTop);
     });
   }
   render() {

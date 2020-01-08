@@ -4,7 +4,6 @@ import HeaderContainer from "./component/Header/HeaderContainer";
 import HomePage from "./component/Pages/HomePage";
 import ServicePage1 from "./component/Pages/ServicePage1";
 import ServicePage2 from "./component/Pages/ServicePage2";
-import Calendar from "./component/Calender/Calender";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -25,7 +24,7 @@ class App extends Component {
       <Router>
         <div>
           <HeaderContainer />
-
+          {/* <SearchBarLoca /> */}
           <Switch>
             <Route exact path="/">
               <HomePage />
@@ -37,7 +36,6 @@ class App extends Component {
               <ServicePage1 />
             </Route>
           </Switch>
-
           {/* <Calendar /> */}
 
           {/* <h1>Counter {this.props.counter}</h1>

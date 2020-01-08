@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import Geosuggest from "react-geosuggest";
-import "./SearchBarLoca.css";
+import "./SearchBarLoca.sass";
+import AutoComplete from "react-google-autocomplete";
+import Map from "../Map/Map";
 
 class SearchBarLoca extends Component {
+  // const latValue = place.geometry.location.lat(),
+  //   lngValue = place.geometry
+
   constructor() {
     super();
 
@@ -11,15 +16,23 @@ class SearchBarLoca extends Component {
 
   onSuggestSelect(place) {
     // var location = place.location;
-    console.log(place);
+    alert("HEllo")
     // console.log(location);
+    this.setState({
+      mapPosition: {
+
+      }
+    })
   }
+
 
   render() {
     return (
-      <div>
-        <Geosuggest
+      <div className="search-bar-city">
+        <Geosuggest className="geosuggest"
           placeholder="Let's go somewhere!"
+          autoCorrect="off"
+          spellCheck="false"
           onSuggestSelect={this.onSuggestSelect}
           location={new window.google.maps.LatLng(34.0522342, -118.2436849)}
           radius={20}

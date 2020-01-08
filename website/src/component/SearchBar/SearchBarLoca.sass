@@ -1,0 +1,60 @@
+.search-bar-city
+  .geosuggest 
+    position: relative
+    width: 100%
+    height: 48px
+    text-align: left
+    color: #484848
+  .geosuggest__input-wrapper 
+    width: 100%
+    height: 100%
+  .geosuggest__input 
+    width: 100%
+    height: 100%
+    border: 1px solid #ebebeb
+    border-radius: 4px
+    background-color: #ffffff
+    box-shadow: 0 0 1px #3d464d
+    padding: 12px
+    -webkit-transition: border 0.2s, box-shadow 0.2s
+    transition: border 0.2s, box-shadow 0.2s
+    align-items: center
+    text-overflow: ellipsis;
+    letter-spacing: normal;
+    font: 400 16px Arial;
+  .geosuggest__input:focus 
+    border-color: #1d659c
+    box-shadow: 0 0 0 transparent
+  .geosuggest__suggests
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    max-height: 25em
+    padding: 0
+    margin-top: 0
+    background-color: #fff
+    border: 1px solid #ebebeb
+    overflow-x: hidden
+    overflow-y: auto
+    list-style: none
+    z-index: 5
+    -webkit-transition: max-height 0.2s, border 0.2s
+    transition: max-height 0.2s, border 0.2s
+  .geosuggest__suggests--hidden 
+    max-height: 0
+    overflow: hidden
+    border-width: 0
+  .geosuggest__item 
+    font-size: 14px
+    padding: 12px
+    cursor: pointer
+  .geosuggest__item:hover,
+  .geosuggest__item:focus,
+  .geosuggest__item--active,
+  .geosuggest__item--active:hover,
+  .geosuggest__item--active:focus 
+    background: #ebebeb
+  .geosuggest__item__matched-text 
+    font-weight: bold
+
