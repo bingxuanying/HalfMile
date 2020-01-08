@@ -10,7 +10,7 @@ import RoomIcon from "@material-ui/icons/Room";
 import { Tooltip, Fade } from "@material-ui/core";
 
 import "./index.sass";
-class TripOverviewDay extends Component {
+class TripOverviewCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,9 +21,35 @@ class TripOverviewDay extends Component {
       isEnd: this.props.isEnd,
       startCity: this.props.startCity,
       endCity: this.props.endCity,
-      hotel: this.props.hotel,
-      transport: this.props.transport,
-      activities: this.props.activities
+      hotel: [
+        {
+          name: "Marroit JW SanFranscico",
+          price: 182,
+          startDate: "2/1/2020",
+          endDate: "2/3/2020"
+        },
+        {
+          name: "SanFransciso IHG",
+          price: 555,
+          startDate: "2/3/2020",
+          endDate: "2/5/2020"
+        }
+      ],
+      transport: [
+        {
+          flight: "UA8848",
+          departDate: "2/1/2020",
+          arriveDate: "2/1/2020",
+          departTime: "12:00",
+          arriveTime: "14:00",
+          price: 1024
+        }
+      ],
+      activities: [
+        { name: "Union Square", price: 165, time: "1h" },
+        { name: "Golden Gate", price: 0, time: "2h" },
+        { name: "Fisherman's Wharf", price: 100, time: "1.5h" }
+      ]
     };
   }
 
@@ -206,4 +232,4 @@ class TripOverviewDay extends Component {
   };
 }
 
-export default TripOverviewDay;
+export default TripOverviewCity;

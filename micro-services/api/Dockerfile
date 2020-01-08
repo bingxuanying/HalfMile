@@ -1,7 +1,7 @@
 FROM node:10
 
-ADD . /code
-WORKDIR /code
+ADD . /app
+WORKDIR /app
 RUN npm install
 
 EXPOSE 80
