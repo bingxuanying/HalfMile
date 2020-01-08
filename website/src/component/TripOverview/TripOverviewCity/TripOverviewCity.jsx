@@ -7,7 +7,7 @@ import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RoomIcon from "@material-ui/icons/Room";
-import { Tooltip, Zoom } from "@material-ui/core";
+import { Tooltip, Zoom, Fade } from "@material-ui/core";
 
 import "./index.sass";
 class TripOverviewCity extends Component {
@@ -43,7 +43,9 @@ class TripOverviewCity extends Component {
           arriveDate: "2/1/2020",
           departTime: "12:00",
           arriveTime: "14:00",
-          price: 1024
+          price: 1024,
+          departAirport: "SFO",
+          arriveAirport: "LAX"
         }
       ]
     };
@@ -66,7 +68,7 @@ class TripOverviewCity extends Component {
         style={{ background: backgroudColor }}
       >
         <Tooltip
-          title="edit"
+          title="edit hotel"
           arrow
           TransitionComponent={Zoom}
           TransitionProps={{ timeout: 300 }}
@@ -83,16 +85,16 @@ class TripOverviewCity extends Component {
             ) : this.state.isChecked ? (
               <div className="left-line-green" />
             ) : (
-              <div className="left-line" />
-            )}
+                  <div className="left-line" />
+                )}
             <div className="trip-overview-city-city-graph-circle">{Circle}</div>
             {this.state.isEnd ? (
               <div className="right-line-empty" />
             ) : this.state.isChecked && this.state.isNextChecked ? (
               <div className="right-line-green">{transport}</div>
             ) : (
-              <div className="right-line">{transport}</div>
-            )}
+                  <div className="right-line">{transport}</div>
+                )}
           </div>
         </div>
         <div className="trip-overview-city-text-wrap">{cityInfo}</div>
@@ -125,14 +127,38 @@ class TripOverviewCity extends Component {
     }
   };
   getTransport = () => {
-    return this.state.transport.map(function(trans, index) {
+    var that = this;
+    return this.state.transport.map(function (trans, index) {
       return (
-        <div className="right-line-transport">
-          UA6789
-          <InfoOutlinedIcon style={{ fontSize: 17 }} />
+        <div className="right-line-transport" key={index}>
+          <Tooltip title="click to edit flight">
+            <span>{trans.flight}</span></Tooltip>
+          <Tooltip
+            TransitionComponent={Fade}
+            TransitionProps={{ timeout: 600 }}
+            title={that.getTransportInfo(trans)}>
+            <InfoOutlinedIcon style={{ fontSize: 17 }} />
+          </Tooltip>
         </div>
       );
     });
+  }
+  getTransportInfo = (trans) => {
+    return (
+      <div className="mb-1">
+        <p className="mb-1">
+          <span><FlightTakeoffIcon style={{ fontSize: 18 }} />&nbsp;</span>
+          <span>{trans.flight}</span>
+          <span>&nbsp;${trans.price}</span>
+        </p>
+        <p className="mb-2">
+          <span>{trans.departAirport}&nbsp;-&nbsp;{trans.arriveAirport}</span>
+        </p>
+        <p className="mb-1">
+          <span>{trans.departDate}&nbsp;{trans.departTime}&nbsp;-&nbsp;{trans.arriveTime}</span>
+        </p>
+      </div>
+    );
   };
 }
 

@@ -42,25 +42,16 @@
                     position: absolute
                     top: 50%
                     left: 0
-                    border-top: 1px solid black
+                    border-top: 2px solid black
                     background: black
                     width: 100%
                     transform: translateY(-50%)
             .left-line-empty
                 width: 100%
             .left-line-green
-                min-width: 40px
-                width: 100%
-                position: relative
+                @extend .left-line
                 &::before
-                    content: ''
-                    position: absolute
-                    top: 50%
-                    left: 0
-                    border-top: 1px solid green
-                    background: black
-                    width: 100%
-                    transform: translateY(-50%)
+                    border-top: 2px solid green
             .right-line
                 min-width: 40px
                 height: 40px
@@ -71,40 +62,23 @@
                     position: absolute
                     top: 50%
                     left: 0
-                    border-top: 1px solid black
+                    border-top: 2px solid black
                     background: black
                     width: 100%
                     transform: translateY(-50%)
                 .right-line-transport
+                    z-index: 100    
                     position: relative
                     top: 50%
                     left: 45%
-                    display: flex
                     &:hover
                         cursor: pointer
             .right-line-empty
                 width: 100%
             .right-line-green
-                min-width: 40px
-                position: relative
-                height: 40px
-                width: 100%
+                @extend .right-line
                 &::before
-                    content: ''
-                    position: absolute
-                    top: 50%
-                    left: 0
-                    border-top: 1px solid green
-                    background: black
-                    width: 100%
-                    transform: translateY(-50%)
-                .right-line-transport
-                    position: relative
-                    top: 50%
-                    left: 45%
-                    display: flex
-                    &:hover
-                        cursor: pointer
+                    border-top: 2px solid green
             .trip-overview-city-city-graph-circle
 
     .trip-overview-city-text-wrap
@@ -137,24 +111,6 @@
                     position: absolute
                     left: 60%
             .hotel-date
-    .transport
-        .transport-content
-            .transport-text
-                position: relative
-                .transport-name
-                .transport-price
-                    position: absolute
-                    left: 60%
-            .transport-date
-    .activity
-        .activity-content
-            .activity-text
-                position: relative
-                .activity-name
-                .activity-price    
-                    position: absolute
-                    left: 60%
-            .activity-info
                 
 @keyframes rotation
     from
