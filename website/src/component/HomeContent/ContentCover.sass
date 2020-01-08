@@ -1,0 +1,133 @@
+.content-cover 
+  position: relative
+  top: 0
+  height: 100vh
+  margin-bottom: 80px
+  .cover-image 
+    position: relative
+    height: 100%
+    width: 100vw
+    max-width: 100%
+    object-fit: cover
+  .start-box 
+    width: 426px
+    height: 470px
+    position: absolute
+    top: 18vh
+    margin-left: 8vw
+    padding: 32px
+    padding-bottom: 24px
+    border-radius: 4px
+    background-color: white
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12)
+  .start-box-header 
+    width: 100%
+    height: 72px
+    letter-spacing: normal
+    h1 
+      color: #484848
+      font-size: 27px
+      font-weight: bold
+      font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+      line-height: 36px
+      margin: 0px
+      padding: 0px
+  .start-box-content 
+    width: 100%
+    display: flex
+    flex-direction: column
+    .start-box-row 
+      width: 100%
+      margin: 16px 0
+      .geosuggest 
+        position: relative
+        width: 100%
+        height: 48px
+        text-align: left
+        color: #484848
+      .geosuggest__input-wrapper 
+        width: 100%
+        height: 100%
+      .geosuggest__input 
+        width: 100%
+        height: 100%
+        border: 1px solid #ebebeb
+        border-radius: 4px 4px 0 0
+        background-color: #ffffff
+        padding: 12px
+        -webkit-transition: border 0.2s, box-shadow 0.2s
+        transition: border 0.2s, box-shadow 0.2s
+        align-items: center
+        text-overflow: ellipsis;
+        letter-spacing: normal;
+        font: 400 17px Arial;
+      .geosuggest__input:focus 
+        border-color: #1d659c
+        box-shadow: 0 0 0 transparent
+      .geosuggest__suggests
+        position: absolute
+        top: 100%
+        left: 0
+        right: 0
+        max-height: 25em
+        padding: 0
+        margin-top: 0
+        background-color: #fff
+        border: 1px solid #ebebeb
+        overflow-x: hidden
+        overflow-y: auto
+        list-style: none
+        z-index: 5
+        -webkit-transition: max-height 0.2s, border 0.2s
+        transition: max-height 0.2s, border 0.2s
+      .geosuggest__suggests--hidden 
+        max-height: 0
+        overflow: hidden
+        border-width: 0
+      .geosuggest__item 
+        font-size: 14px
+        padding: 12px
+        cursor: pointer
+      .geosuggest__item:hover,
+      .geosuggest__item:focus,
+      .geosuggest__item--active,
+      .geosuggest__item--active:hover,
+      .geosuggest__item--active:focus 
+        background: #ebebeb
+      .geosuggest__item__matched-text 
+        font-weight: bold
+
+      .start-box-subtitle 
+        color: #484848
+        font-size: 12px
+        font-weight: 800
+        letter-spacing: 1px
+        margin-bottom: 8px
+      .start-box-50subrow
+        width: 50%
+        float: left
+    .start-box-bottom 
+      width: 100%
+      height: auto
+      padding-top: 8px
+      button
+        position: relative
+        border-radius: 4px
+        font-size: 16px
+        line-height: 24px 
+        letter-spacing: normal 
+        font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif 
+        padding: 10px 22px
+        font-weight: 800 
+        border-width: 2px 
+        box-shadow: none 
+        background: #FF5A5F 
+        border-color: transparent 
+        color: #ffffff 
+        text-align: center
+        float: right
+        &:active
+          background-color: #9b383c
+        span
+          font-size: 16px
+          line-height: 24px
