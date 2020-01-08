@@ -29,7 +29,7 @@ class SearchBarLoca extends Component {
   render() {
     return (
       <div className="search-bar-city">
-        <Geosuggest
+        <Geosuggest className="geosuggest"
           placeholder="Let's go somewhere!"
           autoCorrect="off"
           spellCheck="false"
