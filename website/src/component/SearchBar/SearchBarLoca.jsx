@@ -3,11 +3,10 @@ import Geosuggest from "react-geosuggest";
 import "./SearchBarLoca.sass";
 import AutoComplete from "react-google-autocomplete";
 import Map from "../Map/Map";
-import "./SearchBarLoca.css";
 
 class SearchBarLoca extends Component {
-  const latValue = place.geometry.location.lat(),
-    lngValue = place.geometry
+  // const latValue = place.geometry.location.lat(),
+  //   lngValue = place.geometry
 
   constructor() {
     super();
