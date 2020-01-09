@@ -18,7 +18,7 @@ class Calendar extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App" style={{ position: "relative", zIndex: 100 }}>
         {/* <DateRangePicker 
         startDate={this.state.startDate}
         startDateId="your_unique_start_date_id"
