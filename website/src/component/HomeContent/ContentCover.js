@@ -1,9 +1,50 @@
 import React, { Component } from "react";
 import coverImg from "../../assets/Cover.jpg";
 import Geosuggest from "react-geosuggest";
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
 import "./ContentCover.sass";
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import Calendar from "../Calender/Calender";
 
 class ContentCover extends Component {
+  constructor() {
+    super();
+    this.state = {show: true}
+    this.toggleDiv = this.toggleDiv.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSuggestSelect = this.onSuggestSelect.bind(this);
+  }
+
+  onSuggestSelect(e) {
+    var location = e.gmaps.adr_address;
+    var matches = /class="locality">(.*?)<\/span>/g.exec(location);
+    if (matches.length > 1) {
+      var city = matches[1];
+    }
+    console.log(e);
+
+    var home = {
+      name: city,
+      location: e.location
+    };
+
+    this.props.updateHomeAdress(home);
+    console.log(this.props.homeAddress);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.currentTarget.value);
+  }
+
+  toggleDiv = () => {
+    const {show} = this.state;
+    this.setState({show : !show})
+  }
+
   render() {
     return (
       <div className="content-cover">
@@ -13,7 +54,7 @@ class ContentCover extends Component {
             <h1>Take a break and award yourself a memorable trip</h1>
           </div>
           <div className="start-box-content">
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={this.handleSubmit}>
               <div className="start-box-row">
                 <div className="start-box-subtitle">HOME ADDRESS</div>
                 <Geosuggest
@@ -25,16 +66,24 @@ class ContentCover extends Component {
                     new window.google.maps.LatLng(34.0522342, -118.2436849)
                   }
                   radius={20}
+                  onSuggestSelect={this.onSuggestSelect}
                 />
               </div>
               <div className="start-box-row">
                 <div className="start-box-50subrow">
                   <div className="start-box-subtitle">START DATE</div>
+                  
+                  
                 </div>
                 <div className="start-box-50subrow">
                   <div className="start-box-subtitle">END DATE</div>
                 </div>
               </div>
+              <tr>
+                <th><Calendar /></th>
+                <th></th>
+                <th><Calendar /></th>
+              </tr>
               <div className="start-box-row">
                 <div className="start-box-subtitle">GUEST</div>
               </div>
@@ -51,4 +100,17 @@ class ContentCover extends Component {
   }
 }
 
-export default ContentCover;
+const mapStateToProps = state => {
+  console.log(state.plan[0].home);
+  return {
+    homeAddress: state.plan[0].home
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    updateHomeAdress: planActions.updateHomeAdress
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ContentCover);
