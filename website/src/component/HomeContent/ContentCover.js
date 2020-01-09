@@ -1,9 +1,38 @@
 import React, { Component } from "react";
 import coverImg from "../../assets/Cover.jpg";
 import Geosuggest from "react-geosuggest";
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
 import "./ContentCover.sass";
 
 class ContentCover extends Component {
+  constructor() {
+    super();
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onSuggestSelect = this.onSuggestSelect.bind(this);
+  }
+
+  onSuggestSelect(e) {
+    var location = e.gmaps.adr_address;
+    var matches = /class="locality">(.*?)<\/span>/g.exec(location);
+    if (matches.length > 1) {
+      var city = matches[1];
+    }
+
+    var home = {
+      name: city,
+      location: e.location
+    };
+
+    this.props.updateHomeAdress(home);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(e.currentTarget.value);
+  }
+
   render() {
     return (
       <div className="content-cover">
@@ -13,7 +42,7 @@ class ContentCover extends Component {
             <h1>Take a break and award yourself a memorable trip</h1>
           </div>
           <div className="start-box-content">
-            <form onSubmit={e => e.preventDefault()}>
+            <form onSubmit={this.handleSubmit}>
               <div className="start-box-row">
                 <div className="start-box-subtitle">HOME ADDRESS</div>
                 <Geosuggest
@@ -25,6 +54,7 @@ class ContentCover extends Component {
                     new window.google.maps.LatLng(34.0522342, -118.2436849)
                   }
                   radius={20}
+                  onSuggestSelect={this.onSuggestSelect}
                 />
               </div>
               <div className="start-box-row">
@@ -51,4 +81,17 @@ class ContentCover extends Component {
   }
 }
 
-export default ContentCover;
+const mapStateToProps = state => {
+  console.log(state.plan[0].home);
+  return {
+    homeAddress: state.plan[0].home
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    updateHomeAdress: planActions.updateHomeAdress
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ContentCover);

@@ -1,7 +1,7 @@
-export const initPlan = initInfo => {
+export const updateHomeAdress = home => {
   return {
-    type: "INIT",
-    payload: initInfo
+    type: "CHANGE_HOME_ADDRESS",
+    payload: home
   };
 };
 
