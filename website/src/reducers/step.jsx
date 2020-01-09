@@ -1,6 +1,6 @@
 // section: "city" || "airline" || "hotel" || "activity" || "checkout" || "finished"
 const initialState = {
-  section: "city",
+  section: "none",
   page: 1,
   totalCities: null,
   totalDays: null
