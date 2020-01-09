@@ -26,7 +26,7 @@ class Calendar extends Component{
         onFocusChange={focusedInput => this.setState({focusedInput})}
       /> */}
       <SingleDatePicker
-        placeholder="mm/dd/yyyy"
+        placeholder="mm/dd/yyy"
         date={this.state.date}
         onDateChange={date => this.setState({date})}
         focused={this.state.focused}
