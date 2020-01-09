@@ -3,15 +3,33 @@ import coverImg from "../../assets/Cover.jpg";
 import Geosuggest from "react-geosuggest";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
+import * as stepActions from "../../actions/stepActions";
+
+import "react-dates/initialize";
+import "react-dates/lib/css/_datepicker.css";
+import {
+  DateRangePicker,
+  SingleDatePicker,
+  DayPickerRangeController
+} from "react-dates";
+import Calendar from "../Calender/Calender";
+
 import "./ContentCover.sass";
 
 class ContentCover extends Component {
   constructor() {
     super();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { show: true };
+    this.toggleDiv = this.toggleDiv.bind(this);
+    this.handleStart = this.handleStart.bind(this);
     this.onSuggestSelect = this.onSuggestSelect.bind(this);
   }
+
+  toggleDiv = () => {
+    const { show } = this.state;
+    this.setState({ show: !show });
+  };
 
   onSuggestSelect(e) {
     var location = e.gmaps.adr_address;
@@ -28,9 +46,8 @@ class ContentCover extends Component {
     this.props.updateHomeAdress(home);
   }
 
-  handleSubmit(e) {
+  handleStart(e) {
     e.preventDefault();
-    console.log(e.currentTarget.value);
   }
 
   render() {
@@ -42,38 +59,40 @@ class ContentCover extends Component {
             <h1>Take a break and award yourself a memorable trip</h1>
           </div>
           <div className="start-box-content">
-            <form onSubmit={this.handleSubmit}>
-              <div className="start-box-row">
-                <div className="start-box-subtitle">HOME ADDRESS</div>
-                <Geosuggest
-                  placeholder="Where you live"
-                  autoCorrect="off"
-                  spellCheck="false"
-                  onSuggestSelect={this.onSuggestSelect}
-                  location={
-                    new window.google.maps.LatLng(34.0522342, -118.2436849)
-                  }
-                  radius={20}
-                  onSuggestSelect={this.onSuggestSelect}
-                />
+            <div className="start-box-row">
+              <div className="start-box-subtitle">HOME ADDRESS</div>
+              <Geosuggest
+                placeholder="Where you live"
+                autoCorrect="off"
+                spellCheck="false"
+                onSuggestSelect={this.onSuggestSelect}
+                location={
+                  new window.google.maps.LatLng(34.0522342, -118.2436849)
+                }
+                radius={20}
+                onSuggestSelect={this.onSuggestSelect}
+              />
+            </div>
+
+            <div className="start-box-row">
+              <div className="start-box-50subrow">
+                <div className="start-box-subtitle">START DATE</div>
+                <Calendar />
               </div>
-              <div className="start-box-row">
-                <div className="start-box-50subrow">
-                  <div className="start-box-subtitle">START DATE</div>
-                </div>
-                <div className="start-box-50subrow">
-                  <div className="start-box-subtitle">END DATE</div>
-                </div>
+              <div className="start-box-50subrow">
+                <div className="start-box-subtitle">END DATE</div>
+                <Calendar />
               </div>
-              <div className="start-box-row">
-                <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
-              </div>
-              <div className="start-box-bottom">
-                <button type="submit">
-                  <span>Start</span>
-                </button>
-              </div>
-            </form>
+            </div>
+
+            <div className="start-box-row">
+              <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
+            </div>
+            <div className="start-box-bottom">
+              <button type="submit" onClick={this.handleStart}>
+                <span>Start</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -82,7 +101,7 @@ class ContentCover extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.plan[0].home);
+  // console.log(state.plan[0].home);
   return {
     homeAddress: state.plan[0].home
   };
@@ -90,7 +109,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    updateHomeAdress: planActions.updateHomeAdress
+    updateHomeAdress: planActions.updateHomeAdress,
+    changeSection: stepActions.changeSection
   };
 };
 
