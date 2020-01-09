@@ -19,6 +19,7 @@ class ContentCover extends Component {
     if (matches.length > 1) {
       var city = matches[1];
     }
+    console.log(e);
 
     var home = {
       name: city,
@@ -26,6 +27,7 @@ class ContentCover extends Component {
     };
 
     this.props.updateHomeAdress(home);
+    console.log(this.props.homeAddress);
   }
 
   handleSubmit(e) {
