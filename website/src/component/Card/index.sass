@@ -46,32 +46,43 @@
             font-size: 12px
 
 .trip-card
-    overflow: hidden
     position: relative
+    width: 100%
+    height: 25vw
+    &:hover
+        cursor: pointer
     .trip-card-img
         width: 100%
         height: 25vw
         max-width: auto
         border-radius: 5px
     .trip-card-shade
+        width: 100%
+        height: 5vw
         color: #ffffff
         position: absolute
         background: rgba(0,0 ,0 ,.6 )
-        width: 100%
-        height: 20%
         top: 80%
         border-radius: 0px 0px 5px 5px
-        .trip-card-days
-            height: 100%
-            top: 50%
-            float: left
-            display: inline-block
-            border-right: 2px solid
-            padding: 10px
-        .trip-card-title
-            margin-left: 10px
-            float: left
-            display: inline-block
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        .trip-card-days-wrapper
+            // padding: 10px
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-content: center
+            .trip-card-days
+                margin-left: 10px
+                font-size: 20px
+        .trip-card-title-wrapper
+            display: flex
+            flex-direction: column
+            justify-content: center
+            align-content: center
+            .trip-card-title-title
+                margin: auto
+            .trip-card-title-date
+                margin: auto
         .trip-card-option
-            float: right
-            display: inline-block

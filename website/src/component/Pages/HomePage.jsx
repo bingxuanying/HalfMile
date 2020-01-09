@@ -3,7 +3,7 @@ import ContentCover from "../HomeContent/ContentCover";
 import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
 
-import { GuideCard, AdventureCard, CityCard } from "../Card/index";
+import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
 import { SearchBar } from "../SearchBar/index";
 import "./HomePage.css";
 
@@ -72,7 +72,7 @@ class HomePage extends Component {
     const travelPlans_City = [
       <CityCard key="C1" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />,
       <CityCard key="C2" city="LONDON" img={cityImg1} cityInfo={cityInfo} />,
-      <CityCard key="C3" city="MONTREAL" img={cityImg2} cityInfo={cityInfo} />
+      <TripCard />
     ];
 
     return (
