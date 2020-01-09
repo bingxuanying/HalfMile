@@ -5,7 +5,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import {DateRangePicker, SingleDatePicker, DayPickerRangeController} from 'react-dates';
 
 
-class datePicker extends Component{
+class Calendar extends Component{
   constructor(props){
     super(props);
     this.state ={
@@ -16,7 +16,7 @@ class datePicker extends Component{
   render(){
   return(
     <div className="App">
-      <DateRangePicker 
+      {/* <DateRangePicker 
         startDate={this.state.startDate}
         startDateId="your_unique_start_date_id"
         endDate={this.state.endDate}
@@ -24,6 +24,14 @@ class datePicker extends Component{
         onDatesChange={({startDate, endDate}) => this.setState({startDate, endDate})}
         focusedInput={this.state.focusedInput}
         onFocusChange={focusedInput => this.setState({focusedInput})}
+      /> */}
+      <SingleDatePicker
+        placeholder="mm/dd/yyyy"
+        date={this.state.date}
+        onDateChange={date => this.setState({date})}
+        focused={this.state.focused}
+        onFocusChange={({focused}) => this.setState({focused})}
+        id="single-date"
       />
     </div>
   );
@@ -31,4 +39,4 @@ class datePicker extends Component{
 }
 
 
-export default datePicker;
+export default Calendar;

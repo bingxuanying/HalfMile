@@ -4,11 +4,16 @@ import Geosuggest from "react-geosuggest";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import "./ContentCover.sass";
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+import Calendar from "../Calender/Calender";
 
 class ContentCover extends Component {
   constructor() {
     super();
-
+    this.state = {show: true}
+    this.toggleDiv = this.toggleDiv.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onSuggestSelect = this.onSuggestSelect.bind(this);
   }
@@ -33,6 +38,11 @@ class ContentCover extends Component {
   handleSubmit(e) {
     e.preventDefault();
     console.log(e.currentTarget.value);
+  }
+
+  toggleDiv = () => {
+    const {show} = this.state;
+    this.setState({show : !show})
   }
 
   render() {
@@ -62,11 +72,18 @@ class ContentCover extends Component {
               <div className="start-box-row">
                 <div className="start-box-50subrow">
                   <div className="start-box-subtitle">START DATE</div>
+                  
+                  
                 </div>
                 <div className="start-box-50subrow">
                   <div className="start-box-subtitle">END DATE</div>
                 </div>
               </div>
+              <tr>
+                <th><Calendar /></th>
+                <th></th>
+                <th><Calendar /></th>
+              </tr>
               <div className="start-box-row">
                 <div className="start-box-subtitle">GUEST</div>
               </div>
