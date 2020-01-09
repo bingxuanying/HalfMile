@@ -42,36 +42,38 @@ class ContentCover extends Component {
             <h1>Take a break and award yourself a memorable trip</h1>
           </div>
           <div className="start-box-content">
-            <div className="start-box-row">
-              <div className="start-box-subtitle">HOME ADDRESS</div>
-              <Geosuggest
-                placeholder="Where you live"
-                autoCorrect="off"
-                spellCheck="false"
-                onSuggestSelect={this.onSuggestSelect}
-                location={
-                  new window.google.maps.LatLng(34.0522342, -118.2436849)
-                }
-                radius={20}
-                onSuggestSelect={this.onSuggestSelect}
-              />
-            </div>
-            <div className="start-box-row">
-              <div className="start-box-50subrow">
-                <div className="start-box-subtitle">START DATE</div>
+            <form onSubmit={this.handleSubmit}>
+              <div className="start-box-row">
+                <div className="start-box-subtitle">HOME ADDRESS</div>
+                <Geosuggest
+                  placeholder="Where you live"
+                  autoCorrect="off"
+                  spellCheck="false"
+                  onSuggestSelect={this.onSuggestSelect}
+                  location={
+                    new window.google.maps.LatLng(34.0522342, -118.2436849)
+                  }
+                  radius={20}
+                  onSuggestSelect={this.onSuggestSelect}
+                />
               </div>
-              <div className="start-box-50subrow">
-                <div className="start-box-subtitle">END DATE</div>
+              <div className="start-box-row">
+                <div className="start-box-50subrow">
+                  <div className="start-box-subtitle">START DATE</div>
+                </div>
+                <div className="start-box-50subrow">
+                  <div className="start-box-subtitle">END DATE</div>
+                </div>
               </div>
-            </div>
-            <div className="start-box-row">
-              <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
-            </div>
-            <div className="start-box-bottom">
-              <button type="button" onClick={this.handleSubmit}>
-                <span>Start</span>
-              </button>
-            </div>
+              <div className="start-box-row">
+                <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
+              </div>
+              <div className="start-box-bottom">
+                <button type="submit">
+                  <span>Start</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -80,7 +82,7 @@ class ContentCover extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
+  console.log(state.plan[0].home);
   return {
     homeAddress: state.plan[0].home
   };

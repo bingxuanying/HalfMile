@@ -6,6 +6,7 @@ import ServicePage1 from "./component/Pages/ServicePage1";
 import ServicePage2 from "./component/Pages/ServicePage2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Calendar from "./component/Calender/Calender";
 
 // import { connect } from "react-redux";
 // import * as CounterActions from "./actions/counterActions";
@@ -36,8 +37,6 @@ class App extends Component {
               <ServicePage1 />
             </Route>
           </Switch>
-          {/* <Calendar /> */}
-
           {/* <h1>Counter {this.props.counter}</h1>
         <p>
           <button onClick={() => this.props.increment()}> + </button>
