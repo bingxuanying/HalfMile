@@ -72,7 +72,8 @@ class HomePage extends Component {
     const travelPlans_City = [
       <CityCard key="C1" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />,
       <CityCard key="C2" city="LONDON" img={cityImg1} cityInfo={cityInfo} />,
-      <TripCard />
+      <TripCard key="C3" tripTitle="s4966910084's trip" tripDuration={5} startData="12/5"
+        endDate="12/8" />
     ];
 
     return (
