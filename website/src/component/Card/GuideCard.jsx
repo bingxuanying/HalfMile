@@ -40,15 +40,15 @@ class GuideCard extends Component {
     let i = 0;
     for (i = 0; i < Math.floor(this.state.stars); i++) {
       stars.push(
-        <span>
-          <MdStar key={i} />
+        <span key={i}>
+          <MdStar />
         </span>
       );
     }
     if (!Number.isInteger(this.state.stars))
       stars.push(
-        <span>
-          <MdStarHalf key={i} />
+        <span key={i}>
+          <MdStarHalf />
         </span>
       );
     return stars;
