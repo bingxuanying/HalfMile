@@ -78,6 +78,55 @@ const planReducer = (state = initialState, action) => {
         ...state,
         endDate: action.payload
       };
+    case "GUEST_INCREAMENT":
+      return state.map((item, index) => {
+        // Replace the item at index 0
+        if (index === 0) {
+          var guestType = action.payload;
+          return {
+            ...state[0],
+            guest: {
+              ...state[0].guest,
+              [guestType]: state[0].guest[guestType] + 1
+            }
+          };
+        }
+        // Leave every other item unchanged
+        return item;
+      });
+    case "GUEST_DECREMENT":
+      return state.map((item, index) => {
+        // Replace the item at index 0
+        if (index === 0) {
+          var guestType = action.payload;
+          return {
+            ...state[0],
+            guest: {
+              ...state[0].guest,
+              [guestType]: state[0].guest[guestType] - 1
+            }
+          };
+        }
+        // Leave every other item unchanged
+        return item;
+      });
+    case "GUEST_CLEAR":
+      return state.map((item, index) => {
+        // Replace the item at index 0
+        if (index === 0) {
+          return {
+            ...state[0],
+            guest: {
+              ...state[0].guest,
+              adults: 1,
+              children: 0,
+              infants: 0
+            }
+          };
+        }
+        // Leave every other item unchanged
+        return item;
+      });
     case "UPDATE_ERROR_INIT":
       return state.map((item, index) => {
         // Replace the item at index 0
