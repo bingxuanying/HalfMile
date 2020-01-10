@@ -5,7 +5,7 @@ import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview";
 import "./ServicePage.css";
 
-import SearchBarLoca from "../SearchBar/SearchBarLoca";
+import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
 
 class ServicePage2 extends Component {

@@ -2,24 +2,41 @@
 const initialState = {
   section: "none",
   page: 1,
-  totalCities: null,
-  totalDays: null
+  cities: [],
+  days: 0,
+  err: "none"
 };
 
 const stepReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "UPDATE_CITYnDAY":
+    case "ADD_CITY":
+      for (let i = 0; i < state.cities.length; i++) {
+        if (action.payload.name === state.cities[i].name) {
+          return {
+            ...state,
+            err: "repeat city"
+          };
+        }
+      }
+
       return {
         ...state,
-        totalCities: state.totalCities + 1,
-        totalDays: state.totalDays + action.payload
+        cities: state.cities.concat(action.payload)
       };
 
-    case "DELETE_CITYnDAY":
+    case "DELETE_CITY":
+      return {
+        ...state
+      };
+
+    case "REORDER_CITY":
+      var result = state.cities;
+      var [removed] = result.splice(action.payload.startIndex, 1);
+      result.splice(action.payload.endIndex, 0, removed);
+
       return {
         ...state,
-        totalCities: state.totalCities - 1,
-        totalDays: state.totalDays - action.payload
+        cities: result
       };
 
     case "CHANGE_SECTION":
@@ -43,15 +60,16 @@ const stepReducer = (state = initialState, action) => {
         nextSection = "airline";
         nextPage = 1;
       } else if (state.section === "airline") {
-        nextSection = state.page + 1 > state.totalCities ? "hotel" : "airline";
-        nextPage = state.page + 1 > state.totalCities ? 1 : state.page + 1;
-      } else if (state.section === "hotel") {
-        nextSection = state.page + 1 > state.totalCities ? "activity" : "hotel";
-        nextPage = state.page + 1 > state.totalCities ? 1 : state.page + 1;
-      } else if (state.section === "activity") {
         nextSection =
-          state.page + 1 > state.totalDays ? "checkout" : "activity";
-        nextPage = state.page + 1 > state.totalDays ? 1 : state.page + 1;
+          state.page + 1 > state.cities.length ? "hotel" : "airline";
+        nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
+      } else if (state.section === "hotel") {
+        nextSection =
+          state.page + 1 > state.cities.length ? "activity" : "hotel";
+        nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
+      } else if (state.section === "activity") {
+        nextSection = state.page + 1 > state.days ? "checkout" : "activity";
+        nextPage = state.page + 1 > state.days ? 1 : state.page + 1;
       } else if (state.section === "checkout") {
         nextSection = "finished";
         nextPage = 1;
@@ -72,13 +90,13 @@ const stepReducer = (state = initialState, action) => {
         prePage = state.page - 1 < 1 ? 1 : state.page - 1;
       } else if (state.section === "hotel") {
         preSection = state.page - 1 < 1 ? "airline" : "hotel";
-        prePage = state.page - 1 < 1 ? state.totalCities : state.page - 1;
+        prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
       } else if (state.section === "activity") {
         preSection = state.page - 1 < 1 ? "hotel" : "activity";
-        prePage = state.page - 1 < 1 ? state.totalCities : state.page - 1;
+        prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
       } else if (state.section === "checkout") {
         preSection = "activity";
-        prePage = state.totalDays;
+        prePage = state.days;
       }
 
       return {

@@ -1,17 +1,30 @@
-export const addCity = num => {
+export const addCity = city => {
   return {
-    type: "UPDATE_CITYnDAY",
-    payload: num
+    type: "ADD_CITY",
+    payload: city
   };
 };
 
-export const deleteCity = num => {
+export const deleteCity = city => {
   return {
-    type: "DELETE_CITYnDAY",
-    payload: num
+    type: "DELETE_CITY",
+    payload: city
   };
 };
 
+export const reorderCity = (startIndex, endIndex) => {
+  return {
+    type: "REORDER_CITY",
+    payload: {
+      startIndex: startIndex,
+      endIndex: endIndex
+    }
+  };
+};
+
+/*
+ * TODO: clear error
+ */
 export const changeSection = section => {
   return {
     type: "CHANGE_SECTION",
