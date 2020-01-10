@@ -72,7 +72,7 @@ import "./Map.css";
 const MyMapComponent = compose(
   withProps({
     googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      "https://maps.googleapis.com/maps/api",
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: "100vh", width: "100%" }} />,
     mapElement: <div style={{ height: "100%" }} />
