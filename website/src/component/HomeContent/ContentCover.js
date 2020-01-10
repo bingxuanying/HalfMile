@@ -21,9 +21,11 @@ class ContentCover extends Component {
     super();
 
     this.state = { show: true };
+
     this.toggleDiv = this.toggleDiv.bind(this);
     this.handleStart = this.handleStart.bind(this);
-    this.onSuggestSelect = this.onSuggestSelect.bind(this);
+    this.handleSuggestSelect = this.handleSuggestSelect.bind(this);
+    this.handleGeoChange = this.handleGeoChange.bind(this);
   }
 
   toggleDiv = () => {
@@ -31,23 +33,55 @@ class ContentCover extends Component {
     this.setState({ show: !show });
   };
 
-  onSuggestSelect(e) {
+  handleSuggestSelect(e) {
     var location = e.gmaps.adr_address;
     var matches = /class="locality">(.*?)<\/span>/g.exec(location);
     if (matches.length > 1) {
       var city = matches[1];
     }
 
-    var home = {
+    var homeSelect = {
       name: city,
       location: e.location
     };
 
-    this.props.updateHomeAdress(home);
+    this.props.updateHomeAdress(homeSelect);
+  }
+
+  handleGeoChange(e) {
+    var homeChange = {
+      name: e,
+      location: {
+        lat: null,
+        lng: null
+      }
+    };
+
+    this.props.updateHomeAdress(homeChange);
   }
 
   handleStart(e) {
-    e.preventDefault();
+    var homeAddress = this.props.homeAddress;
+    var startDate = this.props.startDate;
+    var msg = null;
+
+    if (!homeAddress.name) {
+      msg = "no address";
+    } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
+      msg = "no location";
+    } else if (!startDate) {
+      msg = "no start date";
+    } else {
+      msg = "none";
+    }
+
+    if (msg !== "none") {
+      console.log(msg);
+      this.props.updateError("init", msg);
+    } else if (msg === "none") {
+      console.log(msg);
+      this.props.changeSection("city");
+    }
   }
 
   render() {
@@ -65,12 +99,12 @@ class ContentCover extends Component {
                 placeholder="Where you live"
                 autoCorrect="off"
                 spellCheck="false"
-                onSuggestSelect={this.onSuggestSelect}
                 location={
                   new window.google.maps.LatLng(34.0522342, -118.2436849)
                 }
                 radius={20}
-                onSuggestSelect={this.onSuggestSelect}
+                onChange={this.handleGeoChange}
+                onSuggestSelect={this.handleSuggestSelect}
               />
             </div>
 
@@ -89,7 +123,7 @@ class ContentCover extends Component {
               <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
             </div>
             <div className="start-box-bottom">
-              <button type="submit" onClick={this.handleStart}>
+              <button type="button" onClick={this.handleStart}>
                 <span>Start</span>
               </button>
             </div>
@@ -103,13 +137,17 @@ class ContentCover extends Component {
 const mapStateToProps = state => {
   // console.log(state.plan[0].home);
   return {
-    homeAddress: state.plan[0].home
+    homeAddress: state.plan[0].home,
+    startDate: state.plan[0].startDate,
+    guest: state.plan[0].guest,
+    error: state.plan[0].error
   };
 };
 
 const mapDispatchToProps = () => {
   return {
     updateHomeAdress: planActions.updateHomeAdress,
+    updateError: planActions.updateError,
     changeSection: stepActions.changeSection
   };
 };
