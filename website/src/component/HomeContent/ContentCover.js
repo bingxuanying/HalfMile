@@ -13,19 +13,27 @@ import {
   DayPickerRangeController
 } from "react-dates";
 import Calendar from "../Calender/Calender";
-import { Button, IconButton, ClickAwayListener } from "@material-ui/core";
+import {
+  Button,
+  IconButton,
+  ClickAwayListener,
+  Snackbar
+} from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
+import InfoBar from "../InfoBar";
 
 class ContentCover extends Component {
   constructor() {
     super();
     this.state = {
       show: true,
-      guestOpen: false
+      guestOpen: false,
+      infoBarShow: false,
+      errorMessage: "Default message"
     };
     this.toggleDiv = this.toggleDiv.bind(this);
     this.handleStart = this.handleStart.bind(this);
@@ -71,6 +79,8 @@ class ContentCover extends Component {
     var homeAddress = this.props.homeAddress;
     var startDate = this.props.startDate;
     var msg = null;
+    // Test code for snackBar
+    console.log(this.state.infoBarShow);
 
     if (!homeAddress.name) {
       msg = "no address";
@@ -85,6 +95,9 @@ class ContentCover extends Component {
     if (msg !== "none") {
       console.log(msg);
       this.props.updateError("init", msg);
+      // InfoBar things
+      this.setState({ errorMessage: msg });
+      this.setState({ infoBarShow: true });
     } else if (msg === "none") {
       console.log(msg);
       this.props.changeSection("city");
@@ -273,6 +286,16 @@ class ContentCover extends Component {
             </div>
           </div>
         </div>
+
+        {this.state.infoBarShow && (
+          <InfoBar
+            open={this.state.infoBarShow}
+            onClose={this.closeInfoBar}
+            autoHideDuration={2000}
+            message={this.state.errorMessage}
+            type="error"
+          />
+        )}
       </div>
     );
   }
@@ -289,6 +312,9 @@ class ContentCover extends Component {
   };
   guestSave = () => {
     this.toggleGuest();
+  };
+  closeInfoBar = (event, reason) => {
+    this.setState({ infoBarShow: false });
   };
 }
 
