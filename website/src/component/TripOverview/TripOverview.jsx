@@ -168,6 +168,7 @@ class TripOverview extends Component {
     ];
     let CityList = [
       <TripOverviewCity
+        key="1"
         isEditting={false}
         city="SF"
         isChecked={true}
@@ -179,6 +180,7 @@ class TripOverview extends Component {
         transport={transport1}
       />,
       <TripOverviewCity
+        key="2"
         isEditting={false}
         city="LA"
         isChecked={true}
@@ -190,6 +192,7 @@ class TripOverview extends Component {
         transport={transport2}
       />,
       <TripOverviewCity
+        key="3"
         isEditting={false}
         city="Davis"
         isChecked={false}
