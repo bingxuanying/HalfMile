@@ -1,19 +1,19 @@
 [{
         "id": 1,
         "name": "Davis",
-        "latitude": "40.6710729",
-        "longitude": "-73.9988001"
+        "latitude": "38.5449065",
+        "longitude": "-121.7405167"
     },
     {
         "id": 2,
-        "name": "Los Angles",
-        "latitude": "40.6942861",
-        "longitude": "-73.9389312"
+        "name": "San Francisco",
+        "latitude": "37.7749295",
+        "longitude": "-122.4194155"
     },
     {
         "id": 3,
-        "name": "New York",
-        "latitude": "40.6577799",
-        "longitude": "-73.9147716"
+        "name": "Los Angeles",
+        "latitude": "34.0522342",
+        "longitude": "-118.2436849"
     }
 ]
