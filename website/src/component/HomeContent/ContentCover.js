@@ -13,12 +13,7 @@ import {
   DayPickerRangeController
 } from "react-dates";
 import Calendar from "../Calender/Calender";
-import {
-  Button,
-  IconButton,
-  ClickAwayListener,
-  Snackbar
-} from "@material-ui/core";
+import { Button, IconButton, ClickAwayListener, Fade } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -33,7 +28,7 @@ class ContentCover extends Component {
       show: true,
       guestOpen: false,
       infoBarShow: false,
-      errorMessage: "Default message"
+      warningDelay: 2000
     };
     this.toggleDiv = this.toggleDiv.bind(this);
     this.handleStart = this.handleStart.bind(this);
@@ -95,9 +90,26 @@ class ContentCover extends Component {
     if (msg !== "none") {
       console.log(msg);
       this.props.updateError("init", msg);
+
       // InfoBar things
-      this.setState({ errorMessage: msg });
       this.setState({ infoBarShow: true });
+      switch (msg) {
+        case "no address":
+        case "no location":
+          addressWarning();
+          setTimeout(() => {
+            setAddressBack();
+          }, this.state.warningDelay + 10);
+          break;
+        case "no start date":
+          dateWarning();
+          setTimeout(() => {
+            setDateBack();
+          }, this.state.warningDelay + 10);
+          break;
+        default:
+          break;
+      }
     } else if (msg === "none") {
       console.log(msg);
       this.props.changeSection("city");
@@ -291,8 +303,8 @@ class ContentCover extends Component {
           <InfoBar
             open={this.state.infoBarShow}
             onClose={this.closeInfoBar}
-            autoHideDuration={2000}
-            message={this.state.errorMessage}
+            autoHideDuration={this.state.warningDelay}
+            message={this.props.error}
             type="error"
           />
         )}
@@ -317,6 +329,24 @@ class ContentCover extends Component {
     this.setState({ infoBarShow: false });
   };
 }
+const addressWarning = () => {
+  document.getElementsByClassName("geosuggest__input")[0].style.border =
+    "1px solid red";
+  document.getElementsByClassName("start-box-subtitle")[0].style.color = "red";
+};
+const setAddressBack = () => {
+  document.getElementsByClassName("geosuggest__input")[0].style.border =
+    "1px solid #ebebeb";
+  document.getElementsByClassName("start-box-subtitle")[0].style.color =
+    "#484848";
+};
+const dateWarning = () => {
+  document.getElementsByClassName("start-box-subtitle")[1].style.color = "red";
+};
+const setDateBack = () => {
+  document.getElementsByClassName("start-box-subtitle")[1].style.color =
+    "#484848";
+};
 
 const mapStateToProps = state => {
   // console.log(state.plan[0].home);
