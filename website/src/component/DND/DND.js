@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "uuid/v4";
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
+import * as stepActions from "../../actions/stepActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./DND.css";
@@ -17,38 +20,21 @@ class DND extends Component {
   constructor() {
     super();
 
-    this.state = {
-      itemsFromBackend: [
-        { id: uuid(), content: "First task" },
-        { id: uuid(), content: "Second task" },
-        { id: uuid(), content: "Third task" }
-      ]
-    };
-
     this.onDragEnd = this.onDragEnd.bind(this);
   }
 
-  async onDragEnd(result) {
+  onDragEnd(result) {
     // dropped outside the list
     if (!result.destination) {
       return;
     }
 
-    const items = await reorder(
-      this.state.itemsFromBackend,
-      result.source.index,
-      result.destination.index
-    );
-
-    this.setState({
-      itemsFromBackend: items
-    });
-
-    console.log("after: ", this.state.itemsFromBackend);
+    this.props.reorderCity(result.source.index, result.destination.index);
   }
 
   render() {
-    const items = this.state.itemsFromBackend;
+    const items = this.props.cities;
+    console.log(items);
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -83,7 +69,7 @@ class DND extends Component {
                             size="1x"
                           ></FontAwesomeIcon>
                         </div>
-                        <div className="dnd-bar-desination">{item.content}</div>
+                        <div className="dnd-bar-desination">{item.name}</div>
                       </div>
                     )}
                   </Draggable>
@@ -98,4 +84,17 @@ class DND extends Component {
   }
 }
 
-export default DND;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    cities: state.step.cities
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    reorderCity: stepActions.reorderCity
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(DND);

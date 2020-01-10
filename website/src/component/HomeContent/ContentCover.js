@@ -21,6 +21,8 @@ import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
 import InfoBar from "../InfoBar";
 
+const AirbnbColor = "rgba(24,143,148,1)";
+
 class ContentCover extends Component {
   constructor() {
     super();
@@ -41,9 +43,9 @@ class ContentCover extends Component {
     this.setState({ show: !show });
   };
 
-  handleSuggestSelect(e) {
-    if (e.gmaps) {
-      var location = e.gmaps.adr_address;
+  handleSuggestSelect(place) {
+    if (place) {
+      var location = place.gmaps.adr_address;
       var matches = /class="locality">(.*?)<\/span>/g.exec(location);
       if (matches.length > 1) {
         var city = matches[1];
@@ -51,7 +53,7 @@ class ContentCover extends Component {
 
       var homeSelect = {
         name: city,
-        location: e.location
+        location: place.location
       };
 
       this.props.updateHomeAdress(homeSelect);
@@ -357,7 +359,7 @@ const mapStateToProps = state => {
     error: state.plan[0].error
   };
 };
-const AirbnbColor = "rgba(24,143,148,1)";
+
 const mapDispatchToProps = () => {
   return {
     updateHomeAdress: planActions.updateHomeAdress,
