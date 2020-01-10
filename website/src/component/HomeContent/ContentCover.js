@@ -39,7 +39,7 @@ class ContentCover extends Component {
   };
 
   handleSuggestSelect(e) {
-    if (e.gmaps) {
+    if (e) {
       var location = e.gmaps.adr_address;
       var matches = /class="locality">(.*?)<\/span>/g.exec(location);
       if (matches.length > 1) {
