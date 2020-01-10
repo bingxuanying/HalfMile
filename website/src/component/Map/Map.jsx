@@ -4,7 +4,8 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
-  InfoWindow
+  InfoWindow,
+  Polyline
 } from "react-google-maps";
 import places from "./places.json";
 import { compose, withProps, withStateHandlers } from "recompose";
