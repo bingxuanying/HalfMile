@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow, Polyline } from "react-google-maps";
 import places from "./places.json";
 import { compose, withProps, withStateHandlers } from "recompose";
 import "./Map.css";
@@ -114,8 +114,10 @@ const MyMapComponent = compose(
               </InfoWindow>
             )}
           </Marker>
+          
         );
       })}
+      
   </GoogleMap>
 ));
 
