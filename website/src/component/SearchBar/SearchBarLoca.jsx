@@ -3,6 +3,7 @@ import Geosuggest from "react-geosuggest";
 import "./SearchBarLoca.sass";
 import AutoComplete from "react-google-autocomplete";
 import Map from "../Map/Map";
+import { GoogleMap } from "react-google-maps";
 
 class SearchBarLoca extends Component {
   // const latValue = place.geometry.location.lat(),
@@ -16,13 +17,13 @@ class SearchBarLoca extends Component {
 
   onSuggestSelect(place) {
     // var location = place.location;
-    alert("HEllo")
+    console.log(place);
     // console.log(location);
-    this.setState({
-      mapPosition: {
+    // this.setState({
+    //   mapPosition: {
 
-      }
-    })
+    //   }
+    // })
   }
 
 
