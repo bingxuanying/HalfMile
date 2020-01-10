@@ -34,10 +34,6 @@ const MyMapComponent = compose(withScriptjs,withGoogleMap)(props => (
 ));
 
 class Map extends Component {
-  path = [
-    { lat: 38.5449065, lng: -121.7405167 },
-    { lat: 37.7749295, lng: -122.4194155 }
-  ];
   render() {
     return (
       <MyMapComponent
