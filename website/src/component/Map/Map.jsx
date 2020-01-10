@@ -104,7 +104,6 @@ const MyMapComponent = compose(
     defaultZoom={11}
     defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
   >
-    >
     {props.places &&
       props.places.map((place, i) => {
         let lat = parseFloat(place.latitude, 10);

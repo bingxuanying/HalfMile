@@ -74,9 +74,12 @@ class ContentCover extends Component {
       msg = "no address";
     } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
       msg = "no location";
-    } else if (!startDate) {
-      msg = "no start date";
-    } else {
+    }
+
+    // else if (!startDate) {
+    //   msg = "no start date";
+    // }
+    else {
       msg = "none";
     }
 
