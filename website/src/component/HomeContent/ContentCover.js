@@ -13,7 +13,7 @@ import {
   DayPickerRangeController
 } from "react-dates";
 import Calendar from "../Calender/Calender";
-import { Button, IconButton } from "@material-ui/core";
+import { Button, IconButton, ClickAwayListener } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
@@ -25,10 +25,7 @@ class ContentCover extends Component {
     super();
     this.state = {
       show: true,
-      guestOpen: false,
-      adultOverZero: true,
-      childOverZero: false,
-      infantOverZero: false
+      guestOpen: false
     };
     this.toggleDiv = this.toggleDiv.bind(this);
     this.handleStart = this.handleStart.bind(this);
@@ -96,9 +93,9 @@ class ContentCover extends Component {
     var adultColor = "grey";
     var childColor = "grey";
     var infantColor = "grey";
-    if (this.state.adultOverZero) adultColor = AirbnbColor;
-    if (this.state.childOverZero) childColor = AirbnbColor;
-    if (this.state.infantOverZero) infantColor = AirbnbColor;
+    if (this.props.guest.adults > 1) adultColor = AirbnbColor;
+    if (this.props.guest.children > 0) childColor = AirbnbColor;
+    if (this.props.guest.infants > 0) infantColor = AirbnbColor;
     return (
       <div className="content-cover">
         <img src={coverImg} className="cover-image" alt="Cover Image"></img>
@@ -141,7 +138,12 @@ class ContentCover extends Component {
                   onClick={this.toggleGuest}
                 >
                   {/* It shows how many guests depands on REDUX state */}
-                  <span>1 guest</span>
+                  <span>
+                    {this.props.guest.adults +
+                      this.props.guest.children +
+                      this.props.guest.infants}{" "}
+                    guest
+                  </span>
                   {this.state.guestOpen ? (
                     <ExpandLessIcon />
                   ) : (
@@ -149,78 +151,116 @@ class ContentCover extends Component {
                   )}
                 </Button>
                 {this.state.guestOpen && (
-                  <div className="start-box-guest-editbox">
-                    <div className="start-box-guest-editbox-form">
-                      <div className="start-box-guest-editbox-adult">
-                        <div className="text">Adults</div>
-                        <IconButton
-                          className="p-1"
-                          disabled={!this.state.adultOverZero}
-                        >
-                          <RemoveCircleOutlineIcon
-                            style={{
-                              fontSize: 36,
-                              color: adultColor
+                  <ClickAwayListener onClickAway={this.guestSave}>
+                    <div className="start-box-guest-editbox">
+                      <div className="start-box-guest-editbox-form">
+                        <div className="start-box-guest-editbox-adult">
+                          {/* adults */}
+                          <div className="text">Adults</div>
+                          <IconButton
+                            className="p-1"
+                            disabled={!(this.props.guest.adults > 1)}
+                            onClick={() => {
+                              this.props.guestDecrement("adults");
                             }}
-                          />
-                        </IconButton>
-                        <div className="number">1+</div>
-                        <IconButton className="p-1">
-                          <AddCircleOutlineIcon
-                            style={{ fontSize: 36, color: AirbnbColor }}
-                          />
-                        </IconButton>
+                          >
+                            <RemoveCircleOutlineIcon
+                              style={{
+                                fontSize: 36,
+                                color: adultColor
+                              }}
+                            />
+                          </IconButton>
+                          <div className="number">
+                            {this.props.guest.adults}
+                          </div>
+                          <IconButton
+                            className="p-1"
+                            onClick={() => {
+                              this.props.guestIncreament("adults");
+                            }}
+                          >
+                            <AddCircleOutlineIcon
+                              style={{ fontSize: 36, color: AirbnbColor }}
+                            />
+                          </IconButton>
+                        </div>
+                        <div className="start-box-guest-editbox-child">
+                          {/* children */}
+                          <div className="text">Child</div>
+                          <IconButton
+                            className="p-1"
+                            disabled={!(this.props.guest.children > 0)}
+                            onClick={() => {
+                              this.props.guestDecrement("children");
+                            }}
+                          >
+                            <RemoveCircleOutlineIcon
+                              style={{
+                                fontSize: 36,
+                                color: childColor
+                              }}
+                            />
+                          </IconButton>
+                          <div className="number">
+                            {this.props.guest.children}
+                          </div>
+                          <IconButton
+                            className="p-1"
+                            onClick={() => {
+                              this.props.guestIncreament("children");
+                            }}
+                          >
+                            <AddCircleOutlineIcon
+                              style={{ fontSize: 36, color: AirbnbColor }}
+                            />
+                          </IconButton>
+                        </div>
+                        <div className="start-box-guest-editbox-infant">
+                          {/* infants */}
+                          <div className="text">Infant</div>
+                          <IconButton
+                            className="p-1"
+                            disabled={!(this.props.guest.infants > 0)}
+                            onClick={() => {
+                              this.props.guestDecrement("infants");
+                            }}
+                          >
+                            <RemoveCircleOutlineIcon
+                              style={{
+                                fontSize: 36,
+                                color: infantColor
+                              }}
+                            />
+                          </IconButton>
+                          <div className="number">
+                            {this.props.guest.infants}
+                          </div>
+                          <IconButton
+                            className="p-1"
+                            onClick={() => {
+                              this.props.guestIncreament("infants");
+                            }}
+                          >
+                            <AddCircleOutlineIcon
+                              style={{ fontSize: 36, color: AirbnbColor }}
+                            />
+                          </IconButton>
+                        </div>
                       </div>
-                      <div className="start-box-guest-editbox-child">
-                        <div className="text">Child</div>
-                        <IconButton
-                          className="p-1"
-                          disabled={!this.state.childOverZero}
+                      <div className="start-box-guest-editbox-option">
+                        <span
+                          className="clear"
+                          onClick={() => this.props.guestClear()}
                         >
-                          <RemoveCircleOutlineIcon
-                            style={{
-                              fontSize: 36,
-                              color: childColor
-                            }}
-                          />
-                        </IconButton>
-                        <div className="number">0+</div>
-                        <IconButton className="p-1">
-                          <AddCircleOutlineIcon
-                            style={{ fontSize: 36, color: AirbnbColor }}
-                          />
-                        </IconButton>
-                      </div>
-                      <div className="start-box-guest-editbox-infant">
-                        <div className="text">Infant</div>
-                        <IconButton
-                          className="p-1"
-                          disabled={!this.state.infantOverZero}
-                        >
-                          <RemoveCircleOutlineIcon
-                            style={{
-                              fontSize: 36,
-                              color: infantColor
-                            }}
-                          />
-                        </IconButton>
-                        <div className="number">0+</div>
-                        <IconButton className="p-1">
-                          <AddCircleOutlineIcon
-                            style={{ fontSize: 36, color: AirbnbColor }}
-                          />
-                        </IconButton>
+                          Clear
+                        </span>
+                        <span className="save" onClick={this.guestSave}>
+                          Save
+                        </span>
                       </div>
                     </div>
-                    <div className="start-box-guest-editbox-option">
-                      <span className="clear" onClick={this.guestClear}>
-                        Clear
-                      </span>
-                      <span className="save" onClick={this.guestSave}>
-                        Save
-                      </span>
-                    </div>
-                  </div>
+                  </ClickAwayListener>
                 )}
               </div>
             </div>
@@ -264,7 +304,10 @@ const mapDispatchToProps = () => {
   return {
     updateHomeAdress: planActions.updateHomeAdress,
     updateError: planActions.updateError,
-    changeSection: stepActions.changeSection
+    changeSection: stepActions.changeSection,
+    guestIncreament: planActions.guestIncreament,
+    guestDecrement: planActions.guestDecrement,
+    guestClear: planActions.guestClear
   };
 };
 

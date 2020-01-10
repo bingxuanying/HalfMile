@@ -5,6 +5,27 @@ export const updateHomeAdress = home => {
   };
 };
 
+export const guestIncreament = name => {
+  return {
+    type: "GUEST_INCREAMENT",
+    payload: name
+  };
+};
+
+export const guestDecrement = name => {
+  return {
+    type: "GUEST_DECREMENT",
+    payload: name
+  };
+};
+
+export const guestClear = () => {
+  return {
+    type: "GUEST_CLEAR",
+    payload: null
+  };
+};
+
 export const updateError = (section, msg) => {
   var actionType = null;
   switch (section) {
