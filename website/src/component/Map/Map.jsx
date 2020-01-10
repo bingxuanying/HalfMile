@@ -8,7 +8,7 @@ import {
   Polyline
 } from "react-google-maps";
 import places from "./places.json";
-import { compose, withProps, withStateHandlers } from "recompose";
+import { compose } from "recompose";
 import "./Map.css";
 
 
