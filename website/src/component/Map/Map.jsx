@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { withGoogleMap, withScriptjs, GoogleMap, Marker, InfoWindow } from "react-google-maps";
+import {
+  withGoogleMap,
+  withScriptjs,
+  GoogleMap,
+  Marker,
+  InfoWindow,
+  Polyline
+} from "react-google-maps";
 import places from "./places.json";
 import { compose, withProps, withStateHandlers } from "recompose";
 import "./Map.css";
@@ -28,9 +35,9 @@ import "./Map.css";
 //           </Marker>
 //         )
 //       })}
-//     {/* <Marker position={{ lat: 34.0522342, lng: -118.2436849 }} /> */}   
+//     {/* <Marker position={{ lat: 34.0522342, lng: -118.2436849 }} /> */}
 //   </GoogleMap>
-  
+
 // ));
 
 // class Map extends Component {
@@ -64,17 +71,16 @@ import "./Map.css";
 //         containerElement={<div style={{ height: "100%" }} />}
 //         mapElement={<div style={{ height: "100%" }} />}
 //       />
-      
+
 //     );
 //   }
 // }
 
 const MyMapComponent = compose(
   withProps({
-    googleMapURL:
-      "https://maps.googleapis.com/maps/api",
+    googleMapURL: "https://maps.googleapis.com/maps/api",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: "100vh", width: "100%" }} />,
+    containerElement: <div style={{ height: "100%", width: "100%" }} />,
     mapElement: <div style={{ height: "100%" }} />
   }),
   withStateHandlers(
@@ -95,12 +101,14 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )(props => (
-  <GoogleMap defaultZoom={11} defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}>>
+  <GoogleMap
+    defaultZoom={11}
+    defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
+  >
     {props.places &&
       props.places.map((place, i) => {
         let lat = parseFloat(place.latitude, 10);
         let lng = parseFloat(place.longitude, 10);
-
         return (
           <Marker
             id={place.id}
@@ -128,7 +136,6 @@ class Map extends Component {
         zoom={10}
         places={places}
       />
-      
     );
   }
 }
