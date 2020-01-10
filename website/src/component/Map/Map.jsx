@@ -74,7 +74,7 @@ const MyMapComponent = compose(
     googleMapURL:
       "https://maps.googleapis.com/maps/api",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: "100vh", width: "100%" }} />,
+    containerElement: <div style={{ height: "100%", width: "100%" }} />,
     mapElement: <div style={{ height: "100%" }} />
   }),
   withStateHandlers(
@@ -100,7 +100,6 @@ const MyMapComponent = compose(
       props.places.map((place, i) => {
         let lat = parseFloat(place.latitude, 10);
         let lng = parseFloat(place.longitude, 10);
-
         return (
           <Marker
             id={place.id}
