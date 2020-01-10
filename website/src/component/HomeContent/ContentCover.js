@@ -39,18 +39,20 @@ class ContentCover extends Component {
   };
 
   handleSuggestSelect(e) {
-    var location = e.gmaps.adr_address;
-    var matches = /class="locality">(.*?)<\/span>/g.exec(location);
-    if (matches.length > 1) {
-      var city = matches[1];
+    if (e.gmaps) {
+      var location = e.gmaps.adr_address;
+      var matches = /class="locality">(.*?)<\/span>/g.exec(location);
+      if (matches.length > 1) {
+        var city = matches[1];
+      }
+
+      var homeSelect = {
+        name: city,
+        location: e.location
+      };
+
+      this.props.updateHomeAdress(homeSelect);
     }
-
-    var homeSelect = {
-      name: city,
-      location: e.location
-    };
-
-    this.props.updateHomeAdress(homeSelect);
   }
 
   handleGeoChange(e) {
@@ -74,12 +76,9 @@ class ContentCover extends Component {
       msg = "no address";
     } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
       msg = "no location";
-    }
-
-    // else if (!startDate) {
-    //   msg = "no start date";
-    // }
-    else {
+    } else if (!startDate) {
+      msg = "no start date";
+    } else {
       msg = "none";
     }
 
