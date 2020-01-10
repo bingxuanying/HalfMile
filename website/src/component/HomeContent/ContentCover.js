@@ -77,8 +77,6 @@ class ContentCover extends Component {
     var startDate = this.props.startDate;
     var msg = null;
     // Test code for snackBar
-    console.log(this.state.infoBarShow);
-
     if (!homeAddress.name) {
       msg = "no address";
     } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
@@ -90,7 +88,7 @@ class ContentCover extends Component {
     }
 
     if (msg !== "none") {
-      console.log(msg);
+      // console.log(msg);
       this.props.updateError("init", msg);
 
       // InfoBar things
