@@ -44,9 +44,7 @@ class Map extends Component {
         containerElement= {<div style={{ height: "100%", width: "100%" }} />}
         mapElement= {<div style={{ height: "100%" }} />}
       >
-        <Polyline path={this.path} options={{ strokeColor: "#FF0000 " }}/>  
-      </MyMapComponent>
-          
+      </MyMapComponent>          
     );
   }
 }
