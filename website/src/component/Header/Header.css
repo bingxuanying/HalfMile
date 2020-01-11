@@ -83,3 +83,8 @@
   width: 100%;
   transition: 0s;
 }
+
+#middle-bar {
+  background-color: white;
+  padding: 30px 520px;
+}
