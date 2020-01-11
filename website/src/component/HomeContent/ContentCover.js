@@ -13,19 +13,24 @@ import {
   DayPickerRangeController
 } from "react-dates";
 import Calendar from "../Calender/Calender";
-import { Button, IconButton, ClickAwayListener } from "@material-ui/core";
+import { Button, IconButton, ClickAwayListener, Fade } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
+import InfoBar from "../InfoBar";
+
+const AirbnbColor = "rgba(24,143,148,1)";
 
 class ContentCover extends Component {
   constructor() {
     super();
     this.state = {
       show: true,
-      guestOpen: false
+      guestOpen: false,
+      infoBarShow: false,
+      warningDelay: 2000
     };
     this.toggleDiv = this.toggleDiv.bind(this);
     this.handleStart = this.handleStart.bind(this);
@@ -38,9 +43,9 @@ class ContentCover extends Component {
     this.setState({ show: !show });
   };
 
-  handleSuggestSelect(e) {
-    if (e.gmaps) {
-      var location = e.gmaps.adr_address;
+  handleSuggestSelect(place) {
+    if (place) {
+      var location = place.gmaps.adr_address;
       var matches = /class="locality">(.*?)<\/span>/g.exec(location);
       if (matches.length > 1) {
         var city = matches[1];
@@ -48,7 +53,7 @@ class ContentCover extends Component {
 
       var homeSelect = {
         name: city,
-        location: e.location
+        location: place.location
       };
 
       this.props.updateHomeAdress(homeSelect);
@@ -71,6 +76,8 @@ class ContentCover extends Component {
     var homeAddress = this.props.homeAddress;
     var startDate = this.props.startDate;
     var msg = null;
+    // Test code for snackBar
+    console.log(this.state.infoBarShow);
 
     if (!homeAddress.name) {
       msg = "no address";
@@ -85,6 +92,26 @@ class ContentCover extends Component {
     if (msg !== "none") {
       console.log(msg);
       this.props.updateError("init", msg);
+
+      // InfoBar things
+      this.setState({ infoBarShow: true });
+      switch (msg) {
+        case "no address":
+        case "no location":
+          addressWarning();
+          setTimeout(() => {
+            setAddressBack();
+          }, this.state.warningDelay + 10);
+          break;
+        case "no start date":
+          dateWarning();
+          setTimeout(() => {
+            setDateBack();
+          }, this.state.warningDelay + 10);
+          break;
+        default:
+          break;
+      }
     } else if (msg === "none") {
       console.log(msg);
       this.props.changeSection("city");
@@ -273,6 +300,16 @@ class ContentCover extends Component {
             </div>
           </div>
         </div>
+
+        {this.state.infoBarShow && (
+          <InfoBar
+            open={this.state.infoBarShow}
+            onClose={this.closeInfoBar}
+            autoHideDuration={this.state.warningDelay}
+            message={this.props.error}
+            type="error"
+          />
+        )}
       </div>
     );
   }
@@ -290,7 +327,28 @@ class ContentCover extends Component {
   guestSave = () => {
     this.toggleGuest();
   };
+  closeInfoBar = (event, reason) => {
+    this.setState({ infoBarShow: false });
+  };
 }
+const addressWarning = () => {
+  document.getElementsByClassName("geosuggest__input")[0].style.border =
+    "1px solid red";
+  document.getElementsByClassName("start-box-subtitle")[0].style.color = "red";
+};
+const setAddressBack = () => {
+  document.getElementsByClassName("geosuggest__input")[0].style.border =
+    "1px solid #ebebeb";
+  document.getElementsByClassName("start-box-subtitle")[0].style.color =
+    "#484848";
+};
+const dateWarning = () => {
+  document.getElementsByClassName("start-box-subtitle")[1].style.color = "red";
+};
+const setDateBack = () => {
+  document.getElementsByClassName("start-box-subtitle")[1].style.color =
+    "#484848";
+};
 
 const mapStateToProps = state => {
   // console.log(state.plan[0].home);
@@ -301,7 +359,7 @@ const mapStateToProps = state => {
     error: state.plan[0].error
   };
 };
-const AirbnbColor = "rgba(24,143,148,1)";
+
 const mapDispatchToProps = () => {
   return {
     updateHomeAdress: planActions.updateHomeAdress,
