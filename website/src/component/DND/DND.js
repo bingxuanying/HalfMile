@@ -5,8 +5,8 @@ import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import "./DND.css";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import "./DND.sass";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -51,25 +51,52 @@ class DND extends Component {
                 }}
               >
                 {items.map((item, index) => (
-                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                  <Draggable
+                    id={item.id}
+                    key={item.id}
+                    draggableId={item.id}
+                    index={index}
+                  >
                     {(provided, snapshot) => (
                       <div
-                        className={
-                          snapshot.isDragging ? "dnd-bar-avtive" : "dnd-bar"
-                        }
+                        className="dnd-bar"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
+                        onMouseOver={() => {
+                          document.getElementsByClassName(
+                            "fa-bars"
+                          )[0].style.display = "initial";
+                        }}
+                        onMouseOut={() => {
+                          document.getElementsByClassName(
+                            "fa-bars"
+                          )[0].style.display = "none";
+                        }}
                       >
-                        <div
-                          className="dnd-bar-handle"
-                          {...provided.dragHandleProps}
-                        >
+                        <div className="dnd-bar-delete">
                           <FontAwesomeIcon
-                            icon={faBars}
+                            id={item.id}
+                            className="fa-bars"
+                            icon={faTimes}
                             size="1x"
-                          ></FontAwesomeIcon>
+                          />
                         </div>
-                        <div className="dnd-bar-desination">{item.name}</div>
+
+                        <div
+                          className={
+                            snapshot.isDragging
+                              ? "dnd-bar-item-avtive"
+                              : "dnd-bar-item"
+                          }
+                        >
+                          <div
+                            className="dnd-bar-handle"
+                            {...provided.dragHandleProps}
+                          >
+                            <FontAwesomeIcon icon={faBars} size="1x" />
+                          </div>
+                          <div className="dnd-bar-content">{item.name}</div>
+                        </div>
                       </div>
                     )}
                   </Draggable>

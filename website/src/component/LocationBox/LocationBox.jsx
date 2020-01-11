@@ -24,6 +24,7 @@ class LocationBox extends Component {
       <div className="locationbox-container">
         <div
           style={{
+            marginLeft: "35px",
             padding: "2px"
           }}
         >
