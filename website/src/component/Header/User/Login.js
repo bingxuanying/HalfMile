@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../HeaderNav/HeaderNav.css";
 import "../User/User.sass";
-import {Nav, Modal} from "react-bootstrap";
+import {Nav, Modal, Container, Row} from "react-bootstrap";
 import {FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
