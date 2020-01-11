@@ -28,8 +28,7 @@ const MyMapComponent = compose(withScriptjs,withGoogleMap)(props => (
             <Polyline path={path} options={{ strokeColor: "#FF0000 " }}/>
           </div>    
         );
-      })}
-    
+      })}    
   </GoogleMap>
 ));
 
