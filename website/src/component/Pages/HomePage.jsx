@@ -20,7 +20,6 @@ import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
 import guideImg4 from "../Card/assets/guide3.jpg";
 import { Form } from "react-bootstrap";
-import { NPS } from "../Api";
 
 // For TEST Purpose
 class HomePage extends Component {
@@ -80,7 +79,6 @@ class HomePage extends Component {
         endDate="12/8"
       />
     ];
-    NPS.doSomeThing();
 
     return (
       <div className="homepage-containter">

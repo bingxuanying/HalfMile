@@ -5,11 +5,36 @@ import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview";
 import "./ServicePage.sass";
 import { SearchResult } from "../SearchResult";
-
+import {
+  TextField,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  FormControl
+} from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { NationParkQ } from "../Api";
 import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
 
 class ServicePage2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // keyWord here is only for test, we will get it from Redux
+      keyWord: ""
+    };
+  }
+  handleInput = event => {
+    event.preventDefault();
+    this.setState({ keyWord: event.target.value });
+  };
+
+  searchClick = () => {
+    NationParkQ(this.state.keyWord);
+    console.log(this.state.keyWord);
+  };
   render() {
     return (
       <div className="servicepage-containter">
@@ -20,7 +45,25 @@ class ServicePage2 extends Component {
           {/* sdie bar section */}
           <div className="servicepage-sidebar">
             <div className="servicepage-sidebar-searchbar">
-              <SearchBarLoca />
+              <FormControl>
+                <InputLabel>Enter Place U want to go</InputLabel>
+                <Input
+                  id="standard-adornment-password"
+                  type={"text"}
+                  value={this.state.keyWord}
+                  onChange={this.handleInput}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={this.searchClick}
+                      >
+                        <SearchIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                />
+              </FormControl>
             </div>
             <div className="servicepage-sidebar-menu">
               <SearchResult />
