@@ -17,6 +17,7 @@ class SearchResult extends Component {
     const cards = this.fatchCard(rs);
     return <div className="cards-holder">{cards}</div>;
   }
+
   fatchCard = rs => {
     return (
       <div className="card-wrapper">
@@ -28,7 +29,7 @@ class SearchResult extends Component {
               img={img}
               id={park.id}
               latLong={park.latLong}
-              stars={5}
+              stars={null}
               timeCost="2-3h"
             />
           );

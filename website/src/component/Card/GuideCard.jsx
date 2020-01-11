@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import { MdStar, MdStarHalf } from "react-icons/md";
 import "./index.sass";
+import { buildStars } from "./util/buildStars";
 
 class GuideCard extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class GuideCard extends Component {
     };
   }
   render() {
-    var starGroup = this.buildStars();
+    var starGroup = buildStars(this.state.stars);
     return (
       <Card className="guide-card card border-0 text-left ml-0 mr-4">
         <Card.Img
@@ -35,24 +36,6 @@ class GuideCard extends Component {
       </Card>
     );
   }
-  buildStars = () => {
-    let stars = [];
-    let i = 0;
-    for (i = 0; i < Math.floor(this.state.stars); i++) {
-      stars.push(
-        <span key={i}>
-          <MdStar />
-        </span>
-      );
-    }
-    if (!Number.isInteger(this.state.stars))
-      stars.push(
-        <span key={i}>
-          <MdStarHalf />
-        </span>
-      );
-    return stars;
-  };
 }
 
 export default GuideCard;

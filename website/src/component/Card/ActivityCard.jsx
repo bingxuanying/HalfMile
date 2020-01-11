@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import { Button, IconButton } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-import { MdStar, MdStarHalf } from "react-icons/md";
 
+import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
 class ActivityCard extends Component {
@@ -22,28 +22,10 @@ class ActivityCard extends Component {
     function showLocation() {
       console.log(latLong);
     }
-    function buildStars() {
-      let stars = [];
-      let i = 0;
-      for (i = 0; i < Math.floor(rateStars); i++) {
-        stars.push(
-          <span key={i}>
-            <MdStar />
-          </span>
-        );
-      }
-      if (!Number.isInteger(rateStars))
-        stars.push(
-          <span key={i}>
-            <MdStarHalf />
-          </span>
-        );
-      return stars;
-    }
-    const starGroup = buildStars();
+    const starGroup = buildStars(rateStars);
 
     return (
-      <Card className="activity-card card ml-0">
+      <Card className="activity-card card ml-1">
         <Card.Img className="activity-card-img" variant="top" src={image} />
         <Card.Body className="activity-card-body pl-0 pt-2 pb-1">
           <div className="activity-card-body-title">
