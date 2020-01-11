@@ -1,3 +1,5 @@
+$airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+
 .guide-card
     overflow: hidden
     .guide-card-img
@@ -93,3 +95,35 @@
         .trip-card-shade-option
             position: absolute
             left: 90%
+.activity-card
+    position: relative
+    width: 100%
+    height: auto
+    border-radius: 5px
+    margin: 5px
+    .activity-card-img
+        width: 100%
+        height: 200px
+        object-fit: cover
+        padding: 10px
+        border-radius: 10px
+    .activity-card-body
+        .activity-card-body-title
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+            .activity-card-body-title-text
+                font-family: $airbnb-font
+                margin-bottom: 0px
+            .activity-card-body-title-icon
+        .activity-card-body-rate
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            align-items: center
+        .activity-card-option
+            display: flex
+            flex-direction: row
+            justify-content: center
+            margin: 5px

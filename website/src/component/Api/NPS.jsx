@@ -1,4 +1,4 @@
-//API: lFXKhAtfjp1AENxaKYfQeyzPjfIHicorl6zvTolu
+//NPS API: lFXKhAtfjp1AENxaKYfQeyzPjfIHicorl6zvTolu
 
 export default class NPS {
   static doSomeThing() {

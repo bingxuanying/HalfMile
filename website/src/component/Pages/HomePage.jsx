@@ -4,7 +4,7 @@ import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
 
 import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
-import "./HomePage.css";
+import "./HomePage.sass";
 
 import adImg from "../Card/assets/AdvantureEx1.jpg";
 import adImg1 from "../Card/assets/AdvantureEx2.jpg";

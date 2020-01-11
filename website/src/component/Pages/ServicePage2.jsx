@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview";
-import "./ServicePage.css";
+import "./ServicePage.sass";
+import { SearchResult } from "../SearchResult";
 
 import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
@@ -21,7 +22,9 @@ class ServicePage2 extends Component {
             <div className="servicepage-sidebar-searchbar">
               <SearchBarLoca />
             </div>
-            <div className="servicepage-sidebar-menu"></div>
+            <div className="servicepage-sidebar-menu">
+              <SearchResult />
+            </div>
           </div>
           {/* map section */}
           <div className="servicepage2-map">

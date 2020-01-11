@@ -3,7 +3,7 @@ import Calender from "../Calender/Calender";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import LocationBox from "../LocationBox/LocationBox";
-import "./ServicePage.css";
+import "./ServicePage.sass";
 import Map from "../Map/Map";
 
 class ServicePage1 extends Component {

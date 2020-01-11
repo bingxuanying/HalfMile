@@ -1,0 +1,77 @@
+{
+  "total": "33",
+  "data": [
+    {
+      "states": "CA",
+      "latLong": "lat:37.85982543, long:-122.6007386",
+      "description": "Experience a park so rich it supports 19 distinct ecosystems with over 2,000 plant and animal species. Go for a hike, enjoy a vista, have a picnic or learn about the centuries of overlapping history from California’s indigenous cultures, Spanish colonialism, the Mexican Republic, US military expansion and the growth of San Francisco. All of this and more awaits you, so get out and find your park.",
+      "designation": "National Recreation Area",
+      "parkCode": "goga",
+      "id": "0E797FA8-6E31-418B-A68F-13CEE37A2AF5",
+      "directionsInfo": "Golden Gate National Recreation Area has many sites that span over 60 miles of mostly coastal areas north and south of San Francisco. Park areas can be reached by Highways 1, 101 and 280 from the north and south San Francisco Bay Area, and by Highway 80 from the East Bay. \n\nTo access park headquarters at Fort Mason, please use the entrance at Franklin and Bay Streets in San Francisco.",
+      "directionsUrl": "http://www.nps.gov/goga/planyourvisit/directions.htm",
+      "fullName": "Golden Gate National Recreation Area",
+      "url": "https://www.nps.gov/goga/index.htm",
+      "weatherInfo": "Winter is characterized by sporadic rain and cool weather punctuated by brilliant sunshine. In winter the grass greens. Trees and flowers dormant through winter start blooming in late February or early March and last until May or June. By July, summer fog predominates in most coastal areas of the park. Grasses and plants have now turned to the golden brown and muted grays characteristic of California summer and fall.  September and October skies are clear and sunshine is abundant everywhere in the park.",
+      "name": "Golden Gate"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:37.9828422, long:-122.1326097",
+      "description": "John Muir played many roles in his life, all of which helped him succeed in his role as an advocate for Nature. As America’s most famous naturalist and conservationist, Muir fought to protect the wild places he loved, places we can still visit today. Muir’s writings convinced the U.S. government to protect Yosemite, Sequoia, Grand Canyon and Mt. Rainier as national parks.",
+      "designation": "National Historic Site",
+      "parkCode": "jomu",
+      "id": "F339067B-A588-4BF3-9D90-1C1BA1249203",
+      "directionsInfo": "Please visit our main website for specific directions to our park. You may call the John Muir Visitor Center for additional information.",
+      "directionsUrl": "http://www.nps.gov/jomu/planyourvisit/directions.htm",
+      "fullName": "John Muir National Historic Site",
+      "url": "https://www.nps.gov/jomu/index.htm",
+      "weatherInfo": "The Mediterranean climate of Martinez features hot, dry summers with lower temperatures near 60º F and upper temperatures near 100º F. The heat gives way to cool, rainy winters with lows near 45º F and highs near 75º F. Fall and spring can bring rain and temperatures from 55-80º F.\n\nMarch to April: wet/dry, 60-80º F\nMay to September: very dry, 60-100º+ F\nOctober to November: dry/wet, 55-80º F\nDecember to February: wet, 45-75º F",
+      "name": "John Muir"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:36.72559195, long:-118.1547177",
+      "description": "In 1942, the United States government ordered more than 110,000 men, women, and children to leave their homes and detained them in remote, military-style camps. Manzanar War Relocation Center was one of ten camps where Japanese American citizens and resident Japanese aliens were incarcerated during World War II.",
+      "designation": "National Historic Site",
+      "parkCode": "manz",
+      "id": "249AF67F-BB6C-4D0A-B632-07BEE855D24B",
+      "directionsInfo": "Manzanar is located on the west side of U.S. Highway 395, 9 miles north of Lone Pine, California and 6 miles south of Independence, CA.",
+      "directionsUrl": "http://home.nps.gov/manz/planyourvisit/directions.htm",
+      "fullName": "Manzanar National Historic Site",
+      "url": "https://www.nps.gov/manz/index.htm",
+      "weatherInfo": "Manzanar is located in the Owens Valley at 4,000' elevation, at the eastern base of the Sierra Nevada. We get little precipitation but we do have four distinct seasons. Summer temperatures can soar over 100 degrees. Winter highs are usually in the 40's. Nighttime temperatures year round are 30 to 40 degrees less than daytime highs. High winds are common in any season.",
+      "name": "Manzanar"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:41.37237268, long:-124.0318129",
+      "description": "Most people know Redwood as home to the tallest trees on Earth. The parks also protect vast prairies, oak woodlands, wild river-ways, and nearly 40-miles of rugged coastline.  For thousands of years people have lived in this verdant landscape.  Together, the National Park Service and California State Parks are managing and restoring these lands for the inspiration, enjoyment, and education of all.",
+      "designation": "National and State Parks",
+      "parkCode": "redw",
+      "id": "041B325C-A34F-4027-8E41-1DF3F9A1D799",
+      "directionsInfo": "Redwood National and State Parks is located in northernmost coastal California - almost on the Oregon border. The parks are about 60-miles long, with four visitor centers from north to south.\n\nWe are a six to seven-hour drive (325 miles) north of San Francisco, a six-hour drive (330 miles) south of Portland, OR and a four-hour drive (170 miles) west of Redding, CA.",
+      "directionsUrl": "http://www.nps.gov/redw/planyourvisit/directions.htm",
+      "fullName": "Redwood National and State Parks",
+      "url": "https://www.nps.gov/redw/index.htm",
+      "weatherInfo": "Visitors should be prepared for cooler and damp weather. Dress in layers and expect to get wet.\nYear-round temperatures along California's redwood coast: mid-40s°F (7°C) to mid-60s°F (18°C). \n\nSummer can be foggy, with highs occasionally reaching low 70s°F (20°C). \nWinters are cooler with considerable rain. October through April averages 60-80 inches of rain over the region.",
+      "name": "Redwood"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:37.84883288, long:-119.5571873",
+      "description": "Not just a great valley, but a shrine to human foresight, the strength of granite, the power of glaciers, the persistence of life, and the tranquility of the High Sierra.\n\nFirst protected in 1864, Yosemite National Park is best known for its waterfalls, but within its nearly 1,200 square miles, you can find deep valleys, grand meadows, ancient giant sequoias, a vast wilderness area, and much more.",
+      "designation": "National Park",
+      "parkCode": "yose",
+      "id": "4324B2B4-D1A3-497F-8E6B-27171FAE4DB2",
+      "directionsInfo": "You can drive to Yosemite all year and enter via Highways 41, 140, and 120 from the west. Tioga Pass Entrance (via Highway 120 from the east) is closed from around November through late May or June. Hetch Hetchy is open all year but may close intermittently due to snow.\n\nPlease note that GPS units do not always provide accurate directions to or within Yosemite.",
+      "directionsUrl": "http://www.nps.gov/yose/planyourvisit/driving.htm",
+      "fullName": "Yosemite National Park",
+      "url": "https://www.nps.gov/yose/index.htm",
+      "weatherInfo": "Yosemite National Park covers nearly 1,200 square miles (3,100 square km) in the Sierra Nevada, with elevations ranging from about 2,000 feet (600 m) to 13,000 ft (4,000 m). Yosemite receives 95% of its precipitation between October and May (and over 75% between November and March). Most of Yosemite is blanketed in snow from about November through May. (Yosemite Valley can be rainy or snowy in any given winter storm.)",
+      "name": "Yosemite"
+    }
+  ],
+  "limit": "5",
+  "start": "1"
+}

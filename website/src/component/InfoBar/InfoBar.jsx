@@ -85,10 +85,10 @@ class InfoBar extends Component {
   };
   getDefault = () => {
     if (
-      this.state.type != "success" &&
-      this.state.type != "info" &&
-      this.state.type != "warning" &&
-      this.state.type != "error"
+      this.state.type !== "success" &&
+      this.state.type !== "info" &&
+      this.state.type !== "warning" &&
+      this.state.type !== "error"
     ) {
       console.error("Wrong Type to InfoBar");
       this.setState({ type: "info" });
