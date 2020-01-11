@@ -12,7 +12,7 @@ class UserProfileLogo extends Component{
                 <Nav.Link>
                     <Container>
                         <Row>
-                            <Col xs={6} md={2}>
+                            <Col xs={2} md={2}>
                                 <Image src="https://pbs.twimg.com/profile_images/1197795247335456768/qqmjESKn_bigger.jpg" roundedCircle />
                             </Col>
                         </Row>
