@@ -1,0 +1,46 @@
+.dnd-bar 
+  user-select: none
+  width: 100%
+  height: 44px
+  margin-top: -2px
+  background: transparent
+  display: flex
+  .dnd-bar-delete 
+    width: 40px
+    height: 100%
+    background: transparent
+    text-align: center
+    line-height: 44px
+    .fa-bars
+      color: black
+      opacity: 0.3
+      // display: none
+      &:hover
+        opacity: 1
+      &:active
+        opacity: 0.7
+  .dnd-bar-item
+    user-select: none
+    width: 100%
+    height: 44px
+    background-color: #f9f9f9
+    border: 2px solid #dfdfdf
+    display: flex
+    .dnd-bar-handle 
+      width: calc(44px - 2px)
+      height: calc(44px - 4px)
+      background-color: #dfdfdf
+      margin-right: 8px
+      text-align: center
+      line-height: calc(44px - 4px)
+      font-size: 16px
+      color: white
+    .dnd-bar-content 
+      height: 100%
+      line-height: calc(44px - 4px)
+      color: #485969
+      font-weight: 500
+      font-size: 16
+  .dnd-bar-item-avtive 
+    background-color: #dfdfdf
+    @extend .dnd-bar-item
