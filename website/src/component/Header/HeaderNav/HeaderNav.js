@@ -32,7 +32,7 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-        <Nav.Link exact="true" href="/">
+        <Nav.Link exact="true" href="/" className="nav-link">
           <div className="nav-btn" size="lg" variant="outline-dark">
             Home
           </div>

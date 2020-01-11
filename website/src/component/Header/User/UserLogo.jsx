@@ -2,7 +2,7 @@ import React, { useState, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../HeaderNav/HeaderNav.css";
 import "../User/User.sass";
-import { Nav, Modal, Container, Row, Image, Col } from "react-bootstrap";
+import { Nav, Modal, Container, Row, Image, Col, Figure } from "react-bootstrap";
 import { FaUser, FaLock } from "react-icons/fa";
 
 class UserProfileLogo extends Component{
@@ -10,13 +10,14 @@ class UserProfileLogo extends Component{
         return(
             <Nav>
                 <Nav.Link>
-                    <Container>
-                        <Row>
-                            <Col xs={2} md={2}>
-                                <Image src="https://pbs.twimg.com/profile_images/1197795247335456768/qqmjESKn_bigger.jpg" roundedCircle />
-                            </Col>
-                        </Row>
-                    </Container>
+                    {/* <Figure id="user-logo">
+                        <Figure.Image
+                            width={20}
+                            height={20}
+                            alt="171x180"
+                            src="https://pbs.twimg.com/profile_images/1197795247335456768/qqmjESKn_bigger.jpg"
+                        />
+                    </Figure> */}
                 </Nav.Link>
             </Nav>
         );
