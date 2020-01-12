@@ -16,20 +16,13 @@
   max-width: 100%;
 }
 
-.nav-btn {
-  display: inline-block;
-  list-style: none;
-  margin-top: -2px;
-  text-align: right;
-  transition: transform 0.5s ease-out;
-  -webkit-transition: transform 0.5s ease-out;
-}
 
 
 
 .navbar li {
   display: inline-block;
   margin-top: 30px;
+  padding: 0 0 0 0;
 }
 
 .nav-btn {
@@ -39,13 +32,19 @@
   font-weight: bold;
   height: 40px;
   letter-spacing: 0.3px;
-  margin: 0 12px -15px;
-  padding: 0 0.2px;
+  margin: 0 10px -15px;
+  padding: 0 0.3px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
+  display: inline-block;
+  list-style: none;
+  margin-top: 20px;
+  text-align: right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
 }
 
 .nav-btn:hover {
@@ -90,12 +89,12 @@
 #middle-bar {
   display: inline-block;
   background-color: black;
-  width: 80%;
+  width: 85%;
   overflow: auto;
 }
 
-#user-logo {
-  margin-top: 20px;
-  padding: 0 0 0 0;
-
+.user-logo {
+  margin: 0 0 0 0;
+  margin-left: 0;
+  padding-top: 3px;
 }

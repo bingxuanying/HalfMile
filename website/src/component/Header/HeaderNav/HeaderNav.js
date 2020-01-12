@@ -42,11 +42,9 @@ class HeaderNav extends Component {
             Help
           </div>
         </Nav.Link>
-        {/* SignUp Button */}
-        <SignUp />
-        {/* Login Button */}
+        {/* <SignUp /> */}
         <UserProfileLogo />
-        <Login />
+        {/* <Login /> */}
       </Nav>
     );
   }
