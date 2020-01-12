@@ -2,11 +2,10 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import { Button, IconButton } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
-
 import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
-class ActivityCard extends Component {
+class HotelCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,50 +13,48 @@ class ActivityCard extends Component {
     };
   }
   render() {
-    const name = this.props.name;
-    // const price = this.props.price;
-    const image = this.props.img;
-    const id = this.props.id;
-    const latLong = this.props.latLong;
-    const rateStars = this.props.stars;
-    const timeCost = this.props.timeCost;
-    const info = this.props.info;
-    function addToList() {
-      console.log(id);
-    }
+    const name = this.props.obj.name;
+    const price = this.props.obj.price;
+    const image = this.props.obj.img;
+    const latLong = this.props.obj.latLong;
+    const rateStars = this.props.obj.stars;
+    const info = this.props.obj.info;
+
+    function addToList() {}
     function showLocation() {
       console.log(latLong);
     }
     const starGroup = buildStars(rateStars);
 
     return (
-      <Card className="activity-card card ml-1">
-        <Card.Img className="activity-card-img" variant="top" src={image} />
+      <Card className="hotel-card card ml-1">
+        <Card.Img className="hotel-card-img" variant="top" src={image} />
         <div
-          className="activity-card-shade-wrapper"
+          className="hotel-card-shade-wrapper"
           onMouseEnter={this.openInfo}
           onMouseLeave={this.closeInfo}
         >
-          {this.state.hover && <div className="activity-card-shade"></div>}
+          {this.state.hover && <div className="hotel-card-shade"></div>}
         </div>
-
-        <Card.Body className="activity-card-body pl-0 pt-2 pb-1">
-          <div className="activity-card-body-title">
-            <Card.Title className="activity-card-body-title-text">
+        <Card.Body className="hotel-card-body pl-0 pt-2 pb-1">
+          <div className="hotel-card-body-title">
+            <Card.Title className="hotel-card-body-title-text">
               {name}
             </Card.Title>
-            <div className="activity-card-body-title-icon">
+            <div className="hotel-card-body-title-icon">
               <IconButton onClick={showLocation}>
                 <LocationOnIcon />
               </IconButton>
             </div>
           </div>
-          <div className="activity-card-body-rate">
+          <div className="hotel-card-body-rate">
             <div>{starGroup}</div>
-            <div>Est. Time&nbsp;&nbsp;{timeCost}</div>
+            <div>Est. Cost&nbsp;&nbsp;${price}</div>
           </div>
-          <div className="activity-card-option">
-            <Button onClick={addToList}>Add to my list</Button>
+          <div className="hotel-card-option">
+            <Button color="primary" onClick={addToList}>
+              Add to my list
+            </Button>
           </div>
         </Card.Body>
       </Card>
@@ -77,4 +74,4 @@ class ActivityCard extends Component {
   };
 }
 
-export default ActivityCard;
+export default HotelCard;

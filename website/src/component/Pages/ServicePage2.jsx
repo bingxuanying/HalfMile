@@ -65,7 +65,7 @@ class ServicePage2 extends Component {
               </FormControl>
             </div>
             <div className="servicepage-sidebar-menu">
-              <SearchResult type="activity" />
+              <SearchResult type="hotel" />
             </div>
           </div>
           {/* map section */}
