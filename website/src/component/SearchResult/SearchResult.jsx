@@ -11,19 +11,38 @@ import FlightCard from "../Card/FlightCard";
 class SearchResult extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      type: this.props.type
+    };
   }
 
   render() {
-    // const cards = this.fatchActivityCard(rs);
-    const cards = this.fatchFlightCard(flightRs);
-    return <div className="cards-holder">{cards}</div>;
+    let cards = [];
+    let style = {};
+    switch (this.state.type) {
+      case "activity":
+        cards = this.fatchActivityCard(rs);
+        break;
+      case "flight":
+        cards = this.fatchFlightCard(flightRs);
+        style = { overflowY: "auto" };
+        break;
+      default:
+        console.error("wrong type in SearchResult");
+        break;
+    }
+
+    return (
+      <div className="cards-holder" style={style}>
+        {cards}
+      </div>
+    );
   }
 
   fatchActivityCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.data.map(function (park, _) {
+        {rs.data.map(function(park, _) {
           return (
             <ActivityCard
               name={park.fullName}
@@ -43,14 +62,12 @@ class SearchResult extends Component {
   fatchFlightCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function (flight, _) {
-          return (
-            <FlightCard obj={flight} />
-          );
+        {rs.map(function(flight, index) {
+          return <FlightCard obj={flight} key={"flight" + index} />;
         })}
       </div>
     );
-  }
+  };
 }
 
 export default SearchResult;

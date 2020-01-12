@@ -1,4 +1,5 @@
 $airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+$google-font: Roboto, HelveticaNeue, Arial, sans-serif
 
 .guide-card
     overflow: hidden
@@ -131,3 +132,48 @@ $airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sa
             justify-content: center
             margin: 5px
 .flight-card
+    width: 100%
+    border: 8px
+    padding: 16px 24px
+    .flight-card-body
+        display: flex
+        flex-direction: row
+        justify-content: space-between
+        align-items: center
+        font-family: $google-font
+        color: #3c4043
+        .flight-card-body-img
+            padding-right: 33px
+            display: flex
+            flex-direction: row
+            .flight-card-body-time
+                margin-left: 50px
+                min-width: 200px
+                .time
+                    font-weight: bold
+                    @extend .main-font
+                .flight-company
+                    @extend .light-font
+        .flight-card-body-space
+            width: 150px
+        .flight-card-body-duration
+            min-width: 80px
+            .duration
+                @extend .main-font
+            .airports
+                @extend .light-font
+        .flight-card-body-stops
+            min-width: 80px
+            @extend .main-font
+        .flight-card-body-option
+            min-width: 100px
+            .flight-card-body-price
+                @extend .main-font
+.main-font
+    font-family: $google-font
+    font-size: 17px
+    color: #3c4043
+.light-font
+    font-family: $google-font
+    font-size: 13px
+    color: rgba(0,0 ,0 ,0.56)

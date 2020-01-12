@@ -20,7 +20,7 @@ import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
 import guideImg4 from "../Card/assets/guide3.jpg";
 import { Form } from "react-bootstrap";
-
+import { SearchResult } from "../SearchResult";
 // For TEST Purpose
 class HomePage extends Component {
   render() {
@@ -84,6 +84,11 @@ class HomePage extends Component {
       <div className="homepage-containter">
         <div className="homepage-body">
           <ContentCover />
+          {/* ---------- Test FlightCard Only ---------- */}
+          <div className="flight-card-holder">
+            <SearchResult type="flight"/>
+          </div>
+          {/* ---------- Test FlightCard Only ---------- */}
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}
