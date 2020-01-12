@@ -32,8 +32,7 @@ class ServicePage2 extends Component {
   };
 
   searchClick = () => {
-    NationParkQ(this.state.keyWord);
-    console.log(this.state.keyWord);
+    NationParkQ({ key: this.state.keyWord, stateCode: "CA" });
   };
   render() {
     return (

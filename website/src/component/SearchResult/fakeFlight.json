@@ -1,0 +1,56 @@
+[
+    {
+        "flightNumber": "AA2969",
+        "flightCompany": "American Airline",
+        "departDate": "1/27/2020",
+        "arriveDate": "1/27/2020",
+        "departTime": "19:06",
+        "arriveTime": "20:41",
+        "duration": "1h 36m",
+        "departAirport": "SMF",
+        "arriveAirport": "LAX",
+        "stops": 0,
+        "price": {
+            "basicEco": 127,
+            "eco": 197,
+            "busness": 477,
+            "first": 999
+        }
+    },
+    {
+        "flightNumber": "DL3654",
+        "flightCompany": "Detal Airline",
+        "departDate": "1/27/2020",
+        "arriveDate": "1/27/2020",
+        "departTime": "12:45",
+        "arriveTime": "14:20",
+        "duration": "1h 35m",
+        "departAirport": "SMF",
+        "arriveAirport": "LAX",
+        "stops": 0,
+        "price": {
+            "basicEco": 146,
+            "eco": 200,
+            "busness": 400,
+            "first": 800
+        }
+    },
+    {
+        "flightNumber": "UA5679",
+        "flightCompany": "United Airline",
+        "departDate": "1/27/2020",
+        "arriveDate": "1/27/2020",
+        "departTime": "19:09",
+        "arriveTime": "20:53",
+        "duration": "1h 44m",
+        "departAirport": "SMF",
+        "arriveAirport": "LAX",
+        "stops": 0,
+        "price": {
+            "basicEco": 147,
+            "eco": 254,
+            "busness": 508,
+            "first": 1016
+        }
+    }
+]

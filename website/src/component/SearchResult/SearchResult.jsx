@@ -5,6 +5,9 @@ import img from "./assets/fakeNP.jpg";
 
 // rs is for test only
 import rs from "./nps-rs.json";
+import flightRs from "./fakeFlight.json";
+import FlightCard from "../Card/FlightCard";
+
 class SearchResult extends Component {
   constructor(props) {
     super(props);
@@ -12,16 +15,15 @@ class SearchResult extends Component {
   }
 
   render() {
-    // rs is for test only
-    console.log(rs);
-    const cards = this.fatchCard(rs);
+    // const cards = this.fatchActivityCard(rs);
+    const cards = this.fatchFlightCard(flightRs);
     return <div className="cards-holder">{cards}</div>;
   }
 
-  fatchCard = rs => {
+  fatchActivityCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.data.map(function(park, _) {
+        {rs.data.map(function (park, _) {
           return (
             <ActivityCard
               name={park.fullName}
@@ -37,6 +39,18 @@ class SearchResult extends Component {
       </div>
     );
   };
+
+  fatchFlightCard = rs => {
+    return (
+      <div className="card-wrapper">
+        {rs.map(function (flight, _) {
+          return (
+            <FlightCard obj={flight} />
+          );
+        })}
+      </div>
+    );
+  }
 }
 
 export default SearchResult;
