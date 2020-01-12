@@ -25,8 +25,11 @@
   -webkit-transition: transform 0.5s ease-out;
 }
 
+
+
 .navbar li {
   display: inline-block;
+  margin-top: 30px;
 }
 
 .nav-btn {
@@ -82,4 +85,17 @@
   background: transparent;
   width: 100%;
   transition: 0s;
+}
+
+#middle-bar {
+  display: inline-block;
+  background-color: black;
+  width: 80%;
+  overflow: auto;
+}
+
+#user-logo {
+  margin-top: 20px;
+  padding: 0 0 0 0;
+
 }

@@ -1,9 +1,10 @@
 import React, { Component, useState } from "react";
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container, Row, Image, Col } from "react-bootstrap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
 import datePicker from "../../Calender/Calender";
+import UserProfileLogo from "../User/UserLogo";
 
 class HeaderNav extends Component {
   constructor() {
@@ -31,7 +32,7 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-        <Nav.Link exact="true" href="/">
+        <Nav.Link exact="true" href="/" className="nav-link">
           <div className="nav-btn" size="lg" variant="outline-dark">
             Home
           </div>
@@ -44,6 +45,7 @@ class HeaderNav extends Component {
         {/* SignUp Button */}
         <SignUp />
         {/* Login Button */}
+        <UserProfileLogo />
         <Login />
       </Nav>
     );
