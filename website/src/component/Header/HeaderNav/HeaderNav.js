@@ -33,7 +33,7 @@ class HeaderNav extends Component {
     return (
       <Nav>
         <Nav.Link exact="true" href="/" className="nav-link">
-          <div className="nav-btn" size="lg" variant="outline-dark">
+          <div className="nav-btn" id="home-button" size="lg" variant="outline-dark">
             Home
           </div>
         </Nav.Link>
@@ -41,12 +41,11 @@ class HeaderNav extends Component {
           <div className="nav-btn" size="lg" variant="outline-dark">
             Help
           </div>
+          
         </Nav.Link>
-        {/* SignUp Button */}
-        <SignUp />
-        {/* Login Button */}
+        {/* <SignUp /> */}
         <UserProfileLogo />
-        <Login />
+        {/* <Login /> */}
       </Nav>
     );
   }

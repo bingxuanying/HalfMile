@@ -32,10 +32,8 @@ class HeaderContainer extends Component {
       <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
         <HeaderLogo />
         <HeaderMid />
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        
-        <Navbar.Collapse className="navbar">
-          
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />      
+        <Navbar.Collapse className="navbar">         
           <HeaderNav />
         </Navbar.Collapse>
         

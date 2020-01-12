@@ -16,37 +16,37 @@
   max-width: 100%;
 }
 
-.nav-btn {
-  display: inline-block;
-  list-style: none;
-  margin-top: -2px;
-  text-align: right;
-  transition: transform 0.5s ease-out;
-  -webkit-transition: transform 0.5s ease-out;
-}
-
-
-
 .navbar li {
   display: inline-block;
   margin-top: 30px;
+  padding: 0 0 0 0;
 }
 
 .nav-btn {
   color: #484848;
   display: block;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
   height: 40px;
-  letter-spacing: 0.3px;
-  margin: 0 12px -15px;
-  padding: 0 0.2px;
+  letter-spacing: 1px;
+  margin: 0 10px -15px;
+  padding: 0;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
   transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
+  display: inline-block;
+  list-style: none;
+  margin-top: 19px;
+  text-align: right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
 }
+
+/* #home-button {
+  margin-left: 20%;
+} */
 
 .nav-btn:hover {
   color: #484848;
@@ -66,19 +66,20 @@
 }
 
 /* .nav-btn:before {
-  left: 0;
-  transition: 0.5s;
-}
+  left: 50px;
+} */
 
-.nav-btn:after {
-  background: #484848;
-  right: 0;
+/* .nav-btn:after {
+  right: 50%;
 } */
 
 .nav-btn:hover:before {
   background: #484848;
-  width: 100%;
-  transition: width 0.5s cubic-bezier((0.22, 0.61, 0.36, 1));
+  width: 150%;
+  right: -12px;
+  /* left: 0.1px; */
+
+  transition: width 0.1s cubic-bezier((0.22, 0.61, 0.36, 1));
 }
 
 .nav-btn:hover:after {
@@ -88,14 +89,18 @@
 }
 
 #middle-bar {
-  display: inline-block;
   background-color: black;
+  margin-right: 1%;
   width: 80%;
-  overflow: auto;
 }
 
-#user-logo {
-  margin-top: 20px;
-  padding: 0 0 0 0;
+.user-logo {
+  margin: 0 0 0 0;
+  margin-left: 10px;
+  padding-top: 3px;
+}
 
+#user-text {
+  color: #484848;
+  padding-left: 5px;
 }

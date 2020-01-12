@@ -149,13 +149,13 @@ class ContentCover extends Component {
             <div className="start-box-row">
               <div className="start-box-50subrow">
                 <div className="start-box-subtitle">START DATE</div>
-                <Calendar />
+                
               </div>
               <div className="start-box-50subrow">
                 <div className="start-box-subtitle">END DATE</div>
-                <Calendar />
               </div>
             </div>
+            <Calendar />
 
             <div className="start-box-row">
               <div className="start-box-subtitle">NUMBER OF PEOPLE</div>

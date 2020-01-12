@@ -2,22 +2,23 @@ import React, { useState, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../HeaderNav/HeaderNav.css";
 import "../User/User.sass";
-import { Nav, Modal, Container, Row, Image, Col, Figure } from "react-bootstrap";
-import { FaUser, FaLock } from "react-icons/fa";
+import { Nav, Modal, Container, Row, Image, Col, Figure, text } from "react-bootstrap";
 
 class UserProfileLogo extends Component{
     render(){
         return(
             <Nav>
-                <Nav.Link>
-                    {/* <Figure id="user-logo">
+                <Nav.Link >
+                    <Figure className="user-logo">
                         <Figure.Image
-                            width={20}
+                            width={50}
                             height={20}
                             alt="171x180"
                             src="https://pbs.twimg.com/profile_images/1197795247335456768/qqmjESKn_bigger.jpg"
+                            roundedCircle
                         />
-                    </Figure> */}
+                        <b id="user-text">ZJH</b>
+                    </Figure>
                 </Nav.Link>
             </Nav>
         );
