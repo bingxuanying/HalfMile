@@ -25,8 +25,11 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "DELETE_CITY":
+      var newCities = state.cities.filter(city => city.id !== action.payload);
+
       return {
-        ...state
+        ...state,
+        cities: newCities
       };
 
     case "REORDER_CITY":
