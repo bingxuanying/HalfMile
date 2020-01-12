@@ -31,11 +31,14 @@ class HeaderContainer extends Component {
     return (
       <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
         <HeaderLogo />
+        <HeaderMid />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        
         <Navbar.Collapse className="navbar">
-          <HeaderMid />
+          
           <HeaderNav />
         </Navbar.Collapse>
+        
       </Navbar>
     );
   }
