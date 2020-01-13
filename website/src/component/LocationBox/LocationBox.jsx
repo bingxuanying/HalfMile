@@ -2,7 +2,7 @@ import React, { Component, useState } from "react";
 import SearchBar from "./SearchBar/SearchBarLoca";
 import DND from "../DND/DND";
 import ReactModal from "react-modal";
-import "./LocationBox.css";
+import "./LocationBox.sass";
 import Calendar from "../Calender/Calender";
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { Modal } from "react-bootstrap";
@@ -33,7 +33,7 @@ class LocationBox extends Component {
           <br />
           {!this.state.show && <Calendar />} */}
         </div>
-        <div>Tset</div>
+        <div className="start-city">text</div>
         <div className="locationbox-manager">
           <DND />
         </div>
