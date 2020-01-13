@@ -19,8 +19,6 @@ import Calendar from "./component/Calender/Calender";
 
 class App extends Component {
   render() {
-    // const { counter } = this.props;
-    // console.log(counter);
     return (
       <Router>
         <div>
@@ -34,33 +32,16 @@ class App extends Component {
               <ServicePage1 />
             </Route>
             <Route path="/plan">
+              <ServicePage1 />
+            </Route>
+            <Route path="/profile">
               <ServicePage2 />
             </Route>
           </Switch>
-          {/* <h1>Counter {this.props.counter}</h1>
-        <p>
-          <button onClick={() => this.props.increment()}> + </button>
-          <button onClick={() => this.props.decrement()}> - </button>
-        </p> */}
         </div>
       </Router>
     );
   }
 }
 
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-//     counter: state.counter
-//   };
-// };
-
-// const mapDispatchToProps = () => {
-//   return {
-//     increment: CounterActions.increment,
-//     decrement: CounterActions.decrement
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps())(App);
 export default App;

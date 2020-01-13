@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import coverImg from "../../assets/Cover.jpg";
+import { withRouter } from "react-router-dom";
 import Geosuggest from "react-geosuggest";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
@@ -7,6 +7,7 @@ import * as stepActions from "../../actions/stepActions";
 
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
+import coverImg from "../../assets/Cover.jpg";
 import {
   DateRangePicker,
   SingleDatePicker,
@@ -115,6 +116,7 @@ class ContentCover extends Component {
     } else if (msg === "none") {
       console.log(msg);
       this.props.changeSection_none2city("city");
+      this.props.history.push("/plan");
     }
   }
 
@@ -370,4 +372,6 @@ const mapDispatchToProps = () => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps())(ContentCover);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps())(ContentCover)
+);
