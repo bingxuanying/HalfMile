@@ -9,7 +9,6 @@ class PlanPage extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
   return {
     section: state.section
   };

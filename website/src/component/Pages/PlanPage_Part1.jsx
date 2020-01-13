@@ -3,29 +3,29 @@ import Calender from "../Calender/Calender";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import LocationBox from "../LocationBox/LocationBox";
-import "./ServicePage.sass";
+import "./PlanPage.sass";
 import Map from "../Map/Map";
 
-class ServicePage1 extends Component {
+class PlanPage_Part1 extends Component {
   render() {
     return (
-      <div className="servicepage-containter">
+      <div className="planpage-containter">
         <div
           style={{ height: "80px", width: "100%", backgroundColor: "white" }}
         ></div>
         {/* Main */}
-        <div className="servicepage-main">
+        <div className="planpage-main">
           {/* map section */}
-          <div className="servicepage1-map">
+          <div className="planpage1-map">
             <Map />
           </div>
 
           {/* Overflow - position: absolute */}
           <LocationBox />
-          <button className="servicepage-pre-btn page-btn-bg">
+          <button className="planpage-pre-btn page-btn-bg">
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
-          <button className="servicepage-next-btn page-btn-bg">
+          <button className="planpage-next-btn page-btn-bg">
             <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
           </button>
         </div>
@@ -34,4 +34,4 @@ class ServicePage1 extends Component {
   }
 }
 
-export default ServicePage1;
+export default PlanPage_Part1;
