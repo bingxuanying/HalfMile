@@ -84,11 +84,6 @@ class HomePage extends Component {
       <div className="homepage-containter">
         <div className="homepage-body">
           <ContentCover />
-          {/* ---------- Test FlightCard Only ---------- */}
-          <div className="flight-card-holder">
-            <SearchResult type="flight"/>
-          </div>
-          {/* ---------- Test FlightCard Only ---------- */}
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}

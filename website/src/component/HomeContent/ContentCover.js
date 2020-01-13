@@ -149,7 +149,6 @@ class ContentCover extends Component {
             <div className="start-box-row">
               <div className="start-box-50subrow">
                 <div className="start-box-subtitle">START DATE</div>
-                
               </div>
               <div className="start-box-50subrow">
                 <div className="start-box-subtitle">END DATE</div>

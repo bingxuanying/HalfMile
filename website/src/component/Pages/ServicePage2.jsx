@@ -17,6 +17,9 @@ import SearchIcon from "@material-ui/icons/Search";
 import { NationParkQ } from "../Api";
 import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
+// Redux
+import { connect } from "react-redux";
+import * as resultActions from "../../actions/resultActions";
 
 class ServicePage2 extends Component {
   constructor(props) {
@@ -29,10 +32,12 @@ class ServicePage2 extends Component {
   handleInput = event => {
     event.preventDefault();
     this.setState({ keyWord: event.target.value });
+    this.props.updateKeyword(event.target.value);
   };
 
   searchClick = () => {
-    NationParkQ({ key: this.state.keyWord, stateCode: "CA" });
+    NationParkQ({ key: this.props.keyword, stateCode: "CA" });
+    // this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })
   };
   render() {
     return (
@@ -65,7 +70,7 @@ class ServicePage2 extends Component {
               </FormControl>
             </div>
             <div className="servicepage-sidebar-menu">
-              <SearchResult type="hotel" />
+              <SearchResult type="flight" />
             </div>
           </div>
           {/* map section */}
@@ -87,4 +92,18 @@ class ServicePage2 extends Component {
   }
 }
 
-export default ServicePage2;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    keyword: state.result.keyword
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    updateKeyword: resultActions.updateKeyword,
+    fetchData: resultActions.fetchData
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ServicePage2);

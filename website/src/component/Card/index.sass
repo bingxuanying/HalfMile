@@ -161,9 +161,10 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
             padding-right: 33px
             display: flex
             flex-direction: row
+            align-items: center
             .flight-card-body-time
                 margin-left: 50px
-                min-width: 200px
+                min-width: 120px
                 .time
                     font-weight: bold
                     @extend .main-font
@@ -182,20 +183,27 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
             @extend .main-font
         .flight-card-body-option
             min-width: 100px
+            display: flex
+            flex-direction: row
+            align-items: center
             .flight-card-body-price
+                margin-right: 10px
                 @extend .main-font
+            .flight-card-body-option-btn
+                padding: 10px 40px
 
 .hotel-card
     font-family: $google-font
     position: relative
     width: 100%
-    height: 150px
+    height: 180px
     display: flex
     flex-direction: row
     border-radius: 0px
+    cursor: pointer
     .hotel-card-img
         width: 230px
-        height: 150px
+        height: 100%
         object-fit: cover
         padding: 10px
         border-radius: 10px

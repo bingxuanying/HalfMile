@@ -21,7 +21,7 @@ class HotelCard extends Component {
     const info = this.props.obj.info;
     const location = this.props.obj.location;
 
-    function addToList() { }
+    function addToList() {}
     function showLocation() {
       console.log(latLong);
     }
@@ -42,13 +42,9 @@ class HotelCard extends Component {
             <Card.Title className="hotel-card-body-title-text">
               {name}
             </Card.Title>
-            <span className="hotel-card-body-title-price">
-              ${price}
-            </span>
+            <span className="hotel-card-body-title-price">${price}</span>
           </div>
-          <div className="hotel-card-body-subtitle mb-0">
-            {location}
-          </div>
+          <div className="hotel-card-body-subtitle mb-0">{location}</div>
           <div className="hotel-card-body-rate">
             <div>{starGroup}</div>
           </div>
@@ -57,7 +53,7 @@ class HotelCard extends Component {
           </div>
           <div className="hotel-card-option">
             <Button className="hotel-card-option-btn" onClick={addToList}>
-              View Price
+              View Prices
             </Button>
           </div>
         </Card.Body>
