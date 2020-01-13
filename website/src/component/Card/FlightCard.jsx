@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { Card } from "react-bootstrap";
-import { IconButton, Card } from "@material-ui/core";
+import { IconButton, Card, Button } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import "./index.sass";
 
@@ -81,9 +81,14 @@ class FlightCard extends Component {
 
           <div className="flight-card-body-option">
             <span className="flight-card-body-price">${price}</span>
-            <IconButton>
-              <AddIcon />
-            </IconButton>
+            <Button
+              className="flight-card-body-option-btn"
+              variant="contained"
+              color="primary"
+              disableElevation
+            >
+              Select
+            </Button>
           </div>
         </div>
       </Card>

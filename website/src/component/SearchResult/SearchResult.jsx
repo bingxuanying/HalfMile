@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./index.sass";
-import { ActivityCard } from "../Card";
+import { ActivityCard, FlightCard, HotelCard } from "../Card";
 import img from "./assets/fakeNP.jpg";
 
 // rs is for test only
-import rs from "./nps-rs.json";
+import rs from "./fakeActivity.json";
 import flightRs from "./fakeFlight.json";
-import FlightCard from "../Card/FlightCard";
+import hotelRs from "./fakeHotel.json";
 
 class SearchResult extends Component {
   constructor(props) {
@@ -26,6 +26,9 @@ class SearchResult extends Component {
       case "flight":
         cards = this.fatchFlightCard(flightRs);
         style = { overflowY: "auto" };
+        break;
+      case "hotel":
+        cards = this.fatchHotelCard(hotelRs);
         break;
       default:
         console.error("wrong type in SearchResult");
@@ -52,6 +55,7 @@ class SearchResult extends Component {
               latLong={park.latLong}
               stars={null}
               timeCost="2-3h"
+              info={park.description}
             />
           );
         })}
@@ -64,6 +68,16 @@ class SearchResult extends Component {
       <div className="card-wrapper">
         {rs.map(function(flight, index) {
           return <FlightCard obj={flight} key={"flight" + index} />;
+        })}
+      </div>
+    );
+  };
+
+  fatchHotelCard = rs => {
+    return (
+      <div className="card-wrapper">
+        {rs.map(function(park, index) {
+          return <HotelCard key={index} obj={park} />;
         })}
       </div>
     );

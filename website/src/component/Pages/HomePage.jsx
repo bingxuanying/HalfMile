@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ContentCover from "../HomeContent/ContentCover";
 import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
+import { withRouter } from "react-router-dom";
 
 import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
 import "./HomePage.sass";
@@ -84,11 +85,6 @@ class HomePage extends Component {
       <div className="homepage-containter">
         <div className="homepage-body">
           <ContentCover />
-          {/* ---------- Test FlightCard Only ---------- */}
-          <div className="flight-card-holder">
-            <SearchResult type="flight"/>
-          </div>
-          {/* ---------- Test FlightCard Only ---------- */}
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}
@@ -122,4 +118,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

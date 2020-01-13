@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview";
-import "./ServicePage.sass";
+import "./PlanPage.sass";
 import { SearchResult } from "../SearchResult";
 import {
   TextField,
@@ -17,8 +17,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import { NationParkQ } from "../Api";
 import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
+// Redux
+import { connect } from "react-redux";
+import * as resultActions from "../../actions/resultActions";
 
-class ServicePage2 extends Component {
+class PlanPage_Part2 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,21 +32,23 @@ class ServicePage2 extends Component {
   handleInput = event => {
     event.preventDefault();
     this.setState({ keyWord: event.target.value });
+    this.props.updateKeyword(event.target.value);
   };
 
   searchClick = () => {
-    NationParkQ({ key: this.state.keyWord, stateCode: "CA" });
+    NationParkQ({ key: this.props.keyword, stateCode: "CA" });
+    // this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })
   };
   render() {
     return (
-      <div className="servicepage-containter">
-        <div className="servicepage-cover">
+      <div className="planpage-containter">
+        <div className="planpage-cover">
           <TripOverview base="city" />
         </div>
-        <div className="servicepage-main">
+        <div className="planpage-main">
           {/* sdie bar section */}
-          <div className="servicepage-sidebar">
-            <div className="servicepage-sidebar-searchbar">
+          <div className="planpage-sidebar">
+            <div className="planpage-sidebar-searchbar">
               <FormControl>
                 <InputLabel>Enter Place U want to go</InputLabel>
                 <Input
@@ -64,21 +69,21 @@ class ServicePage2 extends Component {
                 />
               </FormControl>
             </div>
-            <div className="servicepage-sidebar-menu">
-              <SearchResult type="activity" />
+            <div className="planpage-sidebar-menu">
+              <SearchResult type="flight" />
             </div>
           </div>
           {/* map section */}
-          <div className="servicepage2-map">
+          <div className="planpage2-map">
             <Map />
           </div>
 
           {/* Overflow Btn - position: absolute */}
-          <div className="servicepage-floatWindow"></div>
-          <button className="servicepage-pre-btn page-btn-bg">
+          <div className="planpage-floatWindow"></div>
+          <button className="planpage-pre-btn page-btn-bg">
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
-          <button className="servicepage-next-btn page-btn-bg">
+          <button className="planpage-next-btn page-btn-bg">
             <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
           </button>
         </div>
@@ -87,4 +92,18 @@ class ServicePage2 extends Component {
   }
 }
 
-export default ServicePage2;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    keyword: state.result.keyword
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    updateKeyword: resultActions.updateKeyword,
+    fetchData: resultActions.fetchData
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(PlanPage_Part2);

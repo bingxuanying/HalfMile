@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
-import { MdStar, MdStarHalf } from "react-icons/md";
 import "./index.sass";
 import { buildStars } from "./util/buildStars";
 
