@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import HeaderContainer from "../Header/HeaderContainer";
 import { TripOverview } from "../TripOverview";
 import "./PlanPage.sass";
 import { SearchResult } from "../SearchResult";
@@ -15,7 +14,6 @@ import {
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { NationParkQ } from "../Api";
-import SearchBarLoca from "../LocationBox/SearchBar/SearchBarLoca";
 import Map from "../Map/Map";
 // Redux
 import { connect } from "react-redux";
