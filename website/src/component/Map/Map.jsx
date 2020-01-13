@@ -50,7 +50,7 @@ class Map extends Component {
         zoom={10}
         places={places}
         googleMapURL="https://maps.googleapis.com/maps/api"
-        loadingElement={<div style={{ height: `100%` }} />}
+        loadingElement={<div style={{ height: "100%" }} />}
         containerElement={<div style={{ height: "100%", width: "100%" }} />}
         mapElement={<div style={{ height: "100%" }} />}
       ></MyMapComponent>
