@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import stepActions from "../../actions/stepActions";
 import PlanPage_Part1 from "./PlanPage_Part1";
 import PlanPage_Part2 from "./PlanPage_Part2";
 
@@ -24,10 +23,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = () => {
-  return {
-    // updateHomeAdress: planActions.updateHomeAdress
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps())(PlanPage);
+export default connect(mapStateToProps)(PlanPage);

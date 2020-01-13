@@ -9,23 +9,31 @@ const initialState = {
 
 const stepReducer = (state = initialState, action) => {
   switch (action.type) {
+    case "UPDATE_ERROR_CITY":
+      return {
+        ...state,
+        err: action.payload
+      };
+
     case "ADD_CITY":
-      for (let i = 0; i < state.cities.length; i++) {
-        if (action.payload.name === state.cities[i].name) {
-          return {
-            ...state,
-            err: "repeat city"
-          };
-        }
+      let lastIdx = state.cities.length - 1;
+      if (lastIdx >= 0 && action.payload.name === state.cities[lastIdx].name) {
+        return {
+          ...state,
+          err: "repeated city"
+        };
       }
 
       return {
         ...state,
-        cities: state.cities.concat(action.payload)
+        cities: state.cities.concat(action.payload),
+        err: "none"
       };
 
     case "DELETE_CITY":
-      var newCities = state.cities.filter(city => city.id !== action.payload);
+      var newCities = state.cities.filter(
+        city => !action.payload.includes(city.id)
+      );
 
       return {
         ...state,
@@ -33,19 +41,36 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "REORDER_CITY":
-      var result = state.cities;
+      var result = [...state.cities];
       var [removed] = result.splice(action.payload.startIndex, 1);
       result.splice(action.payload.endIndex, 0, removed);
 
+      for (let i = 1; i < state.cities.length; i++) {
+        if (result[i - 1].name === result[i].name) {
+          return {
+            ...state,
+            err: "repeated city"
+          };
+        }
+      }
+
       return {
         ...state,
-        cities: result
+        cities: result,
+        err: "none"
       };
 
     case "CHANGE_SECTION_NONE2CITY":
       return {
         ...state,
         section: "city",
+        page: 1
+      };
+
+    case "CHANGE_SECTION":
+      return {
+        ...state,
+        section: action.payload,
         page: 1
       };
 
@@ -60,6 +85,13 @@ const stepReducer = (state = initialState, action) => {
       let nextPage = null;
 
       if (state.section === "city") {
+        if (state.cities.length === 0) {
+          return {
+            ...state,
+            err: "Please Add City"
+          };
+        }
+
         nextSection = "airline";
         nextPage = 1;
       } else if (state.section === "airline") {

@@ -1,4 +1,6 @@
 .gm-svpc,
-.gm-style-mtc {
+.gm-style-mtc,
+.gm-fullscreen-control,
+.gmnoprint {
   display: none;
 }
