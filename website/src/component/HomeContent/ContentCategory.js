@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { CardDeck, CardGroup, CardColumns } from "react-bootstrap";
 import "./ContentCategory.css";
 class ContentCategory extends Component {
   render() {
@@ -13,7 +12,7 @@ class ContentCategory extends Component {
           <h3>{title}</h3>
           <span>{subTitle}</span>
         </div>
-        <CardDeck className="cardDeck card-deck">{cards_row1}</CardDeck>
+        <div className="cardDeck">{cards_row1}</div>
       </div>
     );
   }

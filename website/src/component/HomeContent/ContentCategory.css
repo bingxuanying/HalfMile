@@ -34,8 +34,12 @@
 
 /* Content Category - Card */
 .cardDeck {
+  display: flex;
   flex-direction: row;
-  align-content: space-between;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  flex-wrap: wrap;
   margin: 0;
-  margin-right: -14px;
+  /* margin-right: -14px; */
 }
