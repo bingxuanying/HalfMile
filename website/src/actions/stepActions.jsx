@@ -25,10 +25,10 @@ export const reorderCity = (startIndex, endIndex) => {
 /*
  * TODO: clear error, add home city to list
  */
-export const changeSection = section => {
+export const changeSection_none2city = () => {
   return {
-    type: "CHANGE_SECTION",
-    payload: section
+    type: "CHANGE_SECTION_NONE2CITY",
+    payload: null
   };
 };
 

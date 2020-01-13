@@ -42,10 +42,10 @@ const stepReducer = (state = initialState, action) => {
         cities: result
       };
 
-    case "CHANGE_SECTION":
+    case "CHANGE_SECTION_NONE2CITY":
       return {
         ...state,
-        section: action.payload,
+        section: "city",
         page: 1
       };
 
