@@ -189,15 +189,16 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
     font-family: $google-font
     position: relative
     width: 100%
-    height: auto
-    border-radius: 5px
-    margin: 5px
+    height: 150px
+    display: flex
+    flex-direction: row
+    border-radius: 0px
     .hotel-card-img
-        width: 100%
-        height: 200px
+        width: 230px
+        height: 150px
         object-fit: cover
         padding: 10px
-        border-radius: 20px
+        border-radius: 10px
     .hotel-card-shade-wrapper
         position: absolute
         top: 0px
@@ -210,30 +211,42 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
             width: 100%
             height: 100%
             background: rgba(0,0 ,0 ,0.5 )
-            border-radius: 20px
+            border-radius: 0px
             color: white
     .hotel-card-body
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
         .hotel-card-body-title
             display: flex
             flex-direction: row
             justify-content: space-between
             align-items: center
-            margin-left: 10px
             .hotel-card-body-title-text
                 font-family: $airbnb-font
                 margin-bottom: 0px
-            .hotel-card-body-title-icon
+            .hotel-card-body-title-price
+                font-family: $airbnb-font
+                font-size: 18px
+                margin-bottom: 0px
+                color: green
+        .hotel-card-body-subtitle
+            color: #5e5e5e
+            font-size: 12px
+        .hotel-card-body-info
+            margin: 8px 0px
         .hotel-card-body-rate
             display: flex
             flex-direction: row
             justify-content: space-between
             align-items: center
-            margin-left: 10px
         .hotel-card-option
             display: flex
             flex-direction: row
-            justify-content: center
-            margin: 5px
+            justify-content: flex-end
+            .hotel-card-option-btn
+                background: #4f78eb
+                color: white
 
 .main-font
     font-family: $google-font
