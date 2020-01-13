@@ -8,13 +8,13 @@ import {
   IconButton,
   Tooltip,
   Divider,
-  Button
+  Button,
+  Dialog
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import ContentCategory from "../HomeContent/ContentCategory";
 import { TripCard, GuideCard, CityCard } from "../Card";
-
 import guideImg1 from "../Card/assets/tokyo.jpg";
 import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
@@ -47,7 +47,8 @@ class ProfilePage extends Component {
           expireDay: 24,
           cvs: 123
         }
-      ]
+      ],
+      dialogOpen: false
     };
   }
   render() {
@@ -83,7 +84,11 @@ class ProfilePage extends Component {
                   <span className="subtitle">&nbsp;{this.state.name}</span>
                 </div>
                 <Tooltip className="option" title="edit" arrow>
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      this.editClick("name");
+                    }}
+                  >
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -96,7 +101,11 @@ class ProfilePage extends Component {
                   <span className="subtitle">&nbsp;{this.state.email}</span>
                 </div>
                 <Tooltip className="option" title="edit" arrow>
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      this.editClick("email");
+                    }}
+                  >
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -111,7 +120,11 @@ class ProfilePage extends Component {
                   </span>
                 </div>
                 <Tooltip className="option" title="edit" arrow>
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      this.editClick("address");
+                    }}
+                  >
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -126,7 +139,11 @@ class ProfilePage extends Component {
                   </span>
                 </div>
                 <Tooltip className="option" title="edit" arrow>
-                  <IconButton>
+                  <IconButton
+                    onClick={() => {
+                      this.editClick("payment");
+                    }}
+                  >
                     <EditIcon />
                   </IconButton>
                 </Tooltip>
@@ -154,24 +171,40 @@ class ProfilePage extends Component {
       </div>
     );
   }
+  editClick = type => {
+    console.log(type);
+    this.setState({ dialogOpen: true });
+    switch (type) {
+      case "name":
+        break;
+      case "email":
+        break;
+      case "address":
+        break;
+      case "payment":
+        break;
+      default:
+        break;
+    }
+  };
 }
 const travelPlans_Trip = [
   <TripCard
+    key="C1"
+    tripTitle="s4966910084's trip"
+    tripDuration={5}
+    startData="12/5"
+    endDate="12/8"
+  />,
+  <TripCard
+    key="C2"
+    tripTitle="s4966910084's trip"
+    tripDuration={5}
+    startData="12/5"
+    endDate="12/8"
+  />,
+  <TripCard
     key="C3"
-    tripTitle="s4966910084's trip"
-    tripDuration={5}
-    startData="12/5"
-    endDate="12/8"
-  />,
-  <TripCard
-    key="C4"
-    tripTitle="s4966910084's trip"
-    tripDuration={5}
-    startData="12/5"
-    endDate="12/8"
-  />,
-  <TripCard
-    key="C4"
     tripTitle="s4966910084's trip"
     tripDuration={5}
     startData="12/5"
@@ -181,9 +214,9 @@ const travelPlans_Trip = [
 const cityInfo =
   "In 2077, they voted my city the worst place to live in America. Main issues? Sky high rate of violence and more people living below the poverty line than anywhere else";
 const travelPlans_City = [
-  <CityCard key="C1" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />,
-  <CityCard key="C2" city="LONDON" img={cityImg1} cityInfo={cityInfo} />,
-  <CityCard key="C3" city="Mongo" img={cityImg2} cityInfo={cityInfo} />
+  <CityCard key="D1" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />,
+  <CityCard key="D2" city="LONDON" img={cityImg1} cityInfo={cityInfo} />,
+  <CityCard key="D3" city="Mongo" img={cityImg2} cityInfo={cityInfo} />
 ];
 
 const travelPlans_Guide = [
