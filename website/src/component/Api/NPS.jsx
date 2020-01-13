@@ -1,5 +1,6 @@
 // NPS API: lFXKhAtfjp1AENxaKYfQeyzPjfIHicorl6zvTolu
 import React, { Component } from "react";
+import axios from "axios";
 
 export const NationParkQ = data => {
   const API = ["lFXKhAtfjp1AENxaKYfQeyzPjfIHicorl6zvTolu"];
@@ -17,13 +18,9 @@ export const NationParkQ = data => {
   // Api Request
   url = url + "&api_key=" + API[ApiIterator];
 
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener("load", () => {
-    console.log(url);
-    console.log(xhr.responseText);
+  axios.get(url).then(res => {
+    console.log(res);
   });
-  xhr.open("GET", url);
-  xhr.send();
 };
 export const DisneyLandQ = key => {
   return null;

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Hilton Los Angeles/Universal City",
+    "stars": 4.5,
+    "price": 210,
+    "location": "555 Universal Hollywood Dr, Universal City, CA 91608",
+    "phone": "(818) 506-2500",
+    "img": "https://lh3.googleusercontent.com/p/AF1QipM_kQ2zwXJcq4RLRkEbCVwlegxn3_3gklx47F7I=w296-h202-n-k-rw-no-v1",
+    "latLong": "lat:32.6722503, long:-117.2415985",
+    "info": "some info"
+  },
+  {
+    "name": "Beach House",
+    "stars": 5,
+    "price": 218,
+    "location": "1300 The Strand, Hermosa Beach, CA 90254",
+    "phone": "(310) 374-3001",
+    "img": "https://lh5.googleusercontent.com/p/AF1QipOmaA5I33V_IZ24KQvPhzmTmZ8je8-hTP0SwcWY=w296-h202-n-k-no-v1",
+    "latLong": "lat:32.6722503, long:-117.2415985",
+    "info": "some info"
+  },
+  {
+    "name": "SHore Hotel",
+    "stars": 4.5,
+    "price": 183,
+    "location": "1515 Ocean Ave, Santa Monica, CA 90401",
+    "phone": "(310) 458-1515",
+    "img": "https://lh3.googleusercontent.com/p/AF1QipPn20neqVTfU2D06jSqO7nmecf5axrbAfTclFYy=w296-h202-n-k-rw-no-v1",
+    "latLong": "lat:32.6722503, long:-117.2415985",
+    "info": "some info"
+  },
+  {
+    "name": "SHore Hotel",
+    "stars": 4.5,
+    "price": 183,
+    "location": "1515 Ocean Ave, Santa Monica, CA 90401",
+    "phone": "(310) 458-1515",
+    "img": "https://lh3.googleusercontent.com/p/AF1QipPn20neqVTfU2D06jSqO7nmecf5axrbAfTclFYy=w296-h202-n-k-rw-no-v1",
+    "latLong": "lat:32.6722503, long:-117.2415985",
+    "info": "some info"
+  },
+  {
+    "name": "SHore Hotel",
+    "stars": 4.5,
+    "price": 183,
+    "location": "1515 Ocean Ave, Santa Monica, CA 90401",
+    "phone": "(310) 458-1515",
+    "img": "https://lh3.googleusercontent.com/p/AF1QipPn20neqVTfU2D06jSqO7nmecf5axrbAfTclFYy=w296-h202-n-k-rw-no-v1",
+    "latLong": "lat:32.6722503, long:-117.2415985",
+    "info": "some info"
+  }
+]

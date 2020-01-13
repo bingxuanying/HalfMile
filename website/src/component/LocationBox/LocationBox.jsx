@@ -33,6 +33,7 @@ class LocationBox extends Component {
           <br />
           {!this.state.show && <Calendar />} */}
         </div>
+        <div>Tset</div>
         <div className="locationbox-manager">
           <DND />
         </div>

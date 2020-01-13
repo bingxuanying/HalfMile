@@ -7,6 +7,12 @@ import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
 class ActivityCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hover: false
+    };
+  }
   render() {
     const name = this.props.name;
     // const price = this.props.price;
@@ -15,7 +21,7 @@ class ActivityCard extends Component {
     const latLong = this.props.latLong;
     const rateStars = this.props.stars;
     const timeCost = this.props.timeCost;
-
+    const info = this.props.info;
     function addToList() {
       console.log(id);
     }
@@ -27,6 +33,14 @@ class ActivityCard extends Component {
     return (
       <Card className="activity-card card ml-1">
         <Card.Img className="activity-card-img" variant="top" src={image} />
+        <div
+          className="activity-card-shade-wrapper"
+          onMouseEnter={this.openInfo}
+          onMouseLeave={this.closeInfo}
+        >
+          {this.state.hover && <div className="activity-card-shade"></div>}
+        </div>
+
         <Card.Body className="activity-card-body pl-0 pt-2 pb-1">
           <div className="activity-card-body-title">
             <Card.Title className="activity-card-body-title-text">
@@ -49,6 +63,18 @@ class ActivityCard extends Component {
       </Card>
     );
   }
+  openInfo = event => {
+    event.preventDefault();
+    if (!this.state.hover) {
+      this.setState({ hover: true });
+    }
+  };
+  closeInfo = event => {
+    event.preventDefault();
+    if (this.state.hover) {
+      this.setState({ hover: false });
+    }
+  };
 }
 
 export default ActivityCard;
