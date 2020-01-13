@@ -1,0 +1,40 @@
+$airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+
+.locationbox-container 
+  position: absolute
+  height: 370px
+  width: 340px
+  top: 20px
+  left: 20px
+  background: transparent
+  display: flex
+  flex-direction: column
+  .locationbox-manager 
+    height: 100%
+    width: 100%
+    margin-top: 10px
+    background: transparent
+    overflow-y: auto
+  .start-city 
+    margin-left: 40px
+    margin-top: 10px
+    margin-right: 2px
+    height: 44px
+    border: 1px solid rbga(0,0,0,0.7)
+    background: white
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    align-items: center
+    padding: 10px
+    border-radius: 5px
+    .start-city-start
+      font-family: $airbnb-font
+      font-size: 18px
+    .start-city-city
+      margin-left: 5px
+      &:hover
+        text-decoration: underline
+        color: blue
+        cursor: pointer
+      @extend .start-city-start
