@@ -19,16 +19,17 @@ class HotelCard extends Component {
     const latLong = this.props.obj.latLong;
     const rateStars = this.props.obj.stars;
     const info = this.props.obj.info;
+    const location = this.props.obj.location;
 
-    function addToList() {}
+    function addToList() { }
     function showLocation() {
       console.log(latLong);
     }
     const starGroup = buildStars(rateStars);
 
     return (
-      <Card className="hotel-card card ml-1">
-        <Card.Img className="hotel-card-img" variant="top" src={image} />
+      <Card className="hotel-card card">
+        <Card.Img className="hotel-card-img" src={image} />
         <div
           className="hotel-card-shade-wrapper"
           onMouseEnter={this.openInfo}
@@ -41,19 +42,22 @@ class HotelCard extends Component {
             <Card.Title className="hotel-card-body-title-text">
               {name}
             </Card.Title>
-            <div className="hotel-card-body-title-icon">
-              <IconButton onClick={showLocation}>
-                <LocationOnIcon />
-              </IconButton>
-            </div>
+            <span className="hotel-card-body-title-price">
+              ${price}
+            </span>
+          </div>
+          <div className="hotel-card-body-subtitle mb-0">
+            {location}
           </div>
           <div className="hotel-card-body-rate">
             <div>{starGroup}</div>
-            <div>Est. Cost&nbsp;&nbsp;${price}</div>
+          </div>
+          <div className="hotel-card-body-info">
+            <span>{info}</span>
           </div>
           <div className="hotel-card-option">
-            <Button color="primary" onClick={addToList}>
-              Add to my list
+            <Button className="hotel-card-option-btn" onClick={addToList}>
+              View Price
             </Button>
           </div>
         </Card.Body>
