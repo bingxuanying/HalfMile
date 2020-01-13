@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
 import HeaderContainer from "./component/Header/HeaderContainer";
 import HomePage from "./component/Pages/HomePage";
 import ProfilePage from "./component/Pages/ProfilePage";
@@ -35,15 +40,16 @@ class App extends Component {
               <PlanPage_Part2 />
             </Route>
             <Route path="/plan">
-              {/* {this.props.section === "none" ? (
-                this.props.history.push("/")
-              ) : ( */}
-              <PlanPage />
-              // )}
+              {this.props.section === "none" ? (
+                <Redirect to="/" />
+              ) : (
+                <PlanPage />
+              )}
             </Route>
             <Route path="/profile">
               <ProfilePage />
             </Route>
+            <Redirect to="/" />
           </Switch>
         </div>
       </Router>

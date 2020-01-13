@@ -20,6 +20,7 @@ class DND extends Component {
     super();
 
     this.onDragEnd = this.onDragEnd.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   onDragEnd(result) {
@@ -28,12 +29,50 @@ class DND extends Component {
       return;
     }
 
-    this.props.reorderCity(result.source.index, result.destination.index);
+    for (let i = 0; i < this.props.cities.length; i++) {
+      if (result.draggableId === this.props.cities[i].id) {
+        var checkCity = this.props.cities[i].name;
+        break;
+      }
+    }
+
+    // First selected city cannot be the same as the home city
+    if (result.destination.index === 0 && this.props.home.name === checkCity) {
+      this.props.updateError(`${checkCity} cannot be on top`);
+    } else if (
+      result.source.index === 0 &&
+      this.props.cities.length > 1 &&
+      this.props.home.name === this.props.cities[1].name
+    ) {
+      this.props.updateError(`${this.props.cities[1].name} cannot be on top`);
+    } else {
+      this.props.reorderCity(result.source.index, result.destination.index);
+    }
+  }
+
+  handleDelete(id) {
+    let lastIdx = this.props.cities.length - 1;
+    let itemIdx = this.props.cities.findIndex(city => {
+      return city.id === id;
+    });
+
+    var hitLst = [id];
+
+    if (itemIdx !== lastIdx) {
+      if (itemIdx === 0 && this.props.cities[1].name === this.props.home.name) {
+        hitLst.push(this.props.cities[1].id);
+      } else if (
+        this.props.cities[itemIdx - 1].name ===
+        this.props.cities[itemIdx + 1].name
+      ) {
+        hitLst.push(this.props.cities[itemIdx + 1].id);
+      }
+    }
+    this.props.deleteCity(hitLst);
   }
 
   render() {
     const items = this.props.cities;
-    console.log(items);
 
     return (
       <DragDropContext onDragEnd={this.onDragEnd}>
@@ -76,7 +115,7 @@ class DND extends Component {
                             className="fa-bars"
                             icon={faTimes}
                             size="1x"
-                            onClick={() => this.props.deleteCity(item.id)}
+                            onClick={() => this.handleDelete(item.id)}
                           />
                         </div>
 
@@ -110,8 +149,8 @@ class DND extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
   return {
+    home: state.plan[0].home,
     cities: state.step.cities
   };
 };
@@ -119,7 +158,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = () => {
   return {
     reorderCity: stepActions.reorderCity,
-    deleteCity: stepActions.deleteCity
+    deleteCity: stepActions.deleteCity,
+    updateError: stepActions.updateError
   };
 };
 
