@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import uuid from "uuid/v4";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
@@ -63,14 +62,12 @@ class DND extends Component {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         onMouseOver={() => {
-                          document.getElementsByClassName(
-                            "fa-bars"
-                          )[0].style.display = "initial";
+                          document.getElementById(item.id).style.display =
+                            "initial";
                         }}
                         onMouseOut={() => {
-                          document.getElementsByClassName(
-                            "fa-bars"
-                          )[0].style.display = "none";
+                          document.getElementById(item.id).style.display =
+                            "none";
                         }}
                       >
                         <div className="dnd-bar-delete">
@@ -79,6 +76,7 @@ class DND extends Component {
                             className="fa-bars"
                             icon={faTimes}
                             size="1x"
+                            onClick={() => this.props.deleteCity(item.id)}
                           />
                         </div>
 
@@ -120,7 +118,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    reorderCity: stepActions.reorderCity
+    reorderCity: stepActions.reorderCity,
+    deleteCity: stepActions.deleteCity
   };
 };
 

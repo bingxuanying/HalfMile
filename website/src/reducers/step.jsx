@@ -25,8 +25,11 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "DELETE_CITY":
+      var newCities = state.cities.filter(city => city.id !== action.payload);
+
       return {
-        ...state
+        ...state,
+        cities: newCities
       };
 
     case "REORDER_CITY":
@@ -39,10 +42,10 @@ const stepReducer = (state = initialState, action) => {
         cities: result
       };
 
-    case "CHANGE_SECTION":
+    case "CHANGE_SECTION_NONE2CITY":
       return {
         ...state,
-        section: action.payload,
+        section: "city",
         page: 1
       };
 

@@ -81,9 +81,11 @@ class ContentCover extends Component {
       msg = "no address";
     } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
       msg = "no location";
-    } else if (!startDate) {
-      msg = "no start date";
-    } else {
+    }
+    // else if (!startDate) {
+    //   msg = "no start date";
+    // }
+    else {
       msg = "none";
     }
 
@@ -112,7 +114,7 @@ class ContentCover extends Component {
       }
     } else if (msg === "none") {
       console.log(msg);
-      this.props.changeSection("city");
+      this.props.changeSection_none2city("city");
     }
   }
 
@@ -361,7 +363,7 @@ const mapDispatchToProps = () => {
   return {
     updateHomeAdress: planActions.updateHomeAdress,
     updateError: planActions.updateError,
-    changeSection: stepActions.changeSection,
+    changeSection_none2city: stepActions.changeSection_none2city,
     guestIncreament: planActions.guestIncreament,
     guestDecrement: planActions.guestDecrement,
     guestClear: planActions.guestClear
