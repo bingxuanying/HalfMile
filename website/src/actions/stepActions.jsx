@@ -23,7 +23,7 @@ export const reorderCity = (startIndex, endIndex) => {
 };
 
 /*
- * TODO: clear error
+ * TODO: clear error, add home city to list
  */
 export const changeSection = section => {
   return {
