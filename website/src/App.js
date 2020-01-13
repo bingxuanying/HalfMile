@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import HeaderContainer from "./component/Header/HeaderContainer";
 import HomePage from "./component/Pages/HomePage";
-import ServicePage1 from "./component/Pages/ServicePage1";
-import ServicePage2 from "./component/Pages/ServicePage2";
+import PlanPage_Part1 from "./component/Pages/PlanPage_Part1";
+import PlanPage_Part2 from "./component/Pages/PlanPage_Part2";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Calendar from "./component/Calender/Calender";
@@ -19,8 +19,6 @@ import Calendar from "./component/Calender/Calender";
 
 class App extends Component {
   render() {
-    // const { counter } = this.props;
-    // console.log(counter);
     return (
       <Router>
         <div>
@@ -31,36 +29,19 @@ class App extends Component {
               <HomePage />
             </Route>
             <Route path="/help">
-              <ServicePage1 />
+              <PlanPage_Part1 />
             </Route>
             <Route path="/plan">
-              <ServicePage2 />
+              <PlanPage_Part1 />
+            </Route>
+            <Route path="/profile">
+              <PlanPage_Part2 />
             </Route>
           </Switch>
-          {/* <h1>Counter {this.props.counter}</h1>
-        <p>
-          <button onClick={() => this.props.increment()}> + </button>
-          <button onClick={() => this.props.decrement()}> - </button>
-        </p> */}
         </div>
       </Router>
     );
   }
 }
 
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return {
-//     counter: state.counter
-//   };
-// };
-
-// const mapDispatchToProps = () => {
-//   return {
-//     increment: CounterActions.increment,
-//     decrement: CounterActions.decrement
-//   };
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps())(App);
 export default App;

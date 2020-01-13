@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ContentCover from "../HomeContent/ContentCover";
 import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
+import { withRouter } from "react-router-dom";
 
 import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
 import "./HomePage.sass";
@@ -117,4 +118,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);
