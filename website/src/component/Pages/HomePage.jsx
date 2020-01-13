@@ -4,7 +4,7 @@ import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
 
 import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
-import "./HomePage.css";
+import "./HomePage.sass";
 
 import adImg from "../Card/assets/AdvantureEx1.jpg";
 import adImg1 from "../Card/assets/AdvantureEx2.jpg";
@@ -20,8 +20,7 @@ import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
 import guideImg4 from "../Card/assets/guide3.jpg";
 import { Form } from "react-bootstrap";
-import { NPS } from "../Api";
-
+import { SearchResult } from "../SearchResult";
 // For TEST Purpose
 class HomePage extends Component {
   render() {
@@ -80,12 +79,16 @@ class HomePage extends Component {
         endDate="12/8"
       />
     ];
-    NPS.doSomeThing();
 
     return (
       <div className="homepage-containter">
         <div className="homepage-body">
           <ContentCover />
+          {/* ---------- Test FlightCard Only ---------- */}
+          <div className="flight-card-holder">
+            <SearchResult type="flight"/>
+          </div>
+          {/* ---------- Test FlightCard Only ---------- */}
           <div className="content-category-containter">
             <ContentCategory
               title={"Top-Rated Travel Guides"}

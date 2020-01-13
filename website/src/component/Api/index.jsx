@@ -1,3 +1,3 @@
-import NPS from "./NPS";
+import { NationParkQ, DisneyLandQ } from "./NPS";
 
-export { NPS };
+export { NationParkQ, DisneyLandQ };

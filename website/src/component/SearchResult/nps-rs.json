@@ -1,0 +1,77 @@
+{
+  "total": "33",
+  "data": [
+    {
+      "states": "CA",
+      "latLong": "lat:32.6722503, long:-117.2415985",
+      "description": "Climbing out of his boat and onto shore in 1542, Juan Rodriguez Cabrillo stepped into history as the first European to set foot on what is now the West Coast of the United States. In addition to telling the story of 16th century exploration, the park is home to a wealth of cultural and natural resources. Join us and embark on your own Voyage of Exploration.",
+      "designation": "National Monument",
+      "parkCode": "cabr",
+      "id": "2DB09FB7-0408-44C9-8083-8F50039BD6DA",
+      "directionsInfo": "FROM DOWNTOWN SAN DIEGO\n\nTake Harbor Drive past the airport\nTurn left onto Rosecrans Street\nTurn right onto Canon Street\nTurn left onto Catalina Blvd. (also known as Cabrillo Memorial Drive)\nFollow Catalina Blvd. all the way to the end",
+      "directionsUrl": "http://www.nps.gov/cabr/planyourvisit/directionstocabr.htm",
+      "fullName": "Cabrillo National Monument",
+      "url": "https://www.nps.gov/cabr/index.htm",
+      "weatherInfo": "Near Perfection\nAlmost three million county residents can't be wrong: it's the weather. While many areas of the country are hibernating under blankets of snow or sweltering in muggy mid-summer humidity, San Diego's climate is generally sunny and mild year-round.",
+      "name": "Cabrillo"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:35.29156348, long:-115.0935606",
+      "description": "Castle Mountains represents some of the most unique elements of the Mojave Desert. Nestled between the Nevada state line and Mojave National Preserve, the nearly 21,000 acres of Castle Mountains boasts Joshua tree forests, unbroken natural landscapes, rare desert grasslands, and rich human history. This intriguing area provides serenity and solitude from nearby metropolitan areas.",
+      "designation": "National Monument",
+      "parkCode": "camo",
+      "id": "872417E6-2F91-4FDA-89A7-865B51B22332",
+      "directionsInfo": "You can approach Castle Mountains from Walking Box Ranch Road off of Nevada State Rd 164 (Nipton Road) or from several unnamed dirt roads off of Lanfair Road in Mojave National Preserve.",
+      "directionsUrl": "http://www.nps.gov/camo/planyourvisit/directions.htm",
+      "fullName": "Castle Mountains National Monument",
+      "url": "https://www.nps.gov/camo/index.htm",
+      "weatherInfo": "Weather at Castle Mountains changes with the seasons. Freezing temperatures are expected in winter, with occasional snow. Spring brings mild warm days and cooler nights. With enough rain, wildflowers can carpet the area, making for spectacular displays. Summer months are much hotter, with temperatures nearing 100 degrees Fahrenheit. Strong monsoonal storms in late summer may cause flash-flooding in low-lying areas and can create hazardous road conditions. Fall is a cooler respite after the heat of summer.",
+      "name": "Castle Mountains"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:35.22729389, long:-118.5615781",
+      "description": "Yes, we can!\n\nWidely recognized as the most important Latino leader in the United States during the twentieth century, César E. Chávez led farm workers and supporters in the establishment of the country's first permanent agricultural union. His leadership brought sustained international attention to the plight of U.S. farm workers, and secured for them higher wages and safer working conditions",
+      "designation": "National Monument",
+      "parkCode": "cech",
+      "id": "D1EAA1D1-E855-42FF-9D06-8E983413BDE5",
+      "directionsInfo": "The monument is located near the small town of Keene, California on Highway 58. From Highway 58, take exit 138 toward Keene, then turn right on Woodford-Tehachapi Road. César E. Chávez National Monument will be on your left.",
+      "directionsUrl": "http://www.nps.gov/cech/planyourvisit/directions.htm",
+      "fullName": "César E. Chávez National Monument",
+      "url": "https://www.nps.gov/cech/index.htm",
+      "weatherInfo": "The climate in this area is mild, with warm, dry summers and cool winters. Average temperatures in July, the warmest month, are in the mid-80s and hot days often reach into the 90s. In winter, frosty mornings are common and roads may be icy.",
+      "name": "César E. Chávez"
+    },
+    {
+      "states": "CA,NV",
+      "latLong": "lat:36.48753731, long:-117.134395",
+      "description": "In this below-sea-level basin, steady drought and record summer heat make Death Valley a land of extremes. Yet, each extreme has a striking contrast. Towering peaks are frosted with winter snow. Rare rainstorms bring vast fields of wildflowers. Lush oases harbor tiny fish and refuge for wildlife and humans. Despite its morbid name, a great diversity of life survives in Death Valley.",
+      "designation": "National Park",
+      "parkCode": "deva",
+      "id": "FFC9F9C4-D79D-4CA7-AB0F-7A2AD30061CD",
+      "directionsInfo": "The main road transecting Death Valley National Park from east to west is California Highway 190.\nOn the east in Nevada, U.S. Route 95 parallels the park from north to south with connecting highways at Scotty's Junction (State Route 267), Beatty (State Route 374), and Lathrop Wells (State Route 373).",
+      "directionsUrl": "http://www.nps.gov/deva/planyourvisit/directions.htm",
+      "fullName": "Death Valley National Park",
+      "url": "https://www.nps.gov/deva/index.htm",
+      "weatherInfo": "AUTUMN arrives in late October, with warm but pleasant temperatures and generally clear skies.\nWINTER has cool days, chilly nights and rarely, rainstorms. With snow capping the high peaks and low angled winter light, this season is especially beautiful for exploring the valley.\nSPRINGTIME is the most popular time to visit Death Valley. Besides warm and sunny days, the possibility of spring wildflowers is a big attraction.\nSUMMER starts early in Death Valley. By May the valley is too hot for most visitors",
+      "name": "Death Valley"
+    },
+    {
+      "states": "CA",
+      "latLong": "lat:36.49029208, long:-121.1813607",
+      "description": "Some 23 million years ago multiple volcanoes erupted, flowed, and slid to form what would become Pinnacles National Park. What remains is a unique landscape. Travelers journey through chaparral, oak woodlands, and canyon bottoms. Hikers enter rare talus caves and emerge to towering rock spires teeming with life: prairie and peregrine falcons, golden eagles, and the inspiring California condor.",
+      "designation": "National Park",
+      "parkCode": "pinn",
+      "id": "9B266961-3364-43D2-9A08-82BB5EF5643F",
+      "directionsInfo": "Pinnacles National Park is accessible through highway 101 for the West entrance, and highway 25 for the East entrance. From highway 101 you must pass through the City of Soledad to find highway 146 which will lead to West side of Pinnacles. To enter East Pinnacles you must find highway 25 through the City of Hollister coming from the North, and King City through Bitter Water Road (G-13) when coming from the South.",
+      "directionsUrl": "http://www.nps.gov/pinn/planyourvisit/directions.htm",
+      "fullName": "Pinnacles National Park",
+      "url": "https://www.nps.gov/pinn/index.htm",
+      "weatherInfo": "Pinnacles National Park has a Mediterranean climate with hot and dry summers, and mild winters with moderate precipitation. The park is several miles inland from the Pacific Ocean. A wider variation in seasonal temperatures can be expected in the local area. On July or August day, daytime temperatures over 100° F are not uncommon, but a bright sunny day can turn into a very cold night.",
+      "name": "Pinnacles"
+    }
+  ],
+  "limit": "5",
+  "start": "15"
+}

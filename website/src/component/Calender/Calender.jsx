@@ -19,7 +19,7 @@ class Calendar extends Component {
   render() {
     return (
       <div className="App" style={{ position: "relative", zIndex: 100 }}>
-        {/* <DateRangePicker 
+        <DateRangePicker 
         startDate={this.state.startDate}
         startDateId="your_unique_start_date_id"
         endDate={this.state.endDate}
@@ -27,15 +27,15 @@ class Calendar extends Component {
         onDatesChange={({startDate, endDate}) => this.setState({startDate, endDate})}
         focusedInput={this.state.focusedInput}
         onFocusChange={focusedInput => this.setState({focusedInput})}
-      /> */}
-        <SingleDatePicker
+      />
+        {/* <SingleDatePicker
           placeholder="mm/dd/yyy"
           date={this.state.date}
           onDateChange={date => this.setState({ date })}
           focused={this.state.focused}
           onFocusChange={({ focused }) => this.setState({ focused })}
           id="single-date"
-        />
+        /> */}
       </div>
     );
   }
