@@ -20,15 +20,6 @@ class SearchBarLoca extends Component {
   }
 
   onSuggestSelect(place) {
-    // var location = place.location;
-    // console.log(place);
-    // console.log(location);
-    // this.setState({
-    //   mapPosition: {
-
-    //   }
-    // })
-
     if (place) {
       var location = place.gmaps.adr_address;
       var matches = /class="locality">(.*?)<\/span>/g.exec(location);
@@ -43,19 +34,29 @@ class SearchBarLoca extends Component {
       };
 
       this.props.addCity(city);
+      this._geoSuggest.clear();
     }
   }
 
   render() {
+    // in case no home address, bias based on LA
+    var biasLat = this.props.homeAddress.location.lat
+      ? this.props.homeAddress.location.lat
+      : 34.0522342;
+    var biasLng = this.props.homeAddress.location.lng
+      ? this.props.homeAddress.location.lng
+      : -118.2436849;
+
     return (
       <div className="search-bar-city">
         <Geosuggest
+          ref={el => (this._geoSuggest = el)}
           className="geosuggest"
           placeholder="Let's go somewhere!"
           autoCorrect="off"
           spellCheck="false"
           onSuggestSelect={this.onSuggestSelect}
-          location={new window.google.maps.LatLng(34.0522342, -118.2436849)}
+          location={new window.google.maps.LatLng(biasLat, biasLng)}
           radius={20}
         />
       </div>
@@ -66,7 +67,7 @@ class SearchBarLoca extends Component {
 const mapStateToProps = state => {
   // console.log(state.plan[0].home);
   return {
-    plan: state.plan
+    homeAddress: state.plan[0].home
   };
 };
 
