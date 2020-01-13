@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import uuid from "uuid/v4";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";

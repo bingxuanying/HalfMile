@@ -9,6 +9,9 @@ import {
 } from "react-google-maps";
 import places from "./places.json";
 import { compose } from "recompose";
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
+import * as stepActions from "../../actions/stepActions";
 import "./Map.css";
 
 const MyMapComponent = compose(
@@ -58,4 +61,17 @@ class Map extends Component {
   }
 }
 
-export default Map;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    cities: state.step.cities
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    reorderCity: stepActions.reorderCity
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(Map);
