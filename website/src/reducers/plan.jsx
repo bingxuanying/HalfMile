@@ -139,6 +139,18 @@ const planReducer = (state = initialState, action) => {
         // Leave every other item unchanged
         return item;
       });
+    case "CHANGE_SECTION_NONE2CITY":
+      return state.map((item, index) => {
+        // Replace the item at index 0
+        if (index === 0) {
+          return {
+            ...state[0],
+            error: "none"
+          };
+        }
+        // Leave every other item unchanged
+        return item;
+      });
     case "CREATE_NEW":
       return null;
     default:
