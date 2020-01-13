@@ -34,6 +34,7 @@ const MyMapComponent = compose(
         ];
         return (
           <div>
+            
             <Marker
               id={place.id}
               key={place.id}
@@ -49,6 +50,7 @@ const MyMapComponent = compose(
 class Map extends Component {
   render() {
     return (
+      
       <MyMapComponent
         zoom={10}
         places={places}
@@ -65,6 +67,7 @@ const mapStateToProps = state => {
   // console.log(state.plan[0].home);
   return {
     cities: state.step.cities
+    
   };
 };
 
