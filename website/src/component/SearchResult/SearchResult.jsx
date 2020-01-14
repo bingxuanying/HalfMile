@@ -14,8 +14,7 @@ class SearchResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      type: this.props.type,
-      // resultList: this.props.resultList
+      type: this.props.type
     };
   }
 
@@ -46,10 +45,12 @@ class SearchResult extends Component {
   }
 
   fetchActivityCard = rs => {
-    if (!rs.length) return <div></div>
+    console.log(rs);
+
+    if (!rs) return <div></div>;
     return (
       <div className="card-wrapper">
-        {rs.data.map(function (park, _) {
+        {rs.data.map(function(park, _) {
           return (
             <ActivityCard
               name={park.fullName}
@@ -70,7 +71,7 @@ class SearchResult extends Component {
   fetchFlightCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function (flight, index) {
+        {rs.map(function(flight, index) {
           return <FlightCard obj={flight} key={"flight" + index} />;
         })}
       </div>
@@ -80,7 +81,7 @@ class SearchResult extends Component {
   fetchHotelCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function (park, index) {
+        {rs.map(function(park, index) {
           return <HotelCard key={index} obj={park} />;
         })}
       </div>
@@ -88,7 +89,7 @@ class SearchResult extends Component {
   };
 }
 const mapStateToProps = state => {
-  console.log(state.result.resultList);
+  // console.log(state.result.resultList);
   return {
     resultList: state.result.resultList
   };
