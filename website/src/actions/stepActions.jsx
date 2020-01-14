@@ -1,3 +1,10 @@
+export const updateError = msg => {
+  return {
+    type: "UPDATE_ERROR_CITY",
+    payload: msg
+  };
+};
+
 export const addCity = city => {
   return {
     type: "ADD_CITY",
@@ -22,9 +29,6 @@ export const reorderCity = (startIndex, endIndex) => {
   };
 };
 
-/*
- * TODO: clear error, add home city to list
- */
 export const changeSection_none2city = () => {
   return {
     type: "CHANGE_SECTION_NONE2CITY",

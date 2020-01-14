@@ -2,11 +2,12 @@ import React, { Component, useState } from "react";
 import SearchBar from "./SearchBar/SearchBarLoca";
 import DND from "../DND/DND";
 import ReactModal from "react-modal";
-import "./LocationBox.css";
+import "./LocationBox.sass";
 import Calendar from "../Calender/Calender";
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { Modal } from "react-bootstrap";
 import { FaRegUser } from "react-icons/fa";
+import Tooltip from "@material-ui/core/Tooltip";
 
 class LocationBox extends Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class LocationBox extends Component {
     this.setState({ show: !show });
   };
   render() {
+    const startCity = "Davis";
     return (
       <div className="locationbox-container">
         <div
@@ -33,7 +35,10 @@ class LocationBox extends Component {
           <br />
           {!this.state.show && <Calendar />} */}
         </div>
-        <div>Tset</div>
+        <div className="start-city">
+          <div className="start-city-start">Start City:</div>
+          <div className="start-city-city">{startCity}</div>
+        </div>
         <div className="locationbox-manager">
           <DND />
         </div>

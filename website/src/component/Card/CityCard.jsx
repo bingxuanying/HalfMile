@@ -8,7 +8,7 @@ class CityCard extends Component {
     const city = this.props.city;
     const cityInfo = this.props.cityInfo;
     return (
-      <Card className="city-card card border-0 text-left ml-0 mr-4">
+      <Card className="city-card card border-0 text-left">
         <Card.Img className="city-card-img" variant="top" src={image} />
         <Card.Body className="city-card-body pl-0 pt-2">
           <Card.Title className="city-card-title font-weight-bold">

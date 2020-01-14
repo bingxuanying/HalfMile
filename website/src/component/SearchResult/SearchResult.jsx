@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "./index.sass";
 import { ActivityCard, FlightCard, HotelCard } from "../Card";
 import img from "./assets/fakeNP.jpg";
-
+// Redux
+import { connect } from "react-redux";
+import * as resultActions from "../../actions/resultActions";
 // rs is for test only
 import rs from "./fakeActivity.json";
 import flightRs from "./fakeFlight.json";
@@ -21,14 +23,14 @@ class SearchResult extends Component {
     let style = {};
     switch (this.state.type) {
       case "activity":
-        cards = this.fatchActivityCard(rs);
+        cards = this.fetchActivityCard(this.props.resultList);
         break;
       case "flight":
-        cards = this.fatchFlightCard(flightRs);
+        cards = this.fetchFlightCard(flightRs);
         style = { overflowY: "auto" };
         break;
       case "hotel":
-        cards = this.fatchHotelCard(hotelRs);
+        cards = this.fetchHotelCard(hotelRs);
         break;
       default:
         console.error("wrong type in SearchResult");
@@ -42,7 +44,10 @@ class SearchResult extends Component {
     );
   }
 
-  fatchActivityCard = rs => {
+  fetchActivityCard = rs => {
+    console.log(rs);
+
+    if (!rs) return <div></div>;
     return (
       <div className="card-wrapper">
         {rs.data.map(function(park, _) {
@@ -63,7 +68,7 @@ class SearchResult extends Component {
     );
   };
 
-  fatchFlightCard = rs => {
+  fetchFlightCard = rs => {
     return (
       <div className="card-wrapper">
         {rs.map(function(flight, index) {
@@ -73,7 +78,7 @@ class SearchResult extends Component {
     );
   };
 
-  fatchHotelCard = rs => {
+  fetchHotelCard = rs => {
     return (
       <div className="card-wrapper">
         {rs.map(function(park, index) {
@@ -83,5 +88,11 @@ class SearchResult extends Component {
     );
   };
 }
+const mapStateToProps = state => {
+  // console.log(state.result.resultList);
+  return {
+    resultList: state.result.resultList
+  };
+};
 
-export default SearchResult;
+export default connect(mapStateToProps)(SearchResult);

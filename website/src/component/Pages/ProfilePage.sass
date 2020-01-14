@@ -1,0 +1,60 @@
+$airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+.profile-page
+    margin-top: 80px
+    .profile-page-contant
+        .profile-page-person
+            display: flex
+            flex-direction: row
+            justify-content: center
+            align-items: center
+            border: 2px soild black
+            .photo
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-items: center
+                .photo-avatar
+                    height: 150px
+                    width: 150px
+                    margin-bottom: 10px
+            .info-box
+                margin-left: 30px
+                height: 300px
+                width: 600px
+                padding: 16px 24px
+                display: flex
+                flex-direction: column
+                justify-content: center
+                align-content: center
+                .name
+                    font-family: $airbnb-font
+                    margin: 10px
+                    display: flex
+                    flex-direction: row
+                    align-items: center
+                    justify-content: space-between
+                    .title
+                        padding-left: 0px
+                        margin-left: 0px
+                        font-size: 16px
+                        font-family: inherit
+                        .subtitle
+                            font-size: 18px
+                            font-family: inherit    
+                    .option
+                .email
+                    @extend .name
+                .home-address
+                    @extend .name
+
+                .payment
+                    @extend .name
+        .profile-page-mytrip
+            padding-top: 20px
+        .profile-page-recommand
+            padding-top: 20px
+    .profile-page-footer
+        width: 100vw
+        max-width: 100%
+        text-align: center
+        background-color: black

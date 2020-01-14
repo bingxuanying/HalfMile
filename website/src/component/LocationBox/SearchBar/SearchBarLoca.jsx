@@ -27,13 +27,20 @@ class SearchBarLoca extends Component {
         var cityName = matches[1];
       }
 
-      var city = {
-        id: uuid(),
-        name: cityName,
-        location: place.location
-      };
+      if (
+        this.props.cities.length === 0 &&
+        cityName === this.props.homeAddress.name
+      ) {
+        this.props.updateError("The Same as Home Address");
+      } else {
+        var city = {
+          id: uuid(),
+          name: cityName,
+          location: place.location
+        };
 
-      this.props.addCity(city);
+        this.props.addCity(city);
+      }
       this._geoSuggest.clear();
     }
   }
@@ -67,13 +74,15 @@ class SearchBarLoca extends Component {
 const mapStateToProps = state => {
   // console.log(state.plan[0].home);
   return {
-    homeAddress: state.plan[0].home
+    homeAddress: state.plan[0].home,
+    cities: state.step.cities
   };
 };
 
 const mapDispatchToProps = () => {
   return {
-    addCity: stepActions.addCity
+    addCity: stepActions.addCity,
+    updateError: stepActions.updateError
   };
 };
 

@@ -16,7 +16,7 @@ class GuideCard extends Component {
   render() {
     var starGroup = buildStars(this.state.stars);
     return (
-      <Card className="guide-card card border-0 text-left ml-0 mr-4">
+      <Card className="guide-card card border-0 text-left">
         <Card.Img
           className="guide-card-img"
           variant="top"

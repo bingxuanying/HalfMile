@@ -2,7 +2,10 @@ $airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sa
 $google-font: Roboto, HelveticaNeue, Arial, sans-serif
 
 .guide-card
+    width: 24%
     overflow: hidden
+    margin-left: 0px
+    margin-right: 1%
     .guide-card-img
         width: 100%
         height: 17vw
@@ -14,24 +17,45 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
         .guide-card-title
             margin-bottom: 3px
         .guide-card-text
+    @media screen and ( max-width: 100em )
+        width: 32%
+    @media screen and ( max-width: 60em )
+        width: 49%
+    @media screen and ( max-width: 35em )
+        width: 99%
 
 .adventure-card
-    // height: 27vw
+    width: 15.6%
     overflow: hidden
     padding-bottom: 0px
+    margin-left: 0px
+    margin-right: 1%
     .adventure-card-img
         width: 100%
-        height: 22vw
         object-fit: cover
         border-radius: 5px
     .adventure-card-body
         padding-bottom: 0px
         padding-right: 0px
-
+    @media screen and ( max-width: 100em )
+        width: 24%
+    @media screen and ( max-width: 60em )
+        width: 32.33%
+    @media screen and ( max-width: 45em )
+        width: 49%
+    @media screen and ( max-width: 30em )
+        width: 99%
+    
 .city-card
-    // height: 25vw
+    width: 32.3%
     overflow: hidden
     padding: 0px
+    margin-left: 0px
+    margin-right: 1%
+    @media screen and ( max-width: 100em )
+        width: 49%
+    @media screen and ( max-width: 40em )
+        width: 99%
     .city-card-img
         width: 100%
         height: 23vw
@@ -48,14 +72,22 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
         .city-card-text
             font-size: 12px
 
+
 .trip-card
-    position: relative
-    width: 100%
-    height: 25vw
+    width: 32.3%
+    overflow: hidden
+    padding: 0px
+    margin-left: 0px
+    margin-right: 1%
+    @media screen and ( max-width: 100em )
+        width: 49%
+    @media screen and ( max-width: 40em )
+        width: 99%
+    // @extend .city-card
     .trip-card-img
         width: 100%
         height: 20vw
-        max-width: auto
+        object-fit: cover
         border-radius: 5px
     .trip-card-option
         width: 100%
@@ -96,6 +128,7 @@ $google-font: Roboto, HelveticaNeue, Arial, sans-serif
         .trip-card-shade-option
             position: absolute
             left: 90%
+
 
 .activity-card
     position: relative

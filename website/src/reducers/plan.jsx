@@ -18,16 +18,16 @@ const initialState = [
   }
 ];
 
-const newState = {
-  city: [],
-  hotel: [],
+const initDay = {
+  city: [], // one single item for now
+  hotel: [], // one single item for now
   transportation: [],
   endDate: null,
   isEdit: false,
   isFinished: false
 };
 
-const newCity = {
+const initCity = {
   name: null,
   location: {
     lat: null,
@@ -36,7 +36,7 @@ const newCity = {
   activities: []
 };
 
-const newHotel = {
+const initHotel = {
   name: null,
   price: null,
   roomType: null,
@@ -46,7 +46,7 @@ const newHotel = {
   }
 };
 
-const newTransportation = {
+const initTransportation = {
   flightNum: null,
   departureCity: null,
   arrivalCity: null,
@@ -56,6 +56,31 @@ const newTransportation = {
 
 const planReducer = (state = initialState, action) => {
   switch (action.type) {
+    // City Page
+    case "ADD_CITY":
+      let lastIdx = state.length - 1;
+      let lastCityName =
+        lastIdx === 0 ? state[lastIdx].home.name : state[lastIdx].city.name;
+      if (lastIdx >= 0 && action.payload.name === lastCityName) {
+        return {
+          ...state
+        };
+      }
+
+      let newCity = Object.assign(
+        {},
+        initCity,
+        { name: action.payload.name },
+        { location: action.payload.location }
+      );
+
+      let newDay = Object.assign({}, initDay, { city: newCity });
+
+      // let newState = state.concat(newDay);
+
+      return state.concat(newDay);
+
+    // Start Box
     case "CHANGE_HOME_ADDRESS":
       return state.map((item, index) => {
         // Replace the item at index 0
@@ -151,8 +176,6 @@ const planReducer = (state = initialState, action) => {
         // Leave every other item unchanged
         return item;
       });
-    case "CREATE_NEW":
-      return null;
     default:
       return state;
   }
