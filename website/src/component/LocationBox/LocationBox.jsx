@@ -8,6 +8,7 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 import { Modal } from "react-bootstrap";
 import { FaRegUser } from "react-icons/fa";
 import Tooltip from "@material-ui/core/Tooltip";
+import { connect } from "react-redux";
 
 class LocationBox extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class LocationBox extends Component {
         </div>
         <div className="start-city">
           <div className="start-city-start">Start City:</div>
-          <div className="start-city-city">{startCity}</div>
+          <div className="start-city-city">{this.props.home.name}</div>
         </div>
         <div className="locationbox-manager">
           <DND />
@@ -47,4 +48,11 @@ class LocationBox extends Component {
   }
 }
 
-export default LocationBox;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    home: state.plan[0].home
+  };
+};
+
+export default connect(mapStateToProps)(LocationBox);

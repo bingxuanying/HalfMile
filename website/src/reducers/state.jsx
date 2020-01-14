@@ -10,7 +10,7 @@ const stateReducer = (state = initialState, action) => {
       return { ...state, loginWindow: !state.loginWindow };
     case "TOGGLE_REGISTER_WINDOW":
       return { ...state, registerWindow: !state.registerWindow };
-    case "ON_INFO_BAR":
+    case "UPDATE_ERROR_CITY":
       return { ...state, InfoBar: true };
     case "OFF_INFO_BAR":
       return { ...state, InfoBar: false };
