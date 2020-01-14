@@ -19,13 +19,10 @@ export const deleteCity = id => {
   };
 };
 
-export const reorderCity = (startIndex, endIndex) => {
+export const reorderCity = sortedLst => {
   return {
     type: "REORDER_CITY",
-    payload: {
-      startIndex: startIndex,
-      endIndex: endIndex
-    }
+    payload: sortedLst
   };
 };
 

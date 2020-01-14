@@ -27,11 +27,15 @@ class SearchBarLoca extends Component {
         var cityName = matches[1];
       }
 
+      let lastIdx = this.props.cities.length - 1;
+
       if (
         this.props.cities.length === 0 &&
         cityName === this.props.homeAddress.name
       ) {
         this.props.updateError("The Same as Home Address");
+      } else if (lastIdx >= 0 && cityName === this.props.cities[lastIdx].name) {
+        this.props.updateError("repeated city");
       } else {
         var city = {
           id: uuid(),

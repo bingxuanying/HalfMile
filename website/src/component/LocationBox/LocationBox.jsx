@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import SearchBar from "./SearchBar/SearchBarLoca";
+import SearchBarLoca from "./SearchBar/SearchBarLoca";
 import DND from "../DND/DND";
 import ReactModal from "react-modal";
 import "./LocationBox.sass";
@@ -30,7 +30,7 @@ class LocationBox extends Component {
             padding: "2px"
           }}
         >
-          <SearchBar />
+          <SearchBarLoca />
           {/* <button onClick={this.toggleDiv}>+</button>
           <br />
           {!this.state.show && <Calendar />} */}

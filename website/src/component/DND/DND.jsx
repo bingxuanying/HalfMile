@@ -38,15 +38,27 @@ class DND extends Component {
 
     // First selected city cannot be the same as the home city
     if (result.destination.index === 0 && this.props.home.name === checkCity) {
-      this.props.updateError(`${checkCity} cannot be on top`);
+      return this.props.updateError(`${checkCity} cannot be on top`);
     } else if (
       result.source.index === 0 &&
       this.props.cities.length > 1 &&
       this.props.home.name === this.props.cities[1].name
     ) {
-      this.props.updateError(`${this.props.cities[1].name} cannot be on top`);
+      return this.props.updateError(
+        `${this.props.cities[1].name} cannot be on top`
+      );
     } else {
-      this.props.reorderCity(result.source.index, result.destination.index);
+      var sortedCityLst = reorder(
+        this.props.cities,
+        result.source.index,
+        result.destination.index
+      );
+      for (let i = 1; i < sortedCityLst.length; i++) {
+        if (sortedCityLst[i - 1].name === sortedCityLst[i].name) {
+          return this.props.updateError("repeated city");
+        }
+      }
+      this.props.reorderCity(sortedCityLst);
     }
   }
 
