@@ -177,8 +177,8 @@ class ContentCover extends Component {
                   {this.state.guestOpen ? (
                     <ExpandLessIcon />
                   ) : (
-                    <ExpandMoreIcon />
-                  )}
+                      <ExpandMoreIcon />
+                    )}
                 </Button>
                 {this.state.guestOpen && (
                   <ClickAwayListener onClickAway={this.guestSave}>
@@ -375,3 +375,4 @@ const mapDispatchToProps = () => {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps())(ContentCover)
 );
+

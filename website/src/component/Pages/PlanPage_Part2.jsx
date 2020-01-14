@@ -94,6 +94,7 @@ class PlanPage_Part2 extends Component {
 const mapStateToProps = state => {
   return {
     resultList: state.result.resultList
+
   };
 };
 
