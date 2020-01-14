@@ -1,6 +1,6 @@
 const initialState = {
   keyword: null,
-  resultList: []
+  resultList: null
 };
 
 const stateReducer = (state = initialState, action) => {

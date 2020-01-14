@@ -20,24 +20,14 @@ import { connect } from "react-redux";
 import * as resultActions from "../../actions/resultActions";
 
 class PlanPage_Part2 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      // keyWord here is only for test, we will get it from Redux
-      keyWord: ""
-    };
-  }
-  handleInput = event => {
-    event.preventDefault();
-    this.setState({ keyWord: event.target.value });
-    this.props.updateKeyword(event.target.value);
-  };
-
-  searchClick = () => {
-    // NationParkQ({ key: this.props.keyword, stateCode: "CA" });
-    this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })
-  };
   render() {
+    window.onload = () => {
+      let pack = {
+        keyword: this.props.keyword,
+        stateCode: "CA"
+      };
+      this.props.fetchData(pack);
+    };
     return (
       <div className="planpage-containter">
         <div className="planpage-cover">
@@ -52,14 +42,18 @@ class PlanPage_Part2 extends Component {
                 <Input
                   id="standard-adornment-password"
                   type={"text"}
-                  value={this.state.keyWord}
-                  onChange={this.handleInput}
+                  onChange={e => this.props.updateKeyword(e.target.value)}
                   endAdornment={
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
                         // onClick={this.searchClick}
-                        onClick={() => this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })}
+                        onClick={() =>
+                          this.props.fetchData({
+                            keyword: this.props.keyword,
+                            stateCode: "CA"
+                          })
+                        }
                       >
                         <SearchIcon />
                       </IconButton>
@@ -93,6 +87,7 @@ class PlanPage_Part2 extends Component {
 
 const mapStateToProps = state => {
   return {
+    keyword: state.result.keyword,
     resultList: state.result.resultList
   };
 };
@@ -105,4 +100,3 @@ const mapDispatchToProps = () => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps())(PlanPage_Part2);
-// export default PlanPage_Part2;
