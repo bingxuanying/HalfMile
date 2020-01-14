@@ -11,6 +11,7 @@ import ProfilePage from "./component/Pages/ProfilePage";
 import PlanPage from "./component/Pages/PlanPage";
 import PlanPage_Part1 from "./component/Pages/PlanPage_Part1";
 import PlanPage_Part2 from "./component/Pages/PlanPage_Part2";
+import CheckoutPage from "./component/Pages/CheckoutPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -37,7 +38,8 @@ class App extends Component {
               <HomePage />
             </Route>
             <Route path="/help">
-              <PlanPage_Part2 />
+              {/* <PlanPage_Part2 /> */}
+              <CheckoutPage />
             </Route>
             <Route path="/plan">
               {this.props.section === "none" ? (

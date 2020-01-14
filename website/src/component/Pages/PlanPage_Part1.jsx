@@ -13,12 +13,9 @@ class PlanPage_Part1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      infoBarShow: true,
-
+      infoBarShow: false
     };
   }
-
-
 
   render() {
     console.log(this.props.err);
@@ -65,7 +62,7 @@ class PlanPage_Part1 extends Component {
   }
   closeInfoBar = () => {
     this.setState({ infoBarShow: false });
-  }
+  };
 }
 
 const mapStateToProps = state => {
@@ -79,8 +76,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    nextPage: stepActions.nextPage,
-
+    nextPage: stepActions.nextPage
   };
 };
 
