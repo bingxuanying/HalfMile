@@ -19,7 +19,8 @@ export const NationParkQ = data => {
   url = url + "&api_key=" + API[ApiIterator];
 
   axios.get(url).then(res => {
-    console.log(res);
+    console.log(res.data);
+    return (res.data);
   });
 };
 export const DisneyLandQ = key => {

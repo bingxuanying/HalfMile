@@ -34,8 +34,8 @@ class PlanPage_Part2 extends Component {
   };
 
   searchClick = () => {
-    NationParkQ({ key: this.props.keyword, stateCode: "CA" });
-    // this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })
+    // NationParkQ({ key: this.props.keyword, stateCode: "CA" });
+    this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })
   };
   render() {
     return (
@@ -58,7 +58,8 @@ class PlanPage_Part2 extends Component {
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
-                        onClick={this.searchClick}
+                        // onClick={this.searchClick}
+                        onClick={() => this.props.fetchData({ key: this.props.keyword, stateCode: "CA" })}
                       >
                         <SearchIcon />
                       </IconButton>
@@ -68,7 +69,7 @@ class PlanPage_Part2 extends Component {
               </FormControl>
             </div>
             <div className="planpage-sidebar-menu">
-              <SearchResult type="flight" />
+              <SearchResult type="activity" />
             </div>
           </div>
           {/* map section */}
@@ -91,9 +92,8 @@ class PlanPage_Part2 extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
   return {
-    keyword: state.result.keyword
+    resultList: state.result.resultList
   };
 };
 
@@ -105,3 +105,4 @@ const mapDispatchToProps = () => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps())(PlanPage_Part2);
+// export default PlanPage_Part2;
