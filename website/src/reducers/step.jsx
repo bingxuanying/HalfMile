@@ -16,14 +16,6 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "ADD_CITY":
-      let lastIdx = state.cities.length - 1;
-      if (lastIdx >= 0 && action.payload.name === state.cities[lastIdx].name) {
-        return {
-          ...state,
-          err: "repeated city"
-        };
-      }
-
       return {
         ...state,
         cities: state.cities.concat(action.payload),
@@ -41,22 +33,9 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "REORDER_CITY":
-      var result = [...state.cities];
-      var [removed] = result.splice(action.payload.startIndex, 1);
-      result.splice(action.payload.endIndex, 0, removed);
-
-      for (let i = 1; i < state.cities.length; i++) {
-        if (result[i - 1].name === result[i].name) {
-          return {
-            ...state,
-            err: "repeated city"
-          };
-        }
-      }
-
       return {
         ...state,
-        cities: result,
+        cities: action.payload,
         err: "none"
       };
 

@@ -1,19 +1,83 @@
 const initialState = {
-  loginWindow: false,
-  registerWindow: false,
+  loginInfo: {
+    email: null,
+    password: null
+  },
+  registerInfo: {
+    email: null,
+    password: null,
+    rePassword: null
+  },
   InfoBar: false
 };
 
 const stateReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "TOOGLE_LOGIN_WINDOW":
-      return { ...state, loginWindow: !state.loginWindow };
-    case "TOGGLE_REGISTER_WINDOW":
-      return { ...state, registerWindow: !state.registerWindow };
-    case "ON_INFO_BAR":
+    case "UPDATE_LOGIN_EMAIL":
+      return {
+        ...state,
+        loginInfo: {
+          ...state.loginInfo,
+          email: action.payload
+        }
+      };
+    case "UPDATE_LOGIN_PASSWORD":
+      return {
+        ...state,
+        loginInfo: {
+          ...state.loginInfo,
+          password: action.payload
+        }
+      };
+    case "CLEAR_LOGIN_INFO":
+      return {
+        ...state,
+        loginInfo: {
+          ...state.loginInfo,
+          email: null,
+          password: null
+        }
+      };
+
+    case "UPDATE_REGISTER_EMAIL":
+      return {
+        ...state,
+        registerInfo: {
+          ...state.registerInfo,
+          email: action.payload
+        }
+      };
+    case "UPDATE_REGISTER_PASSWORD":
+      return {
+        ...state,
+        registerInfo: {
+          ...state.registerInfo,
+          password: action.payload
+        }
+      };
+    case "UPDATE_REGISTER_REPASSWORD":
+      return {
+        ...state,
+        registerInfo: {
+          ...state.registerInfo,
+          rePassword: action.payload
+        }
+      };
+    case "CLEAR_REGISTER_INFO":
+      return {
+        ...state,
+        registerInfo: {
+          email: null,
+          password: null,
+          rePassword: null
+        }
+      };
+
+    case "UPDATE_ERROR_CITY":
       return { ...state, InfoBar: true };
     case "OFF_INFO_BAR":
       return { ...state, InfoBar: false };
+
     default:
       return state;
   }

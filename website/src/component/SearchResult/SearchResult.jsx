@@ -4,7 +4,6 @@ import { ActivityCard, FlightCard, HotelCard } from "../Card";
 import img from "./assets/fakeNP.jpg";
 // Redux
 import { connect } from "react-redux";
-import * as resultActions from "../../actions/resultActions";
 // rs is for test only
 import rs from "./fakeActivity.json";
 import flightRs from "./fakeFlight.json";
@@ -89,7 +88,6 @@ class SearchResult extends Component {
   };
 }
 const mapStateToProps = state => {
-  // console.log(state.result.resultList);
   return {
     resultList: state.result.resultList
   };

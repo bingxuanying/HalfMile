@@ -5,6 +5,7 @@ import Login from "../User/Login";
 import SignUp from "../User/SignUp";
 import datePicker from "../../Calender/Calender";
 import UserProfileLogo from "../User/UserLogo";
+import { connect } from "react-redux";
 
 class HeaderNav extends Component {
   constructor() {
@@ -33,7 +34,12 @@ class HeaderNav extends Component {
     return (
       <Nav>
         <Nav.Link exact="true" href="/" className="nav-link">
-          <div className="nav-btn" id="home-button" size="lg" variant="outline-dark">
+          <div
+            className="nav-btn"
+            id="home-button"
+            size="lg"
+            variant="outline-dark"
+          >
             Home
           </div>
         </Nav.Link>
@@ -41,14 +47,19 @@ class HeaderNav extends Component {
           <div className="nav-btn" size="lg" variant="outline-dark">
             Help
           </div>
-          
         </Nav.Link>
-        {/* <SignUp /> */}
-        <UserProfileLogo />
-        {/* <Login /> */}
+        {!this.props.isLogin && <SignUp />}
+        {!this.props.isLogin && <Login />}
+        {this.props.isLogin && <UserProfileLogo />}
       </Nav>
     );
   }
 }
 
-export default HeaderNav;
+const mapStateToProps = state => {
+  return {
+    isLogin: state.user.isLogin
+  };
+};
+
+export default connect(mapStateToProps)(HeaderNav);

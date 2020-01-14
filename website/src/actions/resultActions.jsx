@@ -28,13 +28,13 @@ export const fetchData = data => {
       .get(url)
       .then(res => {
         dispatch({
-          type: "FETCH_DATA",
+          type: "FETCH_ACTIVITY_DATA",
           payload: res.data
         });
       })
       .catch(err => {
         console.log(err);
-        dispatch({ type: "FETCH_DATA_ERROR", payload: err });
+        dispatch({ type: "FETCH_ACTIVITY_DATA_ERROR", payload: err });
       });
   };
 };

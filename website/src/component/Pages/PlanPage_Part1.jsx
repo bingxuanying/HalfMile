@@ -10,13 +10,6 @@ import "./PlanPage.sass";
 import InfoBar from "../InfoBar";
 
 class PlanPage_Part1 extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      infoBarShow: false
-    };
-  }
-
   render() {
     console.log(this.props.err);
     return (
@@ -48,11 +41,11 @@ class PlanPage_Part1 extends Component {
             <span>Next Section</span>
           </button>
         </div>
-        {this.state.infoBarShow && (
+        {this.props.InfoBar && (
           <InfoBar
-            open={this.state.infoBarShow}
-            onClose={this.closeInfoBar}
-            autoHideDuration={5500}
+            open={this.props.InfoBar}
+            onClose={() => this.props.turnOffInfoBar()}
+            autoHideDuration={2000}
             message={this.props.err}
             type="error"
           />
@@ -60,9 +53,6 @@ class PlanPage_Part1 extends Component {
       </div>
     );
   }
-  closeInfoBar = () => {
-    this.setState({ infoBarShow: false });
-  };
 }
 
 const mapStateToProps = state => {
@@ -76,7 +66,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = () => {
   return {
-    nextPage: stepActions.nextPage
+    nextPage: stepActions.nextPage,
+    turnOffInfoBar: stateActions.turnOffInfoBar
   };
 };
 

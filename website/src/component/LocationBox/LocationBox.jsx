@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import SearchBar from "./SearchBar/SearchBarLoca";
+import SearchBarLoca from "./SearchBar/SearchBarLoca";
 import DND from "../DND/DND";
 import ReactModal from "react-modal";
 import "./LocationBox.sass";
@@ -8,6 +8,7 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 import { Modal } from "react-bootstrap";
 import { FaRegUser } from "react-icons/fa";
 import Tooltip from "@material-ui/core/Tooltip";
+import { connect } from "react-redux";
 
 class LocationBox extends Component {
   constructor(props) {
@@ -30,14 +31,14 @@ class LocationBox extends Component {
             padding: "2px"
           }}
         >
-          <SearchBar />
+          <SearchBarLoca />
           {/* <button onClick={this.toggleDiv}>+</button>
           <br />
           {!this.state.show && <Calendar />} */}
         </div>
         <div className="start-city">
           <div className="start-city-start">Start City:</div>
-          <div className="start-city-city">{startCity}</div>
+          <div className="start-city-city">{this.props.home.name}</div>
         </div>
         <div className="locationbox-manager">
           <DND />
@@ -47,4 +48,11 @@ class LocationBox extends Component {
   }
 }
 
-export default LocationBox;
+const mapStateToProps = state => {
+  // console.log(state.plan[0].home);
+  return {
+    home: state.plan[0].home
+  };
+};
+
+export default connect(mapStateToProps)(LocationBox);

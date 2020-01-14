@@ -5,7 +5,14 @@ import "../HeaderNav/HeaderNav.css";
 import { Nav, Modal } from "react-bootstrap";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 
+import { useSelector, useDispatch } from "react-redux";
+import * as stateActions from "../../../actions/stateActions";
+import * as userActions from "../../../actions/userActions";
+
 function SignUp() {
+  const registerInfo = useSelector(state => state.state.registerInfo);
+  const dispatch = useDispatch();
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,26 +36,57 @@ function SignUp() {
             <div className="input-container">
               <FaEnvelope id="email-icon" />
               <input
+                id="register-email"
                 type="email"
                 placeholder="Email Address"
-                pattern=".+@signup.com"
+                // pattern=".+@signup.com"
                 size="30"
-                required
                 title="Please provide a valid e-mail address"
-              ></input>
+                onChange={e =>
+                  dispatch(stateActions.updateRegisterEmail(e.target.value))
+                }
+              />
             </div>
+
             <div className="input-container">
               <FaLock id="password-icon" />
-              <input type="password" placeholder="Password"></input>
+              <input
+                id="register-password"
+                type="password"
+                placeholder="Password"
+                onChange={e =>
+                  dispatch(stateActions.updateRegisterPassword(e.target.value))
+                }
+              />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
+
             <div className="input-container">
               <FaLock id="password-icon" />
-              <input type="password" placeholder="Confirm password"></input>
+              <input
+                id="register-repassword"
+                type="password"
+                placeholder="Confirm password"
+                onChange={e =>
+                  dispatch(
+                    stateActions.updateRegisterRePassword(e.target.value)
+                  )
+                }
+              />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
+
             <div className="button-container">
-              <button className="submit-button" type="submit">
+              <button
+                className="submit-button"
+                type="button"
+                onClick={() => {
+                  document.getElementById("register-email").value = "";
+                  document.getElementById("register-password").value = "";
+                  document.getElementById("register-repassword").value = "";
+                  dispatch(stateActions.sendRegisterInfo(registerInfo));
+                }}
+              >
                 SignUp
               </button>
             </div>
