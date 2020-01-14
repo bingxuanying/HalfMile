@@ -1,21 +1,50 @@
+$airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
 .checkout-page
-    margin-top: 80px
+    margin-top: 160px
     .checkout-page-content
         background: #cdcdcd
         margin: 0px 80px
         padding: 10px 80px
+        min-height: calc( 100vh - 469px ) 
+        display: flex
+        flex-direction: column
+        justify-content: flex-start
         .checkout-page-title
             display: flex
             flex-direction: row
             justify-content: space-between
             align-items: center
+            font-size: 18px
+            font-family: $airbnb-font
             .checkout-page-title-name
+                font: inherit
+            .checkout-page-title-date
+                font: inherit
             .checkout-page-title-option
+                font: inherit
         .checkout-page-overviews
             width: 100%
         .checkout-page-checkout
+            width: 100%
+            height: 200px
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            align-items: flex-end
+            .checkout-page-checkout-est
+                margin-bottom: 20px
+            .checkout-page-checkout-btn
+                margin-bottom: 30px
     .footer
         width: 100vw
         max-width: 100%
         text-align: center
         background-color: black
+
+.airbnb-bold
+    font-size: 18px
+    font-family: $airbnb-font
+    font-weight: bold
+.airbnb-font
+    font-size: 18px
+    font-family: $airbnb-font

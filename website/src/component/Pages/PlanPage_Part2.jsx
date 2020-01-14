@@ -13,7 +13,6 @@ import {
   FormControl
 } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import { NationParkQ } from "../Api";
 import Map from "../Map/Map";
 // Redux
 import { connect } from "react-redux";
@@ -89,7 +88,6 @@ const mapStateToProps = state => {
   return {
     keyword: state.result.keyword,
     resultList: state.result.resultList
-
   };
 };
 

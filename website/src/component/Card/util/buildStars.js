@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { MdStar, MdStarHalf, MdStarBorder } from "react-icons/md";
 
 export const buildStars = rateStars => {

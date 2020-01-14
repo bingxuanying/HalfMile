@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import "./CheckoutPage.sass";
-import { Button } from "@material-ui/core";
+import { CheckoutOverview } from "../TripOverview";
+import { Button, IconButton, Tooltip, TextField } from "@material-ui/core";
 import FooterContainer from "../Footer/FooterContainer";
+import EditIcon from "@material-ui/icons/Edit";
+import SaveIcon from "@material-ui/icons/Save";
 
 // ------------------------- State ------------------------- //
 // Trip{
@@ -16,19 +19,70 @@ import FooterContainer from "../Footer/FooterContainer";
 //  }
 // --------------------------------------------------------- //
 class CheckoutPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      titleEdit: false,
+      title: fakeTrip.tripTitle
+    };
+  }
   render() {
     return (
       <div className="checkout-page">
         <div className="checkout-page-content">
           <div className="checkout-page-title">
-            <div className="checkout-page-title-name">Title Name</div>
-            <div className="checkout-page-title-option">Edit Icon</div>
+            <div className="checkout-page-title-name">
+              <div className="airbnb-font mb-0">Title</div>
+              {this.state.titleEdit ? (
+                <TextField
+                  value={this.state.title}
+                  onChange={event => {
+                    const { value } = event.target;
+                    this.setState({ title: value });
+                  }}
+                />
+              ) : (
+                <div className="airbnb-font mt-0">{this.state.title}</div>
+              )}
+            </div>
+            <div className="checkout-page-title-date">
+              {fakeTrip.startDate}&nbsp;-&nbsp;{fakeTrip.endDate}
+            </div>
+            <div className="checkout-page-title-option">
+              {this.state.titleEdit ? (
+                <Tooltip title="save" arrow>
+                  <IconButton
+                    onClick={() => {
+                      this.setState({ titleEdit: false });
+                    }}
+                  >
+                    <SaveIcon />
+                  </IconButton>
+                </Tooltip>
+              ) : (
+                <Tooltip className="airbnb-bold" title="Edit Trip Name" arrow>
+                  <IconButton
+                    onClick={() => this.setState({ titleEdit: true })}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
+            </div>
           </div>
-          <div className="checkout-page-overviews">Cities Overviews</div>
+          <div className="checkout-page-overviews">
+            {fakeTrip.days.map(function(day, index) {
+              return <CheckoutOverview key={index} />;
+            })}
+          </div>
           <div className="checkout-page-checkout">
-            <div className="checkout-page-checkout-est">Totol Est $10000</div>
+            <div className="checkout-page-checkout-est airbnb-bold">
+              Total&nbsp;Est.&nbsp;${findTotalCost(fakeTrip)}
+            </div>
             <div className="checkout-page-checkout-btn">
-              <Button>Checkout</Button>
+              <Button variant="contained" color="primary">
+                Checkout
+              </Button>
             </div>
           </div>
         </div>
@@ -40,6 +94,33 @@ class CheckoutPage extends Component {
   }
 }
 
+function findTotalCost(fakeTrip) {
+  let money = 0;
+  // Accumulate single days cost
+  for (let i = 0; i < fakeTrip.days.length; i++) {
+    const day = fakeTrip.days[i];
+    // transport cost
+    for (let j = 0; j < day.transports.length; j++) {
+      const flight = day.transports[j];
+      money += flight.price;
+    }
+    // hotel cost
+    money += day.hotel.price;
+    // activity cost
+    for (let z = 0; z < day.activities.length; z++) {
+      const activity = day.activities[z];
+      money += activity.price;
+    }
+  }
+  return money;
+}
+// function mapDaysToCity(fakeTrip) {
+//   let cities = [];
+//   for (let index = 0; index < fakeTrip.days.length; index++) {
+//     const day = fakeTrip.days[index];
+//   }
+// }
+
 const fakeTrip = {
   tripTitle: "One day in SF",
   startDate: "12/1",
@@ -47,14 +128,14 @@ const fakeTrip = {
   home: "Davis",
   days: [
     {
-      city: { location: { lat: 199, longt: 100 }, name: "San Franscisco" },
-      transport: [
+      city: { location: { lat: 199, longt: 100 }, name: "SF" },
+      transports: [
         {
           flightNumber: "UA8888",
           arriveTime: "14:00",
           departTime: "13:00",
           Date: "12/1",
-          price: "188",
+          price: 188,
           flightCompany: "united airline",
           duration: "1h0m",
           arriveAirport: "SFO",
@@ -71,7 +152,7 @@ const fakeTrip = {
         info: "Luxary Hotel",
         price: 579
       },
-      Activity: [
+      activities: [
         {
           name: "Fisher Mart",
           img:
@@ -80,6 +161,16 @@ const fakeTrip = {
           address: "1st, San Franscico, CA ,95618",
           rate: 4.5,
           price: 100,
+          costTime: "2h"
+        },
+        {
+          name: "Union Square",
+          img:
+            "https://upload.wikimedia.org/wikipedia/commons/a/ae/Fishermans_Wharf_Sign%2C_SF%2C_CA%2C_jjron_25.03.2012.jpg",
+          location: { lat: 1, long: 2 },
+          address: "1st, San Franscico, CA ,95618",
+          rate: 4.5,
+          price: 1200,
           costTime: "2h"
         }
       ]
