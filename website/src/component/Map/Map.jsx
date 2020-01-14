@@ -52,7 +52,9 @@ class Map extends Component {
         {this.props.cities.map((city, idx) => {
 
           var path = [
-            { lat: newLat, lng: newlung }
+            { lat: 38.5449065, lng: -121.7405167 },
+            { lat: 37.7749295, lng: -122.4194155 },
+            { lat: 34.0522342, lng: -118.2436849 }
           ];
           for(idx = 0; idx < path.length; idx++){
             var newLat = this.props.cities[idx].lat;
