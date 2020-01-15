@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import FooterColumn from "./FooterColumn/FooterColumn";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSuitcase } from "@fortawesome/free-solid-svg-icons";
-import "./FooterContainer.css";
+import "./FooterContainer.sass";
 
 class FooterContainer extends Component {
   constructor() {

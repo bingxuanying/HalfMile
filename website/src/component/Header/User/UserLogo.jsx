@@ -1,6 +1,5 @@
 import React, { useState, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../HeaderNav/HeaderNav.css";
 import "../User/User.sass";
 import {
   Nav,

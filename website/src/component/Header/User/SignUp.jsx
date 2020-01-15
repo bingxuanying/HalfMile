@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../HeaderNav/HeaderNav.css";
 import { Nav, Modal } from "react-bootstrap";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 

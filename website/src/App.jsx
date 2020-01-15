@@ -13,7 +13,7 @@ import PlanPage_Part1 from "./component/Pages/PlanPage_Part1";
 import PlanPage_Part2 from "./component/Pages/PlanPage_Part2";
 import CheckoutPage from "./component/Pages/CheckoutPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.sass";
 
 import { connect } from "react-redux";
 
