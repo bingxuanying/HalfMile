@@ -35,8 +35,8 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-        {/* <NavLog /> */}
-        <NavSign />
+        <NavLog />
+        {/* <NavSign /> */}
       </Nav>
       
     );

@@ -91,18 +91,8 @@
 
 
 #middle-bar {
-  background-color: black;
+
+  background-color: red;
   margin-right: 10%;
-  width: 60%;
-}
-
-.user-logo {
-  margin: 0 0 0 0;
-  margin-left: 10px;
-  padding-top: 3px;
-}
-
-#user-text {
-  color: #484848;
-  padding-left: 5px;
+  width: 70%;
 }
