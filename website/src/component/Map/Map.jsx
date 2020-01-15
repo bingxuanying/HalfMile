@@ -19,6 +19,8 @@ class Map extends Component {
 
 
   render() {
+    const path =[this.props.home.location];
+
     const MyMapComponent = compose(
       withScriptjs,
       withGoogleMap
@@ -26,40 +28,19 @@ class Map extends Component {
       // Set Multiple Markers on the Map
       <GoogleMap
         defaultZoom={11}
+        // auto zoom in/out goes here
         defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
       >
-        {/* {props.places &&
-          props.places.map((place, i) => {
-            let lat = parseFloat(place.latitude, 10);
-            let lng = parseFloat(place.longitude, 10);
-            let path = [
-              { lat: 38.5449065, lng: -121.7405167 },
-              { lat: 37.7749295, lng: -122.4194155 },
-              { lat: 34.0522342, lng: -118.2436849 }
-            ];
-            return (
-              <div>
-                <Marker
-                  id={place.id}
-                  key={place.id}
-                  position={{ lat: lat, lng: lng }}
-                />
-                <Polyline path={path} options={{ strokeColor: "#FF0000 " }} />
-              </div>
-            );
-          })} */}
+        // home address
+        <Marker
+          id={0}
+          key={0}
+          position={this.props.home.location}
+        />
 
         {this.props.cities.map((city, idx) => {
-
-          var path = [
-            { lat: 38.5449065, lng: -121.7405167 },
-            { lat: 37.7749295, lng: -122.4194155 },
-            { lat: 34.0522342, lng: -118.2436849 }
-          ];
-          for(idx = 0; idx < path.length; idx++){
-            var newLat = this.props.cities[idx].lat;
-            var newlung = this.props.cities[idx].lng
-          }
+          path.push(city.location);
+          
           return (
             <div>
               <Marker
@@ -67,7 +48,9 @@ class Map extends Component {
                 key={city.id}
                 position={{ lat: city.location.lat, lng: city.location.lng }}
               />
-              <Polyline path={path} options={{ strokeColor: "#FF0000 " }} />
+              {/* lightgray - darkgray: interval = floor((hexdec_dark - hexdec_light) / this.props.cities.length) */}
+              {/* color = "#" + stringfy(path.length * interval + lightgray) */}
+              <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
             </div>
 
           );
@@ -75,7 +58,9 @@ class Map extends Component {
         })}
       </GoogleMap>
     ));
-    const {path, cities} = this.props;
+
+    const cities = this.props.cities;
+
     return (     
       <MyMapComponent
         zoom={10}
@@ -92,7 +77,8 @@ class Map extends Component {
 
 const mapStateToProps = state => {
   return {
-    cities: state.step.cities
+    cities: state.step.cities,
+    home: state.plan[0].home
     
   };
 };
