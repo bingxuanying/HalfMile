@@ -21,7 +21,7 @@ function Login() {
     <>
       <Nav.Link>
         <div
-          className="nav-btn"
+          className="nav-sign"
           size="lg"
           variant="outline-dark"
           onClick={handleShow}
@@ -64,7 +64,7 @@ function Login() {
                 onClick={() => {
                   document.getElementById("login-email").value = "";
                   document.getElementById("login-password").value = "";
-                  dispatch(stateActions.clearLoginInfo());
+                  dispatch(userActions.fetchUserToken(loginInfo));
                 }}
               >
                 Login

@@ -42,6 +42,8 @@
   text-align: right;
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
+  right: 0;
+  left: 0;
 }
 
 /* #home-button {
@@ -88,19 +90,17 @@
   transition: 0s;
 }
 
+
+
 #middle-bar {
-  background-color: black;
-  margin-right: 1%;
-  width: 80%;
+  background-color: transparent;
+  margin-right: 10%;
+  height: 50px;
+  width: 55%;
 }
 
-.user-logo {
-  margin: 0 0 0 0;
-  margin-left: 10px;
-  padding-top: 3px;
-}
-
-#user-text {
-  color: #484848;
-  padding-left: 5px;
+@media only screen and (max-width: 1500px) {
+  #middle-bar {
+    display: none;
+  }
 }

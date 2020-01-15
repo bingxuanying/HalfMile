@@ -5,7 +5,7 @@ import "../Header.css";
 class HeaderMid extends Component {
   render() {
     return(
-      <Nav.Link id="middle-bar">Test</Nav.Link>
+      <Nav.Link id="middle-bar"></Nav.Link>
     );
   }
 }

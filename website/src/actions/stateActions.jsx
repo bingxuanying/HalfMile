@@ -42,35 +42,6 @@ export const updateRegisterRePassword = password => {
   };
 };
 
-export const sendRegisterInfo = registerInfo => {
-  return dispatch => {
-    dispatch({
-      type: "CLEAR_REGISTER_INFO",
-      payload: null
-    });
-
-    let headers = {
-      "Content-Type": "application/json"
-    };
-
-    axios
-      .post("/register", registerInfo, {
-        headers: headers
-      })
-      .then(res => {
-        console.log(res);
-        // dispatch({
-        //   type: "FETCH_USER_TOKEN",
-        //   payload: res
-        // });
-      })
-      .catch(err => {
-        console.log(err);
-        dispatch({ type: "FETCHnSEND_USER_DATA_ERROR", payload: err });
-      });
-  };
-};
-
 export const turnOffInfoBar = () => {
   return {
     type: "OFF_INFO_BAR",

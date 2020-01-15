@@ -15,5 +15,11 @@
         "name": "Los Angeles",
         "latitude": "34.0522342",
         "longitude": "-118.2436849"
+    },
+    {
+        "id": 4,
+        "name": "Santa Barbara",
+        "latitude": "34.4208305",
+        "longitude": "-119.6981901"
     }
 ]

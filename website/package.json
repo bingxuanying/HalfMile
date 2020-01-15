@@ -57,5 +57,6 @@
     "eslint": "^6.8.0",
     "eslint-config-egg": "^8.0.0",
     "eslint-plugin-jsx": "^0.1.0"
-  }
+  },
+  "proxy": "https://api.halfmile.io"
 }

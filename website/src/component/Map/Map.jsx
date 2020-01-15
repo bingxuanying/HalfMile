@@ -5,9 +5,10 @@ import {
   GoogleMap,
   Marker,
   InfoWindow,
+  google,
   Polyline
 } from "react-google-maps";
-import places from "./places.json";
+// import places from "./places.json";
 import { compose } from "recompose";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
@@ -15,7 +16,11 @@ import * as stepActions from "../../actions/stepActions";
 import "./Map.css";
 
 class Map extends Component {
+
+
   render() {
+    const path =[this.props.home.location];
+
     const MyMapComponent = compose(
       withScriptjs,
       withGoogleMap
@@ -23,47 +28,46 @@ class Map extends Component {
       // Set Multiple Markers on the Map
       <GoogleMap
         defaultZoom={11}
+        // auto zoom in/out goes here
         defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
       >
-        {/* {props.places &&
-          props.places.map((place, i) => {
-            let lat = parseFloat(place.latitude, 10);
-            let lng = parseFloat(place.longitude, 10);
-            let path = [
-              { lat: 38.5449065, lng: -121.7405167 },
-              { lat: 37.7749295, lng: -122.4194155 },
-              { lat: 34.0522342, lng: -118.2436849 }
-            ];
-            return (
-              <div>
-                <Marker
-                  id={place.id}
-                  key={place.id}
-                  position={{ lat: lat, lng: lng }}
-                />
-                <Polyline path={path} options={{ strokeColor: "#FF0000 " }} />
-              </div>
-            );
-          })} */}
+        {/* home address */}
+        <Marker
+          id={0}
+          key={0}
+          position={this.props.home.location}
+        />
 
         {this.props.cities.map((city, idx) => {
+          path.push(city.location);
+          
           return (
-            <Marker
-              id={city.id}
-              key={city.id}
-              position={{ lat: city.location.lat, lng: city.location.lng }}
-            />
+            <div>
+              <Marker
+                id={city.id}
+                key={city.id}
+                position={{ lat: city.location.lat, lng: city.location.lng }}
+              />
+              {/* lightgray - darkgray: interval = floor((hexdec_dark - hexdec_light) / this.props.cities.length) */}
+              {/* color = "#" + stringfy(path.length * interval + lightgray) */}
+              <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
+            </div>
+
           );
+          
         })}
       </GoogleMap>
     ));
 
-    return (
+    const cities = this.props.cities;
+
+    return (     
       <MyMapComponent
         zoom={10}
-        places={places}
+        cities={cities}
+        path={path}
         googleMapURL="https://maps.googleapis.com/maps/api"
-        loadingElement={<div style={{ height: `100%` }} />}
+        loadingElement={<div style={{ height: "100%" }} />}
         containerElement={<div style={{ height: "100%", width: "100%" }} />}
         mapElement={<div style={{ height: "100%" }} />}
       ></MyMapComponent>
@@ -73,7 +77,9 @@ class Map extends Component {
 
 const mapStateToProps = state => {
   return {
-    cities: state.step.cities
+    cities: state.step.cities,
+    home: state.plan[0].home
+    
   };
 };
 
