@@ -42,8 +42,8 @@ class CheckoutPage extends Component {
                   }}
                 />
               ) : (
-                <div className="airbnb-font mt-0">{this.state.title}</div>
-              )}
+                  <div className="airbnb-font mt-0">{this.state.title}</div>
+                )}
             </div>
             <div className="checkout-page-title-date">
               {fakeTrip.startDate}&nbsp;-&nbsp;{fakeTrip.endDate}
@@ -60,19 +60,20 @@ class CheckoutPage extends Component {
                   </IconButton>
                 </Tooltip>
               ) : (
-                <Tooltip className="airbnb-bold" title="Edit Trip Name" arrow>
-                  <IconButton
-                    onClick={() => this.setState({ titleEdit: true })}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
-              )}
+                  <Tooltip className="airbnb-bold" title="Edit Trip Name" arrow>
+                    <IconButton
+                      onClick={() => this.setState({ titleEdit: true })}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </Tooltip>
+                )}
             </div>
           </div>
           <div className="checkout-page-overviews">
-            {fakeTrip.days.map(function(day, index) {
-              return <CheckoutOverview key={index} />;
+            {fakeTrip.days.map(function (day, index) {
+              return <CheckoutOverview key={index} day={day} index={index}
+                totalDays={fakeTrip.totalDays} />;
             })}
           </div>
           <div className="checkout-page-checkout">
@@ -126,9 +127,58 @@ const fakeTrip = {
   startDate: "12/1",
   endDate: "12/2",
   home: "Davis",
+  totalDays: 2,
   days: [
     {
-      city: { location: { lat: 199, longt: 100 }, name: "SF" },
+      city: { location: { lat: 199, longt: 100 }, name: "San Fransciso" },
+      transports: [
+        {
+          flightNumber: "UA8888",
+          arriveTime: "14:00",
+          departTime: "13:00",
+          Date: "12/1",
+          price: 188,
+          flightCompany: "united airline",
+          duration: "1h0m",
+          arriveAirport: "SFO",
+          departAirport: "SMF"
+        }
+      ],
+      hotel: {
+        name: "JW Marroit SF",
+        img:
+          "https://q-cf.bstatic.com/images/hotel/max1024x768/187/18727539.jpg",
+        location: { lat: 1, longt: 2 },
+        address: "San Francisco UnionSquare",
+        rate: 5,
+        info: "Luxary Hotel",
+        price: 579
+      },
+      activities: [
+        {
+          name: "Fisher Mart",
+          img:
+            "https://upload.wikimedia.org/wikipedia/commons/a/ae/Fishermans_Wharf_Sign%2C_SF%2C_CA%2C_jjron_25.03.2012.jpg",
+          location: { lat: 1, long: 2 },
+          address: "1st, San Franscico, CA ,95618",
+          rate: 4.5,
+          price: 100,
+          costTime: "2h"
+        },
+        {
+          name: "Union Square",
+          img:
+            "https://upload.wikimedia.org/wikipedia/commons/a/ae/Fishermans_Wharf_Sign%2C_SF%2C_CA%2C_jjron_25.03.2012.jpg",
+          location: { lat: 1, long: 2 },
+          address: "1st, San Franscico, CA ,95618",
+          rate: 4.5,
+          price: 1200,
+          costTime: "2h"
+        }
+      ]
+    },
+    {
+      city: { location: { lat: 199, longt: 100 }, name: "Los Angeles" },
       transports: [
         {
           flightNumber: "UA8888",
