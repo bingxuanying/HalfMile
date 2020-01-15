@@ -1,2 +1,4 @@
 import TripOverview from "./TripOverview";
-export { TripOverview };
+import CheckoutOverview from "./CheckoutOverview";
+
+export { TripOverview, CheckoutOverview };

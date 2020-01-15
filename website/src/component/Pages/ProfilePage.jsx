@@ -9,9 +9,10 @@ import {
   Tooltip,
   Divider,
   Button,
-  Dialog
+  TextField
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
+import SaveIcon from "@material-ui/icons/Save";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import ContentCategory from "../HomeContent/ContentCategory";
 import { TripCard, GuideCard, CityCard } from "../Card";
@@ -22,14 +23,18 @@ import guideImg4 from "../Card/assets/guide3.jpg";
 import cityImg from "../Card/assets/Shanghai.png";
 import cityImg1 from "../Card/assets/london.png";
 import cityImg2 from "../Card/assets/montreal.png";
+import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "Weili Yin",
+      nameEdit: false,
       email: "xlyin@ucdavis.edu",
+      emailEdit: false,
       homeAddress: "4447 Cowell Blvd 57, Davis,CA,95618",
+      homeAddressEdit: false,
       paymentMethod: [
         {
           nickName: "Freedom",
@@ -48,7 +53,7 @@ class ProfilePage extends Component {
           cvs: 123
         }
       ],
-      dialogOpen: false
+      paymentMethodEdit: false
     };
   }
   render() {
@@ -63,14 +68,19 @@ class ProfilePage extends Component {
                 alt="profile img"
               />
               <input
+                ref={ref => (this.upload = ref)}
                 accept="image/*"
-                id="contained-button-file"
+                id="photoInput"
                 style={{ display: "none" }}
                 multiple
                 type="file"
               />
               <label htmlFor="contained-button-file">
-                <Button variant="contained" color="primary">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={e => this.upload.click()}
+                >
                   <CameraAltIcon />
                   Upload
                 </Button>
@@ -80,63 +90,130 @@ class ProfilePage extends Component {
               <div className="name">
                 <div className="title">
                   Name
-                  <Divider />
-                  <span className="subtitle">&nbsp;{this.state.name}</span>
+                  {this.state.nameEdit ? (
+                    <div className="subtitle">
+                      <TextField
+                        defaultValue={this.state.name}
+                        onChange={event => {
+                          const { value } = event.target;
+                          this.setState({ name: value });
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="subtitle">{this.state.name}</div>
+                  )}
                 </div>
-                <Tooltip className="option" title="edit" arrow>
-                  <IconButton
-                    onClick={() => {
-                      this.editClick("name");
-                    }}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
+                {this.state.nameEdit ? (
+                  <Tooltip className="option" title="save" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.saveClick("name");
+                      }}
+                    >
+                      <SaveIcon />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Tooltip className="option" title="edit" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.editClick("name");
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </div>
               <Divider />
               <div className="email">
                 <div className="title">
                   Email
-                  <Divider />
-                  <span className="subtitle">&nbsp;{this.state.email}</span>
+                  {this.state.emailEdit ? (
+                    <div className="subtitle">
+                      <TextField
+                        defaultValue={this.state.email}
+                        onChange={event => {
+                          const { value } = event.target;
+                          this.setState({ email: value });
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="subtitle">{this.state.email}</div>
+                  )}
                 </div>
-                <Tooltip className="option" title="edit" arrow>
-                  <IconButton
-                    onClick={() => {
-                      this.editClick("email");
-                    }}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
+                {this.state.emailEdit ? (
+                  <Tooltip className="option" title="save" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.saveClick("email");
+                      }}
+                    >
+                      <SaveIcon />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Tooltip className="option" title="edit" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.editClick("email");
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </div>
-              <Divider />
+              <Divider variant="middle" />
               <div className="home-address">
                 <div className="title">
                   Home&nbsp;Address
-                  <Divider />
-                  <span className="subtitle">
-                    &nbsp;{this.state.homeAddress}
-                  </span>
+                  {this.state.homeAddressEdit ? (
+                    <div className="subtitle">
+                      <TextField
+                        style={{ width: "400px" }}
+                        defaultValue={this.state.homeAddress}
+                        onChange={event => {
+                          const { value } = event.target;
+                          this.setState({ homeAddress: value });
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="subtitle">{this.state.homeAddress}</div>
+                  )}
                 </div>
-                <Tooltip className="option" title="edit" arrow>
-                  <IconButton
-                    onClick={() => {
-                      this.editClick("address");
-                    }}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                </Tooltip>
+                {this.state.homeAddressEdit ? (
+                  <Tooltip className="option" title="save" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.saveClick("address");
+                      }}
+                    >
+                      <SaveIcon />
+                    </IconButton>
+                  </Tooltip>
+                ) : (
+                  <Tooltip className="option" title="edit" arrow>
+                    <IconButton
+                      onClick={() => {
+                        this.editClick("address");
+                      }}
+                    >
+                      <EditIcon />
+                    </IconButton>
+                  </Tooltip>
+                )}
               </div>
               <Divider />
               <div className="payment">
                 <div className="title">
                   Payment
-                  <Divider />
-                  <span className="subtitle">
-                    &nbsp;{this.state.paymentMethod[0].nickName}
-                  </span>
+                  <div className="subtitle">
+                    {this.state.paymentMethod[0].nickName}
+                  </div>
                 </div>
                 <Tooltip className="option" title="edit" arrow>
                   <IconButton
@@ -172,20 +249,43 @@ class ProfilePage extends Component {
     );
   }
   editClick = type => {
-    console.log(type);
-    this.setState({ dialogOpen: true });
     switch (type) {
       case "name":
+        this.setState({ nameEdit: true });
         break;
       case "email":
+        this.setState({ emailEdit: true });
         break;
       case "address":
+        this.setState({ homeAddressEdit: true });
         break;
       case "payment":
+        this.setState({ paymentMethodEdit: true });
         break;
       default:
         break;
     }
+  };
+  saveClick = type => {
+    switch (type) {
+      case "name":
+        this.setState({ nameEdit: false });
+        break;
+      case "email":
+        this.setState({ emailEdit: false });
+        break;
+      case "address":
+        this.setState({ homeAddressEdit: false });
+        break;
+      case "payment":
+        this.setState({ paymentMethodEdit: false });
+        break;
+      default:
+        break;
+    }
+  };
+  handleChange = event => {
+    this.setState(event.target.value);
   };
 }
 const travelPlans_Trip = [
@@ -210,13 +310,6 @@ const travelPlans_Trip = [
     startData="12/5"
     endDate="12/8"
   />
-];
-const cityInfo =
-  "In 2077, they voted my city the worst place to live in America. Main issues? Sky high rate of violence and more people living below the poverty line than anywhere else";
-const travelPlans_City = [
-  <CityCard key="D1" city="SHANGHAI" img={cityImg} cityInfo={cityInfo} />,
-  <CityCard key="D2" city="LONDON" img={cityImg1} cityInfo={cityInfo} />,
-  <CityCard key="D3" city="Mongo" img={cityImg2} cityInfo={cityInfo} />
 ];
 
 const travelPlans_Guide = [
