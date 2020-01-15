@@ -5,7 +5,8 @@ import Login from "../User/Login";
 import SignUp from "../User/SignUp";
 import datePicker from "../../Calender/Calender";
 import UserProfileLogo from "../User/UserLogo";
-import { connect } from "react-redux";
+import NavSign from "../User/NavSign";
+import NavLog from "../User/NavLog";
 
 class HeaderNav extends Component {
   constructor() {
@@ -33,25 +34,10 @@ class HeaderNav extends Component {
 
     return (
       <Nav>
-        <Nav.Link exact="true" href="/" className="nav-link">
-          <div
-            className="nav-btn"
-            id="home-button"
-            size="lg"
-            variant="outline-dark"
-          >
-            Home
-          </div>
-        </Nav.Link>
-        <Nav.Link href="help">
-          <div className="nav-btn" size="lg" variant="outline-dark">
-            Help
-          </div>
-        </Nav.Link>
-        {!this.props.isLogin && <SignUp />}
-        {!this.props.isLogin && <Login />}
-        {this.props.isLogin && <UserProfileLogo />}
+        <NavLog />
+        {/* <NavSign /> */}
       </Nav>
+      
     );
   }
 }

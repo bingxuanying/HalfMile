@@ -1,0 +1,106 @@
+.header-container {
+    width: 100%;
+    height: 80px;
+    font-weight: 600;
+    color: #484848;
+    border-bottom: 1px solid lightgray;
+}
+
+#NavLogo {
+    font-size: 200%;
+    font-family: "Dancing Script", cursive;
+}
+
+#Bar {
+    height: 80px;
+    max-width: 100%;
+}
+
+.navbar-sign li {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 0 0 0 0;
+}
+
+.nav-sign {
+    color: #484848;
+    display: block;
+    font-size: 1.1em;
+    font-weight: bold;
+    height: 45px;
+    letter-spacing: 1px;
+    margin: 0 10px -15px;
+    padding: 0;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    display: inline-block;
+    list-style: none;
+    margin-top: 10px;
+    text-align: right;
+    transition: transform 0.5s ease-out;
+    -webkit-transition: transform 0.5s ease-out;
+}
+
+/* #home-button {
+  margin-left: 20%;
+} */
+
+.nav-sign:hover {
+    color: #484848;
+    transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+}
+
+/* Animated Bottom Line */
+.nav-sign:before,
+.nav-sign:after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: -5px;
+    background: #484848;
+}
+
+/* .nav-btn:before {
+  left: 50px;
+} */
+
+/* .nav-btn:after {
+  right: 50%;
+} */
+
+.nav-sign:hover:before {
+    background: #484848;
+    width: 150%;
+    right: -12px;
+    /* left: 0.1px; */
+
+    transition: width 0.1s cubic-bezier((0.22, 0.61, 0.36, 1));
+}
+
+.nav-sign:hover:after {
+    background: transparent;
+    width: 100%;
+    transition: 0s;
+}
+
+#middle-bar {
+    background-color: black;
+    margin-right: 10%;
+    width: 60%;
+}
+
+.user-logo {
+    margin: 0 0 0 0;
+    margin-left: 10px;
+    padding-top: 3px;
+}
+
+#user-text {
+    color: #484848;
+    padding-left: 5px;
+}
