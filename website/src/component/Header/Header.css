@@ -6,9 +6,10 @@
   border-bottom: 1px solid lightgray;
 }
 
-#NavLogo {
-  font-size: 200%;
+.NavLogo {
+  font-size: 500%;
   font-family: "Dancing Script", cursive;
+  position: fixed;
 }
 
 #Bar {

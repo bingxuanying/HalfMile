@@ -36,8 +36,7 @@ class HeaderContainer extends Component {
     const {isBig} = this.state;
     return (
       <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
-        <HeaderLogo />
-        
+        <HeaderLogo />       
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse className="navbar">
           <HeaderMid className="middle-bar"/>         
