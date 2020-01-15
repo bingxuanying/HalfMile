@@ -91,8 +91,13 @@
 
 
 #middle-bar {
-
   background-color: red;
   margin-right: 10%;
-  width: 70%;
+  width: 55%;
+}
+
+@media only screen and (max-width: 1500px) {
+  #middle-bar {
+    display: none;
+  }
 }

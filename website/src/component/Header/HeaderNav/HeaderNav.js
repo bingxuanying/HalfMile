@@ -10,29 +10,8 @@ import NavLog from "../User/NavLog";
 import {connect} from "react-redux";
 
 class HeaderNav extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      isTop: true
-    };
-  }
-
-  componentDidMount() {
-    document.addEventListener("scroll", () => {
-      this.setState({
-        isTop: window.scrollY < 100
-      });
-      // console.log(this.state.isTop);
-    });
-  }
 
   render() {
-    // isTop: if true => {color, border-bottom}: white
-    //        else false => black
-    // transistion: all ease 0.5s
-    const { isTop } = this.state;
-
     return (
       <Nav>
         <NavLog />
