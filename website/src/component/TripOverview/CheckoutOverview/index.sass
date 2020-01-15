@@ -1,0 +1,64 @@
+$airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif
+
+.checkout-overview
+    display: flex
+    flex-direction: row
+    justify-content: flex-start
+    // height for test only
+    min-height: 400px
+    .left-view
+        width: 18%
+        border-right: 1px solid #b4b4b4
+        display: flex
+        flex-direction: column
+        align-items: center
+        .left-view-city
+            font-size: 21px
+            font-weight: bold
+            font-family: $airbnb-font
+            margin-bottom: 15px
+            padding-top: 15px
+        .left-view-line
+            height: 100%
+            position: relative
+            &::before
+                content: ''
+                position: absolute
+                top: 0
+                left: 50%
+                border-right: 2px solid black
+                background: black
+                height: 100%
+    .day-display
+        width: 8%
+        display: flex
+        flex-direction: row
+        justify-content: center
+        padding-top: 15px
+    .content
+        width: 74%
+        padding-left: 10px
+        padding-top: 25px
+        .content-activities
+            display: flex
+            flex-direction: column
+            justify-content: flex-start
+            .logo
+                margin-bottom: 5px
+            .content-activity
+                padding-left: 10px
+                padding-right: 30px
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                align-items: flex-start
+                .content-activity-card
+                .content-activity-option
+        .content-transports
+            @extend .content-activities
+            .content-transport
+                @extend .content-activity
+        .content-hotel
+            @extend  .content-activities
+            .content-hotel
+                @extend .content-activity
