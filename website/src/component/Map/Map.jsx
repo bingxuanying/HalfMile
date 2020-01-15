@@ -31,7 +31,7 @@ class Map extends Component {
         // auto zoom in/out goes here
         defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
       >
-        // home address
+        {/* home address */}
         <Marker
           id={0}
           key={0}

@@ -14,7 +14,7 @@ function Login() {
     <>
       <Nav.Link href="#Login">
         <div
-          className="nav-btn"
+          className="nav-sign"
           size="lg"
           variant="outline-dark"
           onClick={handleShow}
