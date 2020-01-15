@@ -19,7 +19,7 @@ function SignUp() {
 
   return (
     <>
-      <Nav.Link href="#Login">
+      <Nav.Link>
         <div
           className="nav-btn"
           size="lg"
@@ -84,7 +84,7 @@ function SignUp() {
                   document.getElementById("register-email").value = "";
                   document.getElementById("register-password").value = "";
                   document.getElementById("register-repassword").value = "";
-                  dispatch(stateActions.sendRegisterInfo(registerInfo));
+                  dispatch(userActions.sendRegisterInfo(registerInfo));
                 }}
               >
                 SignUp

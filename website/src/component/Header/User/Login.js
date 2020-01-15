@@ -64,7 +64,7 @@ function Login() {
                 onClick={() => {
                   document.getElementById("login-email").value = "";
                   document.getElementById("login-password").value = "";
-                  dispatch(stateActions.clearLoginInfo());
+                  dispatch(userActions.fetchUserToken(loginInfo));
                 }}
               >
                 Login
