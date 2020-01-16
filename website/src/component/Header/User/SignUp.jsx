@@ -15,7 +15,7 @@ function SignUp() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   return (
     <>
       <Nav.Link>
@@ -29,9 +29,13 @@ function SignUp() {
         </div>
       </Nav.Link>
       <Modal show={show} onHide={handleClose} size="small" centered>
-        <Modal.Header closeButton />
+        <Modal.Header closeButton id="modal-header">
+          <div id="header-text">Sign up</div>
+        </Modal.Header>
         <Modal.Body className="modal-body">
+          
           <div className="signup-modal">
+            
             <div className="input-container">
               <FaEnvelope id="email-icon" />
               <input
@@ -88,9 +92,18 @@ function SignUp() {
               >
                 SignUp
               </button>
+              
             </div>
+            
           </div>
+          
+
         </Modal.Body>
+        <Modal.Footer id="modal-footer">
+          <a href="#" id="facebookIcon" />
+          <a href="#" id="twitterIcon" />
+          <a href="#" id="googleIcon" />
+        </Modal.Footer>
       </Modal>
     </>
   );

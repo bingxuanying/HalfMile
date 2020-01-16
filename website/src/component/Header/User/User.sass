@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit:700')
 @import url('https://fonts.googleapis.com/css?family=Stoke')
+
 .title
     font-family: 'Kanit', sans-serif
     text-transform: capitalize
@@ -9,8 +10,8 @@
 
 .input-container
     position: relative
-    margin-left: 120px
-    margin-top: 10px
+    margin-left: 70px
+    margin-top: 50px
     margin-bottom: 40px
 
 input, button
@@ -19,33 +20,32 @@ input, button
 input
     box-sizing: border-box
     background: transparent
-    width: 70%
-    border: none
-    border-bottom: 1px solid
-    padding: 12px 6px 12px 36px
+    width: 85%
+    padding: 10px 6px 12px 36px
     font-size: 19px
-    outline: none
 
-
+#register-email
+    
 
 .button-container
-    padding-left: 170px
+    padding-left: 20%
     padding-bottom: 20px
+    justify-content: center
 
 .submit-button
-    margin-bottom: -20px
+    width: 20rem
     font-family: 'Stoke', serif;
-    border: none
-    border-radius: 30px
+    // border: none
     font-size: 20px
     padding: 8px 16px
-    cursor: pointer
+    //cursor: pointer
     transition: all .3s
-    margin-bottom: -40px
+    //margin-bottom: -40px
     transition: all .3s
+    justify-content: center
 
 .submit-button:hover
-    background: gray
+    // background: lighten(#27282d, 65%)
 
 
 ::placeholder
@@ -59,6 +59,7 @@ input
 
 #password-icon
     position: absolute
+    font-size: 1.5rem
     left: 6px
     top: 45%
     transform: translateY(-50%)
@@ -66,6 +67,39 @@ input
 
 #email-icon
     position: absolute
+    font-size: 1.5rem
     left: 6px
-    top: 45%
+    top: 48%
     transform: translateY(-50%)
+
+#modal-header
+    text-align: center
+
+#header-text
+    font-size: 2.5rem
+    padding-left: 12rem
+    padding-top: 0.5rem
+
+#modal-footer
+    justify-content: center
+    display: flex
+
+#facebookIcon
+    background-image: url("https://image.flaticon.com/icons/svg/145/145802.svg")
+    background-repeat: no-repeat
+    width: 5rem
+    height: 3rem
+
+
+#twitterIcon
+    background-image: url("https://image.flaticon.com/icons/svg/145/145812.svg")
+    background-repeat: no-repeat
+    width: 5rem
+    height: 3rem
+
+
+#googleIcon
+    background-image: url("https://image.flaticon.com/icons/svg/145/145804.svg")
+    background-repeat: no-repeat
+    width: 3rem
+    height: 3rem
