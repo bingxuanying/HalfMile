@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./ContentCategory.css";
+import "./ContentCategory.sass";
 class ContentCategory extends Component {
   render() {
     const cards_row1 = this.props.cards_row1;

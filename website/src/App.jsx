@@ -9,11 +9,9 @@ import HeaderContainer from "./component/Header/HeaderContainer";
 import HomePage from "./component/Pages/HomePage";
 import ProfilePage from "./component/Pages/ProfilePage";
 import PlanPage from "./component/Pages/PlanPage";
-import PlanPage_Part1 from "./component/Pages/PlanPage_Part1";
-import PlanPage_Part2 from "./component/Pages/PlanPage_Part2";
 import CheckoutPage from "./component/Pages/CheckoutPage";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.sass";
 
 import { connect } from "react-redux";
 
@@ -38,7 +36,7 @@ class App extends Component {
               <HomePage />
             </Route>
             <Route path="/help">
-              {/* <PlanPage_Part2 /> */}
+              {/* <PlanPage_Part1 /> */}
               <CheckoutPage />
             </Route>
             <Route path="/plan">

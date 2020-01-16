@@ -6,14 +6,20 @@
   border-bottom: 1px solid lightgray;
 }
 
-#NavLogo {
-  font-size: 200%;
+.NavLogo {
+  font-size: 500%;
   font-family: "Dancing Script", cursive;
+  position: fixed;
 }
 
 #Bar {
   height: 80px;
   max-width: 100%;
+  float: right;
+}
+
+#navbar {
+  float: right;
 }
 
 .navbar li {
@@ -99,7 +105,11 @@
   width: 55%;
 }
 
-@media only screen and (max-width: 1500px) {
+#navsign-text {
+  float: right;
+}
+
+@media only screen and (max-width: 980px) {
   #middle-bar {
     display: none;
   }
