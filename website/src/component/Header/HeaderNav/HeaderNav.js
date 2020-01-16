@@ -7,17 +7,17 @@ import datePicker from "../../Calender/Calender";
 import UserProfileLogo from "../User/UserLogo";
 import NavSign from "../User/NavSign";
 import NavLog from "../User/NavLog";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class HeaderNav extends Component {
 
   render() {
     return (
       <Nav>
-        <NavLog />
-        {/* <NavSign /> */}
+        {/* <NavLog /> */}
+        <NavSign />
       </Nav>
-      
+
     );
   }
 }

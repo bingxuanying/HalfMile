@@ -5,7 +5,6 @@ import img from "./assets/fakeNP.jpg";
 // Redux
 import { connect } from "react-redux";
 // rs is for test only
-import rs from "./fakeActivity.json";
 import flightRs from "./fakeFlight.json";
 import hotelRs from "./fakeHotel.json";
 
@@ -49,7 +48,7 @@ class SearchResult extends Component {
     if (!rs) return <div></div>;
     return (
       <div className="card-wrapper">
-        {rs.data.map(function(park, _) {
+        {rs.data.map(function (park, _) {
           return (
             <ActivityCard
               name={park.fullName}
@@ -70,7 +69,7 @@ class SearchResult extends Component {
   fetchFlightCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function(flight, index) {
+        {rs.map(function (flight, index) {
           return <FlightCard obj={flight} key={"flight" + index} />;
         })}
       </div>
@@ -80,7 +79,7 @@ class SearchResult extends Component {
   fetchHotelCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function(park, index) {
+        {rs.map(function (park, index) {
           return <HotelCard key={index} obj={park} />;
         })}
       </div>
