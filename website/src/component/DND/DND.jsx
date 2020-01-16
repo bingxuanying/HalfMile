@@ -145,6 +145,31 @@ class DND extends Component {
                             <FontAwesomeIcon icon={faBars} size="1x" />
                           </div>
                           <div className="dnd-bar-content">{item.name}</div>
+                          <div className="dnd-bar-dateselector">
+                            <div className="dnd-bar-dec">---</div>
+                            <div
+                              className="dnd-bar-day"
+                              onClick={() => {
+                                document.getElementById(
+                                  item.id + "calendar"
+                                ).style.display = "initial";
+                              }}
+                            >
+                              day
+                            </div>
+                            <div className="dnd-bar-inc">+++</div>
+                          </div>
+                        </div>
+
+                        <div
+                          id={item.id + "calendar"}
+                          className="dnd-bar-calendar"
+                        >
+                          {/* <calendar id={item.id} /> onCloseHandlder={
+                            document.getElementById(
+                              item.id + "calendar"
+                            ).style.display = "none";
+                          } */}
                         </div>
                       </div>
                     )}

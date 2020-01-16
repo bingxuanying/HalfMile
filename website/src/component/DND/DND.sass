@@ -5,6 +5,8 @@
   margin-top: -2px
   background: transparent
   display: flex
+  overflow: visible
+  position: relative
   .dnd-bar-delete 
     width: 40px
     height: 100%
@@ -21,11 +23,12 @@
         opacity: 0.7
   .dnd-bar-item
     user-select: none
-    width: 100%
+    width: 300px
     height: 44px
     background-color: #f9f9f9
     border: 2px solid #dfdfdf
     display: flex
+    flex-direction: row
     .dnd-bar-handle 
       width: calc(44px - 2px)
       height: calc(44px - 4px)
@@ -41,6 +44,33 @@
       color: #485969
       font-weight: 500
       font-size: 16
+    .dnd-bar-dateselector
+      height: calc(44px - 4px)
+      width: 60px
+      display: flex
+      flex-direction: row
+      background-color: black
+      align-self: flex-end
+      .dnd-bar-dec
+        height: 100%
+        width: 20px
+        background-color: red
+      .dnd-bar-day
+        height: 100%
+        width: 20px
+        background-color: wheat
+      .dnd-bar-inc
+        height: 100%
+        width: 20px
+        background-color: blue
   .dnd-bar-item-avtive 
     background-color: #dfdfdf
     @extend .dnd-bar-item
+  .dnd-bar-calendar
+    height: 100px
+    width: 100px
+    background-color: tomato 
+    position: absolute
+    top: 0;
+    left: 340px
+    display: none;
