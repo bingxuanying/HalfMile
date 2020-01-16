@@ -29,21 +29,23 @@ class Map extends Component {
         defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
       >
         {/* home address */}
-        <Marker id={0} key={0} position={this.props.home.location} />
+        <Marker id={0} key={0} position={this.props.home.location} icon={{url: "https://img.icons8.com/dusk/100/000000/order-delivered.png"}}/>
 
         {this.props.cities.map((city, idx) => {
           path.push(city.location);
 
           return (
             <div>
+              {/* Marker for Cities */}
               <Marker
                 id={city.id}
                 key={city.id}
                 position={{ lat: city.location.lat, lng: city.location.lng }}
+                icon={{url: "https://img.icons8.com/bubbles/100/000000/building.png"}}
               />
               {/* lightgray - darkgray: interval = floor((hexdec_dark - hexdec_light) / this.props.cities.length) */}
               {/* color = "#" + stringfy(path.length * interval + lightgray) */}
-              <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
+              <Polyline path={path} options={{ strokeColor: "#ff6f5e", strokeOpacity: 1.0, strokeWeight: 2}} />
             </div>
           );
         })}
