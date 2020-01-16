@@ -36,8 +36,8 @@ class App extends Component {
               <HomePage />
             </Route>
             <Route path="/help">
-              <PlanPage_Part1 />
-              {/* <CheckoutPage /> */}
+              {/* <PlanPage_Part1 /> */}
+              <CheckoutPage />
             </Route>
             <Route path="/plan">
               {this.props.section === "none" ? (
