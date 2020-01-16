@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { TripOverviewDay } from "./TripOverviewDay/";
 import { TripOverviewCity } from "./TripOverviewCity/";
 import img1 from "./TripOverviewCity/assets/hotel-jwmarroit.png";
-import img2 from "./TripOverviewCity/assets/igh-sf.jfif";
+import img2 from "./TripOverviewCity/assets/igh-sf.jpeg";
 
 import "./index.sass";
 

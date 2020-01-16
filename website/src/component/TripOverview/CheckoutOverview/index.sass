@@ -45,20 +45,29 @@ $airbnb-font: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sa
             justify-content: flex-start
             .logo
                 margin-bottom: 5px
-            .content-activity
-                padding-left: 10px
-                padding-right: 30px
-                display: flex
-                flex-direction: row
-                justify-content: space-between
-                align-items: flex-start
-                .content-activity-card
-                .content-activity-option
+            .content-activity-wrapper
+                width: 100%
+                .content-activity
+                    width: 100%
+                    padding-left: 10px
+                    padding-right: 30px
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    align-items: flex-start
+                    .content-activity-card
+                        margin-right: 10px
+                        width: 70%
+                    .content-activity-option
         .content-transports
             @extend .content-activities
-            .content-transport
-                @extend .content-activity
+            .content-transport-wrapper
+                @extend .content-activity-wrapper
+                .content-transport
+                    @extend .content-activity
         .content-hotel
             @extend  .content-activities
-            .content-hotel
-                @extend .content-activity
+            .content-hotel-wrapper
+                @extend .content-activity-wrapper
+                .content-hotel
+                    @extend .content-activity

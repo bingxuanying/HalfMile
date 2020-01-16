@@ -5,7 +5,6 @@ import { TripOverview } from "../TripOverview";
 import "./PlanPage.sass";
 import { SearchResult } from "../SearchResult";
 import {
-  TextField,
   IconButton,
   Input,
   InputAdornment,
@@ -49,7 +48,7 @@ class PlanPage_Part2 extends Component {
                         // onClick={this.searchClick}
                         onClick={() =>
                           this.props.fetchData({
-                            keyword: this.props.keyword,
+                            keyworyd: this.props.keyword,
                             stateCode: "CA"
                           })
                         }

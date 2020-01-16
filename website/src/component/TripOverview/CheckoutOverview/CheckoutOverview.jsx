@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./index.sass";
-import { Divider, Avatar, IconButton } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import LocalActivityIcon from '@material-ui/icons/LocalActivity';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
 import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
 import HotelIcon from '@material-ui/icons/Hotel';
+import { ActivityCheckoutCard, FlightCheckoutCard } from "../../Card";
 // day{} key=index
 
 class CheckoutOverview extends Component {
@@ -39,21 +40,23 @@ class CheckoutOverview extends Component {
               <LocalActivityIcon style={{ fontSize: 30 }} />
               &nbsp;Activities
             </div>
-            {this.getActivities()}
+            <div className="content-activity-wrapper">
+              {this.getActivities()}</div>
           </div>
           <div className="content-transports">
             <div className="logo">
               <FlightTakeoffIcon style={{ fontSize: 30 }} />
               &nbsp;Transports
             </div>
-            {this.getTransports()}
+            <div className="content-transport-wrapper">
+              {this.getTransports()}</div>
           </div>
           <div className="content-hotel">
             <div className="logo">
               <HotelIcon style={{ fontSize: 30 }} />
               &nbsp;Hotel
             </div>
-            {this.getHotel()}
+            <div className="content-hotel-wrapper">{this.getHotel()}</div>
           </div>
         </div>
       </div>
@@ -66,7 +69,13 @@ class CheckoutOverview extends Component {
         return (
           <div className="content-activity" key={index}>
             <div className="content-activity-card">
-              {activity.name}
+              <ActivityCheckoutCard
+                name={activity.name}
+                img={activity.img}
+                stars={activity.rate}
+                timeCost={activity.costTime}
+                address={activity.address}
+              />
             </div>
             <div className="content-activity-option">
               Price Est.{activity.price}
@@ -92,7 +101,7 @@ class CheckoutOverview extends Component {
         return (
           <div className="content-transport" key={i}>
             <div className="content-transport-card">
-              {transport.flightNumber}
+              <FlightCheckoutCard obj={transport} />
             </div>
             <div className="content-transport-option">
               Price Est.{transport.price}

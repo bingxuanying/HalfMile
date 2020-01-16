@@ -168,7 +168,7 @@ const fakeTrip = {
         {
           name: "Union Square",
           img:
-            "https://upload.wikimedia.org/wikipedia/commons/a/ae/Fishermans_Wharf_Sign%2C_SF%2C_CA%2C_jjron_25.03.2012.jpg",
+            "https://www.tripsavvy.com/thmb/fqIAjZaVUoY6GQ8sA3WBgVTksTg=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-109287627-5b66fb4f46e0fb0050fabc66.jpg",
           location: { lat: 1, long: 2 },
           address: "1st, San Franscico, CA ,95618",
           rate: 4.5,
