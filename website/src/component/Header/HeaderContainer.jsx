@@ -3,8 +3,8 @@ import { Navbar, Nav } from "react-bootstrap";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HeaderMid from "./HeaderMid/HeaderMid";
 import HeaderNav from "./HeaderNav/HeaderNav";
-import "./Header.css";
-import "./User/NavSign.css";
+import "./Header.sass";
+import "./User/NavSign.sass";
 
 class HeaderContainer extends Component {
   constructor() {
@@ -19,30 +19,29 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.addEventListener("scroll", () => {
       this.setState({
-        isTop: window.scrollY < 100,
+        isTop: window.scrollY < 100
       });
       // console.log(this.state.isTop);
     });
   }
 
-  removeMiddleBar(){
-    this.setState({isBig: false})
+  removeMiddleBar() {
+    this.setState({ isBig: false });
   }
   render() {
     // isTop: if true => {color, border-bottom}: white
     //        else false => black
     // transistion: all ease 0.5s
     const { isTop } = this.state;
-    const {isBig} = this.state;
+    const { isBig } = this.state;
     return (
       <Navbar id="Bar" fixed="top" bg={!isTop && "white"} expand="lg">
-        <HeaderLogo />       
+        <HeaderLogo />
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse className="navbar" >
-          <HeaderMid className="middle-bar"/>         
+        <Navbar.Collapse className="navbar">
+          <HeaderMid className="middle-bar" />
           <HeaderNav />
         </Navbar.Collapse>
-        
       </Navbar>
     );
   }

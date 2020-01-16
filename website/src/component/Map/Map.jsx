@@ -8,18 +8,15 @@ import {
   google,
   Polyline
 } from "react-google-maps";
-// import places from "./places.json";
 import { compose } from "recompose";
 import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
-import "./Map.css";
+import "./Map.sass";
 
 class Map extends Component {
-
-
   render() {
-    const path =[this.props.home.location];
+    const path = [this.props.home.location];
 
     const MyMapComponent = compose(
       withScriptjs,
@@ -32,15 +29,11 @@ class Map extends Component {
         defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
       >
         {/* home address */}
-        <Marker
-          id={0}
-          key={0}
-          position={this.props.home.location}
-        />
+        <Marker id={0} key={0} position={this.props.home.location} />
 
         {this.props.cities.map((city, idx) => {
           path.push(city.location);
-          
+
           return (
             <div>
               <Marker
@@ -52,16 +45,14 @@ class Map extends Component {
               {/* color = "#" + stringfy(path.length * interval + lightgray) */}
               <Polyline path={path} options={{ strokeColor: "#FF0000" }} />
             </div>
-
           );
-          
         })}
       </GoogleMap>
     ));
 
     const cities = this.props.cities;
 
-    return (     
+    return (
       <MyMapComponent
         zoom={10}
         cities={cities}
@@ -79,7 +70,6 @@ const mapStateToProps = state => {
   return {
     cities: state.step.cities,
     home: state.plan[0].home
-    
   };
 };
 
