@@ -13,6 +13,7 @@ import { connect } from "react-redux";
 import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
 import "./Map.sass";
+import { icons } from "react-icons/lib/cjs";
 
 class Map extends Component {
   render() {
@@ -45,7 +46,7 @@ class Map extends Component {
               />
               {/* lightgray - darkgray: interval = floor((hexdec_dark - hexdec_light) / this.props.cities.length) */}
               {/* color = "#" + stringfy(path.length * interval + lightgray) */}
-              <Polyline path={path} options={{ strokeColor: "#ff6f5e", strokeOpacity: 1.0, strokeWeight: 2}} />
+              <Polyline path={path} options={{ strokeColor: "#ff6f5e", strokeOpacity: 1.0, strokeWeight: 2}}/>
             </div>
           );
         })}
