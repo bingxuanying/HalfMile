@@ -4,7 +4,7 @@ import ContentCategory from "../HomeContent/ContentCategory";
 import FooterContainer from "../Footer/FooterContainer";
 import { withRouter } from "react-router-dom";
 
-import { GuideCard, AdventureCard, CityCard, TripCard } from "../Card/index";
+import { GuideCard, AdventureCard, CityCard } from "../Card/index";
 import "./HomePage.sass";
 
 import adImg from "../Card/assets/AdvantureEx1.jpg";
@@ -20,8 +20,6 @@ import guideImg1 from "../Card/assets/tokyo.jpg";
 import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
 import guideImg4 from "../Card/assets/guide3.jpg";
-import { Form } from "react-bootstrap";
-import { SearchResult } from "../SearchResult";
 // For TEST Purpose
 class HomePage extends Component {
   render() {

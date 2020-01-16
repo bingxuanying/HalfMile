@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import stepActions from "../../actions/stepActions";
 import "./ProfilePage.sass";
 import FooterContainer from "../Footer/FooterContainer";
 import {
@@ -15,15 +14,11 @@ import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import ContentCategory from "../HomeContent/ContentCategory";
-import { TripCard, GuideCard, CityCard } from "../Card";
+import { TripCard, GuideCard } from "../Card";
 import guideImg1 from "../Card/assets/tokyo.jpg";
 import guideImg2 from "../Card/assets/guide1.jpg";
 import guideImg3 from "../Card/assets/guide2.jpg";
 import guideImg4 from "../Card/assets/guide3.jpg";
-import cityImg from "../Card/assets/Shanghai.png";
-import cityImg1 from "../Card/assets/london.png";
-import cityImg2 from "../Card/assets/montreal.png";
-import { faLeaf } from "@fortawesome/free-solid-svg-icons";
 
 class ProfilePage extends Component {
   constructor(props) {

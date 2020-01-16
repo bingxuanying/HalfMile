@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
-import { Button } from "@material-ui/core";
+import { Button, IconButton } from "@material-ui/core";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
-class HotelCard extends Component {
+class HotelCheckoutCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -14,21 +15,21 @@ class HotelCard extends Component {
   render() {
     const name = this.props.obj.name;
     const price = this.props.obj.price;
-    const image = this.props.obj.img;
-    // const latLong = this.props.obj.latLong;
-    const rateStars = this.props.obj.stars;
+    const img = this.props.obj.img;
+    const latLong = this.props.obj.latLong;
+    const rateStars = this.props.obj.rate;
     const info = this.props.obj.info;
-    const location = this.props.obj.location;
+    const address = this.props.obj.address;
 
     function addToList() {}
-    // function showLocation() {
-    //   console.log(latLong);
-    // }
+    function showLocation() {
+      console.log(latLong);
+    }
     const starGroup = buildStars(rateStars);
 
     return (
       <Card className="hotel-card card">
-        <Card.Img className="hotel-card-img" src={image} />
+        <Card.Img className="hotel-card-img" src={img} />
         <div
           className="hotel-card-shade-wrapper"
           onMouseEnter={this.openInfo}
@@ -43,18 +44,14 @@ class HotelCard extends Component {
             </Card.Title>
             <span className="hotel-card-body-title-price">${price}</span>
           </div>
-          <div className="hotel-card-body-subtitle mb-0">{location}</div>
+          <div className="hotel-card-body-subtitle mb-0">{address}</div>
           <div className="hotel-card-body-rate">
             <div>{starGroup}</div>
           </div>
           <div className="hotel-card-body-info">
             <span>{info}</span>
           </div>
-          <div className="hotel-card-option">
-            <Button className="hotel-card-option-btn" onClick={addToList}>
-              View Prices
-            </Button>
-          </div>
+          <div className="hotel-card-option"></div>
         </Card.Body>
       </Card>
     );
@@ -73,4 +70,4 @@ class HotelCard extends Component {
   };
 }
 
-export default HotelCard;
+export default HotelCheckoutCard;

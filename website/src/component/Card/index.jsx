@@ -7,6 +7,7 @@ import FlightCard from "./FlightCard";
 import HotelCard from "./HotelCard";
 import ActivityCheckoutCard from "./ActivityCheckouCard";
 import FlightCheckoutCard from "./FlightCheckoutCard";
+import HotelCheckoutCard from "./HotelCheckoutCard";
 
 import "./index.sass";
 export {
@@ -18,5 +19,6 @@ export {
   FlightCard,
   HotelCard,
   ActivityCheckoutCard,
-  FlightCheckoutCard
+  FlightCheckoutCard,
+  HotelCheckoutCard
 };

@@ -42,8 +42,8 @@ class CheckoutPage extends Component {
                   }}
                 />
               ) : (
-                  <div className="airbnb-font mt-0">{this.state.title}</div>
-                )}
+                <div className="airbnb-font mt-0">{this.state.title}</div>
+              )}
             </div>
             <div className="checkout-page-title-date">
               {fakeTrip.startDate}&nbsp;-&nbsp;{fakeTrip.endDate}
@@ -60,20 +60,26 @@ class CheckoutPage extends Component {
                   </IconButton>
                 </Tooltip>
               ) : (
-                  <Tooltip className="airbnb-bold" title="Edit Trip Name" arrow>
-                    <IconButton
-                      onClick={() => this.setState({ titleEdit: true })}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                )}
+                <Tooltip className="airbnb-bold" title="Edit Trip Name" arrow>
+                  <IconButton
+                    onClick={() => this.setState({ titleEdit: true })}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
             </div>
           </div>
           <div className="checkout-page-overviews">
-            {fakeTrip.days.map(function (day, index) {
-              return <CheckoutOverview key={index} day={day} index={index}
-                totalDays={fakeTrip.totalDays} />;
+            {fakeTrip.days.map(function(day, index) {
+              return (
+                <CheckoutOverview
+                  key={index}
+                  day={day}
+                  index={index}
+                  totalDays={fakeTrip.totalDays}
+                />
+              );
             })}
           </div>
           <div className="checkout-page-checkout">

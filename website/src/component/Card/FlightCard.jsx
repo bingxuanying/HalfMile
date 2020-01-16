@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { Card } from "react-bootstrap";
-import { IconButton, Card, Button } from "@material-ui/core";
-import AddIcon from "@material-ui/icons/Add";
+import { Card, Button } from "@material-ui/core";
 import "./index.sass";
 
 function selectImg(flightCompany) {
@@ -19,9 +18,9 @@ function selectImg(flightCompany) {
 function getStops(stops, stopsHour) {
   let info = "";
   let extraInfo = "";
-  if (stops == 0) {
+  if (stops === 0) {
     info = "Nonstop";
-  } else if (stops == 1) {
+  } else if (stops === 1) {
     info = stops + " stop";
     extraInfo = stopsHour[0];
   } else {

@@ -38,7 +38,9 @@ class ActivityCard extends Component {
           onMouseEnter={this.openInfo}
           onMouseLeave={this.closeInfo}
         >
-          {this.state.hover && <div className="activity-card-shade"></div>}
+          {this.state.hover && (
+            <div className="activity-card-shade">{info}</div>
+          )}
         </div>
 
         <Card.Body className="activity-card-body pl-0 pt-2 pb-1">

@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import "./index.sass";
 import { Avatar, IconButton } from "@material-ui/core";
-import LocalActivityIcon from '@material-ui/icons/LocalActivity';
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
-import HotelIcon from '@material-ui/icons/Hotel';
-import { ActivityCheckoutCard, FlightCheckoutCard } from "../../Card";
+import LocalActivityIcon from "@material-ui/icons/LocalActivity";
+import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import FlightTakeoffIcon from "@material-ui/icons/FlightTakeoff";
+import HotelIcon from "@material-ui/icons/Hotel";
+import EditIcon from "@material-ui/icons/Edit";
+import {
+  ActivityCheckoutCard,
+  FlightCheckoutCard,
+  HotelCheckoutCard
+} from "../../Card";
 // day{} key=index
 
 class CheckoutOverview extends Component {
@@ -19,15 +24,15 @@ class CheckoutOverview extends Component {
       isChecked: []
     };
     this.initChecked();
-
   }
   render() {
     return (
       <div className="checkout-overview">
         <div className="left-view">
           <div className="left-view-city">{this.state.day.city.name}</div>
-          {!(this.state.index + 1 === this.state.totalDays) &&
-            <div className="left-view-line" />}
+          {!(this.state.index + 1 === this.state.totalDays) && (
+            <div className="left-view-line" />
+          )}
         </div>
         <div className="day-display">
           <Avatar style={{ backgroundColor: "pink", color: "white" }}>
@@ -39,22 +44,39 @@ class CheckoutOverview extends Component {
             <div className="logo">
               <LocalActivityIcon style={{ fontSize: 30 }} />
               &nbsp;Activities
+              <IconButton
+                onClick={() => this.editClick(this.state.index, "activity")}
+              >
+                <EditIcon />
+              </IconButton>
             </div>
             <div className="content-activity-wrapper">
-              {this.getActivities()}</div>
+              {this.getActivities()}
+            </div>
           </div>
           <div className="content-transports">
             <div className="logo">
               <FlightTakeoffIcon style={{ fontSize: 30 }} />
               &nbsp;Transports
+              <IconButton
+                onClick={() => this.editClick(this.state.index, "transport")}
+              >
+                <EditIcon />
+              </IconButton>
             </div>
             <div className="content-transport-wrapper">
-              {this.getTransports()}</div>
+              {this.getTransports()}
+            </div>
           </div>
           <div className="content-hotel">
             <div className="logo">
               <HotelIcon style={{ fontSize: 30 }} />
               &nbsp;Hotel
+              <IconButton
+                onClick={() => this.editClick(this.state.index, "hotel")}
+              >
+                <EditIcon />
+              </IconButton>
             </div>
             <div className="content-hotel-wrapper">{this.getHotel()}</div>
           </div>
@@ -64,96 +86,125 @@ class CheckoutOverview extends Component {
   }
   getActivities = () => {
     let that = this;
-    return (
-      that.state.day.activities.map(function (activity, index) {
-        return (
-          <div className="content-activity" key={index}>
-            <div className="content-activity-card">
-              <ActivityCheckoutCard
-                name={activity.name}
-                img={activity.img}
-                stars={activity.rate}
-                timeCost={activity.costTime}
-                address={activity.address}
-              />
-            </div>
-            <div className="content-activity-option">
-              Price Est.{activity.price}
-              {that.state.isChecked[index] ?
-                <IconButton onClick={() => that.checkClick(index)}>
-                  <CheckCircleOutlineIcon style={{ color: "green", fontSize: 25 }} />
-                </IconButton>
-                : <IconButton onClick={() => that.checkClick(index)}>
-                  <RadioButtonUncheckedIcon style={{ color: "orange", fontSize: 25 }} />
-                </IconButton>
-              }
-            </div>
+    return that.state.day.activities.map(function(activity, index) {
+      return (
+        <div className="content-activity" key={index}>
+          <div className="content-activity-card">
+            <ActivityCheckoutCard
+              name={activity.name}
+              img={activity.img}
+              stars={activity.rate}
+              timeCost={activity.costTime}
+              address={activity.address}
+            />
           </div>
-        );
-      })
-    );
-  }
+          <div className="content-activity-option">
+            Price Est.{activity.price}
+            {that.state.isChecked[index] ? (
+              <IconButton onClick={() => that.checkClick(index)}>
+                <CheckCircleOutlineIcon
+                  style={{ color: "green", fontSize: 25 }}
+                />
+              </IconButton>
+            ) : (
+              <IconButton onClick={() => that.checkClick(index)}>
+                <RadioButtonUncheckedIcon
+                  style={{ color: "orange", fontSize: 25 }}
+                />
+              </IconButton>
+            )}
+          </div>
+        </div>
+      );
+    });
+  };
   getTransports = () => {
     let that = this;
-    return (
-      that.state.day.transports.map(function (transport, index) {
-        let i = index + that.state.day.activities.length;
-        return (
-          <div className="content-transport" key={i}>
-            <div className="content-transport-card">
-              <FlightCheckoutCard obj={transport} />
-            </div>
-            <div className="content-transport-option">
-              Price Est.{transport.price}
-              {that.state.isChecked[i] ?
-                <IconButton onClick={() => that.checkClick(i)}>
-                  <CheckCircleOutlineIcon style={{ color: "green", fontSize: 25 }} />
-                </IconButton>
-                : <IconButton onClick={() => that.checkClick(i)}>
-                  <RadioButtonUncheckedIcon style={{ color: "orange", fontSize: 25 }} />
-                </IconButton>
-              }
-            </div>
+    return that.state.day.transports.map(function(transport, index) {
+      let i = index + that.state.day.activities.length;
+      return (
+        <div className="content-transport" key={i}>
+          <div className="content-transport-card">
+            <FlightCheckoutCard obj={transport} />
           </div>
-        );
-      })
-    );
-  }
+          <div className="content-transport-option">
+            Price Est.{transport.price}
+            {that.state.isChecked[i] ? (
+              <IconButton onClick={() => that.checkClick(i)}>
+                <CheckCircleOutlineIcon
+                  style={{ color: "green", fontSize: 25 }}
+                />
+              </IconButton>
+            ) : (
+              <IconButton onClick={() => that.checkClick(i)}>
+                <RadioButtonUncheckedIcon
+                  style={{ color: "orange", fontSize: 25 }}
+                />
+              </IconButton>
+            )}
+          </div>
+        </div>
+      );
+    });
+  };
   getHotel = () => {
     let i = this.state.totalDays + 1;
     let hotel = this.state.day.hotel;
     return (
       <div className="content-hotel" key={i}>
         <div className="content-hotel-card">
-          {hotel.name}
+          <HotelCheckoutCard obj={hotel} />
         </div>
         <div className="content-hotel-option">
           Price Est.{hotel.price}
-          {this.state.isChecked[i] ?
+          {this.state.isChecked[i] ? (
             <IconButton onClick={() => this.checkClick(i)}>
-              <CheckCircleOutlineIcon style={{ color: "green", fontSize: 25 }} />
+              <CheckCircleOutlineIcon
+                style={{ color: "green", fontSize: 25 }}
+              />
             </IconButton>
-            : <IconButton onClick={() => this.checkClick(i)}>
-              <RadioButtonUncheckedIcon style={{ color: "orange", fontSize: 25 }} />
+          ) : (
+            <IconButton onClick={() => this.checkClick(i)}>
+              <RadioButtonUncheckedIcon
+                style={{ color: "orange", fontSize: 25 }}
+              />
             </IconButton>
-          }
+          )}
         </div>
       </div>
     );
-  }
+  };
   initChecked = () => {
     var array = [];
-    let len = this.state.day.activities.length + this.state.day.transports.length + 1;
+    let len =
+      this.state.day.activities.length + this.state.day.transports.length + 1;
     while (len-- > 0) array.push(false);
     // this.setState({ isChecked: array });
     this.state.isChecked = array;
-  }
+  };
   checkClick = index => {
     var array = this.state.isChecked;
     array[index] = !array[index];
     this.state.isChecked = array;
     this.forceUpdate();
-  }
+  };
+  editClick = (index, type) => {
+    // Route page here
+    let dayIndex = index + 1;
+    switch (type) {
+      case "activity":
+        console.log("Edit Day: " + dayIndex + ";s " + type);
+        break;
+      case "transport":
+        console.log("Edit Day: " + dayIndex + ";s " + type);
+        break;
+      case "hotel":
+        console.log("Edit Day: " + dayIndex + ";s " + type);
+        break;
+      default:
+        break;
+    }
+  };
 }
 
 export default CheckoutOverview;
