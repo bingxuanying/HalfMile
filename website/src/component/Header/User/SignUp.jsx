@@ -51,7 +51,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="input-container">
+            <div className="password-container">
               <FaLock id="password-icon" />
               <input
                 id="register-password"
@@ -64,7 +64,7 @@ function SignUp() {
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
 
-            <div className="input-container">
+            <div className="password-container">
               <FaLock id="password-icon" />
               <input
                 id="register-repassword"
@@ -78,7 +78,9 @@ function SignUp() {
               />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
-
+            <div id="checkbox-account">
+              <a href='#' id="check-account">Already have an account?</a>
+            </div>
             <div className="button-container">
               <button
                 className="submit-button"
