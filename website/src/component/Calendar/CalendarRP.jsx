@@ -3,11 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
 import {
-  DateRangePicker,
-  SingleDatePicker,
   DayPickerRangeController
 } from "react-dates";
-import { Button } from "@material-ui/core";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import moment from 'moment';
 import omit from 'lodash/omit';
@@ -19,8 +16,7 @@ const END_DATE = 'endDate';
 
 
 // Usage :
-//  <Calendar initialStartDate={moment().add(1, 'days')}
-// initialEndDate={moment().add(5, 'days')} type="DayPickerRangeController" />
+//   <CalendarRP initialStartDate={moment()} />
 //
 class CalendarRP extends Component {
   constructor(props) {
@@ -31,7 +27,6 @@ class CalendarRP extends Component {
       // startDate: moment().add(1, 'days'),
       startDate: moment(props.initialStartDate),
       endDate: moment(props.initialEndDate),
-      type: props.type,
     };
   }
   render() {
@@ -49,58 +44,29 @@ class CalendarRP extends Component {
     const endDateString = endDate && endDate.format('YYYY-MM-DD');
     const blackoutDate = moment(this.props.initialStartDate).subtract(1, 'days');
     console.log("Start: " + startDateString + "\nEnd: " + endDateString);
-    if (this.state.type != "DayPickerRangeController") {
-      return (
-        <div className="app">
-          <DateRangePicker
-            startDate={this.state.startDate}
-            startDateId="your_unique_start_date_id"
-            endDate={this.state.endDate}
-            endDateId="you_unique_end_date_id"
-            onDatesChange={({ startDate, endDate }) =>
-              this.setState({ startDate, endDate })
-            }
-            focusedInput={this.state.focusedInput}
-            onFocusChange={focusedInput => this.setState({ focusedInput })}
-          />
-        </div>
-      );
-    } else {
-      return (
-        <div className="app">
-          {/* <SingleDatePicker
-          placeholder="mm/dd/yyy"
-          date={this.state.date}
-          onDateChange={date => this.setState({ date })}
-          focused={this.state.focused}
-          onFocusChange={({ focused }) => this.setState({ focused })}
-          id="single-date"
-        /> */}
 
-          {/** Below is for DND datePick use only */}
-          <Button onClick={this.toggleDayPicker}>Toggle DayPicker</Button>
-          {this.state.pickerOpen && (
-            <ClickAwayListener onClickAway={this.toggleDayPicker}>
-              <DayPickerRangeController
-                // {...props}
-                onDatesChange={this.onDatesChange}
-                onFocusChange={this.onFocusChange}
-                focusedInput={focusedInput}
-                startDate={startDate}
-                endDate={endDate}
-                numberOfMonths={1}
-                isOutsideRange={day => isInclusivelyBeforeDay(day, blackoutDate)}
-                keepOpenOnDateSelect={true}
-              />
-            </ClickAwayListener>
-          )}
-        </div>
-      );
-    }
+    return (
+      <div className="app">
+        {/** Below is for DND datePick use only */}
+        <ClickAwayListener onClickAway={this.toggleDayPicker}>
+          <DayPickerRangeController
+            // {...props}
+            onDatesChange={this.onDatesChange}
+            onFocusChange={this.onFocusChange}
+            focusedInput={focusedInput}
+            startDate={startDate}
+            endDate={endDate}
+            numberOfMonths={1}
+            isOutsideRange={day => isInclusivelyBeforeDay(day, blackoutDate)}
+            keepOpenOnDateSelect={true}
+          />
+        </ClickAwayListener>
+      </div>
+    );
   }
   toggleDayPicker = () => {
     // startDate/endDate is TimeStamp
-    this.setState({ pickerOpen: !this.state.pickerOpen });
+    // this.setState({ pickerOpen: !this.state.pickerOpen });
   };
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({ startDate, endDate });

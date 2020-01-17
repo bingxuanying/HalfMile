@@ -156,10 +156,8 @@ class ContentCover extends Component {
                 <div className="start-box-subtitle">END DATE</div>
               </div>
             </div>
-            {/* <CalendarRP initialStartDate={moment()}
-              type="DayPickerRangeController" /> */}
             <Calendar />
-
+            {/* <CalendarRP initialStartDate={moment()} /> */}
             <div className="start-box-row">
               <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
               <div className="start-box-guest">
@@ -177,8 +175,8 @@ class ContentCover extends Component {
                   {this.state.guestOpen ? (
                     <ExpandLessIcon />
                   ) : (
-                    <ExpandMoreIcon />
-                  )}
+                      <ExpandMoreIcon />
+                    )}
                 </Button>
                 {this.state.guestOpen && (
                   <ClickAwayListener onClickAway={this.guestSave}>

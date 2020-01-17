@@ -5,6 +5,8 @@ import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { CalendarRP } from "../Calendar";
+import moment from "moment";
 import "./DND.sass";
 
 const reorder = (list, startIndex, endIndex) => {
@@ -170,6 +172,7 @@ class DND extends Component {
                               item.id + "calendar"
                             ).style.display = "none";
                           } */}
+                          <CalendarRP id={item.id + "calendar"} initialStartDate={moment()} />
                         </div>
                       </div>
                     )}
