@@ -58,9 +58,11 @@ function Login() {
                 }
               />
             </div>
-            <div id="checkbox">
-              <input type="checkbox" id="check"/>
-              <lable id="checktext">Remember me</lable><a href='#' id="reset-pw">forgot password?</a>
+            <div id="check-box">
+              <input type="checkbox" id="check-type" />
+                <div id="check-text">Remeber me<a href='#' id="reset-pw">Forgot password?</a></div>
+              
+              
             </div>
             <div className="button-container">
               <button
