@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.addEventListener("scroll", () => {
       this.setState({
-        isTop: window.scrollY < 100
+        isTop: window.scrollY < 900
       });
       // console.log(this.state.isTop);
     });
@@ -30,17 +30,23 @@ class HeaderContainer extends Component {
     const { isTop } = this.state;
     return (
       <Navbar
-        className="bar-container pb-0"
+        className="navbar-container p-0"
         fixed="top"
         bg={!isTop && "white"}
         expand="lg"
+        style={isTop ? { color: "white" } : { color: "black" }}
       >
-        <HeaderLogo />
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse>
+        <div className="navbar-left-section">
+          <HeaderLogo />
           <HeaderMid className="middle-bar" />
-          <HeaderNav />
-        </Navbar.Collapse>
+        </div>
+
+        <div className="navbar-right-section">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse>
+            <HeaderNav />
+          </Navbar.Collapse>
+        </div>
       </Navbar>
     );
   }
