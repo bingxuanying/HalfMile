@@ -30,7 +30,7 @@ function SignUp() {
       </Nav.Link>
       <Modal show={show} onHide={handleClose} size="small" centered>
         <Modal.Header closeButton id="modal-header">
-          <div id="header-text">Sign up</div>
+          <div id="header-signup">Sign Up</div>
         </Modal.Header>
         <Modal.Body className="modal-body">
           
@@ -90,7 +90,7 @@ function SignUp() {
                   dispatch(userActions.sendRegisterInfo(registerInfo));
                 }}
               >
-                SignUp
+                Submit
               </button>
               
             </div>

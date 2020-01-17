@@ -30,7 +30,9 @@ function Login() {
       </Nav.Link>
       {/* Modal Method */}
       <Modal show={show} onHide={handleClose} size="small" centered>
-        <Modal.Header closeButton />
+        <Modal.Header closeButton id="modal-header">
+          <div id="header-login">Welcome Back</div>
+        </Modal.Header>
         <Modal.Body className="modal-body">
           <div className="login-modal">
             <div className="input-container">
@@ -44,7 +46,7 @@ function Login() {
                 }
               />
             </div>
-            <div className="input-container">
+            <div className="password-container">
               <FaLock id="password-icon" />
               <input
                 id="login-password"
@@ -55,6 +57,10 @@ function Login() {
                   dispatch(stateActions.updateLoginPassword(e.target.value))
                 }
               />
+            </div>
+            <div id="checkbox">
+              <input type="checkbox" id="check"/>
+              <lable id="checktext">Remember me</lable><a href='#' id="reset-pw">forgot password?</a>
             </div>
             <div className="button-container">
               <button
@@ -71,6 +77,11 @@ function Login() {
             </div>
           </div>
         </Modal.Body>
+        <Modal.Footer id="modal-footer">
+          <a href="#" id="facebookIcon" />
+          <a href="#" id="twitterIcon" />
+          <a href="#" id="googleIcon" />
+        </Modal.Footer>
       </Modal>
     </>
   );
