@@ -12,6 +12,7 @@
     "@types/react-geosuggest": "^2.7.10",
     "axios": "^0.19.1",
     "bootstrap": "^4.4.1",
+    "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-beautiful-dnd": "^12.2.0",

@@ -13,7 +13,7 @@ import {
   SingleDatePicker,
   DayPickerRangeController
 } from "react-dates";
-import Calendar from "../Calender/Calender";
+import { Calendar, CalendarRP } from "../Calendar";
 import { Button, IconButton, ClickAwayListener, Fade } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -21,7 +21,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
 import InfoBar from "../InfoBar";
-
+import moment from 'moment';
 const AirbnbColor = "rgba(24,143,148,1)";
 
 class ContentCover extends Component {
@@ -156,6 +156,8 @@ class ContentCover extends Component {
                 <div className="start-box-subtitle">END DATE</div>
               </div>
             </div>
+            {/* <CalendarRP initialStartDate={moment()}
+              type="DayPickerRangeController" /> */}
             <Calendar />
 
             <div className="start-box-row">

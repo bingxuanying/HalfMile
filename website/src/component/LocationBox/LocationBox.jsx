@@ -3,7 +3,6 @@ import SearchBarLoca from "./SearchBar/SearchBarLoca";
 import DND from "../DND";
 import ReactModal from "react-modal";
 import "./LocationBox.sass";
-import Calendar from "../Calender/Calender";
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { Modal } from "react-bootstrap";
 import { FaRegUser } from "react-icons/fa";
