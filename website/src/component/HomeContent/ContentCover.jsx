@@ -91,7 +91,6 @@ class ContentCover extends Component {
     }
 
     if (msg !== "none") {
-      // console.log(msg);
       this.props.updateError("init", msg);
 
       // InfoBar things
@@ -114,7 +113,6 @@ class ContentCover extends Component {
           break;
       }
     } else if (msg === "none") {
-      console.log(msg);
       this.props.changeSection_none2city("city");
       this.props.history.push("/plan");
     }
@@ -177,8 +175,8 @@ class ContentCover extends Component {
                   {this.state.guestOpen ? (
                     <ExpandLessIcon />
                   ) : (
-                      <ExpandMoreIcon />
-                    )}
+                    <ExpandMoreIcon />
+                  )}
                 </Button>
                 {this.state.guestOpen && (
                   <ClickAwayListener onClickAway={this.guestSave}>
@@ -352,7 +350,6 @@ const setDateBack = () => {
 };
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
   return {
     homeAddress: state.plan[0].home,
     startDate: state.plan[0].startDate,
@@ -375,4 +372,3 @@ const mapDispatchToProps = () => {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps())(ContentCover)
 );
-
