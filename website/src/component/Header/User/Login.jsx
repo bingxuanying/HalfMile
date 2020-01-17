@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../User/User.sass";
+import "./User.sass";
 import { Nav, Modal, Container, Row } from "react-bootstrap";
 import { FaUser, FaLock } from "react-icons/fa";
 
@@ -20,7 +20,7 @@ function Login() {
     <>
       <Nav.Link>
         <div
-          className="nav-sign"
+          className="nav-btn"
           size="lg"
           variant="outline-dark"
           onClick={handleShow}
@@ -60,9 +60,12 @@ function Login() {
             </div>
             <div id="check-box">
               <input type="checkbox" id="check-type" />
-                <div id="check-text">Remeber me<a href='#' id="reset-pw">Forgot password?</a></div>
-              
-              
+              <div id="check-text">
+                Remeber me
+                <a href="#" id="reset-pw">
+                  Forgot password?
+                </a>
+              </div>
             </div>
             <div className="button-container">
               <button

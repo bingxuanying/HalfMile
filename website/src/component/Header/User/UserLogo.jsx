@@ -1,16 +1,7 @@
 import React, { useState, Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../User/User.sass";
-import {
-  Nav,
-  Modal,
-  Container,
-  Row,
-  Image,
-  Col,
-  Figure,
-  text
-} from "react-bootstrap";
+import "./User.sass";
+import { Nav, Figure } from "react-bootstrap";
 
 class UserProfileLogo extends Component {
   render() {

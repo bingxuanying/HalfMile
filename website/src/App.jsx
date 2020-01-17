@@ -43,8 +43,8 @@ class App extends Component {
               {this.props.section === "none" ? (
                 <Redirect to="/" />
               ) : (
-                  <PlanPage />
-                )}
+                <PlanPage />
+              )}
             </Route>
             <Route path="/profile">
               <ProfilePage />

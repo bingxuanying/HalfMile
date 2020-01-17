@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./User.sass";
 import { Nav, Modal } from "react-bootstrap";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 
@@ -15,12 +15,12 @@ function SignUp() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
+
   return (
     <>
       <Nav.Link>
         <div
-          className="nav-sign"
+          className="nav-btn"
           size="lg"
           variant="outline-dark"
           onClick={handleShow}
@@ -33,9 +33,7 @@ function SignUp() {
           <div id="header-signup">Sign Up</div>
         </Modal.Header>
         <Modal.Body className="modal-body">
-          
           <div className="signup-modal">
-            
             <div className="input-container">
               <FaEnvelope id="email-icon" />
               <input
@@ -79,7 +77,9 @@ function SignUp() {
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
             <div id="checkbox-account">
-              <a href='#' id="check-account">Already have an account?</a>
+              <a href="#" id="check-account">
+                Already have an account?
+              </a>
             </div>
             <div className="button-container">
               <button
@@ -94,12 +94,8 @@ function SignUp() {
               >
                 Submit
               </button>
-              
             </div>
-            
           </div>
-          
-
         </Modal.Body>
         <Modal.Footer id="modal-footer">
           <a href="#" id="facebookIcon" />
