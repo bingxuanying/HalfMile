@@ -4,13 +4,10 @@ import {
   withScriptjs,
   GoogleMap,
   Marker,
-  InfoWindow,
-  google,
   Polyline
 } from "react-google-maps";
 import { compose } from "recompose";
 import { connect } from "react-redux";
-import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
 import "./Map.sass";
 import { icons } from "react-icons/lib/cjs";
@@ -22,15 +19,36 @@ class Map extends Component {
     const MyMapComponent = compose(
       withScriptjs,
       withGoogleMap
-    )(props => (
-      // Set Multiple Markers on the Map
+    )(mapProps => (
       <GoogleMap
-        defaultZoom={11}
-        // auto zoom in/out goes here
-        defaultCenter={{ lat: 34.0522342, lng: -118.2436849 }}
+        ref={map => (this._map = map)}
+        onTiltChanged={() => {
+          var bounds = this._map.getBounds();
+
+          this.props.cities.map(city => {
+            bounds.extend(
+              new window.google.maps.LatLng(
+                city.location.lat,
+                city.location.lng
+              )
+            );
+          });
+
+          var test = this._map.fitBounds(bounds);
+          console.log(test);
+        }}
+        defaultZoom={10}
+        defaultCenter={this.props.home.location}
       >
         {/* home address */}
-        <Marker id={0} key={0} position={this.props.home.location} icon={{url: "https://img.icons8.com/dusk/100/000000/order-delivered.png"}}/>
+        <Marker
+          id={0}
+          key={0}
+          position={this.props.home.location}
+          icon={{
+            url: "https://img.icons8.com/dusk/50/000000/order-delivered.png"
+          }}
+        />
 
         {this.props.cities.map((city, idx) => {
           path.push(city.location);
@@ -42,11 +60,20 @@ class Map extends Component {
                 id={city.id}
                 key={city.id}
                 position={{ lat: city.location.lat, lng: city.location.lng }}
-                icon={{url: "https://img.icons8.com/bubbles/100/000000/building.png"}}
+                icon={{
+                  url: "https://img.icons8.com/bubbles/50/000000/building.png"
+                }}
               />
               {/* lightgray - darkgray: interval = floor((hexdec_dark - hexdec_light) / this.props.cities.length) */}
               {/* color = "#" + stringfy(path.length * interval + lightgray) */}
-              <Polyline path={path} options={{ strokeColor: "#ff6f5e", strokeOpacity: 1.0, strokeWeight: 2}}/>
+              <Polyline
+                path={path}
+                options={{
+                  strokeColor: "#ff6f5e",
+                  strokeOpacity: 1.0,
+                  strokeWeight: 2
+                }}
+              />
             </div>
           );
         })}
@@ -58,7 +85,6 @@ class Map extends Component {
     return (
       <MyMapComponent
         zoom={10}
-        cities={cities}
         path={path}
         googleMapURL="https://maps.googleapis.com/maps/api"
         loadingElement={<div style={{ height: "100%" }} />}

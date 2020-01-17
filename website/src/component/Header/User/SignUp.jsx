@@ -15,7 +15,7 @@ function SignUp() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   return (
     <>
       <Nav.Link>
@@ -29,9 +29,13 @@ function SignUp() {
         </div>
       </Nav.Link>
       <Modal show={show} onHide={handleClose} size="small" centered>
-        <Modal.Header closeButton />
+        <Modal.Header closeButton id="modal-header">
+          <div id="header-signup">Sign Up</div>
+        </Modal.Header>
         <Modal.Body className="modal-body">
+          
           <div className="signup-modal">
+            
             <div className="input-container">
               <FaEnvelope id="email-icon" />
               <input
@@ -47,7 +51,7 @@ function SignUp() {
               />
             </div>
 
-            <div className="input-container">
+            <div className="password-container">
               <FaLock id="password-icon" />
               <input
                 id="register-password"
@@ -60,7 +64,7 @@ function SignUp() {
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
 
-            <div className="input-container">
+            <div className="password-container">
               <FaLock id="password-icon" />
               <input
                 id="register-repassword"
@@ -74,7 +78,9 @@ function SignUp() {
               />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
-
+            <div id="checkbox-account">
+              <a href='#' id="check-account">Already have an account?</a>
+            </div>
             <div className="button-container">
               <button
                 className="submit-button"
@@ -86,11 +92,20 @@ function SignUp() {
                   dispatch(userActions.sendRegisterInfo(registerInfo));
                 }}
               >
-                SignUp
+                Submit
               </button>
+              
             </div>
+            
           </div>
+          
+
         </Modal.Body>
+        <Modal.Footer id="modal-footer">
+          <a href="#" id="facebookIcon" />
+          <a href="#" id="twitterIcon" />
+          <a href="#" id="googleIcon" />
+        </Modal.Footer>
       </Modal>
     </>
   );

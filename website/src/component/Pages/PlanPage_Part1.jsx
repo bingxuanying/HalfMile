@@ -11,7 +11,6 @@ import InfoBar from "../InfoBar";
 
 class PlanPage_Part1 extends Component {
   render() {
-    console.log(this.props.err);
     return (
       <div className="planpage-containter">
         <div
@@ -56,7 +55,6 @@ class PlanPage_Part1 extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.plan[0].home);
   return {
     section: state.step.section,
     err: state.step.err,
