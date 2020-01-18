@@ -31,6 +31,20 @@
         opacity: 0.5
   .navbar-right-section
     height: 80px
+    justify-content: flex-start
+    align-items: center
+    padding-left: 0px
+    .navbar-toggle-wrapper
+      // When collapsed, make togglebtn centered
+      @media screen and ( max-width: 992px )
+        height: 76px
+        width: 108px
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+      // Override collapsed here
+      .collapsed
     .nav-link
       height: 100%
       color: inherit
@@ -78,4 +92,4 @@
 @media only screen and (max-width: 1000px) 
   .navbar-middle 
     display: none
-  
+    

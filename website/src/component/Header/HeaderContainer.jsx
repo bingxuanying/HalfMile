@@ -42,7 +42,9 @@ class HeaderContainer extends Component {
         </div>
 
         <div className="navbar-right-section">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <div className="navbar-toggle-wrapper">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          </div>
           <Navbar.Collapse>
             <HeaderNav />
           </Navbar.Collapse>
