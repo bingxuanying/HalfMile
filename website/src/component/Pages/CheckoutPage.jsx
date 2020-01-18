@@ -35,21 +35,22 @@ class CheckoutPage extends Component {
   // jspdf generator function
   pdfGenerator = () => {
     const input = document.getElementById('checkoutPage');
-
     html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'px', 'a4');
+            const pdf = new jsPDF();
             const imgProps= pdf.getImageProperties(imgData);
             const width = pdf.internal.pageSize.getWidth();
             const height = (imgProps.height * width) / imgProps.width;
-            pdf.addImage(imgData, 'JPGE', 2, 2, width, height);
-            pdf.save("test.pdf");
+          pdf.addImage(imgData, 'JPEG', 0, 0, width, height);
+          pdf.save("checkout.pdf");
+          console.log(width, height);
         });
     // var pdf = new jsPDF();
     // var source = window.document.getElementById("checkouPage")[0];
     // pdf.fromHTML(source);
     // pdf.save("Checkout.pdf");
+    
   }
 
   showSuccess = () =>{
@@ -62,8 +63,8 @@ class CheckoutPage extends Component {
 
   render() {
     return (
-      <div className="checkout-page" id="checkoutPage">
-        <div className="checkout-page-content">
+      <div className="checkout-page" >
+        <div className="checkout-page-content" id="checkoutPage">
           <div className="checkout-page-title">
             <div className="checkout-page-title-name">
               <div className="airbnb-font mb-0">Title</div>
