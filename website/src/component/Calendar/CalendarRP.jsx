@@ -27,6 +27,7 @@ class CalendarRP extends Component {
       index: this.props.index
     };
   }
+
   render() {
     const { showInputs } = this.props;
     const { focusedInput, startDate, endDate, minDate } = this.state;
@@ -49,7 +50,10 @@ class CalendarRP extends Component {
     return (
       <div className="app">
         {/** Below is for DND datePick use only */}
-        <ClickAwayListener onClickAway={this.toggleDayPicker}>
+        <ClickAwayListener
+          onClickAway={e => this.toggleDayPicker(e)}
+          mouseEvent="onMouseUp"
+        >
           <DayPickerRangeController
             // {...props}
             onDatesChange={this.onDatesChange}
@@ -65,12 +69,8 @@ class CalendarRP extends Component {
       </div>
     );
   }
-  toggleDayPicker = () => {
-    console.log(this.state.index + " clickaway detacted");
-    if (document.getElementById(this.state.index).style.display == "initial") {
-      console.log("we will none display");
-      document.getElementById(this.state.index).style.display = "none";
-    }
+  toggleDayPicker = e => {
+    document.getElementById(this.state.index).style.display = "none";
   };
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({ startDate, endDate });

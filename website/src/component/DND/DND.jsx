@@ -8,7 +8,9 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CalendarRP } from "../Calendar";
 import moment from "moment";
 import "./DND.sass";
-import ReactDOM from "react-dom";
+import { IconButton, Icon } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from "@material-ui/icons/Remove";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -149,7 +151,11 @@ class DND extends Component {
                           </div>
                           <div className="dnd-bar-content">{item.name}</div>
                           <div className="dnd-bar-dateselector">
-                            <div className="dnd-bar-dec">---</div>
+                            <div className="dnd-bar-dec">
+                              <IconButton size="small">
+                                <RemoveIcon />
+                              </IconButton>
+                            </div>
                             <div
                               className="dnd-bar-day"
                               onClick={() =>
@@ -163,7 +169,7 @@ class DND extends Component {
                                   position: "absolute",
                                   left: 340,
                                   top: 2,
-                                  display: "none",
+                                  display: "initial",
                                   transition: "display 400ms fade"
                                 }}
                               >
@@ -173,7 +179,11 @@ class DND extends Component {
                                 />
                               </div>
                             </div>
-                            <div className="dnd-bar-inc">+++</div>
+                            <div className="dnd-bar-inc">
+                              <IconButton size="small">
+                                <AddIcon />
+                              </IconButton>
+                            </div>
                           </div>
                         </div>
 

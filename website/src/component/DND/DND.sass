@@ -46,23 +46,20 @@
       font-size: 16
     .dnd-bar-dateselector
       height: calc(44px - 4px)
-      width: 60px
       display: flex
+      width: 100%
       flex-direction: row
-      background-color: black
-      align-self: flex-end
+      justify-content: center
+      align-items: center
       .dnd-bar-dec
         height: 100%
-        width: 20px
-        background-color: red
       .dnd-bar-day
         height: 100%
-        width: 20px
-        background-color: wheat
+        &:hover
+          text-decoration: underline
+          cursor: pointer
       .dnd-bar-inc
         height: 100%
-        width: 20px
-        background-color: blue
   .dnd-bar-item-avtive 
     background-color: #dfdfdf
     @extend .dnd-bar-item
