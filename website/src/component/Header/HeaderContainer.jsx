@@ -40,7 +40,6 @@ class HeaderContainer extends Component {
           <HeaderLogo />
           <HeaderMid className="middle-bar" />
         </div>
-
         <div className="navbar-right-section">
           <div className="navbar-toggle-wrapper">
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
