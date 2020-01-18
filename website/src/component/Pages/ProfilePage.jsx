@@ -13,6 +13,7 @@ import {
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import ContentCategory from "../HomeContent/ContentCategory";
 import { TripCard, GuideCard } from "../Card";
 import guideImg1 from "../Card/assets/tokyo.jpg";
@@ -80,6 +81,9 @@ class ProfilePage extends Component {
                   Upload
                 </Button>
               </label>
+              <Button onClick={this.logout}
+                variant="contained" color="secondary">
+                <ExitToAppIcon />LOGOUT</Button>
             </div>
             <div className="info-box">
               <div className="name">
@@ -96,8 +100,8 @@ class ProfilePage extends Component {
                       />
                     </div>
                   ) : (
-                    <div className="subtitle">{this.state.name}</div>
-                  )}
+                      <div className="subtitle">{this.state.name}</div>
+                    )}
                 </div>
                 {this.state.nameEdit ? (
                   <Tooltip className="option" title="save" arrow>
@@ -110,16 +114,16 @@ class ProfilePage extends Component {
                     </IconButton>
                   </Tooltip>
                 ) : (
-                  <Tooltip className="option" title="edit" arrow>
-                    <IconButton
-                      onClick={() => {
-                        this.editClick("name");
-                      }}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                )}
+                    <Tooltip className="option" title="edit" arrow>
+                      <IconButton
+                        onClick={() => {
+                          this.editClick("name");
+                        }}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
               </div>
               <Divider />
               <div className="email">
@@ -136,8 +140,8 @@ class ProfilePage extends Component {
                       />
                     </div>
                   ) : (
-                    <div className="subtitle">{this.state.email}</div>
-                  )}
+                      <div className="subtitle">{this.state.email}</div>
+                    )}
                 </div>
                 {this.state.emailEdit ? (
                   <Tooltip className="option" title="save" arrow>
@@ -150,16 +154,16 @@ class ProfilePage extends Component {
                     </IconButton>
                   </Tooltip>
                 ) : (
-                  <Tooltip className="option" title="edit" arrow>
-                    <IconButton
-                      onClick={() => {
-                        this.editClick("email");
-                      }}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                )}
+                    <Tooltip className="option" title="edit" arrow>
+                      <IconButton
+                        onClick={() => {
+                          this.editClick("email");
+                        }}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
               </div>
               <Divider variant="middle" />
               <div className="home-address">
@@ -177,8 +181,8 @@ class ProfilePage extends Component {
                       />
                     </div>
                   ) : (
-                    <div className="subtitle">{this.state.homeAddress}</div>
-                  )}
+                      <div className="subtitle">{this.state.homeAddress}</div>
+                    )}
                 </div>
                 {this.state.homeAddressEdit ? (
                   <Tooltip className="option" title="save" arrow>
@@ -191,16 +195,16 @@ class ProfilePage extends Component {
                     </IconButton>
                   </Tooltip>
                 ) : (
-                  <Tooltip className="option" title="edit" arrow>
-                    <IconButton
-                      onClick={() => {
-                        this.editClick("address");
-                      }}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  </Tooltip>
-                )}
+                    <Tooltip className="option" title="edit" arrow>
+                      <IconButton
+                        onClick={() => {
+                          this.editClick("address");
+                        }}
+                      >
+                        <EditIcon />
+                      </IconButton>
+                    </Tooltip>
+                  )}
               </div>
               <Divider />
               <div className="payment">
@@ -282,6 +286,9 @@ class ProfilePage extends Component {
   handleChange = event => {
     this.setState(event.target.value);
   };
+  logout = () => {
+    console.log("Log OUT !");
+  }
 }
 const travelPlans_Trip = [
   <TripCard
