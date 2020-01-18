@@ -8,6 +8,7 @@ import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CalendarRP } from "../Calendar";
 import moment from "moment";
 import "./DND.sass";
+import ReactDOM from "react-dom";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -151,29 +152,45 @@ class DND extends Component {
                             <div className="dnd-bar-dec">---</div>
                             <div
                               className="dnd-bar-day"
-                              onClick={() => {
-                                document.getElementById(
-                                  item.id + "calendar"
-                                ).style.display = "initial";
-                              }}
+                              onClick={() =>
+                                this.toggleCalendar(item.id + "calendar")
+                              }
                             >
                               day
+                              <div
+                                id={item.id + "calendar"}
+                                style={{
+                                  position: "absolute",
+                                  left: 340,
+                                  top: 2,
+                                  display: "none",
+                                  transition: "display 400ms fade"
+                                }}
+                              >
+                                <CalendarRP
+                                  index={item.id + "calendar"}
+                                  initialStartDate={moment()}
+                                />
+                              </div>
                             </div>
                             <div className="dnd-bar-inc">+++</div>
                           </div>
                         </div>
 
-                        <div
+                        {/* <div
                           id={item.id + "calendar"}
                           className="dnd-bar-calendar"
-                        >
-                          {/* <calendar id={item.id} /> onCloseHandlder={
+                        > */}
+                        {/* <calendar id={item.id} /> onCloseHandlder={
                             document.getElementById(
                               item.id + "calendar"
                             ).style.display = "none";
                           } */}
-                          <CalendarRP id={item.id + "calendar"} initialStartDate={moment()} />
-                        </div>
+                        {/* <CalendarRP
+                            index={item.id + "calendar"}
+                            initialStartDate={moment()}
+                          /> */}
+                        {/* </div> */}
                       </div>
                     )}
                   </Draggable>
@@ -186,6 +203,14 @@ class DND extends Component {
       </DragDropContext>
     );
   }
+
+  toggleCalendar = id => {
+    console.log("try to toggle canlendar:" + id);
+    console.log(document.getElementById(id).style.display);
+    if (document.getElementById(id).style.display == "none")
+      document.getElementById(id).style.display = "initial";
+    else document.getElementById(id).style.display = "none";
+  };
 }
 
 const mapStateToProps = state => {

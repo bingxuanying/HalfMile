@@ -2,18 +2,15 @@ import React, { Component, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import {
-  DayPickerRangeController
-} from "react-dates";
+import { DayPickerRangeController } from "react-dates";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
-import moment from 'moment';
-import omit from 'lodash/omit';
-import { isInclusivelyBeforeDay, isExclusivelyBeforeDay } from 'react-dates';
+import moment from "moment";
+import omit from "lodash/omit";
+import { isInclusivelyBeforeDay, isExclusivelyBeforeDay } from "react-dates";
 import "./index.sass";
 
-const START_DATE = 'startDate';
-const END_DATE = 'endDate';
-
+const START_DATE = "startDate";
+const END_DATE = "endDate";
 
 // Usage :
 //   <CalendarRP initialStartDate={moment()} />
@@ -27,6 +24,7 @@ class CalendarRP extends Component {
       // startDate: moment().add(1, 'days'),
       startDate: moment(props.initialStartDate),
       endDate: moment(props.initialEndDate),
+      index: this.props.index
     };
   }
   render() {
@@ -34,15 +32,18 @@ class CalendarRP extends Component {
     const { focusedInput, startDate, endDate, minDate } = this.state;
 
     const props = omit(this.props, [
-      'autoFocus',
-      'autoFocusEndDate',
-      'initialStartDate',
-      'initialEndDate',
-      'showInputs',
+      "autoFocus",
+      "autoFocusEndDate",
+      "initialStartDate",
+      "initialEndDate",
+      "showInputs"
     ]);
-    const startDateString = startDate && startDate.format('YYYY-MM-DD');
-    const endDateString = endDate && endDate.format('YYYY-MM-DD');
-    const blackoutDate = moment(this.props.initialStartDate).subtract(1, 'days');
+    const startDateString = startDate && startDate.format("YYYY-MM-DD");
+    const endDateString = endDate && endDate.format("YYYY-MM-DD");
+    const blackoutDate = moment(this.props.initialStartDate).subtract(
+      1,
+      "days"
+    );
     console.log("Start: " + startDateString + "\nEnd: " + endDateString);
 
     return (
@@ -65,22 +66,25 @@ class CalendarRP extends Component {
     );
   }
   toggleDayPicker = () => {
-    // startDate/endDate is TimeStamp
-    // this.setState({ pickerOpen: !this.state.pickerOpen });
+    console.log(this.state.index + " clickaway detacted");
+    if (document.getElementById(this.state.index).style.display == "initial") {
+      console.log("we will none display");
+      document.getElementById(this.state.index).style.display = "none";
+    }
   };
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({ startDate, endDate });
-  }
-  onFocusChange = (focusedInput) => {
+  };
+  onFocusChange = focusedInput => {
     this.setState({
       // Force the focusedInput to always be truthy so that dates are always selectable
-      focusedInput: !focusedInput ? START_DATE : focusedInput,
+      focusedInput: !focusedInput ? START_DATE : focusedInput
     });
     // close calender if we success pick a range
     if (this.state.focusedInput === END_DATE) {
       this.toggleDayPicker();
     }
-  }
+  };
 }
 
 export default CalendarRP;
