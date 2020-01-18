@@ -39,11 +39,9 @@ class CheckoutPage extends Component {
     html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'mm', ['a4']);
-            const imgProps= pdf.getImageProperties(imgData);
-            const width = pdf.internal.pageSize.getWidth();
-            const height = (imgProps.height * width) / imgProps.width;
-            pdf.addImage(imgData, 'JPGE', 0, 0, width, height);
+            const pdf = new jsPDF('p', 'px', ['a4']);
+
+            pdf.addImage(imgData, 'JPGE', 0, 0);
             pdf.save("Checkout.pdf");
         });
     // var pdf = new jsPDF();
