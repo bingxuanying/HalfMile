@@ -5,7 +5,7 @@ import { Button, IconButton, Tooltip, TextField, Input } from "@material-ui/core
 import FooterContainer from "../Footer/FooterContainer";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
-import jsPDF, {Htm}from "jspdf";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Modal from "react-modal";
 
@@ -35,7 +35,7 @@ class CheckoutPage extends Component {
   // jspdf generator function
   pdfGenerator = () => {
     const input = document.getElementById('checkoutPage');
-
+    
     html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
