@@ -5,7 +5,7 @@ import { Button, IconButton, Tooltip, TextField, Input } from "@material-ui/core
 import FooterContainer from "../Footer/FooterContainer";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
-import jsPDF, {Htm}from "jspdf";
+import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Modal from "react-modal";
 
