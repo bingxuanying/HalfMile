@@ -35,16 +35,18 @@ class CheckoutPage extends Component {
   // jspdf generator function
   pdfGenerator = () => {
     const input = document.getElementById('checkoutPage');
-
+    // const pageHeight = document.getElementById('checkoutPage').offsetHeight;
+    // const pageWidth = document.getElementById('checkoutPage').offsetWidth;
+    // console.log(pageHeight, pageWidth);
     html2canvas(input)
         .then((canvas) => {
             const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF('p', 'px', 'a4');
+            const pdf = new jsPDF('p', 'mm', ['a4']);
             const imgProps= pdf.getImageProperties(imgData);
             const width = pdf.internal.pageSize.getWidth();
             const height = (imgProps.height * width) / imgProps.width;
-            pdf.addImage(imgData, 'JPGE', 2, 2, width, height);
-            pdf.save("test.pdf");
+            pdf.addImage(imgData, 'JPGE', 0, 0, width, height);
+            pdf.save("Checkout.pdf");
         });
     // var pdf = new jsPDF();
     // var source = window.document.getElementById("checkouPage")[0];
