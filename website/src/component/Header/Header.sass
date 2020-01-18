@@ -1,92 +1,67 @@
-.header-container 
-  width: 100%
-  height: 80px
-  font-weight: 600
-  color: #484848
-  border-bottom: 1px solid lightgray
+.navbar-left-section
+  display: flex
+  flex-direction: row
 
-
+  
 .nav-logo 
   font-size: 200%
   margin: 0
   padding: 0
   text-align: center
+  line-height: 80px
 
-.bar-container
+
+.navbar-middle 
+  background-color: black
+  margin: 0
   height: 80px
+  width: 50px
+
+
+.navbar-container
+  width: 100vw
+  height: 80px
+  display: flex 
+  flex-direction: row 
+  justify-content: space-between 
+  align-items: center
   max-width: 100%
-  padding-bottom: 0
+  color: white
+  .navbar-right-section
+    height: 80px
+    .nav-link
+      color: inherit
+      padding: 0
+      text-align: center
+      line-height: 80px
+      &:hover
+        border-bottom: 2px solid #484848
+      .nav-btn 
+        color: inherit
+        font-size: 1.1em
+        font-weight: bold
+        letter-spacing: 1px
+        margin: 0 15px
+        text-transform: uppercase
+        &:hover
+          color: #484848
+      .user-logo-box 
+        color: inherit
+        display: flex
+        flex-direction: row
+        align-items: center
+        .user-logo
+          width: 55px
+          height: 55px
+        .user-text 
+          margin-left: 15px
+        &:hover
+          color: #484848
+          
 
-  // ?? what is this for
-.navbar li 
-  display: inline-block
-  padding: 0
+ 
 
-
-.nav-btn 
-  color: #484848
-  display: block
-  font-size: 1.1em
-  font-weight: bold
-  letter-spacing: 1px
-  margin: 0 10px
-  padding: 0
-  position: relative
-  text-decoration: none
-  text-transform: uppercase
-  transition: all 0.5s ease
-  -webkit-transition: all 0.5s ease
-  display: inline-block
-  list-style: none
-  text-align: right
-  transition: transform 0.5s ease-out
-  -webkit-transition: transform 0.5s ease-out
-  right: 0
-  left: 0
-
-
-// .nav-btn:hover 
-//   color: #484848
-//   transition: all 1s ease
-//   -webkit-transition: all 1s ease
-
-
-// .nav-btn:before,
-// .nav-btn:after 
-//   content: ""
-//   position: absolute
-//   width: 0%
-//   height: 2px
-//   bottom: -12px
-//   background: #484848
-
-
-// .nav-btn:hover:before 
-//   background: #484848
-//   width: 150%
-//   right: -12px
-
-//   transition: width 0.1s cubic-bezier((0.22, 0.61, 0.36, 1))
-
-
-// .nav-btn:hover:after 
-//   background: transparent
-//   width: 100%
-//   transition: 0s
-
-.nav-link
-  &:hover
-    border-bottom: 2px solid #484848
-
-
-#middle-bar 
-  background-color: transparent
-  margin-right: 10%
-  height: 50px
-  width: 40%
-
-
-@media only screen and (max-width: 980px) 
-  #middle-bar 
+@media only screen and (max-width: 1000px) 
+  .navbar-middle 
     display: none
   
