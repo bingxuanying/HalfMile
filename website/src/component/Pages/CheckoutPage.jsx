@@ -118,14 +118,16 @@ class CheckoutPage extends Component {
           </div>
           <div className="checkout-page-checkout">
             <div className="checkout-page-checkout-est airbnb-bold">
+              
               Total&nbsp;Est.&nbsp;${findTotalCost(fakeTrip)}
             </div>
             <div>
-              <Button onClick={this.pdfGenerator}>
-                Save as PDF
-              </Button>
+              
             </div>
             <div className="checkout-page-checkout-btn">
+              <Button variant="contained" color="primary" onClick={this.pdfGenerator} id="pdf-button">
+                Save as PDF
+              </Button>
               <Button variant="contained" color="primary" onClick={this.showSuccess}>Checkout</Button>
               <Modal 
                 isOpen={this.state.isModalOpen} 
