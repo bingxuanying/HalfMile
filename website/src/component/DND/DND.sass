@@ -29,6 +29,7 @@
     border: 2px solid #dfdfdf
     display: flex
     flex-direction: row
+    align-items: center
     .dnd-bar-handle 
       width: calc(44px - 2px)
       height: calc(44px - 4px)
@@ -40,26 +41,25 @@
       color: white
     .dnd-bar-content 
       height: 100%
+      min-width: 100px
       line-height: calc(44px - 4px)
       color: #485969
       font-weight: 500
       font-size: 16
     .dnd-bar-dateselector
       height: calc(44px - 4px)
-      display: flex
       width: 100%
+      display: flex
       flex-direction: row
-      justify-content: center
+      align-self: flex-end
+      justify-content: flex-end
       align-items: center
       .dnd-bar-dec
-        height: 100%
       .dnd-bar-day
-        height: 100%
         &:hover
           text-decoration: underline
           cursor: pointer
       .dnd-bar-inc
-        height: 100%
   .dnd-bar-item-avtive 
     background-color: #dfdfdf
     @extend .dnd-bar-item
