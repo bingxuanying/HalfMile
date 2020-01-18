@@ -134,7 +134,7 @@ class CheckoutPage extends Component {
                 onRequestClose={this.closeSuccess}
                 style={customStyles}  
               >
-                <h1  >Successfully<img src="https://img.icons8.com/color/48/000000/checked-2.png" /></h1>
+                <h1 id="success-text">Success<img src="https://img.icons8.com/color/48/000000/checked-2.png" /></h1>
               </Modal>
             </div>
           </div>
