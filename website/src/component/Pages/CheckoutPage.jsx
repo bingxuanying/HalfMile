@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./CheckoutPage.sass";
 import { CheckoutOverview } from "../TripOverview";
-import { Button, IconButton, Tooltip, TextField } from "@material-ui/core";
+import { Button, IconButton, Tooltip, TextField, Input } from "@material-ui/core";
 import FooterContainer from "../Footer/FooterContainer";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
+import jsPDF, {Htm}from "jspdf";
+import html2canvas from "html2canvas";
+import Modal from "react-modal";
 
 // ------------------------- State ------------------------- //
 // Trip{
@@ -18,17 +21,48 @@ import SaveIcon from "@material-ui/icons/Save";
 //   ]
 //  }
 // --------------------------------------------------------- //
+
 class CheckoutPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       titleEdit: false,
-      title: fakeTrip.tripTitle
+      title: fakeTrip.tripTitle,
+      isModalOpen: false
     };
   }
+
+  // jspdf generator function
+  pdfGenerator = () => {
+    const input = document.getElementById('checkoutPage');
+
+    html2canvas(input)
+        .then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            const pdf = new jsPDF('p', 'px', 'a4');
+            const imgProps= pdf.getImageProperties(imgData);
+            const width = pdf.internal.pageSize.getWidth();
+            const height = (imgProps.height * width) / imgProps.width;
+            pdf.addImage(imgData, 'JPGE', 2, 2, width, height);
+            pdf.save("test.pdf");
+        });
+    // var pdf = new jsPDF();
+    // var source = window.document.getElementById("checkouPage")[0];
+    // pdf.fromHTML(source);
+    // pdf.save("Checkout.pdf");
+  }
+
+  showSuccess = () =>{
+    this.setState({isModalOpen: true});
+  }
+
+  closeSuccess = () =>{
+    this.setState({isModalOpen: false});
+  }
+
   render() {
     return (
-      <div className="checkout-page">
+      <div className="checkout-page" id="checkoutPage">
         <div className="checkout-page-content">
           <div className="checkout-page-title">
             <div className="checkout-page-title-name">
@@ -86,10 +120,20 @@ class CheckoutPage extends Component {
             <div className="checkout-page-checkout-est airbnb-bold">
               Total&nbsp;Est.&nbsp;${findTotalCost(fakeTrip)}
             </div>
-            <div className="checkout-page-checkout-btn">
-              <Button variant="contained" color="primary">
-                Checkout
+            <div>
+              <Button onClick={this.pdfGenerator}>
+                Save as PDF
               </Button>
+            </div>
+            <div className="checkout-page-checkout-btn">
+              <Button variant="contained" color="primary" onClick={this.showSuccess}>Checkout</Button>
+              <Modal 
+                isOpen={this.state.isModalOpen} 
+                onRequestClose={this.closeSuccess}
+                style={customStyles}  
+              >
+                <h1  >Successfully<img src="https://img.icons8.com/color/48/000000/checked-2.png" /></h1>
+              </Modal>
             </div>
           </div>
         </div>
@@ -127,7 +171,16 @@ function findTotalCost(fakeTrip) {
 //     const day = fakeTrip.days[index];
 //   }
 // }
-
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+  }
+};
 const fakeTrip = {
   tripTitle: "One day in SF",
   startDate: "12/1",
