@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Navbar, Nav, Container, Row, Image, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 import Login from "../User/Login";
 import SignUp from "../User/SignUp";
 import UserProfileLogo from "./UserLogo";
@@ -9,19 +10,20 @@ class HeaderNav extends Component {
   render() {
     return (
       <Nav className="navbar-right">
-        <Nav.Link exact="true" href="/" className="nav-link">
+        <Nav.Link as={Link} exact="true" to="/" className="nav-link">
           <div className="nav-btn" size="lg" variant="outline-dark">
             Home
           </div>
         </Nav.Link>
-        <Nav.Link href="help">
+        <Nav.Link as={Link} to="/help">
           <div className="nav-btn" size="lg" variant="outline-dark">
             Help
           </div>
         </Nav.Link>
-        <Login />
-        <SignUp />
-        <UserProfileLogo />
+
+        {!this.props.isLogin && <SignUp />}
+        {!this.props.isLogin && <Login />}
+        {this.props.isLogin && <UserProfileLogo />}
       </Nav>
     );
   }

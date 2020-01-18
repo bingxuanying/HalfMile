@@ -52,7 +52,7 @@ function Login() {
                 id="login-password"
                 type="password"
                 placeholder="Password"
-                autoComplete="on"
+                autoComplete="off"
                 onChange={e =>
                   dispatch(stateActions.updateLoginPassword(e.target.value))
                 }

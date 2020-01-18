@@ -17,7 +17,7 @@ class HeaderContainer extends Component {
   componentDidMount() {
     document.addEventListener("scroll", () => {
       this.setState({
-        isTop: window.scrollY < 900
+        isTop: window.scrollY < 100
       });
       // console.log(this.state.isTop);
     });

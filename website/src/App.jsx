@@ -47,7 +47,7 @@ class App extends Component {
               )}
             </Route>
             <Route path="/profile">
-              <ProfilePage />
+              {this.props.isLogin ? <ProfilePage /> : <Redirect to="/" />}
             </Route>
             <Redirect to="/" />
           </Switch>
@@ -59,7 +59,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    section: state.step.section
+    section: state.step.section,
+    isLogin: state.user.isLogin
   };
 };
 
