@@ -58,3 +58,17 @@ export const updateFlight = (info, position) => {
     payload: { info: info, position: position }
   };
 };
+
+export const updateHotel = (info, city) => {
+  return {
+    type: "UPDATE_HOTEL",
+    payload: { info: info, city: city }
+  };
+};
+
+export const updateActivity = (activity, day) => {
+  return {
+    type: "UPDATE_ACTIVITY",
+    payload: { activity: activity, day: day }
+  };
+};
