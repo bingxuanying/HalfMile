@@ -173,7 +173,7 @@ class CheckoutPage extends Component {
                 onClick={this.showSuccess}
               >
                 <CheckIcon />
-                &nbsp;Save
+                &nbsp;Checkout
               </Button>
             </div>
           </div>
@@ -251,7 +251,6 @@ function findTotalCost(fakeTrip) {
   }
   return money;
 }
-
 const fakeTrip = {
   tripTitle: "One day in SF",
   startDate: "12/1",
