@@ -73,11 +73,15 @@ class VisionBox extends Component {
 
   render() {
     return (
-      <div>
-        {/* <input type="url" id="file-upload" /> */}
+      <div className="vision-box">
         <button type="button" id="upload-button" onClick={this.onSubmit}>
           Upload
         </button>
+        <input
+          type="url"
+          id="file-upload"
+          placeholder="put img url to get location"
+        />
       </div>
     );
   }

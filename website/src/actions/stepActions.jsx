@@ -50,10 +50,10 @@ export const changeSection_none2city = () => {
   };
 };
 
-export const changePage = num => {
+export const changeSection = section => {
   return {
-    type: "CHANGE_PAGE",
-    payload: num
+    type: "CHANGE_SECTION",
+    payload: section
   };
 };
 
