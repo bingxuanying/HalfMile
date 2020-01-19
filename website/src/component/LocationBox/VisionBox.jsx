@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios, { post } from "axios";
+import qs from "query-string";
 import "./VisionBox.sass";
-
+import FormData from "form-data";
 //Use to upload the image
 class VisionBox extends Component {
   constructor(props) {
@@ -23,7 +24,8 @@ class VisionBox extends Component {
     this.setState({ file: image.target.files[0] });
   }
   fileUpload(img) {
-    const url = "mingzhu.jpg";
+    const url =
+      "https://us-central1-halfmile-63aa4.cloudfunctions.net/helloWord";
     const formData = new FormData();
     formData.append("file", img);
     const config = {
@@ -33,11 +35,36 @@ class VisionBox extends Component {
     };
     return post(url, formData, config);
   }
+  submit = () => {
+    const requestBody = {
+      imgUrl:
+        "https://upload.wikimedia.org/wikipedia/commons/a/a3/Shanghai_oriental_pearl_tower.JPG"
+    };
+
+    const config = {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    };
+
+    axios
+      .post(
+        "https://us-central1-halfmile-63aa4.cloudfunctions.net/helloWorld",
+        qs.stringify(requestBody),
+        config
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
   render() {
     return (
       <div>
         <input type="file" id="file-upload" onChange={this.onChange} />
-        <button type="submit" id="upload-button">
+        <button type="submit" id="upload-button" onClick={this.submit}>
           Upload
         </button>
       </div>
