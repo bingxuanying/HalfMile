@@ -29,26 +29,28 @@ class HeaderContainer extends Component {
     // transistion: all ease 0.5s
     const { isTop } = this.state;
     return (
-      <Navbar
-        className="navbar-container navbar-expand-md p-0"
-        fixed="top"
-        bg={!isTop && "white"}
-        expand="lg"
-        style={isTop ? { color: "white" } : { color: "black" }}
-      >
-        <div className="navbar-left-section">
-          <HeaderLogo />
-          <HeaderMid className="middle-bar" />
-        </div>
-        <div className="navbar-right-section">
-          <div className="navbar-toggle-wrapper">
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <div>
+        <Navbar
+          className="navbar-container navbar-expand-md p-0"
+          fixed="top"
+          bg={!isTop && "white"}
+          expand="lg"
+          style={isTop ? { color: "white" } : { color: "black" }}
+        >
+          <div className="navbar-left-section">
+            <HeaderLogo />
+            <HeaderMid className="middle-bar" />
           </div>
-          <Navbar.Collapse>
-            <HeaderNav />
-          </Navbar.Collapse>
-        </div>
-      </Navbar>
+          <div className="navbar-right-section">
+            <div className="navbar-toggle-wrapper">
+              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            </div>
+            <Navbar.Collapse>
+              <HeaderNav />
+            </Navbar.Collapse>
+          </div>
+        </Navbar>
+      </div>
     );
   }
 }
