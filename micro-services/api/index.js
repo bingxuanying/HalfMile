@@ -7,6 +7,7 @@ const fs = require('fs');
 const Koa = require('koa');
 const assert = require('assert');
 const KoaBody = require('koa-body');
+const cors = require('@koa/cors');
 const { UserError } = require('@app/utils/errors');
 const { loginRequired } = require('@app/utils/auth');
 const {
@@ -36,6 +37,7 @@ assert(fs.existsSync(protoPath));
 
 // app
 const koa = new Koa();
+koa.use(cors({ origin: '*' }));
 koa.use(async (ctx, next) => {
   return next().catch(err => {
     if (err instanceof UserError) {
