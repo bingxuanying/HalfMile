@@ -48,3 +48,17 @@ export const turnOffInfoBar = () => {
     payload: null
   };
 };
+
+export const turnOffCalendar = id => {
+  return {
+    type: "TURN_OFF_CALENDAR",
+    payload: id
+  };
+};
+
+export const toggleCalendar = id => {
+  return {
+    type: "TOGGLE_CALENDAR",
+    payload: id
+  };
+};
