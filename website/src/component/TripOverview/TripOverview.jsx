@@ -5,13 +5,13 @@ import img1 from "./TripOverviewCity/assets/hotel-jwmarroit.png";
 import img2 from "./TripOverviewCity/assets/igh-sf.jpeg";
 
 import "./index.sass";
+import { connect } from "react-redux";
 
 class TripOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "S496691084's Guide",
-      base: this.props.base
+      title: "S496691084's Guide"
     };
   }
 
@@ -71,16 +71,18 @@ class TripOverview extends Component {
         arriveAirport: "LAX"
       }
     ];
-    let transport2 = [{
-      flight: "UA8148",
-      departDate: "2/1/2020",
-      arriveDate: "2/1/2020",
-      departTime: "14:00",
-      arriveTime: "16:00",
-      price: 999,
-      departAirport: "LAX",
-      arriveAirport: "SLC"
-    }];
+    let transport2 = [
+      {
+        flight: "UA8148",
+        departDate: "2/1/2020",
+        arriveDate: "2/1/2020",
+        departTime: "14:00",
+        arriveTime: "16:00",
+        price: 999,
+        departAirport: "LAX",
+        arriveAirport: "SLC"
+      }
+    ];
     let act = [
       { name: "Union Square", price: 165, time: "1h" },
       { name: "Golden Gate", price: 0, time: "2h" },
@@ -209,15 +211,20 @@ class TripOverview extends Component {
       <div className="trip-overview">
         <div className="trip-overview-title">{this.state.title}</div>
         <div className="trip-overview-fullwidth">
-          {this.state.base === "day" ? (
+          {this.props.section === "activity" ? (
             <div className="trip-overview-content">{Daylist}</div>
           ) : (
-              <div className="trip-overview-content">{CityList}</div>
-            )}
+            <div className="trip-overview-content">{CityList}</div>
+          )}
         </div>
       </div>
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    section: state.step.section
+  };
+};
 
-export default TripOverview;
+export default connect(mapStateToProps)(TripOverview);
