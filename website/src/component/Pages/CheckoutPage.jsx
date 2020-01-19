@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./CheckoutPage.sass";
 import { CheckoutOverview } from "../TripOverview";
 import {
@@ -6,14 +7,23 @@ import {
   IconButton,
   Tooltip,
   TextField,
-  Input
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Divider,
+  Fade,
+  CircularProgress
 } from "@material-ui/core";
 import FooterContainer from "../Footer/FooterContainer";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
-import jsPDF, { Htm } from "jspdf";
-import html2canvas from "html2canvas";
-import Modal from "react-modal";
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import HomeIcon from "@material-ui/icons/Home";
+import CheckIcon from "@material-ui/icons/Check";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
+// import Modal from "react-modal";
 
 // ------------------------- State ------------------------- //
 // Trip{
@@ -34,35 +44,57 @@ class CheckoutPage extends Component {
     this.state = {
       titleEdit: false,
       title: fakeTrip.tripTitle,
-      isModalOpen: false
+      isModalOpen: false,
+      loading: false
     };
   }
 
   // jspdf generator function
   pdfGenerator = () => {
     // const input = document.getElementById("checkoutPage");
-    // const opt = { margin: 1 };
+
     // html2canvas(input).then(canvas => {
-    //   var imgData = canvas.toDataURL("image/png");
-    //   var pdf = new jsPDF("", "pt", "a4");
-    //   pdf.addImage(imgData, "JPEG", 0, 0, width, height);
-    //   pdf.save("checkout.pdf");
-    //   console.log(width, height);
+    //   const imgData = canvas.toDataURL("image/png");
+    //   const pdf = new jsPDF("p", "px", "a4");
+    //   const imgProps = pdf.getImageProperties(imgData);
+    //   const width = pdf.internal.pageSize.getWidth();
+    //   const height = (imgProps.height * width) / imgProps.width;
+    //   pdf.addImage(imgData, "JPGE", 2, 2, width, height);
+    //   pdf.save("test.pdf");
     // });
-    // var pdf = new jsPDF("p", "mm", "a4");
-    // var source = document.getElementById("checkouPage")[0];
-    // var filename = "Checkout.pdf";
-    // pdf.addHTML(source, function() {
-    //   pdf.output("save", filename);
-    // });
+    const element = document.getElementById("checkoutPage");
+    // 导出配置
+    const opt = {
+      margin: 1,
+      filename: "导出的pdf名称",
+      image: { type: "jpeg", quality: 0.98 }, // 导出的图片质量和格式
+      html2canvas: { scale: 2, useCORS: true }, // useCORS很重要，解决文档中图片跨域问题
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+    };
+    // if (element) {
+    //   html2pdf()
+    //     .set(opt)
+    //     .from(element)
+    //     .save(); // 导出
+    // }
   };
 
   showSuccess = () => {
-    this.setState({ isModalOpen: true });
+    var that = this;
+    this.setState({ isModalOpen: true, loading: true });
+    setTimeout(function() {
+      that.setState({ loading: false });
+    }, 1000);
   };
 
   closeSuccess = () => {
     this.setState({ isModalOpen: false });
+  };
+
+  backToHomepage = () => {
+    console.log("back to Homepage");
+    this.closeSuccess();
+    this.props.history.push("/");
   };
 
   render() {
@@ -125,7 +157,6 @@ class CheckoutPage extends Component {
             <div className="checkout-page-checkout-est airbnb-bold">
               Total&nbsp;Est.&nbsp;${findTotalCost(fakeTrip)}
             </div>
-            <div></div>
             <div className="checkout-page-checkout-btn">
               <Button
                 variant="contained"
@@ -133,27 +164,64 @@ class CheckoutPage extends Component {
                 onClick={this.pdfGenerator}
                 id="pdf-button"
               >
-                Save as PDF
+                <SaveIcon />
+                &nbsp;Save as PDF
               </Button>
               <Button
                 variant="contained"
                 color="primary"
                 onClick={this.showSuccess}
               >
-                Checkout
+                <CheckIcon />
+                &nbsp;Checkout
               </Button>
-              <Modal
-                isOpen={this.state.isModalOpen}
-                onRequestClose={this.closeSuccess}
-                style={customStyles}
-              >
-                <h1>
-                  Successfully
-                  <img src="https://img.icons8.com/color/48/000000/checked-2.png" />
-                </h1>
-              </Modal>
             </div>
           </div>
+        </div>
+        <div className="checkout-page-modal-wrapper">
+          <Dialog
+            onClose={this.closeSuccess}
+            open={this.state.isModalOpen}
+            disableBackdropClick={true}
+            TransitionComponent={Fade}
+          >
+            {/* <DialogTitle onClose={this.closeSuccess}>Success</DialogTitle>
+            <Divider /> */}
+            <DialogContent>
+              <div className="modal-content-a">
+                {this.state.loading && <CircularProgress size={60} />}
+                {!this.state.loading && (
+                  <div className="modal-content-success">
+                    <CheckCircleOutlineIcon
+                      style={{ fontSize: 60, color: "green" }}
+                    />
+                    <span style={{ fontSize: 24, paddingLeft: 10 }}>
+                      SUCCESS
+                    </span>
+                  </div>
+                )}
+              </div>
+            </DialogContent>
+            <Divider />
+            <DialogActions>
+              <div className="modal-actions">
+                <div>
+                  <Tooltip title="Save as PDF">
+                    <IconButton onClick={this.pdfGenerator}>
+                      <SaveIcon />
+                    </IconButton>
+                  </Tooltip>
+                </div>
+                <div
+                  className="modal-actions-text"
+                  onClick={this.backToHomepage}
+                >
+                  <HomeIcon />
+                  &nbsp;Back to home psage
+                </div>
+              </div>
+            </DialogActions>
+          </Dialog>
         </div>
         <div className="footer">
           <FooterContainer />
@@ -183,22 +251,6 @@ function findTotalCost(fakeTrip) {
   }
   return money;
 }
-// function mapDaysToCity(fakeTrip) {
-//   let cities = [];
-//   for (let index = 0; index < fakeTrip.days.length; index++) {
-//     const day = fakeTrip.days[index];
-//   }
-// }
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)"
-  }
-};
 const fakeTrip = {
   tripTitle: "One day in SF",
   startDate: "12/1",
@@ -305,4 +357,4 @@ const fakeTrip = {
   ]
 };
 
-export default CheckoutPage;
+export default withRouter(CheckoutPage);

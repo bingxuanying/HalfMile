@@ -5,6 +5,18 @@ export const updateError = msg => {
   };
 };
 
+export const updateCityDate = (idx, startDate, endDate, dayDiff) => {
+  return {
+    type: "UPDATE_CITY_DATE",
+    payload: {
+      idx: idx,
+      startDate: startDate,
+      endDate: endDate,
+      dayDiff: dayDiff
+    }
+  };
+};
+
 export const addCity = city => {
   return {
     type: "ADD_CITY",
@@ -12,17 +24,22 @@ export const addCity = city => {
   };
 };
 
-export const deleteCity = id => {
+export const deleteCity = (numOfDelete, itemIdx, preDate, dateLst) => {
   return {
     type: "DELETE_CITY",
-    payload: id
+    payload: {
+      numOfDelete: numOfDelete,
+      itemIdx: itemIdx,
+      preDate: preDate,
+      dateLst: dateLst
+    }
   };
 };
 
-export const reorderCity = sortedLst => {
+export const reorderCity = (sortedCityLst, sortedPlanLst) => {
   return {
     type: "REORDER_CITY",
-    payload: sortedLst
+    payload: { sortedCityLst: sortedCityLst, sortedPlanLst: sortedPlanLst }
   };
 };
 
@@ -40,16 +57,23 @@ export const changePage = num => {
   };
 };
 
-export const nextPage = () => {
+export const nextPage = days => {
   return {
     type: "NEXT_PAGE",
-    payload: null
+    payload: days
   };
 };
 
-export const prePage = () => {
+export const prePage = days => {
   return {
     type: "PRE_PAGE",
-    payload: null
+    payload: days
+  };
+};
+
+export const turnOnCalendar = id => {
+  return {
+    type: "TURN_ON_CALENDAR",
+    payload: id
   };
 };

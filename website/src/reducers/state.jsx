@@ -8,7 +8,8 @@ const initialState = {
     password: null,
     rePassword: null
   },
-  InfoBar: false
+  InfoBar: false,
+  calendarOnID: null
 };
 
 const stateReducer = (state = initialState, action) => {
@@ -77,6 +78,19 @@ const stateReducer = (state = initialState, action) => {
       return { ...state, InfoBar: true };
     case "OFF_INFO_BAR":
       return { ...state, InfoBar: false };
+
+    case "TOGGLE_CALENDAR":
+      return {
+        ...state,
+        calendarOnID:
+          action.payload === state.calendarOnID ? null : action.payload
+      };
+
+    case "TURN_OFF_CALENDAR":
+      return { ...state, calendarOnID: action.payload };
+
+    case "ADD_CITY":
+      return { ...state, calendarOnID: null };
 
     default:
       return state;

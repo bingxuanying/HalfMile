@@ -1,21 +1,57 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
+import * as stateActions from "../../actions/stateActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CalendarRP } from "../Calendar";
-import moment from "moment";
 import "./DND.sass";
-import { IconButton, Icon } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import moment from "moment";
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
+const overviewReorder = (list, startIndex, endIndex) => {
+  let result = Array.from(list);
+  let [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const planReorder = (steplist, planlist, startIndex, endIndex) => {
+  let result = Array.from(planlist);
+  let removedItemNum = steplist[startIndex].endDate.diff(
+    steplist[startIndex].startDate,
+    "days"
+  );
+  let startPosition =
+    steplist[startIndex].startDate.diff(result[0].startDate, "days") + 1;
+  let removed = result.splice(startPosition, removedItemNum);
+
+  let _result = Array.from(result);
+  _result.splice(0, 1);
+  let endPosition = _result.findIndex(
+    day => day.city.name === steplist[endIndex].name
+  );
+
+  // down to up: if start > end endPosition += 1
+  // up to down: if start < end endPosition += days
+  if (startIndex > endIndex) {
+    endPosition += 1;
+  } else if (startIndex < endIndex) {
+    endPosition += steplist[endIndex].endDate.diff(
+      steplist[endIndex].startDate,
+      "days"
+    );
+    endPosition += 1;
+  }
+
+  console.log(endPosition);
+  // result.splice(endIndex, 0, removed);
+
+  result.splice.apply(result, [endPosition, 0].concat(removed));
 
   return result;
 };
@@ -26,6 +62,7 @@ class DND extends Component {
 
     this.onDragEnd = this.onDragEnd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
   }
 
   onDragEnd(result) {
@@ -53,17 +90,26 @@ class DND extends Component {
         `${this.props.cities[1].name} cannot be on top`
       );
     } else {
-      var sortedCityLst = reorder(
+      var sortedCityLst = overviewReorder(
         this.props.cities,
         result.source.index,
         result.destination.index
       );
+
       for (let i = 1; i < sortedCityLst.length; i++) {
         if (sortedCityLst[i - 1].name === sortedCityLst[i].name) {
           return this.props.updateError("repeated city");
         }
       }
-      this.props.reorderCity(sortedCityLst);
+
+      var sortedPlanLst = planReorder(
+        this.props.cities,
+        this.props.planLst,
+        result.source.index,
+        result.destination.index
+      );
+
+      this.props.reorderCity(sortedCityLst, sortedPlanLst);
     }
   }
 
@@ -73,19 +119,44 @@ class DND extends Component {
       return city.id === id;
     });
 
-    var hitLst = [id];
+    var numOfDelete = 1;
+    var dateLst = [
+      {
+        startDate: this.props.cities[itemIdx].startDate,
+        endDate: this.props.cities[itemIdx].endDate
+      }
+    ];
 
     if (itemIdx !== lastIdx) {
       if (itemIdx === 0 && this.props.cities[1].name === this.props.home.name) {
-        hitLst.push(this.props.cities[1].id);
+        numOfDelete += 1;
+        dateLst.unshift({
+          startDate: this.props.cities[1].startDate,
+          endDate: this.props.cities[1].endDate
+        });
       } else if (
+        itemIdx > 0 &&
         this.props.cities[itemIdx - 1].name ===
-        this.props.cities[itemIdx + 1].name
+          this.props.cities[itemIdx + 1].name
       ) {
-        hitLst.push(this.props.cities[itemIdx + 1].id);
+        numOfDelete += 1;
+        dateLst.unshift({
+          startDate: this.props.cities[itemIdx + 1].startDate,
+          endDate: this.props.cities[itemIdx + 1].endDate
+        });
       }
     }
-    this.props.deleteCity(hitLst);
+
+    var preDate =
+      itemIdx === 0
+        ? moment(this.props.home.startDate)
+        : moment(this.props.cities[itemIdx - 1].endDate);
+
+    this.props.deleteCity(numOfDelete, itemIdx, preDate, dateLst);
+  }
+
+  toggleCalendar(id) {
+    this.props.turnOnCalendar(id);
   }
 
   render() {
@@ -152,55 +223,42 @@ class DND extends Component {
                           <div className="dnd-bar-content">{item.name}</div>
                           <div className="dnd-bar-dateselector">
                             <div className="dnd-bar-dec">
+                              {/* add btn action */}
                               <IconButton size="small">
                                 <RemoveIcon />
                               </IconButton>
                             </div>
-                            <div
-                              className="dnd-bar-day"
-                              onClick={() =>
-                                this.toggleCalendar(item.id + "calendar")
-                              }
-                            >
-                              day
+                            <div className="dnd-bar-day">
+                              {/* redux - days */}
                               <div
-                                id={item.id + "calendar"}
-                                style={{
-                                  position: "absolute",
-                                  left: 340,
-                                  top: 2,
-                                  display: "initial",
-                                  transition: "display 400ms fade"
-                                }}
+                                onClick={() =>
+                                  this.props.toggleCalendar(item.id)
+                                }
                               >
-                                <CalendarRP
-                                  index={item.id + "calendar"}
-                                  initialStartDate={moment()}
-                                />
+                                day
                               </div>
+
+                              {item.id === this.props.calendarOnID && (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    left: 340,
+                                    top: 2,
+                                    transition: "display 400ms fade"
+                                  }}
+                                >
+                                  <CalendarRP index={index} />
+                                </div>
+                              )}
                             </div>
                             <div className="dnd-bar-inc">
+                              {/* add btn action */}
                               <IconButton size="small">
                                 <AddIcon />
                               </IconButton>
                             </div>
                           </div>
                         </div>
-
-                        {/* <div
-                          id={item.id + "calendar"}
-                          className="dnd-bar-calendar"
-                        > */}
-                        {/* <calendar id={item.id} /> onCloseHandlder={
-                            document.getElementById(
-                              item.id + "calendar"
-                            ).style.display = "none";
-                          } */}
-                        {/* <CalendarRP
-                            index={item.id + "calendar"}
-                            initialStartDate={moment()}
-                          /> */}
-                        {/* </div> */}
                       </div>
                     )}
                   </Draggable>
@@ -213,20 +271,14 @@ class DND extends Component {
       </DragDropContext>
     );
   }
-
-  toggleCalendar = id => {
-    console.log("try to toggle canlendar:" + id);
-    console.log(document.getElementById(id).style.display);
-    if (document.getElementById(id).style.display == "none")
-      document.getElementById(id).style.display = "initial";
-    else document.getElementById(id).style.display = "none";
-  };
 }
 
 const mapStateToProps = state => {
   return {
     home: state.plan[0].home,
-    cities: state.step.cities
+    cities: state.step.cities,
+    calendarOnID: state.state.calendarOnID,
+    planLst: state.plan
   };
 };
 
@@ -234,7 +286,10 @@ const mapDispatchToProps = () => {
   return {
     reorderCity: stepActions.reorderCity,
     deleteCity: stepActions.deleteCity,
-    updateError: stepActions.updateError
+    updateError: stepActions.updateError,
+    turnOnCalendar: stepActions.turnOnCalendar,
+    turnOffCalendar: stateActions.turnOffCalendar,
+    toggleCalendar: stateActions.toggleCalendar
   };
 };
 

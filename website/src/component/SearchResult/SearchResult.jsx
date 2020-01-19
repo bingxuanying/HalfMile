@@ -9,21 +9,21 @@ import flightRs from "./fakeFlight.json";
 import hotelRs from "./fakeHotel.json";
 
 class SearchResult extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      type: this.props.type
-    };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     type: this.props.type
+  //   };
+  // }
 
   render() {
     let cards = [];
     let style = {};
-    switch (this.state.type) {
+    switch (this.props.type) {
       case "activity":
         cards = this.fetchActivityCard(this.props.resultList);
         break;
-      case "flight":
+      case "airline":
         cards = this.fetchFlightCard(flightRs);
         style = { overflowY: "auto" };
         break;
@@ -48,7 +48,7 @@ class SearchResult extends Component {
     if (!rs) return <div></div>;
     return (
       <div className="card-wrapper">
-        {rs.data.map(function (park, _) {
+        {rs.data.map(function(park, _) {
           return (
             <ActivityCard
               name={park.fullName}
@@ -69,7 +69,7 @@ class SearchResult extends Component {
   fetchFlightCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function (flight, index) {
+        {rs.map(function(flight, index) {
           return <FlightCard obj={flight} key={"flight" + index} />;
         })}
       </div>
@@ -79,7 +79,7 @@ class SearchResult extends Component {
   fetchHotelCard = rs => {
     return (
       <div className="card-wrapper">
-        {rs.map(function (park, index) {
+        {rs.map(function(park, index) {
           return <HotelCard key={index} obj={park} />;
         })}
       </div>
@@ -88,7 +88,8 @@ class SearchResult extends Component {
 }
 const mapStateToProps = state => {
   return {
-    resultList: state.result.resultList
+    resultList: state.result.resultList,
+    type: state.step.section
   };
 };
 

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios, { post } from "axios";
-import qs from "query-string";
 import "./VisionBox.sass";
-import FormData from "form-data";
+
 //Use to upload the image
 class VisionBox extends Component {
   constructor(props) {

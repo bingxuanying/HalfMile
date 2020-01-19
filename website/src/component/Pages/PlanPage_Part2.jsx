@@ -16,6 +16,7 @@ import Map from "../Map/Map";
 // Redux
 import { connect } from "react-redux";
 import * as resultActions from "../../actions/resultActions";
+import * as stepActions from "../../actions/stepActions";
 
 class PlanPage_Part2 extends Component {
   render() {
@@ -26,14 +27,40 @@ class PlanPage_Part2 extends Component {
       };
       this.props.fetchData(pack);
     };
+    // follow 2 is to change inline style
+    var searchResultWidth;
+    var mapWidth;
+    var tripOverType;
+    switch (this.props.section) {
+      case "airline":
+        searchResultWidth = "650px";
+        mapWidth = "calc(100% - 650px)";
+        tripOverType = "city";
+        break;
+      case "activity":
+        searchResultWidth = "300px";
+        mapWidth = "calc(100% - 300px)";
+        tripOverType = "day";
+        break;
+      case "hotel":
+        searchResultWidth = "550px";
+        mapWidth = "calc(100% - 550px)";
+        tripOverType = "city";
+        break;
+      default:
+        break;
+    }
     return (
       <div className="planpage-containter">
         <div className="planpage-cover">
-          <TripOverview base="city" />
+          <TripOverview base={tripOverType} />
         </div>
         <div className="planpage-main">
           {/* sdie bar section */}
-          <div className="planpage-sidebar">
+          <div
+            className="planpage-sidebar"
+            style={{ width: searchResultWidth }}
+          >
             <div className="planpage-sidebar-searchbar">
               <FormControl>
                 <InputLabel>Enter Place U want to go</InputLabel>
@@ -61,20 +88,26 @@ class PlanPage_Part2 extends Component {
               </FormControl>
             </div>
             <div className="planpage-sidebar-menu">
-              <SearchResult type="activity" />
+              <SearchResult type={this.props.section} />
             </div>
           </div>
           {/* map section */}
-          <div className="planpage2-map">
-            <Map />
+          <div className="planpage2-map" style={{ width: mapWidth }}>
+            <Map style={{ width: "100%" }} />
           </div>
 
           {/* Overflow Btn - position: absolute */}
           <div className="planpage-floatWindow"></div>
-          <button className="planpage-pre-btn page-btn-bg">
+          <button
+            className="planpage-pre-btn page-btn-bg"
+            onClick={() => this.props.prePage(this.props.days.length - 1)}
+          >
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
-          <button className="planpage-next-btn page-btn-bg">
+          <button
+            className="planpage-next-btn page-btn-bg"
+            onClick={() => this.props.nextPage(this.props.days.length - 1)}
+          >
             <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
           </button>
         </div>
@@ -86,14 +119,18 @@ class PlanPage_Part2 extends Component {
 const mapStateToProps = state => {
   return {
     keyword: state.result.keyword,
-    resultList: state.result.resultList
+    resultList: state.result.resultList,
+    section: state.step.section,
+    days: state.plan
   };
 };
 
 const mapDispatchToProps = () => {
   return {
     updateKeyword: resultActions.updateKeyword,
-    fetchData: resultActions.fetchData
+    fetchData: resultActions.fetchData,
+    nextPage: stepActions.nextPage,
+    prePage: stepActions.prePage
   };
 };
 

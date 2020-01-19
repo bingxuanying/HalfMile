@@ -1,3 +1,5 @@
+import moment from "moment";
+
 // section: "city" || "airline" || "hotel" || "activity" || "checkout" || "finished"
 const initialState = {
   section: "none",
@@ -5,6 +7,14 @@ const initialState = {
   cities: [],
   days: 0,
   err: "none"
+};
+
+const city = {
+  id: null,
+  name: null,
+  location: null,
+  startDate: null,
+  endDate: null
 };
 
 const stepReducer = (state = initialState, action) => {
@@ -15,6 +25,32 @@ const stepReducer = (state = initialState, action) => {
         err: action.payload
       };
 
+    case "UPDATE_CITY_DATE":
+      var dayDiff = action.payload.dayDiff;
+
+      return {
+        ...state,
+        cities: state.cities.map((city, idx) => {
+          if (idx === action.payload.idx) {
+            return {
+              ...city,
+              startDate: moment(action.payload.startDate),
+              endDate: moment(action.payload.endDate)
+            };
+          } else if (idx > action.payload.idx) {
+            return {
+              ...city,
+              startDate: moment(
+                state.cities[idx].startDate.add(dayDiff, "days")
+              ),
+              endDate: moment(state.cities[idx].endDate.add(dayDiff, "days"))
+            };
+          } else {
+            return city;
+          }
+        })
+      };
+
     case "ADD_CITY":
       return {
         ...state,
@@ -23,19 +59,41 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "DELETE_CITY":
-      var newCities = state.cities.filter(
-        city => !action.payload.includes(city.id)
+      var citiesAfterDelete = [...state.cities];
+      citiesAfterDelete.splice(
+        action.payload.itemIdx,
+        action.payload.numOfDelete
       );
+
+      var daysMoveBack = action.payload.preDate.diff(
+        citiesAfterDelete[action.payload.itemIdx].startDate,
+        "days"
+      );
+
+      console.log(daysMoveBack);
+
+      citiesAfterDelete.map((city, idx) => {
+        console.log(city.startDate);
+        if (idx >= action.payload.itemIdx) {
+          return {
+            ...city,
+            startDate: moment(city.startDate.add(daysMoveBack, "days")),
+            endDate: moment(city.endDate.add(daysMoveBack, "days"))
+          };
+        } else {
+          return city;
+        }
+      });
 
       return {
         ...state,
-        cities: newCities
+        cities: citiesAfterDelete
       };
 
     case "REORDER_CITY":
       return {
         ...state,
-        cities: action.payload,
+        cities: action.payload.sortedCityLst,
         err: "none"
       };
 
@@ -78,12 +136,11 @@ const stepReducer = (state = initialState, action) => {
           state.page + 1 > state.cities.length ? "hotel" : "airline";
         nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
       } else if (state.section === "hotel") {
-        nextSection =
-          state.page + 1 > state.cities.length ? "activity" : "hotel";
-        nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
+        nextSection = state.page + 1 > action.payload ? "activity" : "hotel";
+        nextPage = state.page + 1 > action.payload ? 1 : state.page + 1;
       } else if (state.section === "activity") {
-        nextSection = state.page + 1 > state.days ? "checkout" : "activity";
-        nextPage = state.page + 1 > state.days ? 1 : state.page + 1;
+        nextSection = state.page + 1 > action.payload ? "checkout" : "activity";
+        nextPage = state.page + 1 > action.payload ? 1 : state.page + 1;
       } else if (state.section === "checkout") {
         nextSection = "finished";
         nextPage = 1;
@@ -107,10 +164,10 @@ const stepReducer = (state = initialState, action) => {
         prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
       } else if (state.section === "activity") {
         preSection = state.page - 1 < 1 ? "hotel" : "activity";
-        prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
+        prePage = state.page - 1 < 1 ? action.payload : state.page - 1;
       } else if (state.section === "checkout") {
         preSection = "activity";
-        prePage = state.days;
+        prePage = action.payload;
       }
 
       return {

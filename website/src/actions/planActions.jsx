@@ -5,6 +5,13 @@ export const updateHomeAdress = home => {
   };
 };
 
+export const updateInitStartDate = date => {
+  return {
+    type: "UPDATE_INIT_START_DATE",
+    payload: date
+  };
+};
+
 export const guestIncreament = name => {
   return {
     type: "GUEST_INCREAMENT",
@@ -42,5 +49,12 @@ export const updateError = (section, msg) => {
   return {
     type: actionType,
     payload: msg
+  };
+};
+
+export const updateFlight = (info, position) => {
+  return {
+    type: "UPDATE_FLIGHT",
+    payload: { info: info, position: position }
   };
 };
