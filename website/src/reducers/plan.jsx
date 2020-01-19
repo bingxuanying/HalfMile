@@ -225,7 +225,6 @@ const planReducer = (state = initialState, action) => {
         return item;
       });
       
-      
     case "UPDATE_FLIGHT":
       return state.map((day, idx) => {
         if (idx === action.payload.position) {
