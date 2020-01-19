@@ -21,6 +21,10 @@ import SaveIcon from "@material-ui/icons/Save";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HomeIcon from "@material-ui/icons/Home";
 import CheckIcon from "@material-ui/icons/Check";
+
+import { connect } from "react-redux";
+import * as stepActions from "../../actions/stepActions";
+
 // import jsPDF from "jspdf";
 // import html2canvas from "html2canvas";
 // import Modal from "react-modal";
@@ -93,6 +97,7 @@ class CheckoutPage extends Component {
 
   backToHomepage = () => {
     console.log("back to Homepage");
+    this.props.changeSection("none");
     this.closeSuccess();
     this.props.history.push("/");
   };
@@ -357,4 +362,18 @@ const fakeTrip = {
   ]
 };
 
-export default withRouter(CheckoutPage);
+const mapStateToProps = state => {
+  return {
+    homeAddress: state.plan[0].home
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    changeSection: stepActions.changeSection
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps())(CheckoutPage)
+);
