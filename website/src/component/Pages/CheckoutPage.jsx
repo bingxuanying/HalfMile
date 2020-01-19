@@ -50,21 +50,32 @@ class CheckoutPage extends Component {
 
   // jspdf generator function
   pdfGenerator = () => {
-    const input = document.getElementById("checkoutPage");
+    // const input = document.getElementById("checkoutPage");
 
-    html2canvas(input).then(canvas => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "px", "a4");
-      const imgProps = pdf.getImageProperties(imgData);
-      const width = pdf.internal.pageSize.getWidth();
-      const height = (imgProps.height * width) / imgProps.width;
-      pdf.addImage(imgData, "JPGE", 2, 2, width, height);
-      pdf.save("test.pdf");
-    });
-    // var pdf = new jsPDF();
-    // var source = window.document.getElementById("checkouPage")[0];
-    // pdf.fromHTML(source);
-    // pdf.save("Checkout.pdf");
+    // html2canvas(input).then(canvas => {
+    //   const imgData = canvas.toDataURL("image/png");
+    //   const pdf = new jsPDF("p", "px", "a4");
+    //   const imgProps = pdf.getImageProperties(imgData);
+    //   const width = pdf.internal.pageSize.getWidth();
+    //   const height = (imgProps.height * width) / imgProps.width;
+    //   pdf.addImage(imgData, "JPGE", 2, 2, width, height);
+    //   pdf.save("test.pdf");
+    // });
+    const element = document.getElementById("checkoutPage");
+    // 导出配置
+    const opt = {
+      margin: 1,
+      filename: "导出的pdf名称",
+      image: { type: "jpeg", quality: 0.98 }, // 导出的图片质量和格式
+      html2canvas: { scale: 2, useCORS: true }, // useCORS很重要，解决文档中图片跨域问题
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+    };
+    // if (element) {
+    //   html2pdf()
+    //     .set(opt)
+    //     .from(element)
+    //     .save(); // 导出
+    // }
   };
 
   showSuccess = () => {
@@ -86,8 +97,8 @@ class CheckoutPage extends Component {
 
   render() {
     return (
-      <div className="checkout-page" id="checkoutPage">
-        <div className="checkout-page-content">
+      <div className="checkout-page">
+        <div className="checkout-page-content" id="checkoutPage">
           <div className="checkout-page-title">
             <div className="checkout-page-title-name">
               <div className="airbnb-font mb-0">Title</div>
