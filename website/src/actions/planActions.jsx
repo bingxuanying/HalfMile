@@ -51,3 +51,10 @@ export const updateError = (section, msg) => {
     payload: msg
   };
 };
+
+export const updateFlight = (info, position) => {
+  return {
+    type: "UPDATE_FLIGHT",
+    payload: { info: info, position: position }
+  };
+};
