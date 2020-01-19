@@ -7,48 +7,50 @@ class HeaderMid extends Component {
   constructor() {
     super();
 
-    this.titleSwitch = this.titleSwitch.bind(this);
     this.infoSwitch = this.infoSwitch.bind(this);
+    this.titleSwitch = this.titleSwitch.bind(this);
   }
 
-  titleSwitch(section) {
+  infoSwitch(section) {
     switch (section) {
       case "city":
-        return <p>Select places you wanna go</p>;
+        return (
+          <div className="navbar-mid-info">Select places you wanna go</div>
+        );
       case "airline":
-        return <p>Select airline</p>;
+        return <div className="navbar-mid-info">Select airline</div>;
       case "hotel":
-        return <p>Select hotel</p>;
+        return <div className="navbar-mid-info">Select hotel</div>;
       case "activity":
-        return <p>Select activites</p>;
-      case "checkout":
-        return <p>Checkout Page</p>;
+        return <div className="navbar-mid-info">Select activites</div>;
       default:
         return null;
     }
   }
 
-  infoSwitch(section, page) {
+  titleSwitch(section, page) {
     switch (section) {
       case "airline":
         return (
-          <div className="navbar-mid-infobox">
+          <div className="navbar-mid-title">
             {this.props.cities[page - 1].name}
           </div>
         );
       case "hotel":
         return (
-          <div className="navbar-mid-infobox">
+          <div className="navbar-mid-title">
             {this.props.cities[page - 1].name}
           </div>
         );
       case "activity":
         return (
-          <div className="navbar-mid-infobox">
+          <div className="navbar-mid-title">
             {this.props.plan[page].city.name}
             <span> - Day {page}</span>
           </div>
         );
+      case "checkout":
+        return <div className="navbar-mid-title">Checkout Page</div>;
       default:
         return null;
     }
@@ -58,10 +60,10 @@ class HeaderMid extends Component {
     return (
       <Nav.Link as={Link} to="/plan" className="navbar-middle pl-4 p-0">
         <div className="navbar-mid-left">
-          {this.infoSwitch(this.props.section, this.props.page)}
+          {this.titleSwitch(this.props.section, this.props.page)}
         </div>
         <div className="navbar-middle-right">
-          {this.titleSwitch(this.props.section)}
+          {this.infoSwitch(this.props.section)}
         </div>
       </Nav.Link>
     );
