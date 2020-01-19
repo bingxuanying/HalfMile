@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import "./CheckoutPage.sass";
 import { CheckoutOverview } from "../TripOverview";
 import {
@@ -93,6 +94,7 @@ class CheckoutPage extends Component {
   backToHomepage = () => {
     console.log("back to Homepage");
     this.closeSuccess();
+    this.props.history.push("/");
   };
 
   render() {
@@ -356,4 +358,4 @@ const fakeTrip = {
   ]
 };
 
-export default CheckoutPage;
+export default withRouter(CheckoutPage);

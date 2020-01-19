@@ -57,17 +57,17 @@ export const changePage = num => {
   };
 };
 
-export const nextPage = () => {
+export const nextPage = days => {
   return {
     type: "NEXT_PAGE",
-    payload: null
+    payload: days
   };
 };
 
-export const prePage = () => {
+export const prePage = days => {
   return {
     type: "PRE_PAGE",
-    payload: null
+    payload: days
   };
 };
 

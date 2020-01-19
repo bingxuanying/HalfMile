@@ -16,6 +16,7 @@ import Map from "../Map/Map";
 // Redux
 import { connect } from "react-redux";
 import * as resultActions from "../../actions/resultActions";
+import * as stepActions from "../../actions/stepActions";
 
 class PlanPage_Part2 extends Component {
   render() {
@@ -93,10 +94,16 @@ class PlanPage_Part2 extends Component {
 
           {/* Overflow Btn - position: absolute */}
           <div className="planpage-floatWindow"></div>
-          <button className="planpage-pre-btn page-btn-bg">
+          <button
+            className="planpage-pre-btn page-btn-bg"
+            onClick={() => this.props.prePage(this.props.days.length - 1)}
+          >
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
-          <button className="planpage-next-btn page-btn-bg">
+          <button
+            className="planpage-next-btn page-btn-bg"
+            onClick={() => this.props.nextPage(this.props.days.length - 1)}
+          >
             <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
           </button>
         </div>
@@ -109,14 +116,17 @@ const mapStateToProps = state => {
   return {
     keyword: state.result.keyword,
     resultList: state.result.resultList,
-    section: state.step.section
+    section: state.step.section,
+    days: state.plan
   };
 };
 
 const mapDispatchToProps = () => {
   return {
     updateKeyword: resultActions.updateKeyword,
-    fetchData: resultActions.fetchData
+    fetchData: resultActions.fetchData,
+    nextPage: stepActions.nextPage,
+    prePage: stepActions.prePage
   };
 };
 
