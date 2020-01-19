@@ -23,7 +23,7 @@ class SearchResult extends Component {
       case "activity":
         cards = this.fetchActivityCard(this.props.resultList);
         break;
-      case "flight":
+      case "airline":
         cards = this.fetchFlightCard(flightRs);
         style = { overflowY: "auto" };
         break;
