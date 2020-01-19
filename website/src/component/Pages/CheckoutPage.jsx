@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import "./CheckoutPage.sass";
 import { CheckoutOverview } from "../TripOverview";
-import { Button, IconButton, Tooltip, TextField, Input } from "@material-ui/core";
+import {
+  Button,
+  IconButton,
+  Tooltip,
+  TextField,
+  Input
+} from "@material-ui/core";
 import FooterContainer from "../Footer/FooterContainer";
 import EditIcon from "@material-ui/icons/Edit";
 import SaveIcon from "@material-ui/icons/Save";
-import jsPDF, {Htm}from "jspdf";
+import jsPDF, { Htm } from "jspdf";
 import html2canvas from "html2canvas";
 import Modal from "react-modal";
 
@@ -34,36 +40,34 @@ class CheckoutPage extends Component {
 
   // jspdf generator function
   pdfGenerator = () => {
-    const input = document.getElementById('checkoutPage');
-    html2canvas(input)
-        .then((canvas) => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
-            const imgProps= pdf.getImageProperties(imgData);
-            const width = pdf.internal.pageSize.getWidth();
-            const height = (imgProps.height * width) / imgProps.width;
-          pdf.addImage(imgData, 'JPEG', 0, 0, width, height);
-          pdf.save("checkout.pdf");
-          console.log(width, height);
-        });
-    // var pdf = new jsPDF();
-    // var source = window.document.getElementById("checkouPage")[0];
-    // pdf.fromHTML(source);
-    // pdf.save("Checkout.pdf");
-    
-  }
+    // const input = document.getElementById("checkoutPage");
+    // const opt = { margin: 1 };
+    // html2canvas(input).then(canvas => {
+    //   var imgData = canvas.toDataURL("image/png");
+    //   var pdf = new jsPDF("", "pt", "a4");
+    //   pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+    //   pdf.save("checkout.pdf");
+    //   console.log(width, height);
+    // });
+    // var pdf = new jsPDF("p", "mm", "a4");
+    // var source = document.getElementById("checkouPage")[0];
+    // var filename = "Checkout.pdf";
+    // pdf.addHTML(source, function() {
+    //   pdf.output("save", filename);
+    // });
+  };
 
-  showSuccess = () =>{
-    this.setState({isModalOpen: true});
-  }
+  showSuccess = () => {
+    this.setState({ isModalOpen: true });
+  };
 
-  closeSuccess = () =>{
-    this.setState({isModalOpen: false});
-  }
+  closeSuccess = () => {
+    this.setState({ isModalOpen: false });
+  };
 
   render() {
     return (
-      <div className="checkout-page" >
+      <div className="checkout-page">
         <div className="checkout-page-content" id="checkoutPage">
           <div className="checkout-page-title">
             <div className="checkout-page-title-name">
@@ -119,23 +123,34 @@ class CheckoutPage extends Component {
           </div>
           <div className="checkout-page-checkout">
             <div className="checkout-page-checkout-est airbnb-bold">
-              
               Total&nbsp;Est.&nbsp;${findTotalCost(fakeTrip)}
             </div>
-            <div>
-              
-            </div>
+            <div></div>
             <div className="checkout-page-checkout-btn">
-              <Button variant="contained" color="primary" onClick={this.pdfGenerator} id="pdf-button">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.pdfGenerator}
+                id="pdf-button"
+              >
                 Save as PDF
               </Button>
-              <Button variant="contained" color="primary" onClick={this.showSuccess}>Checkout</Button>
-              <Modal 
-                isOpen={this.state.isModalOpen} 
-                onRequestClose={this.closeSuccess}
-                style={customStyles}  
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={this.showSuccess}
               >
-                <h1  >Successfully<img src="https://img.icons8.com/color/48/000000/checked-2.png" /></h1>
+                Checkout
+              </Button>
+              <Modal
+                isOpen={this.state.isModalOpen}
+                onRequestClose={this.closeSuccess}
+                style={customStyles}
+              >
+                <h1>
+                  Successfully
+                  <img src="https://img.icons8.com/color/48/000000/checked-2.png" />
+                </h1>
               </Modal>
             </div>
           </div>
@@ -175,13 +190,13 @@ function findTotalCost(fakeTrip) {
 //   }
 // }
 const customStyles = {
-  content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)',
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)"
   }
 };
 const fakeTrip = {
