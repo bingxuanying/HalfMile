@@ -30,7 +30,7 @@ class HeaderContainer extends Component {
     const { isTop } = this.state;
     return (
       <Navbar
-        className="navbar-container p-0"
+        className="navbar-container navbar-expand-md p-0"
         fixed="top"
         bg={!isTop && "white"}
         expand="lg"
@@ -40,9 +40,10 @@ class HeaderContainer extends Component {
           <HeaderLogo />
           <HeaderMid className="middle-bar" />
         </div>
-
         <div className="navbar-right-section">
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <div className="navbar-toggle-wrapper">
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          </div>
           <Navbar.Collapse>
             <HeaderNav />
           </Navbar.Collapse>
