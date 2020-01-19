@@ -24,10 +24,15 @@ export const addCity = city => {
   };
 };
 
-export const deleteCity = (id, dateLst) => {
+export const deleteCity = (numOfDelete, itemIdx, preDate, dateLst) => {
   return {
     type: "DELETE_CITY",
-    payload: { id: id, dateLst: dateLst }
+    payload: {
+      numOfDelete: numOfDelete,
+      itemIdx: itemIdx,
+      preDate: preDate,
+      dateLst: dateLst
+    }
   };
 };
 

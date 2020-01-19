@@ -59,9 +59,31 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "DELETE_CITY":
-      var citiesAfterDelete = state.cities.filter(
-        city => !action.payload.id.includes(city.id)
+      var citiesAfterDelete = [...state.cities];
+      citiesAfterDelete.splice(
+        action.payload.itemIdx,
+        action.payload.numOfDelete
       );
+
+      var daysMoveBack = action.payload.preDate.diff(
+        citiesAfterDelete[action.payload.itemIdx].startDate,
+        "days"
+      );
+
+      console.log(daysMoveBack);
+
+      citiesAfterDelete.map((city, idx) => {
+        console.log(city.startDate);
+        if (idx >= action.payload.itemIdx) {
+          return {
+            ...city,
+            startDate: moment(city.startDate.add(daysMoveBack, "days")),
+            endDate: moment(city.endDate.add(daysMoveBack, "days"))
+          };
+        } else {
+          return city;
+        }
+      });
 
       return {
         ...state,

@@ -10,6 +10,7 @@ import "./DND.sass";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
+import moment from "moment";
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -75,7 +76,7 @@ class DND extends Component {
       return city.id === id;
     });
 
-    var hitLst = [id];
+    var numOfDelete = 1;
     var dateLst = [
       {
         startDate: this.props.cities[itemIdx].startDate,
@@ -85,7 +86,7 @@ class DND extends Component {
 
     if (itemIdx !== lastIdx) {
       if (itemIdx === 0 && this.props.cities[1].name === this.props.home.name) {
-        hitLst.push(this.props.cities[1].id);
+        numOfDelete += 1;
         dateLst.unshift({
           startDate: this.props.cities[1].startDate,
           endDate: this.props.cities[1].endDate
@@ -95,14 +96,20 @@ class DND extends Component {
         this.props.cities[itemIdx - 1].name ===
           this.props.cities[itemIdx + 1].name
       ) {
-        hitLst.push(this.props.cities[itemIdx + 1].id);
+        numOfDelete += 1;
         dateLst.unshift({
           startDate: this.props.cities[itemIdx + 1].startDate,
           endDate: this.props.cities[itemIdx + 1].endDate
         });
       }
     }
-    this.props.deleteCity(hitLst, dateLst);
+
+    var preDate =
+      itemIdx === 0
+        ? moment(this.props.home.startDate)
+        : moment(this.props.cities[itemIdx - 1].endDate);
+
+    this.props.deleteCity(numOfDelete, itemIdx, preDate, dateLst);
   }
 
   toggleCalendar(id) {

@@ -155,7 +155,6 @@ class ContentCover extends Component {
               </div> */}
             </div>
             <Calendar />
-            {/* <CalendarRP initialStartDate={moment()} /> */}
             <div className="start-box-row">
               <div className="start-box-subtitle">NUMBER OF PEOPLE</div>
               <div className="start-box-guest">
