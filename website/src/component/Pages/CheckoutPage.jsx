@@ -173,7 +173,7 @@ class CheckoutPage extends Component {
                 onClick={this.showSuccess}
               >
                 <CheckIcon />
-                &nbsp;Save
+                &nbsp;Checkout
               </Button>
             </div>
           </div>
@@ -188,7 +188,7 @@ class CheckoutPage extends Component {
             {/* <DialogTitle onClose={this.closeSuccess}>Success</DialogTitle>
             <Divider /> */}
             <DialogContent>
-              <div className="modal-content">
+              <div className="modal-content-a">
                 {this.state.loading && <CircularProgress size={60} />}
                 {!this.state.loading && (
                   <div className="modal-content-success">
@@ -251,7 +251,6 @@ function findTotalCost(fakeTrip) {
   }
   return money;
 }
-
 const fakeTrip = {
   tripTitle: "One day in SF",
   startDate: "12/1",

@@ -30,18 +30,22 @@ class PlanPage_Part2 extends Component {
     // follow 2 is to change inline style
     var searchResultWidth;
     var mapWidth;
+    var tripOverType;
     switch (this.props.section) {
       case "airline":
         searchResultWidth = "650px";
         mapWidth = "calc(100% - 650px)";
+        tripOverType = "city";
         break;
-      case "activities":
+      case "activity":
         searchResultWidth = "300px";
         mapWidth = "calc(100% - 300px)";
+        tripOverType = "day";
         break;
       case "hotel":
         searchResultWidth = "550px";
         mapWidth = "calc(100% - 550px)";
+        tripOverType = "city";
         break;
       default:
         break;
@@ -49,7 +53,7 @@ class PlanPage_Part2 extends Component {
     return (
       <div className="planpage-containter">
         <div className="planpage-cover">
-          <TripOverview base="city" />
+          <TripOverview base={tripOverType} />
         </div>
         <div className="planpage-main">
           {/* sdie bar section */}

@@ -5,16 +5,41 @@ import img1 from "./TripOverviewCity/assets/hotel-jwmarroit.png";
 import img2 from "./TripOverviewCity/assets/igh-sf.jpeg";
 
 import "./index.sass";
+import { connect } from "react-redux";
 
 class TripOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "S496691084's Guide",
-      base: this.props.base
+      title: "S496691084's Guide"
     };
   }
-
+  getCityList = () => {
+    console.log("in getCityList");
+    console.log(this.props.cities);
+    this.props.cities.map(function(city, index) {
+      return (
+        <TripOverviewCity
+          key={index}
+          isEditting={index + 1 === this.props.page}
+          city={city.name}
+          isChecked={index + 1 <= this.props.page}
+          isStart={index === 0}
+          isEnd={index + 1 === this.props.cities.length()}
+          isNextChecked={this.props.page > index + 2}
+          startDate={city.startDate}
+          hotel={this.props.plan[this.findDay(index)].hotel}
+          transport={this.props.plan[this.findDay(index)].transport}
+        />
+      );
+    });
+  };
+  findDay = index => {
+    return (
+      this.props.cities[index].startDate.diff(this.props.cities[0].startDate) +
+      1
+    );
+  };
   render() {
     // add props into TripOverviewDay
     let hotel1 = [
@@ -71,16 +96,18 @@ class TripOverview extends Component {
         arriveAirport: "LAX"
       }
     ];
-    let transport2 = [{
-      flight: "UA8148",
-      departDate: "2/1/2020",
-      arriveDate: "2/1/2020",
-      departTime: "14:00",
-      arriveTime: "16:00",
-      price: 999,
-      departAirport: "LAX",
-      arriveAirport: "SLC"
-    }];
+    let transport2 = [
+      {
+        flight: "UA8148",
+        departDate: "2/1/2020",
+        arriveDate: "2/1/2020",
+        departTime: "14:00",
+        arriveTime: "16:00",
+        price: 999,
+        departAirport: "LAX",
+        arriveAirport: "SLC"
+      }
+    ];
     let act = [
       { name: "Union Square", price: 165, time: "1h" },
       { name: "Golden Gate", price: 0, time: "2h" },
@@ -190,18 +217,6 @@ class TripOverview extends Component {
         startDate="12/5"
         hotel={hotel2}
         transport={transport2}
-      />,
-      <TripOverviewCity
-        key="3"
-        isEditting={false}
-        city="Davis"
-        isChecked={false}
-        isStart={false}
-        isEnd={true}
-        isNextChecked={false}
-        startDate="12/8"
-        hotel={[]}
-        transport={[]}
       />
     ];
 
@@ -209,15 +224,24 @@ class TripOverview extends Component {
       <div className="trip-overview">
         <div className="trip-overview-title">{this.state.title}</div>
         <div className="trip-overview-fullwidth">
-          {this.state.base === "day" ? (
+          {this.props.section === "activity" ? (
             <div className="trip-overview-content">{Daylist}</div>
           ) : (
-              <div className="trip-overview-content">{CityList}</div>
-            )}
+            <div className="trip-overview-content">{this.getCityList}</div>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default TripOverview;
+const mapStateToProps = state => {
+  return {
+    section: state.step.section,
+    page: state.step.page,
+    cities: state.step.cities,
+    plan: state.plan
+  };
+};
+
+export default connect(mapStateToProps)(TripOverview);

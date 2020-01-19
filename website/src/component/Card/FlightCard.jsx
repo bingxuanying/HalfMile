@@ -67,7 +67,6 @@ class FlightCard extends Component {
     const arriveAirport = this.props.obj.arriveAirport;
     const stops = this.props.obj.stops;
     const stopsHour = this.props.obj.stopsHour;
-
     const price = this.props.obj.price.basicEco;
     const flightLogo = selectImg(flightCompany);
     return (
@@ -114,7 +113,6 @@ class FlightCard extends Component {
   }
 }
 
-
 const mapStateToProps = state => {
   return {
     initStartDate: state.plan[0].startDate,
@@ -130,4 +128,3 @@ const mapDispatchToProps = () => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps())(FlightCard);
-
