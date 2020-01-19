@@ -2,7 +2,6 @@
   display: flex
   flex-direction: row
 
-  
 .nav-logo 
   font-size: 200%
   margin: 0
@@ -94,4 +93,29 @@
 @media only screen and (max-width: 768px) 
   .navbar-middle 
     display: none
+
+.navbar-middle
+  display: flex
+  flex-direction: row
+  .navbar-mid-left
+    .navbar-mid-title
+      height: 100%;
+      text-align: left
+      overflow: hidden
+      font-size: 25px
+      font-weight: bold
+      line-height: 80px
+      border-left: 10px solid black
+      padding-left: 10px
+      color: black
+      span
+        font-size: 20px
+        font-weight: 400
+  .navbar-mid-right
+    overflow: hidden
+
+.navbar-mid-info
+  padding-left: 12px
+  color: black
+  line-height: 80px
     

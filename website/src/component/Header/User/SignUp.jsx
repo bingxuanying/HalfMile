@@ -68,11 +68,11 @@ function SignUp() {
                 id="register-repassword"
                 type="password"
                 placeholder="Confirm password"
-                onChange={e =>
-                  dispatch(
-                    stateActions.updateRegisterRePassword(e.target.value)
-                  )
-                }
+                // onChange={e =>
+                //   dispatch(
+                //     stateActions.updateRegisterRePassword(e.target.value)
+                //   )
+                // }
               />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
@@ -90,6 +90,7 @@ function SignUp() {
                   document.getElementById("register-password").value = "";
                   document.getElementById("register-repassword").value = "";
                   dispatch(userActions.sendRegisterInfo(registerInfo));
+                  handleClose();
                 }}
               >
                 Submit
