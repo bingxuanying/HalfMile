@@ -47,7 +47,7 @@ class FooterContainer extends Component {
         <div className="footer-container-bottom">
           <div className="footer-container-bottom-left">
             <FontAwesomeIcon icon={faSuitcase} size="lg"></FontAwesomeIcon>
-            <span>© 2020 Halfmile (Ver: 0.1.0)</span>
+            <span>© 2020 Halfmile (Ver: 0.1.2)</span>
             {/* <span>Terms · Privacy · Site Map</span> */}
           </div>
           <div className="footer-container-bottom-right"></div>
