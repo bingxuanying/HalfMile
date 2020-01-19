@@ -78,7 +78,7 @@ export const sendRegisterInfo = registerInfo => {
   };
 };
 
-export const logout_update = () => {
+export const logout = () => {
   return {
     type: "STATUS_LOGOUT",
     payload: null

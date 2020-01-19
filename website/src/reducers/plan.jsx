@@ -1,3 +1,5 @@
+import moment from "moment";
+
 const initialState = [
   {
     startDate: null,
@@ -57,28 +59,63 @@ const initTransportation = {
 const planReducer = (state = initialState, action) => {
   switch (action.type) {
     // City Page
-    case "ADD_CITY":
-      let lastIdx = state.length - 1;
-      let lastCityName =
-        lastIdx === 0 ? state[lastIdx].home.name : state[lastIdx].city.name;
-      if (lastIdx >= 0 && action.payload.name === lastCityName) {
-        return {
-          ...state
-        };
+    case "UPDATE_CITY_DATE":
+      var initStartDate4update = state[0].startDate;
+      var curStartDate4update = action.payload.startDate;
+
+      var position4update =
+        curStartDate4update.diff(initStartDate4update, "days") + 1;
+      var dayDiff = action.payload.dayDiff;
+      var clonedday = Object.assign({}, state[position4update]);
+
+      var newState_CityDate = [...state];
+
+      for (let i = 0; i < Math.abs(dayDiff); i++) {
+        if (dayDiff > 0) {
+          newState_CityDate.splice(position4update, 0, clonedday);
+        } else if (dayDiff < 0) {
+          newState_CityDate.splice(position4update, 1);
+        }
       }
 
-      let newCity = Object.assign(
+      return newState_CityDate;
+
+    case "ADD_CITY":
+      // Prevent ERR
+      var preIdx = state.length - 1;
+      var preCityName =
+        preIdx === 0 ? state[preIdx].home.name : state[preIdx].city.name;
+      if (preIdx >= 0 && action.payload.name === preCityName) {
+        return { ...state };
+      }
+
+      var newCity = Object.assign(
         {},
         initCity,
         { name: action.payload.name },
         { location: action.payload.location }
       );
 
-      let newDay = Object.assign({}, initDay, { city: newCity });
+      var newDay = Object.assign({}, initDay, { city: newCity });
 
       // let newState = state.concat(newDay);
 
       return state.concat(newDay);
+
+    case "DELETE_CITY":
+      var initStartDate4delete = state[0].startDate;
+      var newState_delete = [...state];
+
+      action.payload.dateLst.forEach(date => {
+        var curStartDate4delete = date.startDate;
+        var position4delete =
+          curStartDate4delete.diff(initStartDate4delete, "days") + 1;
+        var range4delete = date.endDate.diff(curStartDate4delete, "days");
+
+        newState_delete.splice(position4delete, range4delete);
+      });
+
+      return newState_delete;
 
     // Start Box
     case "CHANGE_HOME_ADDRESS":

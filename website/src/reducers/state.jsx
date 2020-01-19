@@ -89,6 +89,9 @@ const stateReducer = (state = initialState, action) => {
     case "TURN_OFF_CALENDAR":
       return { ...state, calendarOnID: action.payload };
 
+    case "ADD_CITY":
+      return { ...state, calendarOnID: null };
+
     default:
       return state;
   }

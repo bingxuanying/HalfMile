@@ -5,13 +5,14 @@ export const updateError = msg => {
   };
 };
 
-export const updateCityDate = (idx, startDate, endDate) => {
+export const updateCityDate = (idx, startDate, endDate, dayDiff) => {
   return {
     type: "UPDATE_CITY_DATE",
     payload: {
       idx: idx,
       startDate: startDate,
-      endDate: endDate
+      endDate: endDate,
+      dayDiff: dayDiff
     }
   };
 };
@@ -23,10 +24,10 @@ export const addCity = city => {
   };
 };
 
-export const deleteCity = id => {
+export const deleteCity = (id, dateLst) => {
   return {
     type: "DELETE_CITY",
-    payload: id
+    payload: { id: id, dateLst: dateLst }
   };
 };
 

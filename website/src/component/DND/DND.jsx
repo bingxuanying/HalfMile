@@ -6,7 +6,6 @@ import * as stateActions from "../../actions/stateActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CalendarRP } from "../Calendar";
-import moment from "moment";
 import "./DND.sass";
 import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
@@ -59,11 +58,13 @@ class DND extends Component {
         result.source.index,
         result.destination.index
       );
+
       for (let i = 1; i < sortedCityLst.length; i++) {
         if (sortedCityLst[i - 1].name === sortedCityLst[i].name) {
           return this.props.updateError("repeated city");
         }
       }
+
       this.props.reorderCity(sortedCityLst);
     }
   }
@@ -75,19 +76,33 @@ class DND extends Component {
     });
 
     var hitLst = [id];
+    var dateLst = [
+      {
+        startDate: this.props.cities[itemIdx].startDate,
+        endDate: this.props.cities[itemIdx].endDate
+      }
+    ];
 
     if (itemIdx !== lastIdx) {
       if (itemIdx === 0 && this.props.cities[1].name === this.props.home.name) {
         hitLst.push(this.props.cities[1].id);
+        dateLst.unshift({
+          startDate: this.props.cities[1].startDate,
+          endDate: this.props.cities[1].endDate
+        });
       } else if (
         itemIdx > 0 &&
         this.props.cities[itemIdx - 1].name ===
           this.props.cities[itemIdx + 1].name
       ) {
         hitLst.push(this.props.cities[itemIdx + 1].id);
+        dateLst.unshift({
+          startDate: this.props.cities[itemIdx + 1].startDate,
+          endDate: this.props.cities[itemIdx + 1].endDate
+        });
       }
     }
-    this.props.deleteCity(hitLst);
+    this.props.deleteCity(hitLst, dateLst);
   }
 
   toggleCalendar(id) {

@@ -45,15 +45,14 @@ class SearchBarLoca extends Component {
           // !!!BUG: what if the first flight the client takes is overnight
           startDate:
             this.props.cities.length === 0
-              ? this.props.initStartDate
-              : this.props.cities[this.props.cities.length - 1].endDate,
+              ? moment(this.props.initStartDate)
+              : moment(this.props.cities[this.props.cities.length - 1].endDate),
           endDate:
             this.props.cities.length === 0
               ? moment(this.props.initStartDate).add(1, "days")
               : moment(
                   this.props.cities[this.props.cities.length - 1].endDate
-                ).add(1, "days"),
-          isCalendar: false
+                ).add(1, "days")
         };
 
         this.props.addCity(city);

@@ -26,16 +26,10 @@ class Map extends Component {
           var bounds = this._map.getBounds();
 
           this.props.cities.map(city => {
-            bounds.extend(
-              new window.google.maps.LatLng(
-                city.location.lat,
-                city.location.lng
-              )
-            );
+            bounds.extend(city.location);
           });
 
           var test = this._map.fitBounds(bounds);
-          console.log(test);
         }}
         defaultZoom={10}
         defaultCenter={this.props.home.location}
@@ -54,7 +48,7 @@ class Map extends Component {
           path.push(city.location);
 
           return (
-            <div>
+            <div key={city.id}>
               {/* Marker for Cities */}
               <Marker
                 id={city.id}

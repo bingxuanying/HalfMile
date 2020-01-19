@@ -1,3 +1,5 @@
+import moment from "moment";
+
 // section: "city" || "airline" || "hotel" || "activity" || "checkout" || "finished"
 const initialState = {
   section: "none",
@@ -12,8 +14,7 @@ const city = {
   name: null,
   location: null,
   startDate: null,
-  endDate: null,
-  isCalendar: false
+  endDate: null
 };
 
 const stepReducer = (state = initialState, action) => {
@@ -25,17 +26,29 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "UPDATE_CITY_DATE":
+      var dayDiff = action.payload.dayDiff;
+
       return {
         ...state,
-        cities: state.cities.map((city, idx) =>
-          idx === action.payload.idx
-            ? {
-                ...city,
-                startDate: action.payload.startDate,
-                endDate: action.payload.endDate
-              }
-            : city
-        )
+        cities: state.cities.map((city, idx) => {
+          if (idx === action.payload.idx) {
+            return {
+              ...city,
+              startDate: moment(action.payload.startDate),
+              endDate: moment(action.payload.endDate)
+            };
+          } else if (idx > action.payload.idx) {
+            return {
+              ...city,
+              startDate: moment(
+                state.cities[idx].startDate.add(dayDiff, "days")
+              ),
+              endDate: moment(state.cities[idx].endDate.add(dayDiff, "days"))
+            };
+          } else {
+            return city;
+          }
+        })
       };
 
     case "ADD_CITY":
@@ -46,13 +59,13 @@ const stepReducer = (state = initialState, action) => {
       };
 
     case "DELETE_CITY":
-      var newCities = state.cities.filter(
-        city => !action.payload.includes(city.id)
+      var citiesAfterDelete = state.cities.filter(
+        city => !action.payload.id.includes(city.id)
       );
 
       return {
         ...state,
-        cities: newCities
+        cities: citiesAfterDelete
       };
 
     case "REORDER_CITY":
@@ -140,19 +153,6 @@ const stepReducer = (state = initialState, action) => {
         ...state,
         section: preSection,
         page: prePage
-      };
-
-    case "TURN_ON_CALENDAR":
-      var newCitiesCalendarOn = state.cities.slice(0);
-      newCitiesCalendarOn.forEach(city => {
-        if (city.id === action.payload) {
-          city.isCalendar = true;
-        }
-      });
-
-      return {
-        ...state,
-        cities: newCitiesCalendarOn
       };
 
     default:

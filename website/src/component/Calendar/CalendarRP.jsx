@@ -62,7 +62,17 @@ class CalendarRP extends Component {
   }
 
   onDatesChange = ({ startDate, endDate }) => {
-    this.props.updateCityDate(this.props.index, startDate, endDate);
+    var dayDiff = endDate.diff(
+      this.props.cities[this.props.index].endDate,
+      "days"
+    );
+
+    this.props.updateCityDate(
+      this.props.index,
+      moment(startDate),
+      moment(endDate),
+      dayDiff
+    );
   };
 
   // not for current situation
@@ -71,10 +81,6 @@ class CalendarRP extends Component {
       // Force the focusedInput to always be truthy so that dates are always selectable
       focusedInput: "endDate"
     });
-    // close calender if we success pick a range
-    // if (this.state.focusedInput === END_DATE) {
-    //   this.toggleDayPicker();
-    // }
   };
 }
 
