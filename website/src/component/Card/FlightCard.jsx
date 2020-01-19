@@ -2,7 +2,10 @@ import React, { Component } from "react";
 // import { Card } from "react-bootstrap";
 import { Card, Button } from "@material-ui/core";
 import "./index.sass";
+
+import moment from "moment";
 import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
 
 function selectImg(flightCompany) {
   switch (flightCompany) {
@@ -40,7 +43,20 @@ function getStops(stops, stopsHour) {
   );
 }
 class FlightCard extends Component {
-  updateFlight = () => {};
+  constructor() {
+    super();
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    var city = this.props.cities[this.props.page - 1];
+    var position = city.startDate.diff(this.props.initStartDate, "days") + 1;
+    console.log(city, position);
+
+    this.props.updateFlight(this.props.obj, position);
+  }
+
   render() {
     const departTime = this.props.obj.departTime;
     const arriveTime = this.props.obj.arriveTime;
@@ -86,7 +102,7 @@ class FlightCard extends Component {
               variant="contained"
               color="primary"
               disableElevation
-              onClick={this.updateFlight}
+              onClick={this.handleClick}
             >
               Select
             </Button>
@@ -99,12 +115,16 @@ class FlightCard extends Component {
 
 const mapStateToProps = state => {
   return {
+    initStartDate: state.plan[0].startDate,
+    cities: state.step.cities,
     page: state.step.page
   };
 };
 
 const mapDispatchToProps = () => {
-  return {};
+  return {
+    updateFlight: planActions.updateFlight
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps())(FlightCard);
