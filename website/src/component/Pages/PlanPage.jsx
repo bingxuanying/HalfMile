@@ -28,16 +28,7 @@ class PlanPage extends Component {
   }
 
   render() {
-    return (
-      <div>
-        {/* {this.props.section === "city" ? (
-          <PlanPage_Part1 />
-        ) : (
-          <PlanPage_Part2 />
-        )} */}
-        {this.renderSwitch(this.props.section)}
-      </div>
-    );
+    return <div>{this.renderSwitch(this.props.section)}</div>;
   }
 }
 

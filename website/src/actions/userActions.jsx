@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// axios.defaults.baseURL = "https://api.halfmile.io";
+axios.defaults.baseURL = "https://api.halfmile.io";
 
 export const fetchUserToken = userInfo => {
   return (dispatch, getState) => {
