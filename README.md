@@ -8,12 +8,13 @@ HalfMile is an web app helps people plan their trips and book hotel and flights 
 
 ## Frontend
 
-Used ReactJS with Redux for frontend coding.
+Built with React and Redux.
 
 Ultilized:
 
-1. Google Map API to locate places and also show on the map;
+1. Google Map API to locate places and also show on the map.
 2. Google Vision API landmark feature to recognize the location of the given photo by users.
+3. Google Cloud Function to power Vision API.
 
 ## Backend
 
@@ -23,3 +24,4 @@ Ultilized:
 
 1. Redis for cache
 2. Nginx for load-balancing
+3. DynamoDB for database 
