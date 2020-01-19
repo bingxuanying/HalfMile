@@ -10,17 +10,17 @@ class HeaderContainer extends Component {
     super();
 
     this.state = {
-      isTop: true
+      isTop: false
     };
   }
 
   componentDidMount() {
-    document.addEventListener("scroll", () => {
-      this.setState({
-        isTop: window.scrollY < 100
-      });
-      // console.log(this.state.isTop);
-    });
+    // document.addEventListener("scroll", () => {
+    //   this.setState({
+    //     isTop: window.scrollY < 100
+    //   });
+    //   // console.log(this.state.isTop);
+    // });
   }
 
   render() {

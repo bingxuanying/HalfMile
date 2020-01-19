@@ -15,11 +15,11 @@ class HeaderNav extends Component {
             Home
           </div>
         </Nav.Link>
-        <Nav.Link as={Link} to="/help">
+        {/* <Nav.Link as={Link} to="/help">
           <div className="nav-btn" size="lg" variant="outline-dark">
             Help
           </div>
-        </Nav.Link>
+        </Nav.Link> */}
 
         {!this.props.isLogin && <SignUp />}
         {!this.props.isLogin && <Login />}

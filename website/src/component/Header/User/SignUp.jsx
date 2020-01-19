@@ -77,9 +77,9 @@ function SignUp() {
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
             <div id="checkbox-account">
-              <a href="#" id="check-account">
+              {/* <a href="#" id="check-account">
                 Already have an account?
-              </a>
+              </a> */}
             </div>
             <div className="button-container">
               <button
@@ -97,11 +97,11 @@ function SignUp() {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer id="modal-footer">
+        {/* <Modal.Footer id="modal-footer">
           <a href="#" id="facebookIcon" />
           <a href="#" id="twitterIcon" />
           <a href="#" id="googleIcon" />
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

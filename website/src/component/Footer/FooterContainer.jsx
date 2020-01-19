@@ -47,8 +47,8 @@ class FooterContainer extends Component {
         <div className="footer-container-bottom">
           <div className="footer-container-bottom-left">
             <FontAwesomeIcon icon={faSuitcase} size="lg"></FontAwesomeIcon>
-            <span>© 2019 KKPnP (Ver: 0.0.0), Inc. All rights reserved.</span>
-            <span>Terms · Privacy · Site Map</span>
+            <span>© 2020 Halfmile (Ver: 0.0.0)</span>
+            {/* <span>Terms · Privacy · Site Map</span> */}
           </div>
           <div className="footer-container-bottom-right"></div>
         </div>

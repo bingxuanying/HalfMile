@@ -100,13 +100,19 @@ class PlanPage_Part2 extends Component {
           <div className="planpage-floatWindow"></div>
           <button
             className="planpage-pre-btn page-btn-bg"
-            onClick={() => this.props.prePage(this.props.days.length - 1)}
+            onClick={() => {
+              this.forceUpdate();
+              this.props.prePage(this.props.days.length - 1);
+            }}
           >
             <FontAwesomeIcon className="page-btn" icon={faCaretLeft} />
           </button>
           <button
             className="planpage-next-btn page-btn-bg"
-            onClick={() => this.props.nextPage(this.props.days.length - 1)}
+            onClick={() => {
+              this.forceUpdate();
+              this.props.nextPage(this.props.days.length - 1);
+            }}
           >
             <FontAwesomeIcon className="page-btn" icon={faCaretRight} />
           </button>
