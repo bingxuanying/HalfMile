@@ -224,6 +224,20 @@ const planReducer = (state = initialState, action) => {
         // Leave every other item unchanged
         return item;
       });
+      
+      
+    case "UPDATE_FLIGHT":
+      return state.map((day, idx) => {
+        if (idx === action.payload.position) {
+          return {
+            ...day,
+            transportation: action.payload.info
+          };
+        } else {
+          return day;
+        }
+      });
+      
     default:
       return state;
   }
