@@ -14,7 +14,32 @@ class TripOverview extends Component {
       title: "S496691084's Guide"
     };
   }
-
+  getCityList = () => {
+    console.log("in getCityList");
+    console.log(this.props.cities);
+    this.props.cities.map(function(city, index) {
+      return (
+        <TripOverviewCity
+          key={index}
+          isEditting={index + 1 === this.props.page}
+          city={city.name}
+          isChecked={index + 1 <= this.props.page}
+          isStart={index === 0}
+          isEnd={index + 1 === this.props.cities.length()}
+          isNextChecked={this.props.page > index + 2}
+          startDate={city.startDate}
+          hotel={this.props.plan[this.findDay(index)].hotel}
+          transport={this.props.plan[this.findDay(index)].transport}
+        />
+      );
+    });
+  };
+  findDay = index => {
+    return (
+      this.props.cities[index].startDate.diff(this.props.cities[0].startDate) +
+      1
+    );
+  };
   render() {
     // add props into TripOverviewDay
     let hotel1 = [
@@ -192,18 +217,6 @@ class TripOverview extends Component {
         startDate="12/5"
         hotel={hotel2}
         transport={transport2}
-      />,
-      <TripOverviewCity
-        key="3"
-        isEditting={false}
-        city="Davis"
-        isChecked={false}
-        isStart={false}
-        isEnd={true}
-        isNextChecked={false}
-        startDate="12/8"
-        hotel={[]}
-        transport={[]}
       />
     ];
 
@@ -214,16 +227,20 @@ class TripOverview extends Component {
           {this.props.section === "activity" ? (
             <div className="trip-overview-content">{Daylist}</div>
           ) : (
-            <div className="trip-overview-content">{CityList}</div>
+            <div className="trip-overview-content">{this.getCityList}</div>
           )}
         </div>
       </div>
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
-    section: state.step.section
+    section: state.step.section,
+    page: state.step.page,
+    cities: state.step.cities,
+    plan: state.plan
   };
 };
 
