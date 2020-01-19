@@ -15,19 +15,11 @@ class TripOverview extends Component {
     };
   }
   getCityList = () => {
-    console.log("in getCityList");
-    console.log(this.props.cities.length);
     return this.props.cities.map((city, index) => {
-      console.log(this.findDay(index));
       return (
         <TripOverviewCity
+          key={index}
           index={index}
-          isEditting={index + 1 === this.props.page}
-          city={city.name}
-          isChecked={index + 1 <= this.props.page}
-          isStart={index === 0}
-          isEnd={index + 1 === this.props.cities.length}
-          isNextChecked={this.props.page > index + 2}
           startDate={city.startDate}
           hotel={this.props.plan[this.findDay(index)].hotel}
           transport={this.props.plan[this.findDay(index)].transport}
@@ -43,9 +35,14 @@ class TripOverview extends Component {
       ) + 1
     );
   };
+  getDayList = () => {
+    return this.props.plan.map((day, index) => {
+      if (index !== 0) return <TripOverviewDay index={index} />;
+    });
+  };
   render() {
     var cityList = this.getCityList();
-    console.log(cityList);
+    var dayList = this.getDayList();
     // add props into TripOverviewDay
     let hotel1 = [
       {
@@ -230,7 +227,7 @@ class TripOverview extends Component {
         <div className="trip-overview-title">{this.state.title}</div>
         <div className="trip-overview-fullwidth">
           {this.props.section === "activity" ? (
-            <div className="trip-overview-content">{Daylist}</div>
+            <div className="trip-overview-content">{dayList}</div>
           ) : (
             <div className="trip-overview-content">{cityList}</div>
           )}

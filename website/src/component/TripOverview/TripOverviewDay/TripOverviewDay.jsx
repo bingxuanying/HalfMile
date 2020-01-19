@@ -8,22 +8,27 @@ import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import RoomIcon from "@material-ui/icons/Room";
 import { Tooltip, Fade } from "@material-ui/core";
+import { connect } from "react-redux";
 
 import "./index.sass";
 class TripOverviewDay extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditting: this.props.isEditting,
-      day: this.props.day,
-      isChecked: this.props.isChecked,
-      isStart: this.props.isStart,
-      isEnd: this.props.isEnd,
-      startCity: this.props.startCity,
-      endCity: this.props.endCity,
-      hotel: this.props.hotel,
-      transport: this.props.transport,
-      activities: this.props.activities
+      index: this.props.index,
+      isEditting: this.props.index === this.props.page,
+      day: this.props.index,
+      isChecked: this.props.index < this.props.page,
+      isStart: this.props.index === 1,
+      isEnd: this.props.index === this.props.plan.length - 1,
+      startCity:
+        this.props.index > 1
+          ? this.props.plan[this.props.index - 1].city.name
+          : this.props.plan[this.props.index - 1].home.name,
+      endCity: this.props.plan[this.props.index].city.name,
+      hotel: this.props.plan[this.props.index].hotel,
+      transport: this.props.plan[this.props.index].transport,
+      activities: this.props.plan[this.props.index].activities
     };
   }
 
@@ -107,14 +112,15 @@ class TripOverviewDay extends Component {
         </div>
         <div className="transport mb-1">
           <FlightTakeoffIcon />
-          {this.state.transport.map(function(trans, index) {
-            return (
-              <p className="transport-name mb-0 pl-0" key={index}>
-                <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                {trans.flight}
-              </p>
-            );
-          })}
+          {this.state.transport &&
+            this.state.transport.map(function(trans, index) {
+              return (
+                <p className="transport-name mb-0 pl-0" key={index}>
+                  <FiberManualRecordIcon style={{ fontSize: "8" }} />
+                  {trans.flight}
+                </p>
+              );
+            })}
         </div>
       </div>
     );
@@ -166,23 +172,25 @@ class TripOverviewDay extends Component {
         </div>
         <div className="transport mb-2">
           <FlightTakeoffIcon />
-          {this.state.transport.map(function(trans, index) {
-            return (
-              <div className="transport-content mb-1 pl-1">
-                <p className="transport-text mb-1 pl-0" key={index}>
-                  <span className="transport-name">
-                    <FiberManualRecordIcon style={{ fontSize: "8" }} />
-                    {trans.flight}
-                  </span>
-                  <span className="transport-price">${trans.price}</span>
-                </p>
-                <p className="transport-date mb-2">
-                  &nbsp;{trans.departDate}&nbsp;{trans.departTime}&nbsp;~&nbsp;
-                  {trans.arriveTime}
-                </p>
-              </div>
-            );
-          })}
+          {this.state.transport &&
+            this.state.transport.map(function(trans, index) {
+              return (
+                <div className="transport-content mb-1 pl-1">
+                  <p className="transport-text mb-1 pl-0" key={index}>
+                    <span className="transport-name">
+                      <FiberManualRecordIcon style={{ fontSize: "8" }} />
+                      {trans.flight}
+                    </span>
+                    <span className="transport-price">${trans.price}</span>
+                  </p>
+                  <p className="transport-date mb-2">
+                    &nbsp;{trans.departDate}&nbsp;{trans.departTime}
+                    &nbsp;~&nbsp;
+                    {trans.arriveTime}
+                  </p>
+                </div>
+              );
+            })}
         </div>
         <div className="activity mb-1">
           <RoomIcon />
@@ -206,4 +214,11 @@ class TripOverviewDay extends Component {
   };
 }
 
-export default TripOverviewDay;
+const mapStateToProps = state => {
+  return {
+    page: state.step.page,
+    plan: state.plan
+  };
+};
+
+export default connect(mapStateToProps)(TripOverviewDay);

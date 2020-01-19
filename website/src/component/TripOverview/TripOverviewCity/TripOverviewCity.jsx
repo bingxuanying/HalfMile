@@ -46,7 +46,7 @@ class TripOverviewCity extends Component {
     );
   };
   render() {
-    console.log(this.props);
+    console.log(this.state.isEditting);
     var circleSize = 40;
     var backgroudColor;
     // Highlight current editting
