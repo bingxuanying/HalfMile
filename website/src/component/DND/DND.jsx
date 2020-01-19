@@ -80,8 +80,9 @@ class DND extends Component {
       if (itemIdx === 0 && this.props.cities[1].name === this.props.home.name) {
         hitLst.push(this.props.cities[1].id);
       } else if (
+        itemIdx > 0 &&
         this.props.cities[itemIdx - 1].name ===
-        this.props.cities[itemIdx + 1].name
+          this.props.cities[itemIdx + 1].name
       ) {
         hitLst.push(this.props.cities[itemIdx + 1].id);
       }
@@ -181,10 +182,7 @@ class DND extends Component {
                                     transition: "display 400ms fade"
                                   }}
                                 >
-                                  <CalendarRP
-                                    index={index}
-                                    initialStartDate={moment()}
-                                  />
+                                  <CalendarRP index={index} />
                                 </div>
                               )}
                             </div>

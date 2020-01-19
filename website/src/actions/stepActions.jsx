@@ -5,6 +5,17 @@ export const updateError = msg => {
   };
 };
 
+export const updateCityDate = (idx, startDate, endDate) => {
+  return {
+    type: "UPDATE_CITY_DATE",
+    payload: {
+      idx: idx,
+      startDate: startDate,
+      endDate: endDate
+    }
+  };
+};
+
 export const addCity = city => {
   return {
     type: "ADD_CITY",

@@ -7,12 +7,35 @@ const initialState = {
   err: "none"
 };
 
+const city = {
+  id: null,
+  name: null,
+  location: null,
+  startDate: null,
+  endDate: null,
+  isCalendar: false
+};
+
 const stepReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_ERROR_CITY":
       return {
         ...state,
         err: action.payload
+      };
+
+    case "UPDATE_CITY_DATE":
+      return {
+        ...state,
+        cities: state.cities.map((city, idx) =>
+          idx === action.payload.idx
+            ? {
+                ...city,
+                startDate: action.payload.startDate,
+                endDate: action.payload.endDate
+              }
+            : city
+        )
       };
 
     case "ADD_CITY":
