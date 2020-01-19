@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import { Card } from "react-bootstrap";
 import { Card, Button } from "@material-ui/core";
 import "./index.sass";
+import { connect } from "react-redux";
 
 function selectImg(flightCompany) {
   switch (flightCompany) {
@@ -39,6 +40,7 @@ function getStops(stops, stopsHour) {
   );
 }
 class FlightCard extends Component {
+  updateFlight = () => {};
   render() {
     const departTime = this.props.obj.departTime;
     const arriveTime = this.props.obj.arriveTime;
@@ -49,7 +51,6 @@ class FlightCard extends Component {
     const arriveAirport = this.props.obj.arriveAirport;
     const stops = this.props.obj.stops;
     const stopsHour = this.props.obj.stopsHour;
-
     const price = this.props.obj.price.basicEco;
     const flightLogo = selectImg(flightCompany);
     return (
@@ -85,6 +86,7 @@ class FlightCard extends Component {
               variant="contained"
               color="primary"
               disableElevation
+              onClick={this.updateFlight}
             >
               Select
             </Button>
@@ -95,4 +97,14 @@ class FlightCard extends Component {
   }
 }
 
-export default FlightCard;
+const mapStateToProps = state => {
+  return {
+    page: state.step.page
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(FlightCard);
