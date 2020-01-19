@@ -6,7 +6,7 @@ import { DayPickerRangeController } from "react-dates";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import moment from "moment";
 import omit from "lodash/omit";
-import { isInclusivelyBeforeDay, isExclusivelyBeforeDay } from "react-dates";
+import { isInclusivelyBeforeDay } from "react-dates";
 import "./index.sass";
 
 const START_DATE = "startDate";
@@ -23,8 +23,7 @@ class CalendarRP extends Component {
       focusedInput: props.initialStartDate ? END_DATE : START_DATE,
       // startDate: moment().add(1, 'days'),
       startDate: moment(props.initialStartDate),
-      endDate: moment(props.initialEndDate),
-      index: this.props.index
+      endDate: moment(props.initialEndDate)
     };
   }
 
@@ -49,32 +48,24 @@ class CalendarRP extends Component {
 
     return (
       <div className="app">
-        {/** Below is for DND datePick use only */}
-        <ClickAwayListener
-          onClickAway={e => this.toggleDayPicker(e)}
-          mouseEvent="onMouseUp"
-        >
-          <DayPickerRangeController
-            // {...props}
-            onDatesChange={this.onDatesChange}
-            onFocusChange={this.onFocusChange}
-            focusedInput={focusedInput}
-            startDate={startDate}
-            endDate={endDate}
-            numberOfMonths={1}
-            isOutsideRange={day => isInclusivelyBeforeDay(day, blackoutDate)}
-            keepOpenOnDateSelect={true}
-          />
-        </ClickAwayListener>
+        <DayPickerRangeController
+          onDatesChange={this.onDatesChange}
+          onFocusChange={this.onFocusChange}
+          focusedInput={focusedInput}
+          startDate={startDate}
+          endDate={endDate}
+          numberOfMonths={1}
+          isOutsideRange={day => isInclusivelyBeforeDay(day, blackoutDate)}
+          keepOpenOnDateSelect={false}
+        />
       </div>
     );
   }
-  toggleDayPicker = e => {
-    document.getElementById(this.state.index).style.display = "none";
-  };
+
   onDatesChange = ({ startDate, endDate }) => {
     this.setState({ startDate, endDate });
   };
+
   onFocusChange = focusedInput => {
     this.setState({
       // Force the focusedInput to always be truthy so that dates are always selectable

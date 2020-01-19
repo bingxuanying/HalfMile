@@ -53,3 +53,10 @@ export const prePage = () => {
     payload: null
   };
 };
+
+export const turnOnCalendar = id => {
+  return {
+    type: "TURN_ON_CALENDAR",
+    payload: id
+  };
+};

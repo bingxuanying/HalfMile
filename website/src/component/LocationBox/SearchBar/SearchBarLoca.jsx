@@ -41,7 +41,8 @@ class SearchBarLoca extends Component {
           id: uuid(),
           name: cityName,
           location: place.location,
-          day: 1
+          day: 1,
+          isCalendar: false
         };
 
         this.props.addCity(city);

@@ -119,6 +119,19 @@ const stepReducer = (state = initialState, action) => {
         page: prePage
       };
 
+    case "TURN_ON_CALENDAR":
+      var newCitiesCalendarOn = state.cities.slice(0);
+      newCitiesCalendarOn.forEach(city => {
+        if (city.id === action.payload) {
+          city.isCalendar = true;
+        }
+      });
+
+      return {
+        ...state,
+        cities: newCitiesCalendarOn
+      };
+
     default:
       return state;
   }

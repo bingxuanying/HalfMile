@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { connect } from "react-redux";
-import * as planActions from "../../actions/planActions";
 import * as stepActions from "../../actions/stepActions";
+import * as stateActions from "../../actions/stateActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { CalendarRP } from "../Calendar";
 import moment from "moment";
 import "./DND.sass";
-import { IconButton, Icon } from "@material-ui/core";
+import { IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 
@@ -26,6 +26,7 @@ class DND extends Component {
 
     this.onDragEnd = this.onDragEnd.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.toggleCalendar = this.toggleCalendar.bind(this);
   }
 
   onDragEnd(result) {
@@ -86,6 +87,10 @@ class DND extends Component {
       }
     }
     this.props.deleteCity(hitLst);
+  }
+
+  toggleCalendar(id) {
+    this.props.turnOnCalendar(id);
   }
 
   render() {
@@ -152,55 +157,45 @@ class DND extends Component {
                           <div className="dnd-bar-content">{item.name}</div>
                           <div className="dnd-bar-dateselector">
                             <div className="dnd-bar-dec">
+                              {/* add btn action */}
                               <IconButton size="small">
                                 <RemoveIcon />
                               </IconButton>
                             </div>
-                            <div
-                              className="dnd-bar-day"
-                              onClick={() =>
-                                this.toggleCalendar(item.id + "calendar")
-                              }
-                            >
-                              day
+                            <div className="dnd-bar-day">
+                              {/* redux - days */}
                               <div
-                                id={item.id + "calendar"}
-                                style={{
-                                  position: "absolute",
-                                  left: 340,
-                                  top: 2,
-                                  display: "initial",
-                                  transition: "display 400ms fade"
-                                }}
+                                onClick={() =>
+                                  this.props.toggleCalendar(item.id)
+                                }
                               >
-                                <CalendarRP
-                                  index={item.id + "calendar"}
-                                  initialStartDate={moment()}
-                                />
+                                day
                               </div>
+
+                              {item.id === this.props.calendarOnID && (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    left: 340,
+                                    top: 2,
+                                    transition: "display 400ms fade"
+                                  }}
+                                >
+                                  <CalendarRP
+                                    index={index}
+                                    initialStartDate={moment()}
+                                  />
+                                </div>
+                              )}
                             </div>
                             <div className="dnd-bar-inc">
+                              {/* add btn action */}
                               <IconButton size="small">
                                 <AddIcon />
                               </IconButton>
                             </div>
                           </div>
                         </div>
-
-                        {/* <div
-                          id={item.id + "calendar"}
-                          className="dnd-bar-calendar"
-                        > */}
-                        {/* <calendar id={item.id} /> onCloseHandlder={
-                            document.getElementById(
-                              item.id + "calendar"
-                            ).style.display = "none";
-                          } */}
-                        {/* <CalendarRP
-                            index={item.id + "calendar"}
-                            initialStartDate={moment()}
-                          /> */}
-                        {/* </div> */}
                       </div>
                     )}
                   </Draggable>
@@ -213,20 +208,13 @@ class DND extends Component {
       </DragDropContext>
     );
   }
-
-  toggleCalendar = id => {
-    console.log("try to toggle canlendar:" + id);
-    console.log(document.getElementById(id).style.display);
-    if (document.getElementById(id).style.display == "none")
-      document.getElementById(id).style.display = "initial";
-    else document.getElementById(id).style.display = "none";
-  };
 }
 
 const mapStateToProps = state => {
   return {
     home: state.plan[0].home,
-    cities: state.step.cities
+    cities: state.step.cities,
+    calendarOnID: state.state.calendarOnID
   };
 };
 
@@ -234,7 +222,10 @@ const mapDispatchToProps = () => {
   return {
     reorderCity: stepActions.reorderCity,
     deleteCity: stepActions.deleteCity,
-    updateError: stepActions.updateError
+    updateError: stepActions.updateError,
+    turnOnCalendar: stepActions.turnOnCalendar,
+    turnOffCalendar: stateActions.turnOffCalendar,
+    toggleCalendar: stateActions.toggleCalendar
   };
 };
 
