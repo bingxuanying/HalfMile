@@ -69,8 +69,8 @@ const stateReducer = (state = initialState, action) => {
         ...state,
         registerInfo: {
           email: null,
-          password: null,
-          rePassword: null
+          password: null
+          // rePassword: null
         }
       };
 
