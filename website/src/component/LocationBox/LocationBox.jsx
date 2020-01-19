@@ -8,7 +8,6 @@ import { Modal } from "react-bootstrap";
 import { FaRegUser } from "react-icons/fa";
 import Tooltip from "@material-ui/core/Tooltip";
 import { connect } from "react-redux";
-import VisionBox from "./VisionBox";
 
 class LocationBox extends Component {
   constructor(props) {
@@ -32,7 +31,6 @@ class LocationBox extends Component {
           }}
         >
           <SearchBarLoca />
-          <VisionBox />
           {/* <button onClick={this.toggleDiv}>+</button>
           <br />
           {!this.state.show && <Calendar />} */}

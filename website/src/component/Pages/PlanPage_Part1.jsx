@@ -2,14 +2,12 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 import LocationBox from "../LocationBox/LocationBox";
-
 import Map from "../Map/Map";
 import { connect } from "react-redux";
 import * as stepActions from "../../actions/stepActions";
 import * as stateActions from "../../actions/stateActions";
 import "./PlanPage.sass";
 import InfoBar from "../InfoBar";
-import VisionBox from "../LocationBox/VisionBox";
 
 class PlanPage_Part1 extends Component {
   render() {
