@@ -135,9 +135,8 @@ class DND extends Component {
           endDate: this.props.cities[1].endDate
         });
       } else if (
-        itemIdx > 0 &&
         this.props.cities[itemIdx - 1].name ===
-          this.props.cities[itemIdx + 1].name
+        this.props.cities[itemIdx + 1].name
       ) {
         numOfDelete += 1;
         dateLst.unshift({
@@ -247,7 +246,10 @@ class DND extends Component {
                                     transition: "display 400ms fade"
                                   }}
                                 >
-                                  <CalendarRP index={index} />
+                                  <CalendarRP
+                                    index={index}
+                                    initialStartDate={moment()}
+                                  />
                                 </div>
                               )}
                             </div>

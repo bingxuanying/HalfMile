@@ -133,19 +133,11 @@ const planReducer = (state = initialState, action) => {
         // Leave every other item unchanged
         return item;
       });
-    case "UPDATE_INIT_START_DATE":
-      return state.map((item, index) => {
-        // Replace the item at index 0
-        if (index === 0) {
-          return {
-            ...state[0],
-            startDate: action.payload
-          };
-        }
-        // Leave every other item unchanged
-        return item;
-      });
-
+    case "CHANGE_START_DATE":
+      return {
+        ...state,
+        startDate: action.payload
+      };
     case "CHANGE_END_DATE":
       return {
         ...state,

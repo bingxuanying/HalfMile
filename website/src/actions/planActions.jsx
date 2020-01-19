@@ -5,13 +5,6 @@ export const updateHomeAdress = home => {
   };
 };
 
-export const updateInitStartDate = date => {
-  return {
-    type: "UPDATE_INIT_START_DATE",
-    payload: date
-  };
-};
-
 export const guestIncreament = name => {
   return {
     type: "GUEST_INCREAMENT",

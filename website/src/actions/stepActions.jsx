@@ -5,6 +5,7 @@ export const updateError = msg => {
   };
 };
 
+<<<<<<< HEAD
 export const updateCityDate = (idx, startDate, endDate, dayDiff) => {
   return {
     type: "UPDATE_CITY_DATE",
@@ -17,6 +18,8 @@ export const updateCityDate = (idx, startDate, endDate, dayDiff) => {
   };
 };
 
+=======
+>>>>>>> parent of 61b5e6b... Fix Calendar bugs and connect to redux
 export const addCity = city => {
   return {
     type: "ADD_CITY",

@@ -21,7 +21,7 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
 import InfoBar from "../InfoBar";
-import moment from "moment";
+import moment from 'moment';
 const AirbnbColor = "rgba(24,143,148,1)";
 
 class ContentCover extends Component {
@@ -82,9 +82,11 @@ class ContentCover extends Component {
       msg = "no address";
     } else if (!homeAddress.location.lat && !homeAddress.location.lng) {
       msg = "no location";
-    } else if (!startDate) {
-      msg = "no start date";
-    } else {
+    }
+    // else if (!startDate) {
+    //   msg = "no start date";
+    // }
+    else {
       msg = "none";
     }
 
@@ -147,12 +149,12 @@ class ContentCover extends Component {
             </div>
 
             <div className="start-box-row">
-              {/* <div className="start-box-50subrow"> */}
-              <div className="start-box-subtitle">START DATE</div>
-              {/* </div> */}
-              {/* <div className="start-box-50subrow">
+              <div className="start-box-50subrow">
+                <div className="start-box-subtitle">START DATE</div>
+              </div>
+              <div className="start-box-50subrow">
                 <div className="start-box-subtitle">END DATE</div>
-              </div> */}
+              </div>
             </div>
             <Calendar />
             <div className="start-box-row">
@@ -172,8 +174,8 @@ class ContentCover extends Component {
                   {this.state.guestOpen ? (
                     <ExpandLessIcon />
                   ) : (
-                    <ExpandMoreIcon />
-                  )}
+                      <ExpandMoreIcon />
+                    )}
                 </Button>
                 {this.state.guestOpen && (
                   <ClickAwayListener onClickAway={this.guestSave}>
