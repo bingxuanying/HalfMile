@@ -63,7 +63,6 @@ class CalendarRP extends Component {
   }
 
   onDatesChange = ({ startDate, endDate }) => {
-<<<<<<< HEAD
     var dayDiff = endDate.diff(
       this.props.cities[this.props.index].endDate,
       "days"
@@ -75,9 +74,6 @@ class CalendarRP extends Component {
       moment(endDate),
       dayDiff
     );
-=======
-    this.setState({ startDate, endDate });
->>>>>>> parent of 61b5e6b... Fix Calendar bugs and connect to redux
   };
 
   onFocusChange = focusedInput => {
@@ -85,13 +81,6 @@ class CalendarRP extends Component {
       // Force the focusedInput to always be truthy so that dates are always selectable
       focusedInput: !focusedInput ? START_DATE : focusedInput
     });
-<<<<<<< HEAD
-=======
-    // close calender if we success pick a range
-    if (this.state.focusedInput === END_DATE) {
-      this.toggleDayPicker();
-    }
->>>>>>> parent of 61b5e6b... Fix Calendar bugs and connect to redux
   };
 }
 
