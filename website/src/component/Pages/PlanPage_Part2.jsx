@@ -26,6 +26,24 @@ class PlanPage_Part2 extends Component {
       };
       this.props.fetchData(pack);
     };
+    var searchResultWidth;
+    var mapWidth;
+    switch (this.props.section) {
+      case "airline":
+        searchResultWidth = "650px";
+        mapWidth = "calc(100%-650px)"
+        break;
+      case "activities":
+        searchResultWidth = "300px";
+        mapWidth = "calc(100%-300px)"
+        break;
+      case "hotel":
+        searchResultWidth = "550px";
+        mapWidth = "calc(100%-550px)"
+        break;
+      default:
+        break;
+    }
     return (
       <div className="planpage-containter">
         <div className="planpage-cover">
@@ -33,7 +51,7 @@ class PlanPage_Part2 extends Component {
         </div>
         <div className="planpage-main">
           {/* sdie bar section */}
-          <div className="planpage-sidebar">
+          <div className="planpage-sidebar" style={{ width: searchResultWidth }}>
             <div className="planpage-sidebar-searchbar">
               <FormControl>
                 <InputLabel>Enter Place U want to go</InputLabel>
@@ -61,12 +79,12 @@ class PlanPage_Part2 extends Component {
               </FormControl>
             </div>
             <div className="planpage-sidebar-menu">
-              <SearchResult type="activity" />
+              <SearchResult type={this.props.section} />
             </div>
           </div>
           {/* map section */}
-          <div className="planpage2-map">
-            <Map />
+          <div className="planpage2-map" style={{ width: mapWidth }} >
+            <Map style={{ width: "100%" }} />
           </div>
 
           {/* Overflow Btn - position: absolute */}
@@ -86,7 +104,8 @@ class PlanPage_Part2 extends Component {
 const mapStateToProps = state => {
   return {
     keyword: state.result.keyword,
-    resultList: state.result.resultList
+    resultList: state.result.resultList,
+    section: state.step.section
   };
 };
 
