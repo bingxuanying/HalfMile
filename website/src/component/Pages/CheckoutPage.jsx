@@ -21,9 +21,9 @@ import SaveIcon from "@material-ui/icons/Save";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import HomeIcon from "@material-ui/icons/Home";
 import CheckIcon from "@material-ui/icons/Check";
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
-import Modal from "react-modal";
+// import jsPDF from "jspdf";
+// import html2canvas from "html2canvas";
+// import Modal from "react-modal";
 
 // ------------------------- State ------------------------- //
 // Trip{
