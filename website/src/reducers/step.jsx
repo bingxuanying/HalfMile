@@ -93,7 +93,7 @@ const stepReducer = (state = initialState, action) => {
     case "REORDER_CITY":
       return {
         ...state,
-        cities: action.payload,
+        cities: action.payload.sortedCityLst,
         err: "none"
       };
 

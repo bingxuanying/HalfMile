@@ -36,10 +36,10 @@ export const deleteCity = (numOfDelete, itemIdx, preDate, dateLst) => {
   };
 };
 
-export const reorderCity = sortedLst => {
+export const reorderCity = (sortedCityLst, sortedPlanLst) => {
   return {
     type: "REORDER_CITY",
-    payload: sortedLst
+    payload: { sortedCityLst: sortedCityLst, sortedPlanLst: sortedPlanLst }
   };
 };
 

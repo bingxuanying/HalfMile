@@ -12,10 +12,46 @@ import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import moment from "moment";
 
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
+const overviewReorder = (list, startIndex, endIndex) => {
+  let result = Array.from(list);
+  let [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
+
+  return result;
+};
+
+const planReorder = (steplist, planlist, startIndex, endIndex) => {
+  let result = Array.from(planlist);
+  let removedItemNum = steplist[startIndex].endDate.diff(
+    steplist[startIndex].startDate,
+    "days"
+  );
+  let startPosition =
+    steplist[startIndex].startDate.diff(result[0].startDate, "days") + 1;
+  let removed = result.splice(startPosition, removedItemNum);
+
+  let _result = Array.from(result);
+  _result.splice(0, 1);
+  let endPosition = _result.findIndex(
+    day => day.city.name === steplist[endIndex].name
+  );
+
+  // down to up: if start > end endPosition += 1
+  // up to down: if start < end endPosition += days
+  if (startIndex > endIndex) {
+    endPosition += 1;
+  } else if (startIndex < endIndex) {
+    endPosition += steplist[endIndex].endDate.diff(
+      steplist[endIndex].startDate,
+      "days"
+    );
+    endPosition += 1;
+  }
+
+  console.log(endPosition);
+  // result.splice(endIndex, 0, removed);
+
+  result.splice.apply(result, [endPosition, 0].concat(removed));
 
   return result;
 };
@@ -54,7 +90,7 @@ class DND extends Component {
         `${this.props.cities[1].name} cannot be on top`
       );
     } else {
-      var sortedCityLst = reorder(
+      var sortedCityLst = overviewReorder(
         this.props.cities,
         result.source.index,
         result.destination.index
@@ -66,7 +102,14 @@ class DND extends Component {
         }
       }
 
-      this.props.reorderCity(sortedCityLst);
+      var sortedPlanLst = planReorder(
+        this.props.cities,
+        this.props.planLst,
+        result.source.index,
+        result.destination.index
+      );
+
+      this.props.reorderCity(sortedCityLst, sortedPlanLst);
     }
   }
 
@@ -234,7 +277,8 @@ const mapStateToProps = state => {
   return {
     home: state.plan[0].home,
     cities: state.step.cities,
-    calendarOnID: state.state.calendarOnID
+    calendarOnID: state.state.calendarOnID,
+    planLst: state.plan
   };
 };
 

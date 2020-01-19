@@ -117,6 +117,9 @@ const planReducer = (state = initialState, action) => {
 
       return newState_delete;
 
+    case "REORDER_CITY":
+      return action.payload.sortedPlanLst;
+
     // Start Box
     case "CHANGE_HOME_ADDRESS":
       return state.map((item, index) => {
