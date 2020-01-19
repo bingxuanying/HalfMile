@@ -5,8 +5,8 @@ const initialState = {
   },
   registerInfo: {
     email: null,
-    password: null,
-    rePassword: null
+    password: null
+    // rePassword: null
   },
   InfoBar: false,
   calendarOnID: null

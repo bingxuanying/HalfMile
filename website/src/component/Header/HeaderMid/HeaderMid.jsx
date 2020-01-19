@@ -31,14 +31,23 @@ class HeaderMid extends Component {
   infoSwitch(section, page) {
     switch (section) {
       case "airline":
-        return <p>{this.props.cities[page - 1].name}</p>;
+        return (
+          <div className="navbar-mid-infobox">
+            {this.props.cities[page - 1].name}
+          </div>
+        );
       case "hotel":
-        return <p>{this.props.cities[page - 1].name}</p>;
+        return (
+          <div className="navbar-mid-infobox">
+            {this.props.cities[page - 1].name}
+          </div>
+        );
       case "activity":
         return (
-          <p>
-            Day {page} - {this.props.cities[page - 1].name}
-          </p>
+          <div className="navbar-mid-infobox">
+            {this.props.plan[page].city.name}
+            <span> - Day {page}</span>
+          </div>
         );
       default:
         return null;
@@ -47,9 +56,13 @@ class HeaderMid extends Component {
 
   render() {
     return (
-      <Nav.Link as={Link} to="/plan" className="navbar-middle">
-        <div>{this.titleSwitch(this.props.section)}</div>
-        <div>{this.infoSwitch(this.props.section, this.props.page)}</div>
+      <Nav.Link as={Link} to="/plan" className="navbar-middle pl-4 p-0">
+        <div className="navbar-mid-left">
+          {this.infoSwitch(this.props.section, this.props.page)}
+        </div>
+        <div className="navbar-middle-right">
+          {this.titleSwitch(this.props.section)}
+        </div>
       </Nav.Link>
     );
   }
@@ -59,7 +72,8 @@ const mapStateToProps = state => {
   return {
     section: state.step.section,
     page: state.step.page,
-    cities: state.step.cities
+    cities: state.step.cities,
+    plan: state.plan
   };
 };
 
