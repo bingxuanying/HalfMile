@@ -90,7 +90,7 @@ function SignUp() {
                   document.getElementById("register-password").value = "";
                   document.getElementById("register-repassword").value = "";
                   dispatch(userActions.sendRegisterInfo(registerInfo));
-                  handleClose;
+                  handleClose();
                 }}
               >
                 Submit
