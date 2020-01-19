@@ -26,20 +26,21 @@ class PlanPage_Part2 extends Component {
       };
       this.props.fetchData(pack);
     };
+    // follow 2 is to change inline style
     var searchResultWidth;
     var mapWidth;
     switch (this.props.section) {
       case "airline":
         searchResultWidth = "650px";
-        mapWidth = "calc(100%-650px)"
+        mapWidth = "calc(100% - 650px)";
         break;
       case "activities":
         searchResultWidth = "300px";
-        mapWidth = "calc(100%-300px)"
+        mapWidth = "calc(100% - 300px)";
         break;
       case "hotel":
         searchResultWidth = "550px";
-        mapWidth = "calc(100%-550px)"
+        mapWidth = "calc(100% - 550px)";
         break;
       default:
         break;
@@ -51,7 +52,10 @@ class PlanPage_Part2 extends Component {
         </div>
         <div className="planpage-main">
           {/* sdie bar section */}
-          <div className="planpage-sidebar" style={{ width: searchResultWidth }}>
+          <div
+            className="planpage-sidebar"
+            style={{ width: searchResultWidth }}
+          >
             <div className="planpage-sidebar-searchbar">
               <FormControl>
                 <InputLabel>Enter Place U want to go</InputLabel>
@@ -83,7 +87,7 @@ class PlanPage_Part2 extends Component {
             </div>
           </div>
           {/* map section */}
-          <div className="planpage2-map" style={{ width: mapWidth }} >
+          <div className="planpage2-map" style={{ width: mapWidth }}>
             <Map style={{ width: "100%" }} />
           </div>
 
