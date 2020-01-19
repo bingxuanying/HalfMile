@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import Geosuggest from "react-geosuggest";
 import "./SearchBarLoca.sass";
-import AutoComplete from "react-google-autocomplete";
-import Map from "../../Map/Map";
-import { GoogleMap } from "react-google-maps";
 import uuid from "uuid/v4";
 import { connect } from "react-redux";
 import * as planActions from "../../../actions/planActions";

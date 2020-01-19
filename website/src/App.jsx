@@ -10,6 +10,7 @@ import HomePage from "./component/Pages/HomePage";
 import ProfilePage from "./component/Pages/ProfilePage";
 import PlanPage from "./component/Pages/PlanPage";
 import CheckoutPage from "./component/Pages/CheckoutPage";
+import VisionBox from "./component/LocationBox/VisionBox";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.sass";
 
@@ -31,6 +32,7 @@ class App extends Component {
         <div>
           <HeaderContainer />
           {/* <SearchBarLoca /> */}
+
           <Switch>
             <Route exact path="/">
               <HomePage />
