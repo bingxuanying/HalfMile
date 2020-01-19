@@ -53,7 +53,7 @@ class TripOverviewCity extends Component {
           <div className="trip-overview-city-name">{this.state.city}</div>
         </Tooltip>
         <div className="trip-overview-city-startdate">
-          {this.state.startDate}
+          {this.state.startDate.format("YYYY-DD-MM")}
         </div>
         <div className="trip-overview-city-city">
           <div className="trip-overview-city-city-graph">
@@ -129,24 +129,25 @@ class TripOverviewCity extends Component {
     }
   };
   getTransport = () => {
-    var that = this;
-    return this.state.transport.map(function(trans, index) {
-      return (
-        <div className="right-line-transport" key={index}>
-          <Tooltip title="click to edit flight">
-            <span>{trans.flight}</span>
-          </Tooltip>
-          <Tooltip
-            arrow
-            TransitionComponent={Fade}
-            TransitionProps={{ timeout: 600 }}
-            title={that.getTransportInfo(trans)}
-          >
-            <InfoOutlinedIcon style={{ fontSize: 17 }} />
-          </Tooltip>
-        </div>
-      );
-    });
+    return <div></div>;
+    // var that = this;
+    // return this.state.transport.map(function(trans, index) {
+    //   return (
+    //     <div className="right-line-transport" key={index}>
+    //       <Tooltip title="click to edit flight">
+    //         <span>{trans.flight}</span>
+    //       </Tooltip>
+    //       <Tooltip
+    //         arrow
+    //         TransitionComponent={Fade}
+    //         TransitionProps={{ timeout: 600 }}
+    //         title={that.getTransportInfo(trans)}
+    //       >
+    //         <InfoOutlinedIcon style={{ fontSize: 17 }} />
+    //       </Tooltip>
+    //     </div>
+    //   );
+    // });
   };
   getTransportInfo = trans => {
     return (

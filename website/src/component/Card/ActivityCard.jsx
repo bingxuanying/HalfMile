@@ -6,13 +6,32 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
+
 class ActivityCard extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       hover: false
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick() {
+    var activityInfo = {
+      name: this.props.name,
+      id: this.props.id,
+      latLong: this.props.latLong,
+      rateStars: this.props.stars,
+      timeCost: this.props.timeCost,
+      info: this.props.info
+    };
+
+    this.props.updateActivity(activityInfo, this.props.page);
+  }
+
   render() {
     const name = this.props.name;
     // const price = this.props.price;
@@ -22,9 +41,6 @@ class ActivityCard extends Component {
     const rateStars = this.props.stars;
     const timeCost = this.props.timeCost;
     const info = this.props.info;
-    function addToList() {
-      console.log(id);
-    }
     function showLocation() {
       console.log(latLong);
     }
@@ -59,7 +75,7 @@ class ActivityCard extends Component {
             <div>Est. Time&nbsp;&nbsp;{timeCost}</div>
           </div>
           <div className="activity-card-option">
-            <Button onClick={addToList}>Add to my list</Button>
+            <Button onClick={this.handleClick}>Add to my list</Button>
           </div>
         </Card.Body>
       </Card>
@@ -78,5 +94,18 @@ class ActivityCard extends Component {
     }
   };
 }
+const mapStateToProps = state => {
+  return {
+    initStartDate: state.plan[0].startDate,
+    cities: state.step.cities,
+    page: state.step.page
+  };
+};
 
-export default ActivityCard;
+const mapDispatchToProps = () => {
+  return {
+    updateActivity: planActions.updateActivity
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(ActivityCard);

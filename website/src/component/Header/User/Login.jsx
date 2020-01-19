@@ -58,7 +58,7 @@ function Login() {
                 }
               />
             </div>
-            <div id="check-box">
+            {/* <div id="check-box">
               <input type="checkbox" id="check-type" />
               <div id="check-text">
                 Remeber me
@@ -66,7 +66,7 @@ function Login() {
                   Forgot password?
                 </a>
               </div>
-            </div>
+            </div> */}
             <div className="button-container">
               <button
                 className="submit-button"
@@ -82,11 +82,11 @@ function Login() {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer id="modal-footer">
+        {/* <Modal.Footer id="modal-footer">
           <a href="#" id="facebookIcon" />
           <a href="#" id="twitterIcon" />
           <a href="#" id="googleIcon" />
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

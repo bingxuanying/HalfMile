@@ -4,13 +4,25 @@ import { Button } from "@material-ui/core";
 import { buildStars } from "./util/buildStars";
 import "./index.sass";
 
+import { connect } from "react-redux";
+import * as planActions from "../../actions/planActions";
+
 class HotelCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       hover: false
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
+
+  handleClick(e) {
+    var city = this.props.cities[this.props.page - 1].name;
+
+    this.props.updateHotel(this.props.obj, city);
+  }
+
   render() {
     const name = this.props.obj.name;
     const price = this.props.obj.price;
@@ -20,10 +32,6 @@ class HotelCard extends Component {
     const info = this.props.obj.info;
     const location = this.props.obj.location;
 
-    function addToList() {}
-    // function showLocation() {
-    //   console.log(latLong);
-    // }
     const starGroup = buildStars(rateStars);
 
     return (
@@ -51,8 +59,12 @@ class HotelCard extends Component {
             <span>{info}</span>
           </div>
           <div className="hotel-card-option">
-            <Button className="hotel-card-option-btn" onClick={addToList}>
-              View Prices
+            <Button
+              className="hotel-card-option-btn"
+              onClick={this.handleClick}
+            >
+              {/* View Prices */}
+              Select this
             </Button>
           </div>
         </Card.Body>
@@ -73,4 +85,18 @@ class HotelCard extends Component {
   };
 }
 
-export default HotelCard;
+const mapStateToProps = state => {
+  return {
+    initStartDate: state.plan[0].startDate,
+    cities: state.step.cities,
+    page: state.step.page
+  };
+};
+
+const mapDispatchToProps = () => {
+  return {
+    updateHotel: planActions.updateHotel
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps())(HotelCard);

@@ -68,18 +68,18 @@ function SignUp() {
                 id="register-repassword"
                 type="password"
                 placeholder="Confirm password"
-                onChange={e =>
-                  dispatch(
-                    stateActions.updateRegisterRePassword(e.target.value)
-                  )
-                }
+                // onChange={e =>
+                //   dispatch(
+                //     stateActions.updateRegisterRePassword(e.target.value)
+                //   )
+                // }
               />
               <i className="zmdi zmdi-account zmdi-hc-lg"></i>
             </div>
             <div id="checkbox-account">
-              <a href="#" id="check-account">
+              {/* <a href="#" id="check-account">
                 Already have an account?
-              </a>
+              </a> */}
             </div>
             <div className="button-container">
               <button
@@ -90,6 +90,7 @@ function SignUp() {
                   document.getElementById("register-password").value = "";
                   document.getElementById("register-repassword").value = "";
                   dispatch(userActions.sendRegisterInfo(registerInfo));
+                  handleClose();
                 }}
               >
                 Submit
@@ -97,11 +98,11 @@ function SignUp() {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer id="modal-footer">
+        {/* <Modal.Footer id="modal-footer">
           <a href="#" id="facebookIcon" />
           <a href="#" id="twitterIcon" />
           <a href="#" id="googleIcon" />
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
     </>
   );

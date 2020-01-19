@@ -31,15 +31,15 @@ function getStops(stops, stopsHour) {
     info = stops + " stop";
     extraInfo = () => {
       stopsHour.map(function(airport, index) {
-        return <span key={index}>{airport}</span>;
+        return <div key={index}>{airport}</div>;
       });
     };
   }
   return (
-    <p>
+    <div>
       <div className="main-font">{info}</div>
       <div className="light-font">{extraInfo}</div>
-    </p>
+    </div>
   );
 }
 class FlightCard extends Component {
@@ -96,7 +96,7 @@ class FlightCard extends Component {
           <div className="flight-card-body-space"></div>
 
           <div className="flight-card-body-option">
-            <span className="flight-card-body-price">${price}</span>
+            <div className="flight-card-body-price">${price}</div>
             <Button
               className="flight-card-body-option-btn"
               variant="contained"

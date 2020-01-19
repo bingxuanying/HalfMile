@@ -136,8 +136,9 @@ const stepReducer = (state = initialState, action) => {
           state.page + 1 > state.cities.length ? "hotel" : "airline";
         nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
       } else if (state.section === "hotel") {
-        nextSection = state.page + 1 > action.payload ? "activity" : "hotel";
-        nextPage = state.page + 1 > action.payload ? 1 : state.page + 1;
+        nextSection =
+          state.page + 1 > state.cities.length ? "activity" : "hotel";
+        nextPage = state.page + 1 > state.cities.length ? 1 : state.page + 1;
       } else if (state.section === "activity") {
         nextSection = state.page + 1 > action.payload ? "checkout" : "activity";
         nextPage = state.page + 1 > action.payload ? 1 : state.page + 1;
@@ -164,7 +165,7 @@ const stepReducer = (state = initialState, action) => {
         prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
       } else if (state.section === "activity") {
         preSection = state.page - 1 < 1 ? "hotel" : "activity";
-        prePage = state.page - 1 < 1 ? action.payload : state.page - 1;
+        prePage = state.page - 1 < 1 ? state.cities.length : state.page - 1;
       } else if (state.section === "checkout") {
         preSection = "activity";
         prePage = action.payload;

@@ -24,6 +24,7 @@ const initDay = {
   city: [], // one single item for now
   hotel: [], // one single item for now
   transportation: [],
+  activities: [],
   endDate: null,
   isEdit: false,
   isFinished: false
@@ -34,8 +35,7 @@ const initCity = {
   location: {
     lat: null,
     lng: null
-  },
-  activities: []
+  }
 };
 
 const initHotel = {
@@ -224,8 +224,7 @@ const planReducer = (state = initialState, action) => {
         // Leave every other item unchanged
         return item;
       });
-      
-      
+
     case "UPDATE_FLIGHT":
       return state.map((day, idx) => {
         if (idx === action.payload.position) {
@@ -237,7 +236,31 @@ const planReducer = (state = initialState, action) => {
           return day;
         }
       });
-      
+
+    case "UPDATE_HOTEL":
+      return state.map((day, idx) => {
+        if (idx === 0 || day.city.name !== action.payload.city) {
+          return day;
+        } else {
+          return {
+            ...day,
+            hotel: action.payload.info
+          };
+        }
+      });
+
+    case "UPDATE_ACTIVITY":
+      return state.map((day, idx) => {
+        if (idx === action.payload.day) {
+          return {
+            ...day,
+            activities: day.activities.concat(action.payload.activity)
+          };
+        } else {
+          return day;
+        }
+      });
+
     default:
       return state;
   }

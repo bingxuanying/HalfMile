@@ -5,8 +5,8 @@ const initialState = {
   },
   registerInfo: {
     email: null,
-    password: null,
-    rePassword: null
+    password: null
+    // rePassword: null
   },
   InfoBar: false,
   calendarOnID: null
@@ -69,8 +69,8 @@ const stateReducer = (state = initialState, action) => {
         ...state,
         registerInfo: {
           email: null,
-          password: null,
-          rePassword: null
+          password: null
+          // rePassword: null
         }
       };
 

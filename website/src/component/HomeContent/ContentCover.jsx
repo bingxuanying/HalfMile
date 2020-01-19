@@ -14,14 +14,13 @@ import {
   DayPickerRangeController
 } from "react-dates";
 import { Calendar, CalendarRP } from "../Calendar";
-import { Button, IconButton, ClickAwayListener, Fade } from "@material-ui/core";
+import { Button, IconButton, ClickAwayListener } from "@material-ui/core";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@material-ui/icons/RemoveCircleOutline";
 import "./ContentCover.sass";
 import InfoBar from "../InfoBar";
-import moment from "moment";
 const AirbnbColor = "rgba(24,143,148,1)";
 
 class ContentCover extends Component {

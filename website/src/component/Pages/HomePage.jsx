@@ -23,13 +23,12 @@ import guideImg4 from "../Card/assets/guide3.jpg";
 // For TEST Purpose
 class HomePage extends Component {
   render() {
-    const cityInfo =
-      "In 2077, they voted my city the worst place to live in America. Main issues? Sky high rate of violence and more people living below the poverty line than anywhere else";
+    const cityInfo = "Demo City";
     const travelPlans_Guide = [
       <GuideCard
         key="G1"
         city="3 days Tokyo - Osaka"
-        author="Weili Yin"
+        author="XXX"
         info="Nice trip to Tokro with idot guides"
         stars={5}
         img={guideImg1}
@@ -37,7 +36,7 @@ class HomePage extends Component {
       <GuideCard
         key="G2"
         city="Choeng Thale"
-        author="Jin xin"
+        author="XXX"
         info="Villa Amonteera, Luxry with fantasy views"
         stars={4.5}
         img={guideImg2}
@@ -45,7 +44,7 @@ class HomePage extends Component {
       <GuideCard
         key="G3"
         city="Bail Selat"
-        author="Ybx"
+        author="XXX"
         info="Hideout Bail-Eco Bamboo hoom"
         stars={4}
         img={guideImg3}
@@ -53,7 +52,7 @@ class HomePage extends Component {
       <GuideCard
         key="G4"
         city="Wimberley"
-        author="HZJ"
+        author="XXX"
         info="Super Cute Retro Airstream"
         stars={4}
         img={guideImg4}
