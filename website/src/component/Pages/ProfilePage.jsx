@@ -27,17 +27,17 @@ class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "Weili Yin",
+      name: "XXX YY",
       nameEdit: false,
-      email: "xlyin@ucdavis.edu",
+      email: "XXX@ucdavis.edu",
       emailEdit: false,
-      homeAddress: "4447 Cowell Blvd 57, Davis,CA,95618",
+      homeAddress: "1234 Cowell Blvd, Davis,CA,95618",
       homeAddressEdit: false,
       paymentMethod: [
         {
           nickName: "Freedom",
           cardNumber: "4242424242424242",
-          nameOnCard: "weili yin",
+          nameOnCard: "wein X",
           expireMonth: 6,
           expireDay: 24,
           cvs: 123
@@ -45,7 +45,7 @@ class ProfilePage extends Component {
         {
           nickName: "CSR",
           cardNumber: "4242424242424242",
-          nameOnCard: "weili yin",
+          nameOnCard: "weiin",
           expireMonth: 6,
           expireDay: 24,
           cvs: 123

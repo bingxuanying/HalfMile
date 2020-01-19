@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import image from "./assets/mytrip.png";
+// import image from "./assets/mytrip.png";
 import { Card } from "react-bootstrap";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { IconButton, Menu, MenuItem } from "@material-ui/core";
@@ -22,7 +22,13 @@ class TripCard extends Component {
   render() {
     return (
       <Card className="trip-card card border-0 text-left">
-        <Card.Img className="trip-card-img" variant="top" src={image} />
+        <Card.Img
+          className="trip-card-img"
+          variant="top"
+          src={
+            "http://www.equityperformancegroup.com/wp-content/uploads/2019/06/9.jpg"
+          }
+        />
         <div
           className="trip-card-option "
           onMouseEnter={() => {
