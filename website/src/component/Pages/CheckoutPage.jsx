@@ -188,7 +188,7 @@ class CheckoutPage extends Component {
             {/* <DialogTitle onClose={this.closeSuccess}>Success</DialogTitle>
             <Divider /> */}
             <DialogContent>
-              <div className="modal-content">
+              <div className="modal-content-a">
                 {this.state.loading && <CircularProgress size={60} />}
                 {!this.state.loading && (
                   <div className="modal-content-success">
