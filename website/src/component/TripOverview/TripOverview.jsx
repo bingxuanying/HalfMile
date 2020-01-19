@@ -11,7 +11,7 @@ class TripOverview extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "S496691084's Guide"
+      title: "My 1st Trip"
     };
   }
   getCityList = () => {
@@ -21,7 +21,7 @@ class TripOverview extends Component {
       console.log(this.findDay(index));
       return (
         <TripOverviewCity
-          key={index}
+          index={index}
           isEditting={index + 1 === this.props.page}
           city={city.name}
           isChecked={index + 1 <= this.props.page}

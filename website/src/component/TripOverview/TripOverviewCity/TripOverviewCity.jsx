@@ -9,24 +9,42 @@ import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import { Tooltip, Zoom, Fade } from "@material-ui/core";
+import { connect } from "react-redux";
 
 import "./index.sass";
 class TripOverviewCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditting: this.props.isEditting,
+      // isEditting: this.props.isEditting,
       startDate: this.props.startDate,
-      city: this.props.city,
-      isChecked: this.props.isChecked,
-      isNextChecked: this.props.isNextChecked,
-      isStart: this.props.isStart,
-      isEnd: this.props.isEnd,
+      // city: this.props.city,
+      // isChecked: this.props.isChecked,
+      // isNextChecked: this.props.isNextChecked,
+      // isStart: this.props.isStart,
+      // isEnd: this.props.isEnd,
       hotel: this.props.hotel,
-      transport: this.props.transport
+      transport: this.props.transport,
+
+      isEditting: this.props.index === this.props.page - 1,
+      city: this.props.cities[this.props.index].name,
+      isChecked: this.props.index + 1 < this.props.page,
+      isStart: this.props.index === 0,
+      isEnd: this.props.index + 1 === this.props.cities.length,
+      isNextChecked: this.props.page > this.props.index + 2
+      // startDate: this.props.cities[this.props.index].startDate,
+      // hotel:this.props.plan[this.findDay(this.props.index)].hotel,
+      // transport:this.props.plan[this.findDay(this.props.index)].transport
     };
   }
-
+  findDay = index => {
+    return (
+      this.props.cities[index].startDate.diff(
+        this.props.cities[0].startDate,
+        "days"
+      ) + 1
+    );
+  };
   render() {
     console.log(this.props);
     var circleSize = 40;
@@ -207,4 +225,13 @@ class TripOverviewCity extends Component {
   };
 }
 
-export default TripOverviewCity;
+const mapStateToProps = state => {
+  return {
+    section: state.step.section,
+    page: state.step.page,
+    cities: state.step.cities,
+    plan: state.plan
+  };
+};
+
+export default connect(mapStateToProps)(TripOverviewCity);
