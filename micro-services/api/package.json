@@ -15,7 +15,7 @@
     "@grpc/proto-loader": "^0.5.3",
     "@koa/cors": "^2.2.3",
     "aws-sdk": "^2.596.0",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "grpc": "^1.24.2",
     "joi": "^14.3.1",
