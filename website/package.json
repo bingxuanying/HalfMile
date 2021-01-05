@@ -10,7 +10,7 @@
     "@material-ui/icons": "^4.5.1",
     "@material-ui/lab": "^4.0.0-alpha.39",
     "@types/react-geosuggest": "^2.7.10",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
